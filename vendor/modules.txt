@@ -1,0 +1,38 @@
+# github.com/MarkRosemaker/errpath v0.0.0-20241223110529-3530cd011135
+## explicit; go 1.23.2
+github.com/MarkRosemaker/errpath
+# github.com/MarkRosemaker/json2yaml v0.0.0-20250114195556-f9332257fc2d
+## explicit; go 1.23.4
+github.com/MarkRosemaker/json2yaml
+# github.com/MarkRosemaker/jsonutil v0.0.0-20250114201208-e81a63afd92c
+## explicit; go 1.23.2
+github.com/MarkRosemaker/jsonutil
+# github.com/MarkRosemaker/openapi v0.0.0-20250119192304-6e58d65091af
+## explicit; go 1.23.4
+github.com/MarkRosemaker/openapi
+# github.com/MarkRosemaker/ordmap v0.0.0-20250114205602-77066c6e652f
+## explicit; go 1.23.2
+github.com/MarkRosemaker/ordmap
+# github.com/MarkRosemaker/yaml v0.0.0-20250114211012-766c81671567
+## explicit; go 1.23.4
+github.com/MarkRosemaker/yaml
+# github.com/MarkRosemaker/yaml2json v0.0.0-20250114210910-e54fa2e35c95
+## explicit; go 1.23.4
+github.com/MarkRosemaker/yaml2json
+# github.com/go-api-libs/types v0.0.0-20241220214721-81dc6f654a15
+## explicit; go 1.23.2
+github.com/go-api-libs/types
+# github.com/go-json-experiment/json v0.0.0-20250119165339-d96285104214
+## explicit; go 1.23
+github.com/go-json-experiment/json
+github.com/go-json-experiment/json/internal
+github.com/go-json-experiment/json/internal/jsonflags
+github.com/go-json-experiment/json/internal/jsonopts
+github.com/go-json-experiment/json/internal/jsonwire
+github.com/go-json-experiment/json/jsontext
+# golang.org/x/exp v0.0.0-20250106191152-7588d65b2ba8
+## explicit; go 1.22.0
+golang.org/x/exp/maps
+# gopkg.in/yaml.v3 v3.0.1
+## explicit
+gopkg.in/yaml.v3
