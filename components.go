@@ -10,9 +10,9 @@ func components(d *openapi.Document, c openapi.Components) error {
 		return &errpath.ErrField{Field: "schemas", Err: err}
 	}
 
-	// if err := responses(d, c.Responses); err != nil {
-	// 	return &errpath.ErrField{Field: "responses", Err: err}
-	// }
+	if err := responses(d, c.Responses); err != nil {
+		return &errpath.ErrField{Field: "responses", Err: err}
+	}
 
 	// if err := parameters(c.Parameters); err != nil {
 	// 	return &errpath.ErrField{Field: "parameters", Err: err}

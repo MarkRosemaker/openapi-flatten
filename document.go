@@ -15,9 +15,9 @@ func Document(d *openapi.Document) error {
 	// 	return &errpath.ErrField{Field: "webhooks", Err: err}
 	// }
 
-	// if err := components(d.Components); err != nil {
-	// 	return &errpath.ErrField{Field: "components", Err: err}
-	// }
+	if err := components(d, d.Components); err != nil {
+		return &errpath.ErrField{Field: "components", Err: err}
+	}
 
 	return nil
 }
