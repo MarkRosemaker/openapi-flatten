@@ -12,6 +12,8 @@ github.com/MarkRosemaker/yaml v0.0.0-20250114211012-766c81671567 h1:5eWrbGdxMDiP
 github.com/MarkRosemaker/yaml v0.0.0-20250114211012-766c81671567/go.mod h1:YFlsM3ejML747ckTBrEiUTU3fMsUCG+P1Im+GdCbMJc=
 github.com/MarkRosemaker/yaml2json v0.0.0-20250114210910-e54fa2e35c95 h1:Ms71wiXAkAQIPhZBF3b+uomH6yZe5XpNpF+UCOO7OII=
 github.com/MarkRosemaker/yaml2json v0.0.0-20250114210910-e54fa2e35c95/go.mod h1:29Vwp0gyvimq/M7t01dJ5cAEKC38F4vyulu8g1wrQRU=
+github.com/ettle/strcase v0.2.0 h1:fGNiVF21fHXpX1niBgk0aROov1LagYsOwV/xqKDKR/Q=
+github.com/ettle/strcase v0.2.0/go.mod h1:DajmHElDSaX76ITe3/VHVyMin4LWSJN5Z909Wp+ED1A=
 github.com/go-api-libs/types v0.0.0-20241220214721-81dc6f654a15 h1:qzyov+tF9CXDxENN5cOEIyUif8dkQV4WhXQD2EadSuU=
 github.com/go-api-libs/types v0.0.0-20241220214721-81dc6f654a15/go.mod h1:nLeHWQNyIo6OZqGOKsRJeZOIjk3B4owR7U768OjHyqM=
 github.com/go-json-experiment/json v0.0.0-20250119165339-d96285104214 h1:1dlB1X7A6QDvLxtJmzIEdtHTlWFrkfxrlRyb7VjZqQc=

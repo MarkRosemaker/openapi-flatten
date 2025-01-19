@@ -2,10 +2,13 @@ module github.com/MarkRosemaker/openapi-flatten
 
 go 1.23.4
 
-require github.com/MarkRosemaker/openapi v0.0.0-20250119192304-6e58d65091af
+require (
+	github.com/MarkRosemaker/errpath v0.0.0-20241223110529-3530cd011135
+	github.com/MarkRosemaker/openapi v0.0.0-20250119192304-6e58d65091af
+	github.com/ettle/strcase v0.2.0
+)
 
 require (
-	github.com/MarkRosemaker/errpath v0.0.0-20241223110529-3530cd011135 // indirect
 	github.com/MarkRosemaker/json2yaml v0.0.0-20250114195556-f9332257fc2d // indirect
 	github.com/MarkRosemaker/jsonutil v0.0.0-20250114201208-e81a63afd92c // indirect
 	github.com/MarkRosemaker/ordmap v0.0.0-20250114205602-77066c6e652f // indirect

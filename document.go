@@ -1,14 +1,15 @@
-package openapi
+package flatten
 
 import (
+	"github.com/MarkRosemaker/errpath"
 	"github.com/MarkRosemaker/openapi"
 )
 
 // Document flattens an entire OpenAPI document so it contains no nested objects.
 func Document(d *openapi.Document) error {
-	// if err := paths(d.Paths); err != nil {
-	// 	return &errpath.ErrField{Field: "paths", Err: err}
-	// }
+	if err := paths(d, d.Paths); err != nil {
+		return &errpath.ErrField{Field: "paths", Err: err}
+	}
 
 	// if err := webhooks(d.Webhooks); err != nil {
 	// 	return &errpath.ErrField{Field: "webhooks", Err: err}
