@@ -6,11 +6,11 @@ import (
 )
 
 func content(d *openapi.Document, c openapi.Content,
-	rspOrReqBodyName, tp string, alwaysMoveSchema bool) error {
+	rspOrReqBodyName, tp string, modeSchema mode) error {
 	for mr, mt := range c.ByIndex() {
 		if err := mediaType(d, mt,
 			nameMediaType(rspOrReqBodyName, nameMediaRange(mr), tp),
-			alwaysMoveSchema); err != nil {
+			modeSchema); err != nil {
 			return &errpath.ErrKey{Key: string(mr), Err: err}
 		}
 	}
