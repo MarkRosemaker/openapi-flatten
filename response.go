@@ -18,12 +18,12 @@ func nameResponse(opID string, code openapi.StatusCode) string {
 	return strcase.ToGoPascal(strings.Join([]string{opID, statusText, "Response"}, " "))
 }
 
-func response(d *openapi.Document, r *openapi.Response, rspName string, alwaysMoveSchema bool) error {
+func response(d *openapi.Document, r *openapi.Response, rspName string, modeSchema mode) error {
 	// if err := l.resolveHeaders(r.Headers); err != nil {
 	// 	return &errpath.ErrField{Field: "headers", Err: err}
 	// }
 
-	if err := content(d, r.Content, rspName, "Response", alwaysMoveSchema); err != nil {
+	if err := content(d, r.Content, rspName, "Response", modeSchema); err != nil {
 		return &errpath.ErrField{Field: "content", Err: err}
 	}
 
@@ -34,7 +34,7 @@ func response(d *openapi.Document, r *openapi.Response, rspName string, alwaysMo
 	return nil
 }
 
-func responseRef(d *openapi.Document, r *openapi.ResponseRef, rspName string, alwaysMoveSchema bool) error {
+func responseRef(d *openapi.Document, r *openapi.ResponseRef, rspName string, modeSchema mode) error {
 	if r.Ref != nil {
 		return nil
 	}
@@ -44,5 +44,5 @@ func responseRef(d *openapi.Document, r *openapi.ResponseRef, rspName string, al
 	d.Components.Responses.Set(rspName, &openapi.ResponseRef{Value: r.Value})
 	r.Ref = newRef("responses", rspName)
 
-	return response(d, r.Value, rspName, alwaysMoveSchema) // flatten the response itself
+	return response(d, r.Value, rspName, modeSchema) // flatten the response itself
 }

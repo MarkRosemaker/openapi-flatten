@@ -7,12 +7,20 @@ import (
 	"github.com/MarkRosemaker/openapi"
 )
 
-func schemaRef(d *openapi.Document, s *openapi.SchemaRef, name string, alwaysMove bool) error {
+type mode int
+
+const (
+	moveIfNecessary mode = iota
+	alwaysMove
+	neverMove
+)
+
+func schemaRef(d *openapi.Document, s *openapi.SchemaRef, name string, mode mode) error {
 	if s.Ref != nil {
 		return nil // already processed
 	}
 
-	if alwaysMove {
+	if mode == alwaysMove {
 		moveSchemaToComponents(d, name, s)
 
 		// process the schema itself
@@ -22,7 +30,7 @@ func schemaRef(d *openapi.Document, s *openapi.SchemaRef, name string, alwaysMov
 	switch s.Value.Type {
 	case openapi.TypeInteger, openapi.TypeNumber, openapi.TypeBoolean: // no need to move to components
 	case openapi.TypeString:
-		if s.Value.Enum != nil {
+		if s.Value.Enum != nil && mode != neverMove {
 			moveSchemaToComponents(d, name, s)
 		} // else just string, no need to move to components
 	case openapi.TypeArray:
@@ -30,18 +38,18 @@ func schemaRef(d *openapi.Document, s *openapi.SchemaRef, name string, alwaysMov
 		switch items.Type {
 		case openapi.TypeInteger: // do nothing, just []int
 		case openapi.TypeString:
-			if items.Enum != nil {
+			if items.Enum != nil && mode != neverMove {
 				moveSchemaToComponents(d, name, s)
 			} // else just []string, no need to move to components
 		case openapi.TypeObject:
-			if len(items.Properties) > 0 {
+			if len(items.Properties) > 0 && mode != neverMove {
 				moveSchemaToComponents(d, name, s)
 			}
 		default:
 			return fmt.Errorf("unimplemented item type %q", items.Type)
 		}
 	case openapi.TypeObject: // move to components
-		if len(s.Value.Properties) > 0 {
+		if len(s.Value.Properties) > 0 && mode != neverMove {
 			moveSchemaToComponents(d, name, s)
 		}
 	default:
@@ -60,6 +68,7 @@ func schema(d *openapi.Document, s *openapi.Schema, name string) error {
 		openapi.TypeBoolean: // no need to do anything
 		return nil
 	case openapi.TypeArray, openapi.TypeObject: // do below
+	case "": // is valid if schema contains allOf
 	default:
 		return fmt.Errorf("unimplemented schema type %q", s.Type)
 	}
@@ -69,7 +78,7 @@ func schema(d *openapi.Document, s *openapi.Schema, name string) error {
 	}
 
 	if s.Items != nil {
-		if err := schemaRef(d, s.Items, name+"Items", false); err != nil {
+		if err := schemaRef(d, s.Items, name+"Items", moveIfNecessary); err != nil {
 			return &errpath.ErrField{Field: "items", Err: err}
 		}
 	}
@@ -79,7 +88,7 @@ func schema(d *openapi.Document, s *openapi.Schema, name string) error {
 	}
 
 	if s.AdditionalProperties != nil {
-		if err := schemaRef(d, s.AdditionalProperties, name+"Value", false); err != nil {
+		if err := schemaRef(d, s.AdditionalProperties, name+"Value", moveIfNecessary); err != nil {
 			return &errpath.ErrField{Field: "additionalProperties", Err: err}
 		}
 	}
@@ -96,7 +105,7 @@ func moveSchemaToComponents(d *openapi.Document, name string, s *openapi.SchemaR
 
 func schemaRefList(d *openapi.Document, ss openapi.SchemaRefList, prefix string) error {
 	for i, s := range ss {
-		if err := schemaRef(d, s, fmt.Sprintf("%s%d", prefix, i), false); err != nil {
+		if err := schemaRef(d, s, fmt.Sprintf("%s%d", prefix, i), neverMove); err != nil {
 			return &errpath.ErrIndex{Index: i, Err: err}
 		}
 	}
