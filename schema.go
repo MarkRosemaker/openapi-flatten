@@ -37,6 +37,7 @@ func schemaRef(d *openapi.Document, s *openapi.SchemaRef, name string, mode mode
 		items := s.Value.Items.Value
 		switch items.Type {
 		case openapi.TypeInteger: // do nothing, just []int
+		case openapi.TypeNumber: // do nothing, just []float32 or []float64
 		case openapi.TypeString:
 			if items.Enum != nil && mode != neverMove {
 				moveSchemaToComponents(d, name, s)
