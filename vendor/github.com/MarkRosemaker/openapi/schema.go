@@ -1,13 +1,13 @@
 package openapi
 
 import (
+	"encoding/json/jsontext"
 	"fmt"
 	"regexp"
 	"slices"
 	"strings"
 
 	"github.com/MarkRosemaker/errpath"
-	"github.com/go-json-experiment/json/jsontext"
 )
 
 // The Schema Object allows the definition of input and output data types.
@@ -76,7 +76,7 @@ type Schema struct {
 	// Specifies the default value of the property if no value is provided.
 	Default any `json:"default,omitempty" yaml:"default,omitempty"`
 
-	Example jsontext.Value `json:"example,omitempty" yaml:"example,omitempty"`
+	Example jsontext.Value `json:"example,omitzero" yaml:"example,omitzero"`
 
 	// This object MAY be extended with Specification Extensions.
 	Extensions Extensions `json:",inline" yaml:"-"`

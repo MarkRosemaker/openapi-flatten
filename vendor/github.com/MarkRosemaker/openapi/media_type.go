@@ -1,10 +1,10 @@
 package openapi
 
 import (
+	"encoding/json/jsontext"
 	"errors"
 
 	"github.com/MarkRosemaker/errpath"
-	"github.com/go-json-experiment/json/jsontext"
 )
 
 // Each Media Type Object provides schema and examples for the media type identified by its key.
@@ -56,4 +56,22 @@ func (mt *MediaType) Validate() error {
 	}
 
 	return validateExtensions(mt.Extensions)
+}
+
+func (l *loader) resolveMediaType(mt *MediaType) error {
+	if mt.Schema != nil {
+		if err := l.resolveSchemaRef(mt.Schema); err != nil {
+			return &errpath.ErrField{Field: "schema", Err: err}
+		}
+	}
+
+	if err := l.resolveExamples(mt.Examples); err != nil {
+		return &errpath.ErrField{Field: "examples", Err: err}
+	}
+
+	if err := l.resolveEncodings(mt.Encoding); err != nil {
+		return &errpath.ErrField{Field: "encoding", Err: err}
+	}
+
+	return nil
 }
