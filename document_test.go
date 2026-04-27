@@ -30,5 +30,4 @@ func TestDocument(t *testing.T) {
 	}
 
 	// "/organizations/9011051/workspaces"]["POST"].responses["403"]["application/json"].schema: missing schema ref
-
 }

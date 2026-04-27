@@ -6,7 +6,8 @@ import (
 )
 
 func content(d *openapi.Document, c openapi.Content,
-	rspOrReqBodyName, tp string, modeSchema mode) error {
+	rspOrReqBodyName, tp string, modeSchema mode,
+) error {
 	for mr, mt := range c.ByIndex() {
 		if err := mediaType(d, mt,
 			nameMediaType(rspOrReqBodyName, nameMediaRange(mr), tp),
