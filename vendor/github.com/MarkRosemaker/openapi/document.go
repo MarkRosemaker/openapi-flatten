@@ -33,7 +33,7 @@ type Document struct {
 	// The incoming webhooks that MAY be received as part of this API and that the API consumer MAY choose to implement. Closely related to the `callbacks` feature, this section describes requests initiated other than by an API call, for example by an out of band registration.
 	Webhooks Webhooks `json:"webhooks,omitempty" yaml:"webhooks,omitempty"`
 	// An element to hold various schemas for the document.
-	Components Components `json:"components,omitempty" yaml:"components,omitempty"`
+	Components Components `json:"components,omitzero" yaml:"components,omitempty"`
 	// A declaration of which security mechanisms can be used across the API. The list of values includes alternative security requirement objects that can be used. Only one of the security requirement objects need to be satisfied to authorize a request. Individual operations can override this definition. To make security optional, an empty security requirement (`{}`) can be included in the array.
 	Security SecurityRequirements `json:"security,omitempty" yaml:"security,omitempty"`
 	// A list of tags used by the document with additional metadata. The order of the tags can be used to reflect on their order by the parsing tools. Not all tags that are used by the Operation Object must be declared. The tags that are not declared MAY be organized randomly or based on the tools' logic. Each tag name in the list MUST be unique.
@@ -45,8 +45,9 @@ type Document struct {
 }
 
 // reOpenAPIVersion is a regular expression that matches the OpenAPI version.
-// Allowed are 3.0.x and 3.1.x.
-var reOpenAPIVersion = regexp.MustCompile(`^3\.(0|1)\.\d+(-.+)?$`)
+// Allowed are 3.0.x, 3.1.x and 3.2.x.
+// See: https://spec.openapis.org/oas/v3.2.0.html#versions-and-deprecation
+var reOpenAPIVersion = regexp.MustCompile(`^3\.(0|1|2)\.\d+(-.+)?$`)
 
 // Validate checks the OpenAPI document for correctness.
 func (d *Document) Validate() error {
@@ -59,7 +60,7 @@ func (d *Document) Validate() error {
 			Field: "openapi",
 			Err: &errpath.ErrInvalid[string]{
 				Value:   d.OpenAPI,
-				Message: "must be a valid version (3.0.x or 3.1.x)",
+				Message: "must be a valid version (3.0.x, 3.1.x or 3.2.x)",
 			},
 		}
 	}

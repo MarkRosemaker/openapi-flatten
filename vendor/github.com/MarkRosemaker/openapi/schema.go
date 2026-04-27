@@ -112,7 +112,7 @@ func (s *Schema) Validate() error {
 	// validate if format is valid for type
 	switch s.Format {
 	case "": // no format
-	case FormatInt32, FormatInt64:
+	case FormatInt32, FormatInt64, FormatUint, FormatUint32, FormatUint64:
 		if s.Type != TypeInteger {
 			return &errpath.ErrField{Field: "format", Err: &errpath.ErrInvalid[Format]{
 				Value:   s.Format,
@@ -126,7 +126,7 @@ func (s *Schema) Validate() error {
 				Message: fmt.Sprintf("only valid for number type, got %s", s.Type),
 			}}
 		}
-	case FormatDateTime, FormatEmail, FormatPassword,
+	case FormatEmail, FormatPassword,
 		FormatUUID, FormatURI, FormatURIRef, FormatZipCode,
 		FormatIPv4, FormatIPv6:
 		if s.Type != TypeString {
@@ -135,13 +135,22 @@ func (s *Schema) Validate() error {
 				Message: fmt.Sprintf("only valid for string type, got %s", s.Type),
 			}}
 		}
-	case FormatDuration:
+	case FormatDuration, FormatDate, FormatDateTime:
 		switch s.Type {
 		case TypeInteger, TypeString:
 		default:
 			return &errpath.ErrField{Field: "format", Err: &errpath.ErrInvalid[Format]{
 				Value:   s.Format,
 				Message: fmt.Sprintf("only valid for integer or string type, got %s", s.Type),
+			}}
+		}
+	case FormatByte, FormatBinary:
+		switch s.Type {
+		case TypeString:
+		default:
+			return &errpath.ErrField{Field: "format", Err: &errpath.ErrInvalid[Format]{
+				Value:   s.Format,
+				Message: fmt.Sprintf("only valid for string type, got %s", s.Type),
 			}}
 		}
 	default:
@@ -318,6 +327,15 @@ func (s *Schema) Validate() error {
 		case TypeNumber, TypeInteger: // fits
 		default:
 			return &errpath.ErrField{Field: "default", Err: &errpath.ErrInvalid[int]{
+				Value:   dflt,
+				Message: fmt.Sprintf("does not match schema type, got %s", s.Type),
+			}}
+		}
+	case bool:
+		switch s.Type {
+		case TypeBoolean: // fits
+		default:
+			return &errpath.ErrField{Field: "default", Err: &errpath.ErrInvalid[bool]{
 				Value:   dflt,
 				Message: fmt.Sprintf("does not match schema type, got %s", s.Type),
 			}}
