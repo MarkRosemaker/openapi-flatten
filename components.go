@@ -14,9 +14,9 @@ func components(d *openapi.Document, c openapi.Components) error {
 		return &errpath.ErrField{Field: "responses", Err: err}
 	}
 
-	// if err := parameters(c.Parameters); err != nil {
-	// 	return &errpath.ErrField{Field: "parameters", Err: err}
-	// }
+	if err := parameters(d, c.Parameters); err != nil {
+		return &errpath.ErrField{Field: "parameters", Err: err}
+	}
 
 	// if err := l.resolveExamples(c.Examples); err != nil {
 	// 	return &errpath.ErrField{Field: "examples", Err: err}
