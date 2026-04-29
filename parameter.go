@@ -1,7 +1,9 @@
 package flatten
 
 import (
+	"github.com/MarkRosemaker/errpath"
 	"github.com/MarkRosemaker/openapi"
+	"github.com/ettle/strcase"
 )
 
 func parameterRef(d *openapi.Document, p *openapi.ParameterRef) error {
@@ -18,19 +20,17 @@ func parameterRef(d *openapi.Document, p *openapi.ParameterRef) error {
 }
 
 func parameter(d *openapi.Document, p *openapi.Parameter) error {
-	// if p.Schema != nil {
-	// 	if err := l.resolveSchema(p.Schema); err != nil {
-	// 		return &errpath.ErrField{Field: "schema", Err: err}
-	// 	}
-	// }
+	paramName := strcase.ToGoPascal(p.Name)
 
-	// if err := l.resolveContent(p.Content); err != nil {
-	// 	return &errpath.ErrField{Field: "content", Err: err}
-	// }
+	if p.Schema != nil {
+		if err := schema(d, p.Schema, paramName); err != nil {
+			return &errpath.ErrField{Field: "schema", Err: err}
+		}
+	}
 
-	// if err := l.resolveExamples(p.Examples); err != nil {
-	// 	return &errpath.ErrField{Field: "examples", Err: err}
-	// }
+	if err := content(d, p.Content, paramName, "Parameter", moveIfNecessary); err != nil {
+		return &errpath.ErrField{Field: "content", Err: err}
+	}
 
 	return nil
 }
