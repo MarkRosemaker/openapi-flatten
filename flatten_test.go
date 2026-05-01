@@ -26,7 +26,7 @@ func TestFlatten_TestData(t *testing.T) {
 			if err != nil {
 				t.Fatal(err)
 			}
-			defer f.Close()
+			defer f.Close() //nolint
 
 			doc, err := openapi.LoadFromReader(f)
 			if err != nil {
