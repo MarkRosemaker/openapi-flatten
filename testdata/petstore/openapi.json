@@ -1,0 +1,379 @@
+[
+	{
+		"request": {
+			"method": "GET",
+			"url": "https://api.petstoreapi.com/v1/pets"
+		},
+		"response": {
+			"status_code": 200,
+			"header": {
+				"Access-Control-Allow-Origin": "*",
+				"Access-Control-Expose-Headers": "RateLimit-Limit,RateLimit-Remaining,RateLimit-Reset",
+				"Connection": "keep-alive",
+				"Content-Length": "6537",
+				"Content-Type": "application/json",
+				"Date": "Wed, 29 Apr 2026 04:04:06 GMT",
+				"Ratelimit-Limit": "100",
+				"Ratelimit-Remaining": "99",
+				"Ratelimit-Reset": "1777435500"
+			},
+			"body": {
+				"data": [
+					{
+						"id": "019bb6f1-946e-733c-99ad-18756e88b836",
+						"name": "OrthoEnumCase",
+						"species": "BIRD",
+						"ageMonths": 12,
+						"size": "MEDIUM",
+						"status": "PENDING",
+						"price": "100.00",
+						"currency": "USD",
+						"goodWithKids": false,
+						"createdAt": "2026-01-13T10:40:44.142972Z",
+						"updatedAt": "2026-04-12T18:25:14.019808Z"
+					},
+					{
+						"id": "019bb6f1-958c-75ad-82d9-cf831ed1fcce",
+						"name": "OrthoEnumCase",
+						"species": "REPTILE",
+						"ageMonths": 12,
+						"size": "LARGE",
+						"status": "PENDING",
+						"price": "100.00",
+						"currency": "USD",
+						"goodWithKids": false,
+						"createdAt": "2026-01-13T10:40:44.429627Z",
+						"updatedAt": "2026-04-12T18:25:14.282418Z"
+					},
+					{
+						"id": "019bb6f1-96b0-744c-b9fc-5fa0f56af8cd",
+						"name": "OrthoEnumCase",
+						"species": "OTHER",
+						"ageMonths": 12,
+						"size": "SMALL",
+						"status": "PENDING",
+						"price": "100.00",
+						"currency": "USD",
+						"goodWithKids": false,
+						"createdAt": "2026-01-13T10:40:44.721266Z",
+						"updatedAt": "2026-04-12T18:25:14.761433Z"
+					},
+					{
+						"id": "019bb6f1-9a69-7478-9c66-a85dd950cd40",
+						"name": "StatusCase",
+						"species": "CAT",
+						"breed": "Domestic Shorthair",
+						"ageMonths": 10,
+						"size": "SMALL",
+						"status": "AVAILABLE",
+						"price": "80.00",
+						"currency": "USD",
+						"goodWithKids": true,
+						"createdAt": "2026-01-13T10:40:45.67439Z",
+						"updatedAt": "2026-01-13T10:40:45.67439Z",
+						"medicalInfo": {
+							"vaccinated": true,
+							"spayedNeutered": true,
+							"microchipped": false,
+							"specialNeeds": false,
+							"healthNotes": "Healthy indoor cat; routine vaccines completed."
+						}
+					},
+					{
+						"id": "019bb6f1-9cb4-73ed-ab65-9a30b3b7b251",
+						"name": "StatusCase",
+						"species": "CAT",
+						"breed": "Domestic Shorthair",
+						"ageMonths": 10,
+						"size": "SMALL",
+						"status": "PENDING",
+						"price": "80.00",
+						"currency": "USD",
+						"goodWithKids": true,
+						"createdAt": "2026-01-13T10:40:46.26172Z",
+						"updatedAt": "2026-04-23T22:14:35.353064Z",
+						"medicalInfo": {
+							"vaccinated": true,
+							"spayedNeutered": true,
+							"microchipped": false,
+							"specialNeeds": false,
+							"healthNotes": "Healthy indoor cat; routine vaccines completed."
+						}
+					},
+					{
+						"id": "019bb6f1-a012-71c6-bc37-508a3bcdf576",
+						"name": "GenderCase",
+						"species": "RABBIT",
+						"breed": "Holland Lop",
+						"ageMonths": 8,
+						"size": "SMALL",
+						"status": "ADOPTED",
+						"price": "60.00",
+						"currency": "USD",
+						"goodWithKids": true,
+						"createdAt": "2026-01-13T10:40:47.123523Z",
+						"updatedAt": "2026-04-23T23:11:49.806793Z"
+					},
+					{
+						"id": "019bb6f1-a270-747a-aef7-8cf913a39b8f",
+						"name": "GenderCase",
+						"species": "RABBIT",
+						"breed": "Holland Lop",
+						"ageMonths": 8,
+						"size": "SMALL",
+						"status": "AVAILABLE",
+						"price": "60.00",
+						"currency": "USD",
+						"goodWithKids": true,
+						"createdAt": "2026-01-13T10:40:47.729154Z",
+						"updatedAt": "2026-01-13T10:40:47.729154Z"
+					},
+					{
+						"id": "019bb6f1-a6d8-71f8-8766-d1fcaacb2e66",
+						"name": "EnumSpeciesPet",
+						"species": "DOG",
+						"breed": "Mixed Breed",
+						"ageMonths": 6,
+						"size": "SMALL",
+						"status": "AVAILABLE",
+						"price": "50.00",
+						"currency": "USD",
+						"goodWithKids": true,
+						"createdAt": "2026-01-13T10:40:48.857442Z",
+						"updatedAt": "2026-01-13T10:40:48.857442Z"
+					},
+					{
+						"id": "019bb6f1-a7fa-7010-914d-036047048ba4",
+						"name": "EnumSpeciesPet",
+						"species": "CAT",
+						"breed": "Mixed Breed",
+						"ageMonths": 6,
+						"size": "SMALL",
+						"status": "AVAILABLE",
+						"price": "50.00",
+						"currency": "USD",
+						"goodWithKids": true,
+						"createdAt": "2026-01-13T10:40:49.147029Z",
+						"updatedAt": "2026-01-13T10:40:49.147029Z"
+					},
+					{
+						"id": "019bb6f1-a921-72ba-aba3-f2f67ff8dfc0",
+						"name": "EnumSpeciesPet",
+						"species": "RABBIT",
+						"breed": "Mixed Breed",
+						"ageMonths": 6,
+						"size": "SMALL",
+						"status": "AVAILABLE",
+						"price": "50.00",
+						"currency": "USD",
+						"goodWithKids": true,
+						"createdAt": "2026-01-13T10:40:49.441784Z",
+						"updatedAt": "2026-01-13T10:40:49.441784Z"
+					},
+					{
+						"id": "019bb6f1-aa3d-74ff-9257-48c0c4b0d8b7",
+						"name": "EnumSpeciesPet",
+						"species": "BIRD",
+						"breed": "Mixed Breed",
+						"ageMonths": 6,
+						"size": "SMALL",
+						"status": "AVAILABLE",
+						"price": "50.00",
+						"currency": "USD",
+						"goodWithKids": true,
+						"createdAt": "2026-01-13T10:40:49.726784Z",
+						"updatedAt": "2026-01-13T10:40:49.726784Z"
+					},
+					{
+						"id": "019bb6f1-ab5d-720e-8a1b-e096a766cd74",
+						"name": "EnumSpeciesPet",
+						"species": "REPTILE",
+						"breed": "Mixed Breed",
+						"ageMonths": 6,
+						"size": "SMALL",
+						"status": "AVAILABLE",
+						"price": "50.00",
+						"currency": "USD",
+						"goodWithKids": true,
+						"createdAt": "2026-01-13T10:40:50.029209Z",
+						"updatedAt": "2026-01-13T10:40:50.029209Z"
+					},
+					{
+						"id": "019bb6f1-ac8c-71c8-b69a-54649dbf688b",
+						"name": "EnumSpeciesPet",
+						"species": "OTHER",
+						"breed": "Mixed Breed",
+						"ageMonths": 6,
+						"size": "SMALL",
+						"status": "AVAILABLE",
+						"price": "50.00",
+						"currency": "USD",
+						"goodWithKids": true,
+						"createdAt": "2026-01-13T10:40:50.317252Z",
+						"updatedAt": "2026-01-13T10:40:50.317252Z"
+					},
+					{
+						"id": "019bb6f1-ada8-7429-842b-36a2e73cff29",
+						"name": "Luna",
+						"species": "CAT",
+						"breed": "Domestic Shorthair",
+						"ageMonths": 18,
+						"size": "SMALL",
+						"status": "AVAILABLE",
+						"price": "75.00",
+						"currency": "USD",
+						"goodWithKids": true,
+						"createdAt": "2026-01-13T10:40:50.600988Z",
+						"updatedAt": "2026-01-13T10:40:50.600988Z",
+						"medicalInfo": {
+							"vaccinated": true,
+							"spayedNeutered": true,
+							"microchipped": false,
+							"specialNeeds": false,
+							"healthNotes": "Routine vaccines complete"
+						}
+					},
+					{
+						"id": "019bb6f1-aee7-735b-bbeb-f3ea5e527d50",
+						"name": "Max",
+						"species": "DOG",
+						"ageMonths": 24,
+						"size": "MEDIUM",
+						"status": "AVAILABLE",
+						"price": "250.00",
+						"currency": "USD",
+						"goodWithKids": false,
+						"createdAt": "2026-01-13T10:40:50.919956Z",
+						"updatedAt": "2026-01-13T10:40:50.919956Z"
+					},
+					{
+						"id": "019bb6f1-b11f-733e-ad93-9e0f7a3c6833",
+						"name": "BadMedicalExtra",
+						"species": "DOG",
+						"ageMonths": 16,
+						"size": "MEDIUM",
+						"status": "AVAILABLE",
+						"price": "120.00",
+						"currency": "USD",
+						"goodWithKids": false,
+						"createdAt": "2026-01-13T10:40:51.488819Z",
+						"updatedAt": "2026-01-13T10:40:51.488819Z",
+						"medicalInfo": {
+							"vaccinated": true,
+							"spayedNeutered": false,
+							"microchipped": false,
+							"specialNeeds": false
+						}
+					},
+					{
+						"id": "019bb6f1-bbe8-72df-bb6a-102471d279da",
+						"name": "NoStatus",
+						"species": "REPTILE",
+						"ageMonths": 22,
+						"size": "MEDIUM",
+						"status": "AVAILABLE",
+						"price": "120.00",
+						"currency": "USD",
+						"goodWithKids": false,
+						"createdAt": "2026-01-13T10:40:54.249456Z",
+						"updatedAt": "2026-01-13T10:40:54.249456Z"
+					},
+					{
+						"id": "019bb6f1-bd55-70eb-a3c1-9ff728d52036",
+						"name": "NoCurrency",
+						"species": "BIRD",
+						"breed": "Cockatiel",
+						"ageMonths": 10,
+						"size": "SMALL",
+						"status": "AVAILABLE",
+						"price": "40.00",
+						"currency": "USD",
+						"goodWithKids": true,
+						"createdAt": "2026-01-13T10:40:54.614294Z",
+						"updatedAt": "2026-01-13T10:40:54.614294Z",
+						"medicalInfo": {
+							"vaccinated": true,
+							"spayedNeutered": false,
+							"microchipped": false,
+							"specialNeeds": false,
+							"healthNotes": "Healthy and active; recent vet check completed."
+						}
+					},
+					{
+						"id": "019bb6f1-c637-739a-bb60-f7fc7c65d6cc",
+						"name": "NoPhotos",
+						"species": "CAT",
+						"ageMonths": 9,
+						"size": "MEDIUM",
+						"status": "AVAILABLE",
+						"price": "85.00",
+						"currency": "USD",
+						"goodWithKids": false,
+						"createdAt": "2026-01-13T10:40:56.887784Z",
+						"updatedAt": "2026-01-13T10:40:56.887784Z"
+					},
+					{
+						"id": "019bb6f1-c74e-7266-842f-1a667ec3d594",
+						"name": "NullMedical",
+						"species": "DOG",
+						"ageMonths": 10,
+						"size": "MEDIUM",
+						"status": "AVAILABLE",
+						"price": "90.00",
+						"currency": "USD",
+						"goodWithKids": false,
+						"createdAt": "2026-01-13T10:40:57.167311Z",
+						"updatedAt": "2026-01-13T10:40:57.167311Z"
+					}
+				],
+				"pagination": {
+					"page": 1,
+					"limit": 20,
+					"totalItems": 3000,
+					"totalPages": 150
+				}
+			}
+		}
+	},
+	{
+		"request": {
+			"method": "GET",
+			"url": "https://api.petstoreapi.com/v1/pets/019bb6f1-9a69-7478-9c66-a85dd950cd40"
+		},
+		"response": {
+			"status_code": 200,
+			"header": {
+				"Access-Control-Allow-Origin": "*",
+				"Access-Control-Expose-Headers": "RateLimit-Limit,RateLimit-Remaining,RateLimit-Reset",
+				"Connection": "keep-alive",
+				"Content-Length": "458",
+				"Content-Type": "application/json",
+				"Date": "Wed, 29 Apr 2026 04:04:07 GMT",
+				"Ratelimit-Limit": "100",
+				"Ratelimit-Remaining": "99",
+				"Ratelimit-Reset": "1777435500"
+			},
+			"body": {
+				"id": "019bb6f1-9a69-7478-9c66-a85dd950cd40",
+				"name": "StatusCase",
+				"species": "CAT",
+				"breed": "Domestic Shorthair",
+				"ageMonths": 10,
+				"size": "SMALL",
+				"status": "AVAILABLE",
+				"price": "80.00",
+				"currency": "USD",
+				"goodWithKids": true,
+				"createdAt": "2026-01-13T10:40:45.67439Z",
+				"updatedAt": "2026-01-13T10:40:45.67439Z",
+				"medicalInfo": {
+					"vaccinated": true,
+					"spayedNeutered": true,
+					"microchipped": false,
+					"specialNeeds": false,
+					"healthNotes": "Healthy indoor cat; routine vaccines completed."
+				}
+			}
+		}
+	}
+]
