@@ -56,6 +56,315 @@
   },
   "components": {
     "schemas": {
+      "GetV1PageByPageIDOkJSONResponse": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "example": "page"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "96245c8f-1784-44a4-82ad-1941127c3ec3"
+          },
+          "created_time": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-07-14T05:31:00.000Z"
+          },
+          "last_edited_time": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-02-02T19:54:00.000Z"
+          },
+          "created_by": {
+            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponseCreatedBy"
+          },
+          "last_edited_by": {
+            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponseLastEditedBy"
+          },
+          "cover": {
+            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponseCover"
+          },
+          "icon": {
+            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponseIcon"
+          },
+          "parent": {
+            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponseParent"
+          },
+          "in_trash": {
+            "type": "boolean",
+            "example": false
+          },
+          "is_archived": {
+            "type": "boolean",
+            "example": false
+          },
+          "is_locked": {
+            "type": "boolean",
+            "example": false
+          },
+          "properties": {
+            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponseProperties"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "example": "https://app.notion.com/p/Example-Page-96245c8f178444a482ad1941127c3ec3"
+          },
+          "public_url": {
+            "type": "string",
+            "format": "uri",
+            "example": "https://fae-tools.notion.site/Example-Page-96245c8f178444a482ad1941127c3ec3"
+          },
+          "request_id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "1cd5f340-41a1-4465-bf0f-d732f1080f7b"
+          }
+        },
+        "required": [
+          "object",
+          "id",
+          "created_time",
+          "last_edited_time",
+          "created_by",
+          "last_edited_by",
+          "cover",
+          "icon",
+          "parent",
+          "in_trash",
+          "is_archived",
+          "is_locked",
+          "properties",
+          "url",
+          "public_url",
+          "request_id"
+        ]
+      },
+      "GetV1PageByPageIDOkJSONResponseCover": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "example": "external"
+          },
+          "external": {
+            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponseCoverExternal"
+          }
+        },
+        "required": [
+          "type",
+          "external"
+        ]
+      },
+      "GetV1PageByPageIDOkJSONResponseCoverExternal": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "example": "https://app.notion.com/images/page-cover/nasa_space_shuttle_columbia_and_sunrise.jpg"
+          }
+        },
+        "required": [
+          "url"
+        ]
+      },
+      "GetV1PageByPageIDOkJSONResponseCreatedBy": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "example": "user"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+          }
+        },
+        "required": [
+          "object",
+          "id"
+        ]
+      },
+      "GetV1PageByPageIDOkJSONResponseIcon": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "example": "emoji"
+          },
+          "emoji": {
+            "type": "string",
+            "example": "🌄"
+          }
+        },
+        "required": [
+          "type",
+          "emoji"
+        ]
+      },
+      "GetV1PageByPageIDOkJSONResponseLastEditedBy": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "example": "user"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+          }
+        },
+        "required": [
+          "object",
+          "id"
+        ]
+      },
+      "GetV1PageByPageIDOkJSONResponseParent": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "example": "page_id"
+          },
+          "page_id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "11f88fcd-daf4-802e-b645-eb2d041a759b"
+          }
+        },
+        "required": [
+          "type",
+          "page_id"
+        ]
+      },
+      "GetV1PageByPageIDOkJSONResponseProperties": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponsePropertiesTitle"
+          }
+        },
+        "required": [
+          "title"
+        ]
+      },
+      "GetV1PageByPageIDOkJSONResponsePropertiesTitle": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "title"
+          },
+          "type": {
+            "type": "string",
+            "example": "title"
+          },
+          "title": {
+            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponsePropertiesTitleTitle"
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "title"
+        ]
+      },
+      "GetV1PageByPageIDOkJSONResponsePropertiesTitleTitle": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItems"
+        }
+      },
+      "GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItems": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "example": "text"
+          },
+          "text": {
+            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItemsText"
+          },
+          "annotations": {
+            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItemsAnnotations"
+          },
+          "plain_text": {
+            "type": "string",
+            "example": "Example Page"
+          },
+          "href": {
+            "type": "object",
+            "example": null
+          }
+        },
+        "required": [
+          "type",
+          "text",
+          "annotations",
+          "plain_text",
+          "href"
+        ]
+      },
+      "GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItemsAnnotations": {
+        "type": "object",
+        "properties": {
+          "bold": {
+            "type": "boolean",
+            "example": false
+          },
+          "italic": {
+            "type": "boolean",
+            "example": false
+          },
+          "strikethrough": {
+            "type": "boolean",
+            "example": false
+          },
+          "underline": {
+            "type": "boolean",
+            "example": false
+          },
+          "code": {
+            "type": "boolean",
+            "example": false
+          },
+          "color": {
+            "type": "string",
+            "example": "default"
+          }
+        },
+        "required": [
+          "bold",
+          "italic",
+          "strikethrough",
+          "underline",
+          "code",
+          "color"
+        ]
+      },
+      "GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItemsText": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string",
+            "example": "Example Page"
+          },
+          "link": {
+            "type": "object",
+            "example": null
+          }
+        },
+        "required": [
+          "content",
+          "link"
+        ]
+      },
       "ListV1BlockChildrenOkJSONResponse": {
         "type": "object",
         "properties": {
@@ -165,24 +474,6 @@
           "paragraph"
         ]
       },
-      "ListV1BlockChildrenOkJSONResponseResultsItemsParent": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "example": "page_id"
-          },
-          "page_id": {
-            "type": "string",
-            "format": "uuid",
-            "example": "96245c8f-1784-44a4-82ad-1941127c3ec3"
-          }
-        },
-        "required": [
-          "type",
-          "page_id"
-        ]
-      },
       "ListV1BlockChildrenOkJSONResponseResultsItemsCreatedBy": {
         "type": "object",
         "properties": {
@@ -244,176 +535,7 @@
           "color"
         ]
       },
-      "GetV1PageByPageIDOkJSONResponse": {
-        "type": "object",
-        "properties": {
-          "object": {
-            "type": "string",
-            "example": "page"
-          },
-          "id": {
-            "type": "string",
-            "format": "uuid",
-            "example": "96245c8f-1784-44a4-82ad-1941127c3ec3"
-          },
-          "created_time": {
-            "type": "string",
-            "format": "date-time",
-            "example": "2022-07-14T05:31:00.000Z"
-          },
-          "last_edited_time": {
-            "type": "string",
-            "format": "date-time",
-            "example": "2025-02-02T19:54:00.000Z"
-          },
-          "created_by": {
-            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponseCreatedBy"
-          },
-          "last_edited_by": {
-            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponseLastEditedBy"
-          },
-          "cover": {
-            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponseCover"
-          },
-          "icon": {
-            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponseIcon"
-          },
-          "parent": {
-            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponseParent"
-          },
-          "in_trash": {
-            "type": "boolean",
-            "example": false
-          },
-          "is_archived": {
-            "type": "boolean",
-            "example": false
-          },
-          "is_locked": {
-            "type": "boolean",
-            "example": false
-          },
-          "properties": {
-            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponseProperties"
-          },
-          "url": {
-            "type": "string",
-            "format": "uri",
-            "example": "https://app.notion.com/p/Example-Page-96245c8f178444a482ad1941127c3ec3"
-          },
-          "public_url": {
-            "type": "string",
-            "format": "uri",
-            "example": "https://fae-tools.notion.site/Example-Page-96245c8f178444a482ad1941127c3ec3"
-          },
-          "request_id": {
-            "type": "string",
-            "format": "uuid",
-            "example": "1cd5f340-41a1-4465-bf0f-d732f1080f7b"
-          }
-        },
-        "required": [
-          "object",
-          "id",
-          "created_time",
-          "last_edited_time",
-          "created_by",
-          "last_edited_by",
-          "cover",
-          "icon",
-          "parent",
-          "in_trash",
-          "is_archived",
-          "is_locked",
-          "properties",
-          "url",
-          "public_url",
-          "request_id"
-        ]
-      },
-      "GetV1PageByPageIDOkJSONResponseCreatedBy": {
-        "type": "object",
-        "properties": {
-          "object": {
-            "type": "string",
-            "example": "user"
-          },
-          "id": {
-            "type": "string",
-            "format": "uuid",
-            "example": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
-          }
-        },
-        "required": [
-          "object",
-          "id"
-        ]
-      },
-      "GetV1PageByPageIDOkJSONResponseLastEditedBy": {
-        "type": "object",
-        "properties": {
-          "object": {
-            "type": "string",
-            "example": "user"
-          },
-          "id": {
-            "type": "string",
-            "format": "uuid",
-            "example": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
-          }
-        },
-        "required": [
-          "object",
-          "id"
-        ]
-      },
-      "GetV1PageByPageIDOkJSONResponseCover": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "example": "external"
-          },
-          "external": {
-            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponseCoverExternal"
-          }
-        },
-        "required": [
-          "type",
-          "external"
-        ]
-      },
-      "GetV1PageByPageIDOkJSONResponseCoverExternal": {
-        "type": "object",
-        "properties": {
-          "url": {
-            "type": "string",
-            "format": "uri",
-            "example": "https://app.notion.com/images/page-cover/nasa_space_shuttle_columbia_and_sunrise.jpg"
-          }
-        },
-        "required": [
-          "url"
-        ]
-      },
-      "GetV1PageByPageIDOkJSONResponseIcon": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "example": "emoji"
-          },
-          "emoji": {
-            "type": "string",
-            "example": "🌄"
-          }
-        },
-        "required": [
-          "type",
-          "emoji"
-        ]
-      },
-      "GetV1PageByPageIDOkJSONResponseParent": {
+      "ListV1BlockChildrenOkJSONResponseResultsItemsParent": {
         "type": "object",
         "properties": {
           "type": {
@@ -423,148 +545,16 @@
           "page_id": {
             "type": "string",
             "format": "uuid",
-            "example": "11f88fcd-daf4-802e-b645-eb2d041a759b"
+            "example": "96245c8f-1784-44a4-82ad-1941127c3ec3"
           }
         },
         "required": [
           "type",
           "page_id"
         ]
-      },
-      "GetV1PageByPageIDOkJSONResponseProperties": {
-        "type": "object",
-        "properties": {
-          "title": {
-            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponsePropertiesTitle"
-          }
-        },
-        "required": [
-          "title"
-        ]
-      },
-      "GetV1PageByPageIDOkJSONResponsePropertiesTitle": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "example": "title"
-          },
-          "type": {
-            "type": "string",
-            "example": "title"
-          },
-          "title": {
-            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponsePropertiesTitleTitle"
-          }
-        },
-        "required": [
-          "id",
-          "type",
-          "title"
-        ]
-      },
-      "GetV1PageByPageIDOkJSONResponsePropertiesTitleTitle": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItems"
-        }
-      },
-      "GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItems": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "example": "text"
-          },
-          "text": {
-            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItemsText"
-          },
-          "annotations": {
-            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItemsAnnotations"
-          },
-          "plain_text": {
-            "type": "string",
-            "example": "Example Page"
-          },
-          "href": {
-            "type": "object",
-            "example": null
-          }
-        },
-        "required": [
-          "type",
-          "text",
-          "annotations",
-          "plain_text",
-          "href"
-        ]
-      },
-      "GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItemsText": {
-        "type": "object",
-        "properties": {
-          "content": {
-            "type": "string",
-            "example": "Example Page"
-          },
-          "link": {
-            "type": "object",
-            "example": null
-          }
-        },
-        "required": [
-          "content",
-          "link"
-        ]
-      },
-      "GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItemsAnnotations": {
-        "type": "object",
-        "properties": {
-          "bold": {
-            "type": "boolean",
-            "example": false
-          },
-          "italic": {
-            "type": "boolean",
-            "example": false
-          },
-          "strikethrough": {
-            "type": "boolean",
-            "example": false
-          },
-          "underline": {
-            "type": "boolean",
-            "example": false
-          },
-          "code": {
-            "type": "boolean",
-            "example": false
-          },
-          "color": {
-            "type": "string",
-            "example": "default"
-          }
-        },
-        "required": [
-          "bold",
-          "italic",
-          "strikethrough",
-          "underline",
-          "code",
-          "color"
-        ]
       }
     },
     "responses": {
-      "ListV1BlockChildrenOkResponse": {
-        "description": "OK",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/ListV1BlockChildrenOkJSONResponse"
-            }
-          }
-        }
-      },
       "GetV1PageByPageIDOkResponse": {
         "description": "OK",
         "content": {
@@ -574,11 +564,47 @@
             }
           }
         }
+      },
+      "ListV1BlockChildrenOkResponse": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ListV1BlockChildrenOkJSONResponse"
+            }
+          }
+        }
       }
     },
     "parameters": {
+      "Notion-Version": {
+        "name": "Notion-Version",
+        "in": "header",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "example": "2026-03-11"
+        }
+      },
+      "Notion-Version2": {
+        "name": "Notion-Version",
+        "in": "header",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "example": "2026-03-11"
+        }
+      },
       "blockId": {
         "name": "blockId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "pageId": {
+        "name": "pageId",
         "in": "path",
         "required": true,
         "schema": {
@@ -590,32 +616,6 @@
         "in": "query",
         "schema": {
           "type": "integer"
-        }
-      },
-      "Notion-Version": {
-        "name": "Notion-Version",
-        "in": "header",
-        "required": true,
-        "schema": {
-          "type": "string",
-          "example": "2026-03-11"
-        }
-      },
-      "pageId": {
-        "name": "pageId",
-        "in": "path",
-        "required": true,
-        "schema": {
-          "type": "string"
-        }
-      },
-      "Notion-Version2": {
-        "name": "Notion-Version",
-        "in": "header",
-        "required": true,
-        "schema": {
-          "type": "string",
-          "example": "2026-03-11"
         }
       }
     },

@@ -37,6 +37,8 @@ func run(ctx context.Context) error {
 			return err
 		}
 
+		doc.SortMaps()
+
 		if err := writeJSON(filepath.Join("testdata", entry.Name(), "golden.json"), doc); err != nil {
 			return err
 		}
