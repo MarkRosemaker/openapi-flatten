@@ -7,6 +7,8 @@ import (
 
 // Document flattens an entire OpenAPI document so it contains no nested objects.
 func Document(d *openapi.Document) error {
+	moveCommonPathPrefix(d)
+
 	if err := paths(d, d.Paths); err != nil {
 		return &errpath.ErrField{Field: "paths", Err: err}
 	}

@@ -6,11 +6,11 @@
   },
   "servers": [
     {
-      "url": "https://api.petstoreapi.com"
+      "url": "https://api.petstoreapi.com/v1/pets"
     }
   ],
   "paths": {
-    "/v1/pets": {
+    "/": {
       "get": {
         "operationId": "ListV1Pets",
         "responses": {
@@ -20,7 +20,7 @@
         }
       }
     },
-    "/v1/pets/{petId}": {
+    "/{petId}": {
       "parameters": [
         {
           "$ref": "#/components/parameters/petId"

@@ -6,11 +6,11 @@
   },
   "servers": [
     {
-      "url": "https://api.notion.com"
+      "url": "https://api.notion.com/v1"
     }
   ],
   "paths": {
-    "/v1/blocks/{blockId}/children": {
+    "/blocks/{blockId}/children": {
       "parameters": [
         {
           "$ref": "#/components/parameters/blockId"
@@ -33,7 +33,7 @@
         }
       }
     },
-    "/v1/pages/{pageId}": {
+    "/pages/{pageId}": {
       "parameters": [
         {
           "$ref": "#/components/parameters/pageId"
