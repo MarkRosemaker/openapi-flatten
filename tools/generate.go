@@ -2,7 +2,10 @@ package main
 
 import (
 	"context"
+	"errors"
 	"fmt"
+	"io"
+	"io/fs"
 	"log"
 	"os"
 	"path/filepath"
@@ -18,6 +21,10 @@ func main() {
 }
 
 func run(ctx context.Context) error {
+	if err := copyPreviousStep(); err != nil {
+		return err
+	}
+
 	entries, err := os.ReadDir("testdata")
 	if err != nil {
 		return err
@@ -37,9 +44,31 @@ func run(ctx context.Context) error {
 			return err
 		}
 
-		doc.SortMaps()
-
 		if err := writeJSON(filepath.Join("testdata", entry.Name(), "golden.json"), doc); err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+func copyPreviousStep() error {
+	const srcDir = "../openapi-enrich/testdata"
+
+	entries, err := os.ReadDir(srcDir)
+	if err != nil {
+		if errors.Is(err, fs.ErrNotExist) {
+			return nil
+		}
+
+		return err
+	}
+
+	for _, e := range entries {
+		if err := copyFile(
+			filepath.Join(srcDir, e.Name(), "golden.json"),
+			filepath.Join("testdata", e.Name(), "openapi.json"),
+		); err != nil {
 			return err
 		}
 	}
@@ -56,6 +85,26 @@ func writeJSON(path string, doc *openapi.Document) error {
 
 	if err := doc.WriteJSON(f); err != nil {
 		return fmt.Errorf("writing to %q: %w", path, err)
+	}
+
+	return nil
+}
+
+func copyFile(srcName, dstName string) error {
+	src, err := os.Open(srcName)
+	if err != nil {
+		return err
+	}
+	defer src.Close()
+
+	dst, err := os.Create(dstName)
+	if err != nil {
+		return err
+	}
+	defer dst.Close()
+
+	if _, err = io.Copy(dst, src); err != nil {
+		return err
 	}
 
 	return nil

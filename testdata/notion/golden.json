@@ -10,6 +10,26 @@
     }
   ],
   "paths": {
+    "/pages/{pageId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/pageId"
+        }
+      ],
+      "get": {
+        "operationId": "GetV1PageByPageID",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Notion-Version"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/GetV1PageByPageIDOkResponse"
+          }
+        }
+      }
+    },
     "/blocks/{blockId}/children": {
       "parameters": [
         {
@@ -23,32 +43,12 @@
             "$ref": "#/components/parameters/page_size"
           },
           {
-            "$ref": "#/components/parameters/Notion-Version"
-          }
-        ],
-        "responses": {
-          "200": {
-            "$ref": "#/components/responses/ListV1BlockChildrenOkResponse"
-          }
-        }
-      }
-    },
-    "/pages/{pageId}": {
-      "parameters": [
-        {
-          "$ref": "#/components/parameters/pageId"
-        }
-      ],
-      "get": {
-        "operationId": "GetV1PageByPageID",
-        "parameters": [
-          {
             "$ref": "#/components/parameters/Notion-Version2"
           }
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/GetV1PageByPageIDOkResponse"
+            "$ref": "#/components/responses/ListV1BlockChildrenOkResponse"
           }
         }
       }
@@ -143,6 +143,42 @@
           "request_id"
         ]
       },
+      "GetV1PageByPageIDOkJSONResponseCreatedBy": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "example": "user"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+          }
+        },
+        "required": [
+          "object",
+          "id"
+        ]
+      },
+      "GetV1PageByPageIDOkJSONResponseLastEditedBy": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "example": "user"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+          }
+        },
+        "required": [
+          "object",
+          "id"
+        ]
+      },
       "GetV1PageByPageIDOkJSONResponseCover": {
         "type": "object",
         "properties": {
@@ -172,24 +208,6 @@
           "url"
         ]
       },
-      "GetV1PageByPageIDOkJSONResponseCreatedBy": {
-        "type": "object",
-        "properties": {
-          "object": {
-            "type": "string",
-            "example": "user"
-          },
-          "id": {
-            "type": "string",
-            "format": "uuid",
-            "example": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
-          }
-        },
-        "required": [
-          "object",
-          "id"
-        ]
-      },
       "GetV1PageByPageIDOkJSONResponseIcon": {
         "type": "object",
         "properties": {
@@ -205,24 +223,6 @@
         "required": [
           "type",
           "emoji"
-        ]
-      },
-      "GetV1PageByPageIDOkJSONResponseLastEditedBy": {
-        "type": "object",
-        "properties": {
-          "object": {
-            "type": "string",
-            "example": "user"
-          },
-          "id": {
-            "type": "string",
-            "format": "uuid",
-            "example": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
-          }
-        },
-        "required": [
-          "object",
-          "id"
         ]
       },
       "GetV1PageByPageIDOkJSONResponseParent": {
@@ -311,6 +311,23 @@
           "href"
         ]
       },
+      "GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItemsText": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string",
+            "example": "Example Page"
+          },
+          "link": {
+            "type": "object",
+            "example": null
+          }
+        },
+        "required": [
+          "content",
+          "link"
+        ]
+      },
       "GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItemsAnnotations": {
         "type": "object",
         "properties": {
@@ -346,23 +363,6 @@
           "underline",
           "code",
           "color"
-        ]
-      },
-      "GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItemsText": {
-        "type": "object",
-        "properties": {
-          "content": {
-            "type": "string",
-            "example": "Example Page"
-          },
-          "link": {
-            "type": "object",
-            "example": null
-          }
-        },
-        "required": [
-          "content",
-          "link"
         ]
       },
       "ListV1BlockChildrenOkJSONResponse": {
@@ -474,6 +474,24 @@
           "paragraph"
         ]
       },
+      "ListV1BlockChildrenOkJSONResponseResultsItemsParent": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "example": "page_id"
+          },
+          "page_id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "96245c8f-1784-44a4-82ad-1941127c3ec3"
+          }
+        },
+        "required": [
+          "type",
+          "page_id"
+        ]
+      },
       "ListV1BlockChildrenOkJSONResponseResultsItemsCreatedBy": {
         "type": "object",
         "properties": {
@@ -534,24 +552,6 @@
           "icon",
           "color"
         ]
-      },
-      "ListV1BlockChildrenOkJSONResponseResultsItemsParent": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "example": "page_id"
-          },
-          "page_id": {
-            "type": "string",
-            "format": "uuid",
-            "example": "96245c8f-1784-44a4-82ad-1941127c3ec3"
-          }
-        },
-        "required": [
-          "type",
-          "page_id"
-        ]
       }
     },
     "responses": {
@@ -577,16 +577,15 @@
       }
     },
     "parameters": {
-      "Notion-Version": {
-        "name": "Notion-Version",
-        "in": "header",
+      "pageId": {
+        "name": "pageId",
+        "in": "path",
         "required": true,
         "schema": {
-          "type": "string",
-          "example": "2026-03-11"
+          "type": "string"
         }
       },
-      "Notion-Version2": {
+      "Notion-Version": {
         "name": "Notion-Version",
         "in": "header",
         "required": true,
@@ -603,19 +602,20 @@
           "type": "string"
         }
       },
-      "pageId": {
-        "name": "pageId",
-        "in": "path",
-        "required": true,
-        "schema": {
-          "type": "string"
-        }
-      },
       "page_size": {
         "name": "page_size",
         "in": "query",
         "schema": {
           "type": "integer"
+        }
+      },
+      "Notion-Version2": {
+        "name": "Notion-Version",
+        "in": "header",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "example": "2026-03-11"
         }
       }
     },

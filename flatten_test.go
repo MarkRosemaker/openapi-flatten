@@ -41,8 +41,6 @@ func TestFlatten_TestData(t *testing.T) {
 				t.Fatal(err)
 			}
 
-			doc.SortMaps()
-
 			gotDoc, err := doc.ToJSON()
 			if err != nil {
 				t.Fatal(err)
