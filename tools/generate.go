@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"errors"
-	"fmt"
 	"io"
 	"io/fs"
 	"log"
@@ -44,7 +43,7 @@ func run(ctx context.Context) error {
 			return err
 		}
 
-		if err := writeJSON(filepath.Join("testdata", entry.Name(), "golden.json"), doc); err != nil {
+		if err := doc.WriteToFile(filepath.Join("testdata", entry.Name(), "golden.json")); err != nil {
 			return err
 		}
 	}
@@ -71,20 +70,6 @@ func copyPreviousStep() error {
 		); err != nil {
 			return err
 		}
-	}
-
-	return nil
-}
-
-func writeJSON(path string, doc *openapi.Document) error {
-	f, err := os.Create(path)
-	if err != nil {
-		return err
-	}
-	defer f.Close()
-
-	if err := doc.WriteJSON(f); err != nil {
-		return fmt.Errorf("writing to %q: %w", path, err)
 	}
 
 	return nil
