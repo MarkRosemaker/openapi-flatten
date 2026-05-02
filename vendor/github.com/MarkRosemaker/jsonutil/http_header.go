@@ -47,22 +47,22 @@ func HTTPHeaderUnmarshal(dec *jsontext.Decoder, h *http.Header) error {
 	}
 
 	switch tkn.Kind() {
-	case '{': // expected, continue below
+	case jsontext.KindBeginObject: // expected, continue below
 		*h = http.Header{}
-	case 'n':
+	case jsontext.KindNull:
 		*h = nil
 		return nil // nil map
 	default:
 		return fmt.Errorf("expected begin object, got %s", tkn.Kind())
 	}
 
-	for dec.PeekKind() != '}' {
+	for dec.PeekKind() != jsontext.KindEndObject {
 		keyTkn, err := dec.ReadToken()
 		if err != nil {
 			return err
 		}
 
-		if keyTkn.Kind() != '"' {
+		if keyTkn.Kind() != jsontext.KindString {
 			return fmt.Errorf("expected string key, got %s", keyTkn.Kind())
 		}
 
@@ -73,13 +73,13 @@ func HTTPHeaderUnmarshal(dec *jsontext.Decoder, h *http.Header) error {
 			return err
 		}
 
-		if val.Kind() != '"' {
+		if val.Kind() != jsontext.KindString {
 			return fmt.Errorf("expected string value, got %s", val.Kind())
 		}
 
 		h.Set(key, val.String())
 	}
 
-	_, err = dec.ReadToken() // consume end object
+	_, err = dec.ReadToken() // consume jsontext.KindEndObject
 	return err
 }
