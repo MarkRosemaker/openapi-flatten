@@ -2,6 +2,7 @@ package jsonutil
 
 import (
 	"encoding/json/v2"
+	"errors"
 	"os"
 )
 
@@ -13,11 +14,14 @@ func ReadFile[T any](name string, opts ...json.Options) (T, error) {
 	if err != nil {
 		return v, err
 	}
-	defer f.Close()
 
 	if err := json.UnmarshalRead(f, &v, opts...); err != nil {
+		if closeErr := f.Close(); err != nil {
+			return v, errors.Join(err, closeErr)
+		}
+
 		return v, err
 	}
 
-	return v, nil
+	return v, f.Close()
 }
