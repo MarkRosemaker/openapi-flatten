@@ -46,7 +46,9 @@ func schemaRef(d *openapi.Document, s *openapi.SchemaRef, name string, mode mode
 			if len(items.Properties) > 0 && mode != neverMove {
 				moveSchemaToComponents(d, name, s)
 			}
-		case openapi.TypeArray: // TODO: later
+		case openapi.TypeBoolean: // do nothing, just []bool
+		case openapi.TypeNull:    // do nothing, just []null
+		case openapi.TypeArray:   // TODO: later
 		default:
 			return fmt.Errorf("unimplemented item type %q", items.Type)
 		}
@@ -54,6 +56,7 @@ func schemaRef(d *openapi.Document, s *openapi.SchemaRef, name string, mode mode
 		if len(s.Value.Properties) > 0 && mode != neverMove {
 			moveSchemaToComponents(d, name, s)
 		}
+	case openapi.TypeNull: // no need to move to components
 	default:
 		return fmt.Errorf("unimplemented schema ref type %q", s.Value.Type)
 	}
@@ -67,7 +70,8 @@ func schema(d *openapi.Document, s *openapi.Schema, name string) error {
 	case openapi.TypeString,
 		openapi.TypeInteger,
 		openapi.TypeNumber,
-		openapi.TypeBoolean: // no need to do anything
+		openapi.TypeBoolean,
+		openapi.TypeNull: // no need to do anything
 		return nil
 	case openapi.TypeArray, openapi.TypeObject: // do below
 	case "": // is valid if schema contains allOf
