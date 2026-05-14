@@ -8859,6 +8859,7 @@
           },
           "val": {
             "type": "number",
+            "format": "double",
             "example": 5.3
           },
           "accn": {
@@ -54673,6 +54674,7 @@
           },
           "val": {
             "type": "number",
+            "format": "double",
             "example": 0.002
           },
           "accn": {
@@ -54854,6 +54856,7 @@
           },
           "val": {
             "type": "number",
+            "format": "double",
             "example": 0.023
           },
           "accn": {
