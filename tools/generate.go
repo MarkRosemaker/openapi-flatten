@@ -8,9 +8,9 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/MarkRosemaker/fsutil/osutil"
 	"github.com/MarkRosemaker/openapi"
 	flatten "github.com/MarkRosemaker/openapi-flatten"
-	"github.com/MarkRosemaker/fsutil/osutil"
 )
 
 func main() {
