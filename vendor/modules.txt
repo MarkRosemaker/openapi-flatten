@@ -4,7 +4,7 @@ cloud.google.com/go/civil
 # github.com/MarkRosemaker/errpath v0.0.0-20260425165607-bbd4959d04d9
 ## explicit; go 1.23.2
 github.com/MarkRosemaker/errpath
-# github.com/MarkRosemaker/fsutil v0.0.0-20260514170542-82d1bc82b8f9
+# github.com/MarkRosemaker/fsutil v0.0.0-20260514184623-29f039757750
 ## explicit; go 1.26.3
 github.com/MarkRosemaker/fsutil
 github.com/MarkRosemaker/fsutil/osutil
