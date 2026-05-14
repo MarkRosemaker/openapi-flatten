@@ -14,15 +14,13 @@
       "parameters": [
         {
           "$ref": "#/components/parameters/pageId"
+        },
+        {
+          "$ref": "#/components/parameters/Notion-Version"
         }
       ],
       "get": {
         "operationId": "GetV1PageByPageID",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Notion-Version"
-          }
-        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/GetV1PageByPageIDOkResponse"
@@ -34,18 +32,16 @@
       "parameters": [
         {
           "$ref": "#/components/parameters/blockId"
+        },
+        {
+          "$ref": "#/components/parameters/page_size"
+        },
+        {
+          "$ref": "#/components/parameters/Notion-Version2"
         }
       ],
       "get": {
         "operationId": "ListV1BlockChildren",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/page_size"
-          },
-          {
-            "$ref": "#/components/parameters/Notion-Version2"
-          }
-        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/ListV1BlockChildrenOkResponse"
