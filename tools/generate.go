@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"errors"
-	"io"
 	"io/fs"
 	"log"
 	"os"
@@ -11,6 +10,7 @@ import (
 
 	"github.com/MarkRosemaker/openapi"
 	flatten "github.com/MarkRosemaker/openapi-flatten"
+	"github.com/MarkRosemaker/fsutil/osutil"
 )
 
 func main() {
@@ -64,32 +64,12 @@ func copyPreviousStep() error {
 	}
 
 	for _, e := range entries {
-		if err := copyFile(
+		if err := osutil.Copy(
 			filepath.Join(srcDir, e.Name(), "golden.json"),
 			filepath.Join("testdata", e.Name(), "openapi.json"),
 		); err != nil {
 			return err
 		}
-	}
-
-	return nil
-}
-
-func copyFile(srcName, dstName string) error {
-	src, err := os.Open(srcName)
-	if err != nil {
-		return err
-	}
-	defer src.Close()
-
-	dst, err := os.Create(dstName)
-	if err != nil {
-		return err
-	}
-	defer dst.Close()
-
-	if _, err = io.Copy(dst, src); err != nil {
-		return err
 	}
 
 	return nil

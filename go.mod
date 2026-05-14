@@ -1,9 +1,10 @@
 module github.com/MarkRosemaker/openapi-flatten
 
-go 1.25.0
+go 1.26.3
 
 require (
 	github.com/MarkRosemaker/errpath v0.0.0-20260425165607-bbd4959d04d9
+	github.com/MarkRosemaker/fsutil v0.0.0-20260514132340-d0fcc705c464
 	github.com/MarkRosemaker/openapi v0.0.0-20260509040156-9010bc7422f8
 	github.com/ettle/strcase v0.2.0
 )
@@ -16,6 +17,8 @@ require (
 	github.com/MarkRosemaker/yaml v0.0.0-20260508005758-fe21a538b084 // indirect
 	github.com/MarkRosemaker/yaml2json v0.0.0-20260507220136-7748efc522b2 // indirect
 	github.com/go-api-libs/types v0.0.0-20251210072721-82754f56609d // indirect
+	github.com/spf13/afero v1.15.0 // indirect
 	golang.org/x/exp v0.0.0-20260508232706-74f9aab9d74a // indirect
+	golang.org/x/text v0.28.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
