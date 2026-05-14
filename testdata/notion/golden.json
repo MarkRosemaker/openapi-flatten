@@ -278,10 +278,10 @@
       "GetV1PageByPageIDOkJSONResponsePropertiesTitleTitle": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItems"
+          "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItem"
         }
       },
-      "GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItems": {
+      "GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItem": {
         "type": "object",
         "properties": {
           "type": {
@@ -289,10 +289,10 @@
             "example": "text"
           },
           "text": {
-            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItemsText"
+            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItemText"
           },
           "annotations": {
-            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItemsAnnotations"
+            "$ref": "#/components/schemas/GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItemAnnotations"
           },
           "plain_text": {
             "type": "string",
@@ -311,7 +311,7 @@
           "href"
         ]
       },
-      "GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItemsText": {
+      "GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItemText": {
         "type": "object",
         "properties": {
           "content": {
@@ -328,7 +328,7 @@
           "link"
         ]
       },
-      "GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItemsAnnotations": {
+      "GetV1PageByPageIDOkJSONResponsePropertiesTitleTitleItemAnnotations": {
         "type": "object",
         "properties": {
           "bold": {
@@ -410,10 +410,10 @@
       "ListV1BlockChildrenOkJSONResponseResults": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/ListV1BlockChildrenOkJSONResponseResultsItems"
+          "$ref": "#/components/schemas/ListV1BlockChildrenOkJSONResponseResultsItem"
         }
       },
-      "ListV1BlockChildrenOkJSONResponseResultsItems": {
+      "ListV1BlockChildrenOkJSONResponseResultsItem": {
         "type": "object",
         "properties": {
           "object": {
@@ -426,7 +426,7 @@
             "example": "dad588e3-83ec-430a-bcd3-3cc5dc37d7e9"
           },
           "parent": {
-            "$ref": "#/components/schemas/ListV1BlockChildrenOkJSONResponseResultsItemsParent"
+            "$ref": "#/components/schemas/ListV1BlockChildrenOkJSONResponseResultsItemParent"
           },
           "created_time": {
             "type": "string",
@@ -439,10 +439,10 @@
             "example": "2022-07-14T05:33:00.000Z"
           },
           "created_by": {
-            "$ref": "#/components/schemas/ListV1BlockChildrenOkJSONResponseResultsItemsCreatedBy"
+            "$ref": "#/components/schemas/ListV1BlockChildrenOkJSONResponseResultsItemCreatedBy"
           },
           "last_edited_by": {
-            "$ref": "#/components/schemas/ListV1BlockChildrenOkJSONResponseResultsItemsLastEditedBy"
+            "$ref": "#/components/schemas/ListV1BlockChildrenOkJSONResponseResultsItemLastEditedBy"
           },
           "has_children": {
             "type": "boolean",
@@ -457,7 +457,7 @@
             "example": "paragraph"
           },
           "paragraph": {
-            "$ref": "#/components/schemas/ListV1BlockChildrenOkJSONResponseResultsItemsParagraph"
+            "$ref": "#/components/schemas/ListV1BlockChildrenOkJSONResponseResultsItemParagraph"
           }
         },
         "required": [
@@ -474,7 +474,7 @@
           "paragraph"
         ]
       },
-      "ListV1BlockChildrenOkJSONResponseResultsItemsParent": {
+      "ListV1BlockChildrenOkJSONResponseResultsItemParent": {
         "type": "object",
         "properties": {
           "type": {
@@ -492,7 +492,7 @@
           "page_id"
         ]
       },
-      "ListV1BlockChildrenOkJSONResponseResultsItemsCreatedBy": {
+      "ListV1BlockChildrenOkJSONResponseResultsItemCreatedBy": {
         "type": "object",
         "properties": {
           "object": {
@@ -510,7 +510,7 @@
           "id"
         ]
       },
-      "ListV1BlockChildrenOkJSONResponseResultsItemsLastEditedBy": {
+      "ListV1BlockChildrenOkJSONResponseResultsItemLastEditedBy": {
         "type": "object",
         "properties": {
           "object": {
@@ -528,7 +528,7 @@
           "id"
         ]
       },
-      "ListV1BlockChildrenOkJSONResponseResultsItemsParagraph": {
+      "ListV1BlockChildrenOkJSONResponseResultsItemParagraph": {
         "type": "object",
         "properties": {
           "rich_text": {

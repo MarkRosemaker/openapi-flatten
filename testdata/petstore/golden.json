@@ -56,10 +56,10 @@
       "ListV1PetsOkJSONResponseData": {
         "type": "array",
         "items": {
-          "$ref": "#/components/schemas/ListV1PetsOkJSONResponseDataItems"
+          "$ref": "#/components/schemas/ListV1PetsOkJSONResponseDataItem"
         }
       },
-      "ListV1PetsOkJSONResponseDataItems": {
+      "ListV1PetsOkJSONResponseDataItem": {
         "type": "object",
         "properties": {
           "id": {
@@ -114,7 +114,7 @@
             "example": "Domestic Shorthair"
           },
           "medicalInfo": {
-            "$ref": "#/components/schemas/ListV1PetsOkJSONResponseDataItemsMedicalInfo"
+            "$ref": "#/components/schemas/ListV1PetsOkJSONResponseDataItemMedicalInfo"
           }
         },
         "required": [
@@ -131,7 +131,7 @@
           "updatedAt"
         ]
       },
-      "ListV1PetsOkJSONResponseDataItemsMedicalInfo": {
+      "ListV1PetsOkJSONResponseDataItemMedicalInfo": {
         "type": "object",
         "properties": {
           "vaccinated": {
