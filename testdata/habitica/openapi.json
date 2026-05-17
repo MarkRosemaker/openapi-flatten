@@ -15,16 +15,6 @@
         "operationId": "ListAPIV3TasksUser",
         "parameters": [
           {
-            "name": "X-Api-Key",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid",
-              "example": "00000000-0000-0000-0000-000000000000"
-            }
-          },
-          {
             "name": "X-Api-User",
             "in": "header",
             "required": true,
@@ -41,6 +31,16 @@
             "schema": {
               "type": "string",
               "example": "8027d396-e2bb-4389-b002-782025424e75-go-api-libs/habitica"
+            }
+          },
+          {
+            "name": "X-Api-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "00000000-0000-0000-0000-000000000000"
             }
           },
           {
