@@ -13,13 +13,13 @@
     "/api/v3/tasks/user": {
       "parameters": [
         {
+          "$ref": "#/components/parameters/X-Api-Key"
+        },
+        {
           "$ref": "#/components/parameters/X-Api-User"
         },
         {
           "$ref": "#/components/parameters/X-Client"
-        },
-        {
-          "$ref": "#/components/parameters/X-Api-Key"
         },
         {
           "$ref": "#/components/parameters/type"
@@ -401,6 +401,16 @@
       }
     },
     "parameters": {
+      "X-Api-Key": {
+        "name": "X-Api-Key",
+        "in": "header",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uuid",
+          "example": "00000000-0000-0000-0000-000000000000"
+        }
+      },
       "X-Api-User": {
         "name": "X-Api-User",
         "in": "header",
@@ -418,16 +428,6 @@
         "schema": {
           "type": "string",
           "example": "8027d396-e2bb-4389-b002-782025424e75-go-api-libs/habitica"
-        }
-      },
-      "X-Api-Key": {
-        "name": "X-Api-Key",
-        "in": "header",
-        "required": true,
-        "schema": {
-          "type": "string",
-          "format": "uuid",
-          "example": "00000000-0000-0000-0000-000000000000"
         }
       },
       "type": {
