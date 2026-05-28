@@ -194,10 +194,12 @@
             "type": "string"
           },
           "goarch": {
-            "type": "string"
+            "type": "string",
+            "example": "all"
           },
           "goos": {
-            "type": "string"
+            "type": "string",
+            "example": "all"
           },
           "imports": {
             "type": "array",
@@ -206,19 +208,39 @@
             }
           },
           "isLatest": {
-            "type": "boolean"
+            "type": "boolean",
+            "example": true
           },
           "isStandardLibrary": {
-            "type": "boolean"
+            "type": "boolean",
+            "example": false
           },
           "licenses": {
             "$ref": "#/components/schemas/PackageLicenses"
           },
           "modulePath": {
-            "type": "string"
+            "type": "string",
+            "example": "github.com/google/go-cmp"
           },
           "version": {
-            "type": "string"
+            "type": "string",
+            "example": "v0.7.0"
+          },
+          "path": {
+            "type": "string",
+            "example": "github.com/google/go-cmp/cmp"
+          },
+          "name": {
+            "type": "string",
+            "example": "cmp"
+          },
+          "synopsis": {
+            "type": "string",
+            "example": "Package cmp determines equality of values."
+          },
+          "isRedistributable": {
+            "type": "boolean",
+            "example": true
           }
         }
       },
