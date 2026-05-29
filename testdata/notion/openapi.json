@@ -458,6 +458,74 @@
                                 "type": "array",
                                 "items": {
                                   "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "example": "text"
+                                    },
+                                    "text": {
+                                      "type": "object",
+                                      "properties": {
+                                        "content": {
+                                          "type": "string",
+                                          "example": "This is a simple paragraph."
+                                        },
+                                        "link": {
+                                          "type": "object",
+                                          "example": null
+                                        }
+                                      },
+                                      "required": [
+                                        "content",
+                                        "link"
+                                      ]
+                                    },
+                                    "annotations": {
+                                      "type": "object",
+                                      "properties": {
+                                        "bold": {
+                                          "type": "boolean",
+                                          "example": false
+                                        },
+                                        "italic": {
+                                          "type": "boolean",
+                                          "example": false
+                                        },
+                                        "strikethrough": {
+                                          "type": "boolean",
+                                          "example": false
+                                        },
+                                        "underline": {
+                                          "type": "boolean",
+                                          "example": false
+                                        },
+                                        "code": {
+                                          "type": "boolean",
+                                          "example": false
+                                        },
+                                        "color": {
+                                          "type": "string",
+                                          "example": "default"
+                                        }
+                                      },
+                                      "required": [
+                                        "bold",
+                                        "italic",
+                                        "strikethrough",
+                                        "underline",
+                                        "code",
+                                        "color"
+                                      ]
+                                    },
+                                    "plain_text": {
+                                      "type": "string",
+                                      "example": "This is a simple paragraph."
+                                    },
+                                    "href": {
+                                      "type": "object",
+                                      "example": null
+                                    }
+                                  },
                                   "example": null
                                 }
                               },

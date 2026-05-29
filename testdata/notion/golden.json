@@ -528,11 +528,7 @@
         "type": "object",
         "properties": {
           "rich_text": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "example": null
-            }
+            "$ref": "#/components/schemas/ListV1BlockChildrenOkJSONResponseResultsItemParagraphRichText"
           },
           "icon": {
             "type": "object",
@@ -546,6 +542,90 @@
         "required": [
           "rich_text",
           "icon",
+          "color"
+        ]
+      },
+      "ListV1BlockChildrenOkJSONResponseResultsItemParagraphRichText": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ListV1BlockChildrenOkJSONResponseResultsItemParagraphRichTextItem"
+        }
+      },
+      "ListV1BlockChildrenOkJSONResponseResultsItemParagraphRichTextItem": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "example": "text"
+          },
+          "text": {
+            "$ref": "#/components/schemas/ListV1BlockChildrenOkJSONResponseResultsItemParagraphRichTextItemText"
+          },
+          "annotations": {
+            "$ref": "#/components/schemas/ListV1BlockChildrenOkJSONResponseResultsItemParagraphRichTextItemAnnotations"
+          },
+          "plain_text": {
+            "type": "string",
+            "example": "This is a simple paragraph."
+          },
+          "href": {
+            "type": "object",
+            "example": null
+          }
+        },
+        "example": null
+      },
+      "ListV1BlockChildrenOkJSONResponseResultsItemParagraphRichTextItemText": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string",
+            "example": "This is a simple paragraph."
+          },
+          "link": {
+            "type": "object",
+            "example": null
+          }
+        },
+        "required": [
+          "content",
+          "link"
+        ]
+      },
+      "ListV1BlockChildrenOkJSONResponseResultsItemParagraphRichTextItemAnnotations": {
+        "type": "object",
+        "properties": {
+          "bold": {
+            "type": "boolean",
+            "example": false
+          },
+          "italic": {
+            "type": "boolean",
+            "example": false
+          },
+          "strikethrough": {
+            "type": "boolean",
+            "example": false
+          },
+          "underline": {
+            "type": "boolean",
+            "example": false
+          },
+          "code": {
+            "type": "boolean",
+            "example": false
+          },
+          "color": {
+            "type": "string",
+            "example": "default"
+          }
+        },
+        "required": [
+          "bold",
+          "italic",
+          "strikethrough",
+          "underline",
+          "code",
           "color"
         ]
       }
