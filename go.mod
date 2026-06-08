@@ -19,6 +19,6 @@ require (
 	github.com/go-api-libs/types v0.0.0-20251210072721-82754f56609d // indirect
 	github.com/spf13/afero v1.15.0 // indirect
 	golang.org/x/exp v0.0.0-20260603202125-055de637280b // indirect
-	golang.org/x/text v0.37.0 // indirect
+	golang.org/x/text v0.38.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
