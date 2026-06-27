@@ -33,25 +33,29 @@ func TestFlatten_TestData(t *testing.T) {
 				t.Fatal(err)
 			}
 
-			if err := flatten.Document(doc); err != nil {
-				t.Fatal(err)
-			}
+			for it := range 3 {
+				t.Run(fmt.Sprintf("iteration %d", it+1), func(t *testing.T) {
+					if err := flatten.Document(doc); err != nil {
+						t.Fatal(err)
+					}
 
-			if err := doc.Validate(); err != nil {
-				t.Fatal(err)
-			}
+					if err := doc.Validate(); err != nil {
+						t.Fatal(err)
+					}
 
-			gotDoc, err := doc.ToJSON()
-			if err != nil {
-				t.Fatal(err)
-			}
+					gotDoc, err := doc.ToJSON()
+					if err != nil {
+						t.Fatal(err)
+					}
 
-			wantDoc, err := testdata.ReadFile(filepath.Join("testdata", tc.Name(), "golden.json"))
-			if err != nil {
-				t.Fatal(err)
-			}
+					wantDoc, err := testdata.ReadFile(filepath.Join("testdata", tc.Name(), "golden.json"))
+					if err != nil {
+						t.Fatal(err)
+					}
 
-			compareBytes(t, wantDoc, gotDoc)
+					compareBytes(t, wantDoc, gotDoc)
+				})
+			}
 		})
 	}
 }
