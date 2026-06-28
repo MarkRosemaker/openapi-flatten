@@ -1,0 +1,162 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "API",
+    "version": "0.0.1"
+  },
+  "servers": [
+    {
+      "url": "https://localhost:5000"
+    }
+  ],
+  "paths": {
+    "/v1/api/tickle": {
+      "get": {
+        "operationId": "ListV1APITickle",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListV1APITickleOkResponse"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ListV1APITickleOkJSONResponse": {
+        "type": "object",
+        "properties": {
+          "session": {
+            "type": "string",
+            "format": "uuid",
+            "example": "d0738a0e5067977fd6ea1f56bd5ad6a7"
+          },
+          "ssoExpires": {
+            "type": "integer",
+            "example": 587636
+          },
+          "collission": {
+            "type": "boolean",
+            "example": false
+          },
+          "userId": {
+            "type": "integer",
+            "example": 176760716
+          },
+          "hmds": {
+            "$ref": "#/components/schemas/ListV1APITickleOkJSONResponseHmds"
+          },
+          "iserver": {
+            "$ref": "#/components/schemas/ListV1APITickleOkJSONResponseIserver"
+          }
+        },
+        "required": [
+          "session",
+          "ssoExpires",
+          "collission",
+          "userId",
+          "hmds",
+          "iserver"
+        ]
+      },
+      "ListV1APITickleOkJSONResponseHmds": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "example": "no bridge"
+          }
+        },
+        "required": [
+          "error"
+        ]
+      },
+      "ListV1APITickleOkJSONResponseIserver": {
+        "type": "object",
+        "properties": {
+          "authStatus": {
+            "$ref": "#/components/schemas/ListV1APITickleOkJSONResponseIserverAuthStatus"
+          }
+        },
+        "required": [
+          "authStatus"
+        ]
+      },
+      "ListV1APITickleOkJSONResponseIserverAuthStatus": {
+        "type": "object",
+        "properties": {
+          "authenticated": {
+            "type": "boolean",
+            "example": true
+          },
+          "established": {
+            "type": "boolean",
+            "example": true
+          },
+          "competing": {
+            "type": "boolean",
+            "example": false
+          },
+          "connected": {
+            "type": "boolean",
+            "example": true
+          },
+          "message": {
+            "type": "string",
+            "example": ""
+          },
+          "MAC": {
+            "type": "string",
+            "example": "06:16:25:03:3F:5A"
+          },
+          "serverInfo": {
+            "$ref": "#/components/schemas/ListV1APITickleOkJSONResponseIserverAuthStatusServerInfo"
+          },
+          "hardware_info": {
+            "type": "string",
+            "example": "9b0602f8|06:16:25:03:3F:5A"
+          }
+        },
+        "required": [
+          "authenticated",
+          "established",
+          "competing",
+          "connected",
+          "message",
+          "MAC",
+          "serverInfo",
+          "hardware_info"
+        ]
+      },
+      "ListV1APITickleOkJSONResponseIserverAuthStatusServerInfo": {
+        "type": "object",
+        "properties": {
+          "serverName": {
+            "type": "string",
+            "example": "JifZ13017"
+          },
+          "serverVersion": {
+            "type": "string",
+            "example": "Build 10.46.1m, Jun 16, 2026 4:41:12 PM"
+          }
+        },
+        "required": [
+          "serverName",
+          "serverVersion"
+        ]
+      }
+    },
+    "responses": {
+      "ListV1APITickleOkResponse": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ListV1APITickleOkJSONResponse"
+            }
+          }
+        }
+      }
+    }
+  }
+}
