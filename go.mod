@@ -3,19 +3,19 @@ module github.com/MarkRosemaker/openapi-flatten
 go 1.27
 
 require (
-	github.com/MarkRosemaker/errpath v0.0.0-20260827160129-c0d814ff4bdf
-	github.com/MarkRosemaker/fsutil v0.0.0-20260827160125-376fc6f4032c
-	github.com/MarkRosemaker/openapi v0.0.0-20260828173639-2eb9293069d5
+	github.com/MarkRosemaker/errpath v0.0.0-20260905160101-b767f06676ce
+	github.com/MarkRosemaker/fsutil v0.0.0-20260905160058-a5ca186d9a9d
+	github.com/MarkRosemaker/openapi v0.0.0-20260905160141-933af336d1e3
 	github.com/ettle/strcase v0.2.0
 )
 
 require (
 	cloud.google.com/go v0.123.0 // indirect
-	github.com/MarkRosemaker/json2yaml v0.0.0-20260827160130-e13d71a9e20f // indirect
-	github.com/MarkRosemaker/jsonutil v0.0.0-20260827160132-fe5e496a04a0 // indirect
-	github.com/MarkRosemaker/ordmap v0.0.0-20260827160235-3615cea69fee // indirect
-	github.com/MarkRosemaker/yaml v0.0.0-20260827160238-8e7ad4112fde // indirect
-	github.com/MarkRosemaker/yaml2json v0.0.0-20260827160130-ff9effdeb201 // indirect
+	github.com/MarkRosemaker/json2yaml v0.0.0-20260905160102-90094cbdc27a // indirect
+	github.com/MarkRosemaker/jsonutil v0.0.0-20260905160105-5e81f9654374 // indirect
+	github.com/MarkRosemaker/ordmap v0.0.0-20260905160117-d1940fc06596 // indirect
+	github.com/MarkRosemaker/yaml v0.0.0-20260905160118-287c5415b0bb // indirect
+	github.com/MarkRosemaker/yaml2json v0.0.0-20260905160101-04874ebebfcf // indirect
 	github.com/go-api-libs/types v0.0.0-20260821232109-0cf45378823e // indirect
 	github.com/spf13/afero v1.15.0 // indirect
 	golang.org/x/exp v0.0.0-20260824195058-e88cd73687aa // indirect
