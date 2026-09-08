@@ -4,7 +4,7 @@ go 1.27
 
 require (
 	github.com/MarkRosemaker/errpath v0.0.0-20260908160041-f1c9ea72f51b
-	github.com/MarkRosemaker/fsutil v0.0.0-20260908160046-cd51648c6793
+	github.com/MarkRosemaker/fsutil v0.0.0-20260908182017-99957a62418f
 	github.com/MarkRosemaker/openapi v0.0.0-20260908160126-ac1ed10e1e23
 	github.com/ettle/strcase v0.2.0
 )
@@ -19,6 +19,6 @@ require (
 	github.com/go-api-libs/types v0.0.0-20260821232109-0cf45378823e // indirect
 	github.com/spf13/afero v1.15.0 // indirect
 	golang.org/x/exp v0.0.0-20260824195058-e88cd73687aa // indirect
-	golang.org/x/text v0.41.0 // indirect
+	golang.org/x/text v0.42.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
