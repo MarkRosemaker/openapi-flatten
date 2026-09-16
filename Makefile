@@ -62,7 +62,6 @@ format:
 
 fix:
 	go fix ./...
-	golangci-lint fmt
 	golangci-lint run --fix
 
 tidy:
