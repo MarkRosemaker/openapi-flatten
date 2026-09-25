@@ -66,6 +66,45 @@ func TestFlatten_ArrayOfNull(t *testing.T) {
 	}
 }
 
+func TestFlatten_TupleArray(t *testing.T) {
+	// prefixItems only, no items: a tuple whose length is fully known.
+	doc := minimalDoc(t, `{
+		"type": "array",
+		"prefixItems": [
+			{"type": "string"},
+			{"type": "integer"}
+		]
+	}`)
+
+	if err := flatten.Document(doc); err != nil {
+		t.Fatalf("unexpected error for tuple-shaped array schema: %v", err)
+	}
+
+	if len(doc.Components.Schemas) != 1 {
+		t.Fatalf("Components.Schemas: got %d entries, want 1 (the tuple itself)", len(doc.Components.Schemas))
+	}
+}
+
+func TestFlatten_TupleArray_ObjectPosition(t *testing.T) {
+	// a prefixItems entry with properties needs a name of its own, the same
+	// as any other object schema reached through items or properties.
+	doc := minimalDoc(t, `{
+		"type": "array",
+		"prefixItems": [
+			{"type": "string"},
+			{"type": "object", "properties": {"id": {"type": "integer"}}}
+		]
+	}`)
+
+	if err := flatten.Document(doc); err != nil {
+		t.Fatalf("unexpected error for tuple-with-object-position schema: %v", err)
+	}
+
+	if len(doc.Components.Schemas) != 2 {
+		t.Fatalf("Components.Schemas: got %d entries, want 2 (the tuple and its object position)", len(doc.Components.Schemas))
+	}
+}
+
 func TestFlatten_ArrayOfAnyOf(t *testing.T) {
 	// items with no explicit type, using anyOf (e.g. nullable union)
 	doc := minimalDoc(t, `{
