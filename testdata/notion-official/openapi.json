@@ -11154,8 +11154,7 @@
                 "properties": {
                   "file": {
                     "description": "The raw binary file contents to upload.",
-                    "type": "object",
-                    "properties": {}
+                    "type": "object"
                   },
                   "part_number": {
                     "description": "When uploading files greater than 20MB in parts, this is the current part number. Must be an integer between 1 and 1,000.",
@@ -11889,8 +11888,7 @@
                     "object": {
                       "description": "Always `list`",
                       "type": "string",
-                      "const": "list",
-                      "example": "list"
+                      "const": "list"
                     },
                     "next_cursor": {
                       "oneOf": [
@@ -11914,19 +11912,13 @@
                     "type": {
                       "description": "Always `view`",
                       "type": "string",
-                      "const": "view",
-                      "example": "view"
+                      "const": "view"
                     },
                     "view": {
                       "$ref": "#/components/schemas/emptyObject"
                     },
                     "request_status": {
                       "$ref": "#/components/schemas/requestStatusResponse"
-                    },
-                    "request_id": {
-                      "type": "string",
-                      "format": "uuid",
-                      "example": "09e00f09-8036-4d09-81d5-3e3efd0afc6e"
                     }
                   },
                   "required": [
@@ -25274,7 +25266,6 @@
                     },
                     "session": {
                       "type": "object",
-                      "properties": {},
                       "additionalProperties": false
                     },
                     "results": {
@@ -28323,7 +28314,6 @@
                     },
                     "session_event": {
                       "type": "object",
-                      "properties": {},
                       "additionalProperties": false
                     },
                     "results": {
@@ -37594,8 +37584,7 @@
           "object": {
             "description": "The object type name.",
             "type": "string",
-            "const": "view",
-            "example": "view"
+            "const": "view"
           },
           "id": {
             "$ref": "#/components/schemas/idResponse",
@@ -39157,7 +39146,6 @@
             "type": "object",
             "properties": {
               "code": {
-                "type": "string",
                 "enum": [
                   "invalid_json",
                   "invalid_request_url",
@@ -39169,7 +39157,6 @@
                 ]
               },
               "status": {
-                "type": "integer",
                 "const": 400
               }
             },
@@ -39190,13 +39177,11 @@
             "type": "object",
             "properties": {
               "code": {
-                "type": "string",
                 "enum": [
                   "unauthorized"
                 ]
               },
               "status": {
-                "type": "integer",
                 "const": 401
               }
             },
@@ -39219,14 +39204,12 @@
                 "type": "object",
                 "properties": {
                   "code": {
-                    "type": "string",
                     "enum": [
                       "restricted_resource",
                       "status_change_not_allowed"
                     ]
                   },
                   "status": {
-                    "type": "integer",
                     "const": 403
                   }
                 },
@@ -39247,31 +39230,25 @@
                 "type": "object",
                 "properties": {
                   "code": {
-                    "type": "string",
                     "const": "workspace_credits_exhausted"
                   },
                   "status": {
-                    "type": "integer",
                     "const": 403
                   },
                   "additional_data": {
                     "type": "object",
                     "properties": {
                       "tool_error_code": {
-                        "type": "string",
                         "const": "workspace_credits_exhausted"
                       },
                       "tool_error_class": {
-                        "type": "string",
                         "const": "entitlement_required"
                       },
                       "tool_error_retryable": {
-                        "type": "string",
                         "const": "false"
                       },
                       "recovery_kind": {
                         "description": "The recovery action selected by Notion for the caller.",
-                        "type": "string",
                         "enum": [
                           "contact_workspace_owner",
                           "open_workspace_credit_settings"
@@ -39321,31 +39298,25 @@
                 "type": "object",
                 "properties": {
                   "code": {
-                    "type": "string",
                     "const": "agent_credit_limit_reached"
                   },
                   "status": {
-                    "type": "integer",
                     "const": 403
                   },
                   "additional_data": {
                     "type": "object",
                     "properties": {
                       "tool_error_code": {
-                        "type": "string",
                         "const": "agent_credit_limit_reached"
                       },
                       "tool_error_class": {
-                        "type": "string",
                         "const": "entitlement_required"
                       },
                       "tool_error_retryable": {
-                        "type": "string",
                         "const": "false"
                       },
                       "recovery_kind": {
                         "description": "The recovery action selected by Notion for the caller.",
-                        "type": "string",
                         "enum": [
                           "contact_workspace_owner",
                           "none",
@@ -39400,14 +39371,12 @@
             "type": "object",
             "properties": {
               "code": {
-                "type": "string",
                 "enum": [
                   "object_not_found",
                   "directory_not_found"
                 ]
               },
               "status": {
-                "type": "integer",
                 "const": 404
               }
             },
@@ -39428,13 +39397,11 @@
             "type": "object",
             "properties": {
               "code": {
-                "type": "string",
                 "enum": [
                   "row_limit_exceeded"
                 ]
               },
               "status": {
-                "type": "integer",
                 "const": 406
               }
             },
@@ -39455,7 +39422,6 @@
             "type": "object",
             "properties": {
               "code": {
-                "type": "string",
                 "enum": [
                   "conflict_error",
                   "idempotency_key_reused",
@@ -39463,7 +39429,6 @@
                 ]
               },
               "status": {
-                "type": "integer",
                 "const": 409
               }
             },
@@ -39484,13 +39449,11 @@
             "type": "object",
             "properties": {
               "code": {
-                "type": "string",
                 "enum": [
                   "rate_limited"
                 ]
               },
               "status": {
-                "type": "integer",
                 "const": 429
               }
             },
@@ -39511,13 +39474,11 @@
             "type": "object",
             "properties": {
               "code": {
-                "type": "string",
                 "enum": [
                   "internal_server_error"
                 ]
               },
               "status": {
-                "type": "integer",
                 "const": 500
               }
             },
@@ -39538,13 +39499,11 @@
             "type": "object",
             "properties": {
               "code": {
-                "type": "string",
                 "enum": [
                   "service_unavailable"
                 ]
               },
               "status": {
-                "type": "integer",
                 "const": 503
               }
             },
@@ -39565,13 +39524,11 @@
             "type": "object",
             "properties": {
               "code": {
-                "type": "string",
                 "enum": [
                   "gateway_timeout"
                 ]
               },
               "status": {
-                "type": "integer",
                 "const": 504
               }
             },
@@ -39592,13 +39549,11 @@
             "type": "object",
             "properties": {
               "code": {
-                "type": "string",
                 "enum": [
                   "service_overload"
                 ]
               },
               "status": {
-                "type": "integer",
                 "const": 529
               }
             },
@@ -39619,7 +39574,6 @@
             "type": "object",
             "properties": {
               "code": {
-                "type": "string",
                 "enum": [
                   "invalid_request",
                   "invalid_grant",
@@ -39629,7 +39583,6 @@
                 ]
               },
               "status": {
-                "type": "integer",
                 "const": 400
               }
             },
@@ -39650,13 +39603,11 @@
             "type": "object",
             "properties": {
               "code": {
-                "type": "string",
                 "enum": [
                   "invalid_client"
                 ]
               },
               "status": {
-                "type": "integer",
                 "const": 401
               }
             },
@@ -39677,13 +39628,11 @@
             "type": "object",
             "properties": {
               "code": {
-                "type": "string",
                 "enum": [
                   "test_env_error"
                 ]
               },
               "status": {
-                "type": "integer",
                 "const": 403
               }
             },
@@ -39704,13 +39653,11 @@
             "type": "object",
             "properties": {
               "code": {
-                "type": "string",
                 "enum": [
                   "internal_server_error"
                 ]
               },
               "status": {
-                "type": "integer",
                 "const": 500
               }
             },
@@ -42068,8 +42015,7 @@
         ]
       },
       "idRequest": {
-        "type": "string",
-        "example": "457d00dc-fc3a-4ddb-a42f-fe376530bee0"
+        "type": "string"
       },
       "idResponse": {
         "type": "string",
@@ -45136,278 +45082,11 @@
           "object": {
             "description": "The database object type name.",
             "type": "string",
-            "const": "database",
-            "example": "database"
+            "const": "database"
           },
           "id": {
             "$ref": "#/components/schemas/idResponse",
             "description": "The ID of the database."
-          },
-          "title": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "example": "text"
-                },
-                "text": {
-                  "type": "object",
-                  "properties": {
-                    "content": {
-                      "type": "string",
-                      "example": "Intentions"
-                    },
-                    "link": {
-                      "type": "object",
-                      "example": null
-                    }
-                  },
-                  "required": [
-                    "content",
-                    "link"
-                  ]
-                },
-                "annotations": {
-                  "type": "object",
-                  "properties": {
-                    "bold": {
-                      "type": "boolean"
-                    },
-                    "italic": {
-                      "type": "boolean"
-                    },
-                    "strikethrough": {
-                      "type": "boolean"
-                    },
-                    "underline": {
-                      "type": "boolean"
-                    },
-                    "code": {
-                      "type": "boolean"
-                    },
-                    "color": {
-                      "type": "string",
-                      "example": "default"
-                    }
-                  },
-                  "required": [
-                    "bold",
-                    "italic",
-                    "strikethrough",
-                    "underline",
-                    "code",
-                    "color"
-                  ]
-                },
-                "plain_text": {
-                  "type": "string",
-                  "example": "Intentions"
-                },
-                "href": {
-                  "type": "object",
-                  "example": null
-                }
-              },
-              "required": [
-                "type",
-                "text",
-                "annotations",
-                "plain_text",
-                "href"
-              ]
-            }
-          },
-          "description": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "example": "text"
-                },
-                "text": {
-                  "type": "object",
-                  "properties": {
-                    "content": {
-                      "type": "string",
-                      "example": "some content here"
-                    },
-                    "link": {
-                      "type": "object",
-                      "example": null
-                    }
-                  },
-                  "required": [
-                    "content",
-                    "link"
-                  ]
-                },
-                "annotations": {
-                  "type": "object",
-                  "properties": {
-                    "bold": {
-                      "type": "boolean"
-                    },
-                    "italic": {
-                      "type": "boolean"
-                    },
-                    "strikethrough": {
-                      "type": "boolean"
-                    },
-                    "underline": {
-                      "type": "boolean"
-                    },
-                    "code": {
-                      "type": "boolean"
-                    },
-                    "color": {
-                      "type": "string",
-                      "example": "default"
-                    }
-                  },
-                  "required": [
-                    "bold",
-                    "italic",
-                    "strikethrough",
-                    "underline",
-                    "code",
-                    "color"
-                  ]
-                },
-                "plain_text": {
-                  "type": "string",
-                  "example": "some content here"
-                },
-                "href": {
-                  "type": "object",
-                  "example": null
-                }
-              },
-              "required": [
-                "type",
-                "text",
-                "annotations",
-                "plain_text",
-                "href"
-              ]
-            }
-          },
-          "parent": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "page_id"
-              },
-              "page_id": {
-                "type": "string",
-                "format": "uuid",
-                "example": "11788fcd-daf4-80e7-a530-c2e25a86328e"
-              }
-            },
-            "required": [
-              "type",
-              "page_id"
-            ]
-          },
-          "is_inline": {
-            "type": "boolean"
-          },
-          "in_trash": {
-            "type": "boolean"
-          },
-          "is_locked": {
-            "type": "boolean"
-          },
-          "created_time": {
-            "type": "string",
-            "format": "date-time",
-            "example": "2024-03-19T08:28:01.083+00:00"
-          },
-          "last_edited_time": {
-            "type": "string",
-            "format": "date-time",
-            "example": "2026-08-12T20:15:11.370+00:00"
-          },
-          "data_sources": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "string",
-                  "format": "uuid"
-                },
-                "name": {
-                  "type": "string",
-                  "example": "Intentions"
-                }
-              },
-              "required": [
-                "id",
-                "name"
-              ]
-            }
-          },
-          "icon": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "emoji"
-              },
-              "emoji": {
-                "type": "string",
-                "example": "🤹"
-              }
-            },
-            "required": [
-              "type",
-              "emoji"
-            ]
-          },
-          "cover": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "external"
-              },
-              "external": {
-                "type": "object",
-                "properties": {
-                  "url": {
-                    "type": "string",
-                    "format": "uri",
-                    "example": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb"
-                  }
-                },
-                "required": [
-                  "url"
-                ]
-              }
-            },
-            "required": [
-              "type",
-              "external"
-            ]
-          },
-          "url": {
-            "type": "string",
-            "format": "uri",
-            "example": "https://app.notion.com/p/457d00dcfc3a4ddba42ffe376530bee0"
-          },
-          "public_url": {
-            "type": "object",
-            "example": null
-          },
-          "request_id": {
-            "type": "string",
-            "format": "uuid",
-            "example": "c5c61591-fc21-49ab-8d61-d6d84b37147d"
           }
         },
         "required": [
@@ -45422,243 +45101,11 @@
           "object": {
             "description": "The page object type name.",
             "type": "string",
-            "const": "page",
-            "example": "page"
+            "const": "page"
           },
           "id": {
             "$ref": "#/components/schemas/idResponse",
             "description": "The ID of the page."
-          },
-          "created_time": {
-            "type": "string",
-            "format": "date-time",
-            "example": "2022-07-14T05:31:00.000Z"
-          },
-          "last_edited_time": {
-            "type": "string",
-            "format": "date-time",
-            "example": "2025-02-02T19:54:00.000Z"
-          },
-          "created_by": {
-            "type": "object",
-            "properties": {
-              "object": {
-                "type": "string",
-                "example": "user"
-              },
-              "id": {
-                "type": "string",
-                "format": "uuid"
-              }
-            },
-            "required": [
-              "object",
-              "id"
-            ]
-          },
-          "last_edited_by": {
-            "type": "object",
-            "properties": {
-              "object": {
-                "type": "string",
-                "example": "user"
-              },
-              "id": {
-                "type": "string",
-                "format": "uuid"
-              }
-            },
-            "required": [
-              "object",
-              "id"
-            ]
-          },
-          "cover": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "external"
-              },
-              "external": {
-                "type": "object",
-                "properties": {
-                  "url": {
-                    "type": "string",
-                    "format": "uri",
-                    "example": "https://www.notion.so/images/page-cover/nasa_space_shuttle_columbia_and_sunrise.jpg"
-                  }
-                },
-                "required": [
-                  "url"
-                ]
-              }
-            },
-            "required": [
-              "type",
-              "external"
-            ]
-          },
-          "icon": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "emoji"
-              },
-              "emoji": {
-                "type": "string",
-                "example": "🌄"
-              }
-            },
-            "required": [
-              "type",
-              "emoji"
-            ]
-          },
-          "parent": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "page_id"
-              },
-              "page_id": {
-                "type": "string",
-                "format": "uuid",
-                "example": "11f88fcd-daf4-802e-b645-eb2d041a759b"
-              }
-            },
-            "required": [
-              "type",
-              "page_id"
-            ]
-          },
-          "in_trash": {
-            "type": "boolean"
-          },
-          "is_archived": {
-            "type": "boolean"
-          },
-          "is_locked": {
-            "type": "boolean"
-          },
-          "properties": {
-            "type": "object",
-            "properties": {
-              "title": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "string",
-                    "example": "title"
-                  },
-                  "type": {
-                    "type": "string",
-                    "example": "title"
-                  },
-                  "title": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "text"
-                        },
-                        "text": {
-                          "type": "object",
-                          "properties": {
-                            "content": {
-                              "type": "string",
-                              "example": "Example Page"
-                            },
-                            "link": {
-                              "type": "object",
-                              "example": null
-                            }
-                          },
-                          "required": [
-                            "content",
-                            "link"
-                          ]
-                        },
-                        "annotations": {
-                          "type": "object",
-                          "properties": {
-                            "bold": {
-                              "type": "boolean"
-                            },
-                            "italic": {
-                              "type": "boolean"
-                            },
-                            "strikethrough": {
-                              "type": "boolean"
-                            },
-                            "underline": {
-                              "type": "boolean"
-                            },
-                            "code": {
-                              "type": "boolean"
-                            },
-                            "color": {
-                              "type": "string",
-                              "example": "default"
-                            }
-                          },
-                          "required": [
-                            "bold",
-                            "italic",
-                            "strikethrough",
-                            "underline",
-                            "code",
-                            "color"
-                          ]
-                        },
-                        "plain_text": {
-                          "type": "string",
-                          "example": "Example Page"
-                        },
-                        "href": {
-                          "type": "object",
-                          "example": null
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "text",
-                        "annotations",
-                        "plain_text",
-                        "href"
-                      ]
-                    }
-                  }
-                },
-                "required": [
-                  "id",
-                  "type",
-                  "title"
-                ]
-              }
-            },
-            "required": [
-              "title"
-            ]
-          },
-          "url": {
-            "type": "string",
-            "format": "uri",
-            "example": "https://www.notion.so/Example-Page-96245c8f178444a482ad1941127c3ec3"
-          },
-          "public_url": {
-            "type": "string",
-            "format": "uri",
-            "example": "https://fae-tools.notion.site/Example-Page-96245c8f178444a482ad1941127c3ec3"
-          },
-          "request_id": {
-            "type": "string",
-            "format": "uuid",
-            "example": "0e8c8b8e-1997-46ca-93ec-118b19ba69e1"
           }
         },
         "required": [
@@ -47392,7 +46839,6 @@
         "type": "object",
         "properties": {
           "object": {
-            "type": "string",
             "const": "error"
           },
           "message": {
@@ -52875,22 +52321,20 @@
         "description": "The [API version](/reference/versioning) to use for this request. The latest version is `2026-03-11`.",
         "required": true,
         "schema": {
-          "type": "string",
           "enum": [
             "2026-03-11"
-          ],
-          "example": "2026-03-11"
+          ]
         }
       }
     },
     "securitySchemes": {
-      "basicAuth": {
-        "type": "http",
-        "scheme": "basic"
-      },
       "bearerAuth": {
         "type": "http",
         "scheme": "bearer"
+      },
+      "basicAuth": {
+        "type": "http",
+        "scheme": "basic"
       }
     }
   },

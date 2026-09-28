@@ -14751,7 +14751,6 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "properties": {},
                 "additionalProperties": false
               }
             }
@@ -16293,7 +16292,6 @@
                       "mcp_business_plan_education": {
                         "description": "The parameters for the mcp_business_plan_education tool. Show the next available step for using the full version of Notion MCP. Use this only once at the end of a turn after the user has done substantial Notion work. The server decides whether a presentation is eligible; when it is not, do not tell the user that a card was shown.",
                         "type": "object",
-                        "properties": {},
                         "additionalProperties": false
                       }
                     },
@@ -21681,7 +21679,6 @@
                       "list_workspace_bookmarks": {
                         "description": "The parameters for the list_workspace_bookmarks tool. Available only by invitation during early alpha. General availability is coming soon. This contract may change. List saved workspace timestamps, newest first.",
                         "type": "object",
-                        "properties": {},
                         "additionalProperties": false
                       }
                     },
@@ -28165,7 +28162,6 @@
                   },
                   {
                     "type": "object",
-                    "properties": {},
                     "additionalProperties": false
                   },
                   {
@@ -30132,7 +30128,6 @@
                           "mcp_business_plan_education": {
                             "description": "The parameters for the mcp_business_plan_education tool. Show the next available step for using the full version of Notion MCP. Use this only once at the end of a turn after the user has done substantial Notion work. The server decides whether a presentation is eligible; when it is not, do not tell the user that a card was shown.",
                             "type": "object",
-                            "properties": {},
                             "additionalProperties": false
                           }
                         },
@@ -33112,7 +33107,6 @@
                           "list_workspace_bookmarks": {
                             "description": "The parameters for the list_workspace_bookmarks tool. Available only by invitation during early alpha. General availability is coming soon. This contract may change. List saved workspace timestamps, newest first.",
                             "type": "object",
-                            "properties": {},
                             "additionalProperties": false
                           }
                         },
@@ -34499,7 +34493,6 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "properties": {},
                 "additionalProperties": false
               }
             }
@@ -36570,17 +36563,14 @@
                   },
                   "location": {
                     "type": "object",
-                    "properties": {},
                     "additionalProperties": false
                   },
                   "date_range_filter": {
                     "type": "object",
-                    "properties": {},
                     "additionalProperties": false
                   },
                   "options": {
                     "type": "object",
-                    "properties": {},
                     "additionalProperties": false
                   },
                   "start_cursor": {
@@ -41244,7 +41234,6 @@
       },
       "emptyObject": {
         "type": "object",
-        "properties": {},
         "additionalProperties": false
       },
       "equationBlockObjectResponse": {
@@ -41375,7 +41364,6 @@
             "type": "object",
             "properties": {
               "code": {
-                "type": "string",
                 "enum": [
                   "invalid_json",
                   "invalid_request_url",
@@ -41387,7 +41375,6 @@
                 ]
               },
               "status": {
-                "type": "integer",
                 "const": 400
               }
             },
@@ -41408,13 +41395,11 @@
             "type": "object",
             "properties": {
               "code": {
-                "type": "string",
                 "enum": [
                   "unauthorized"
                 ]
               },
               "status": {
-                "type": "integer",
                 "const": 401
               }
             },
@@ -41437,14 +41422,12 @@
                 "type": "object",
                 "properties": {
                   "code": {
-                    "type": "string",
                     "enum": [
                       "restricted_resource",
                       "status_change_not_allowed"
                     ]
                   },
                   "status": {
-                    "type": "integer",
                     "const": 403
                   }
                 },
@@ -41465,31 +41448,25 @@
                 "type": "object",
                 "properties": {
                   "code": {
-                    "type": "string",
                     "const": "workspace_credits_exhausted"
                   },
                   "status": {
-                    "type": "integer",
                     "const": 403
                   },
                   "additional_data": {
                     "type": "object",
                     "properties": {
                       "tool_error_code": {
-                        "type": "string",
                         "const": "workspace_credits_exhausted"
                       },
                       "tool_error_class": {
-                        "type": "string",
                         "const": "entitlement_required"
                       },
                       "tool_error_retryable": {
-                        "type": "string",
                         "const": "false"
                       },
                       "recovery_kind": {
                         "description": "The recovery action selected by Notion for the caller.",
-                        "type": "string",
                         "enum": [
                           "contact_workspace_owner",
                           "open_workspace_credit_settings"
@@ -41539,31 +41516,25 @@
                 "type": "object",
                 "properties": {
                   "code": {
-                    "type": "string",
                     "const": "agent_credit_limit_reached"
                   },
                   "status": {
-                    "type": "integer",
                     "const": 403
                   },
                   "additional_data": {
                     "type": "object",
                     "properties": {
                       "tool_error_code": {
-                        "type": "string",
                         "const": "agent_credit_limit_reached"
                       },
                       "tool_error_class": {
-                        "type": "string",
                         "const": "entitlement_required"
                       },
                       "tool_error_retryable": {
-                        "type": "string",
                         "const": "false"
                       },
                       "recovery_kind": {
                         "description": "The recovery action selected by Notion for the caller.",
-                        "type": "string",
                         "enum": [
                           "contact_workspace_owner",
                           "none",
@@ -41618,14 +41589,12 @@
             "type": "object",
             "properties": {
               "code": {
-                "type": "string",
                 "enum": [
                   "object_not_found",
                   "directory_not_found"
                 ]
               },
               "status": {
-                "type": "integer",
                 "const": 404
               }
             },
@@ -41646,13 +41615,11 @@
             "type": "object",
             "properties": {
               "code": {
-                "type": "string",
                 "enum": [
                   "row_limit_exceeded"
                 ]
               },
               "status": {
-                "type": "integer",
                 "const": 406
               }
             },
@@ -41673,7 +41640,6 @@
             "type": "object",
             "properties": {
               "code": {
-                "type": "string",
                 "enum": [
                   "conflict_error",
                   "idempotency_key_reused",
@@ -41681,7 +41647,6 @@
                 ]
               },
               "status": {
-                "type": "integer",
                 "const": 409
               }
             },
@@ -41702,13 +41667,11 @@
             "type": "object",
             "properties": {
               "code": {
-                "type": "string",
                 "enum": [
                   "rate_limited"
                 ]
               },
               "status": {
-                "type": "integer",
                 "const": 429
               }
             },
@@ -41729,13 +41692,11 @@
             "type": "object",
             "properties": {
               "code": {
-                "type": "string",
                 "enum": [
                   "internal_server_error"
                 ]
               },
               "status": {
-                "type": "integer",
                 "const": 500
               }
             },
@@ -41756,13 +41717,11 @@
             "type": "object",
             "properties": {
               "code": {
-                "type": "string",
                 "enum": [
                   "service_unavailable"
                 ]
               },
               "status": {
-                "type": "integer",
                 "const": 503
               }
             },
@@ -41783,13 +41742,11 @@
             "type": "object",
             "properties": {
               "code": {
-                "type": "string",
                 "enum": [
                   "gateway_timeout"
                 ]
               },
               "status": {
-                "type": "integer",
                 "const": 504
               }
             },
@@ -41810,13 +41767,11 @@
             "type": "object",
             "properties": {
               "code": {
-                "type": "string",
                 "enum": [
                   "service_overload"
                 ]
               },
               "status": {
-                "type": "integer",
                 "const": 529
               }
             },
@@ -41837,7 +41792,6 @@
             "type": "object",
             "properties": {
               "code": {
-                "type": "string",
                 "enum": [
                   "invalid_request",
                   "invalid_grant",
@@ -41847,7 +41801,6 @@
                 ]
               },
               "status": {
-                "type": "integer",
                 "const": 400
               }
             },
@@ -41868,13 +41821,11 @@
             "type": "object",
             "properties": {
               "code": {
-                "type": "string",
                 "enum": [
                   "invalid_client"
                 ]
               },
               "status": {
-                "type": "integer",
                 "const": 401
               }
             },
@@ -41895,13 +41846,11 @@
             "type": "object",
             "properties": {
               "code": {
-                "type": "string",
                 "enum": [
                   "test_env_error"
                 ]
               },
               "status": {
-                "type": "integer",
                 "const": 403
               }
             },
@@ -41922,13 +41871,11 @@
             "type": "object",
             "properties": {
               "code": {
-                "type": "string",
                 "enum": [
                   "internal_server_error"
                 ]
               },
               "status": {
-                "type": "integer",
                 "const": 500
               }
             },
@@ -45606,7 +45553,6 @@
         "type": "object",
         "properties": {
           "object": {
-            "type": "string",
             "const": "error"
           },
           "message": {
@@ -50973,7 +50919,6 @@
               },
               "session": {
                 "type": "object",
-                "properties": {},
                 "additionalProperties": false
               },
               "results": {
@@ -57394,12 +57339,10 @@
         "properties": {
           "type": {
             "description": "Selects the filter or filter-value variant.",
-            "type": "string",
             "const": "group"
           },
           "operator": {
             "description": "Comparison or Boolean operation applied by this filter.",
-            "type": "string",
             "enum": [
               "and",
               "or"
@@ -57471,12 +57414,10 @@
         "properties": {
           "type": {
             "description": "Selects the filter or filter-value variant.",
-            "type": "string",
             "const": "group"
           },
           "operator": {
             "description": "Comparison or Boolean operation applied by this filter.",
-            "type": "string",
             "enum": [
               "and",
               "or"
@@ -57533,7 +57474,6 @@
         "description": "The [API version](/reference/versioning) to use for this request. The latest version is `2026-03-11`.",
         "required": true,
         "schema": {
-          "type": "string",
           "enum": [
             "2026-03-11"
           ]
@@ -57541,13 +57481,13 @@
       }
     },
     "securitySchemes": {
-      "basicAuth": {
-        "type": "http",
-        "scheme": "basic"
-      },
       "bearerAuth": {
         "type": "http",
         "scheme": "bearer"
+      },
+      "basicAuth": {
+        "type": "http",
+        "scheme": "basic"
       }
     }
   },
