@@ -10950,16 +10950,19 @@
         "type": "object",
         "properties": {
           "type": {
+            "type": "string",
             "enum": [
               "error"
             ]
           },
           "code": {
+            "type": "string",
             "enum": [
               "validation_error"
             ]
           },
           "status": {
+            "type": "integer",
             "enum": [
               400
             ]
@@ -10980,16 +10983,19 @@
         "type": "object",
         "properties": {
           "type": {
+            "type": "string",
             "enum": [
               "error"
             ]
           },
           "code": {
+            "type": "string",
             "enum": [
               "unauthorized"
             ]
           },
           "status": {
+            "type": "integer",
             "enum": [
               401
             ]
@@ -11010,17 +11016,20 @@
         "type": "object",
         "properties": {
           "type": {
+            "type": "string",
             "enum": [
               "error"
             ]
           },
           "code": {
+            "type": "string",
             "enum": [
               "missing_scope",
               "forbidden"
             ]
           },
           "status": {
+            "type": "integer",
             "enum": [
               403
             ]
@@ -11041,16 +11050,19 @@
         "type": "object",
         "properties": {
           "type": {
+            "type": "string",
             "enum": [
               "error"
             ]
           },
           "code": {
+            "type": "string",
             "enum": [
               "not_found"
             ]
           },
           "status": {
+            "type": "integer",
             "enum": [
               404
             ]
@@ -11071,16 +11083,19 @@
         "type": "object",
         "properties": {
           "type": {
+            "type": "string",
             "enum": [
               "error"
             ]
           },
           "code": {
+            "type": "string",
             "enum": [
               "rate_limited"
             ]
           },
           "status": {
+            "type": "integer",
             "enum": [
               429
             ]
@@ -11101,16 +11116,19 @@
         "type": "object",
         "properties": {
           "type": {
+            "type": "string",
             "enum": [
               "error"
             ]
           },
           "code": {
+            "type": "string",
             "enum": [
               "internal_server_error"
             ]
           },
           "status": {
+            "type": "integer",
             "enum": [
               500
             ]
@@ -11131,16 +11149,19 @@
         "type": "object",
         "properties": {
           "object": {
+            "type": "string",
             "enum": [
               "error"
             ]
           },
           "code": {
+            "type": "string",
             "enum": [
               "validation_error"
             ]
           },
           "status": {
+            "type": "integer",
             "enum": [
               400
             ]
@@ -11177,16 +11198,19 @@
         "type": "object",
         "properties": {
           "object": {
+            "type": "string",
             "enum": [
               "error"
             ]
           },
           "code": {
+            "type": "string",
             "enum": [
               "unauthorized"
             ]
           },
           "status": {
+            "type": "integer",
             "enum": [
               401
             ]
@@ -11223,16 +11247,19 @@
         "type": "object",
         "properties": {
           "object": {
+            "type": "string",
             "enum": [
               "error"
             ]
           },
           "code": {
+            "type": "string",
             "enum": [
               "restricted_resource"
             ]
           },
           "status": {
+            "type": "integer",
             "enum": [
               403
             ]
@@ -11269,16 +11296,19 @@
         "type": "object",
         "properties": {
           "object": {
+            "type": "string",
             "enum": [
               "error"
             ]
           },
           "code": {
+            "type": "string",
             "enum": [
               "object_not_found"
             ]
           },
           "status": {
+            "type": "integer",
             "enum": [
               404
             ]
@@ -11315,16 +11345,19 @@
         "type": "object",
         "properties": {
           "object": {
+            "type": "string",
             "enum": [
               "error"
             ]
           },
           "code": {
+            "type": "string",
             "enum": [
               "conflict_error"
             ]
           },
           "status": {
+            "type": "integer",
             "enum": [
               409
             ]
@@ -11361,16 +11394,19 @@
         "type": "object",
         "properties": {
           "object": {
+            "type": "string",
             "enum": [
               "error"
             ]
           },
           "code": {
+            "type": "string",
             "enum": [
               "rate_limited"
             ]
           },
           "status": {
+            "type": "integer",
             "enum": [
               429
             ]
@@ -11407,16 +11443,19 @@
         "type": "object",
         "properties": {
           "object": {
+            "type": "string",
             "enum": [
               "error"
             ]
           },
           "code": {
+            "type": "string",
             "enum": [
               "internal_server_error"
             ]
           },
           "status": {
+            "type": "integer",
             "enum": [
               500
             ]
@@ -11453,16 +11492,19 @@
         "type": "object",
         "properties": {
           "object": {
+            "type": "string",
             "enum": [
               "error"
             ]
           },
           "code": {
+            "type": "string",
             "enum": [
               "service_unavailable"
             ]
           },
           "status": {
+            "type": "integer",
             "enum": [
               503
             ]
@@ -11510,6 +11552,7 @@
         "description": "The Admin API version to use for this request.",
         "required": true,
         "schema": {
+          "type": "string",
           "enum": [
             "2026-06-01"
           ]
