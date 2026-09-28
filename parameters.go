@@ -42,6 +42,9 @@ func hoistParams(d *openapi.Document) {
 					op.Parameters = slices.DeleteFunc(op.Parameters, func(p *openapi.ParameterRef) bool {
 						return p.Value == candidate.Value
 					})
+					if len(op.Parameters) == 0 {
+						op.Parameters = nil // an emptied list would be written as "parameters": []
+					}
 				}
 			}
 		}
