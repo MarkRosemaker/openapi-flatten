@@ -6416,7 +6416,6 @@
       },
       "emptyObject": {
         "type": "object",
-        "properties": {},
         "additionalProperties": false
       },
       "equationBlockObjectResponse": {
@@ -11253,7 +11252,6 @@
               },
               "session": {
                 "type": "object",
-                "properties": {},
                 "additionalProperties": false
               },
               "results": {
@@ -23778,7 +23776,6 @@
               "mcp_business_plan_education": {
                 "description": "The parameters for the mcp_business_plan_education tool. Show the next available step for using the full version of Notion MCP. Use this only once at the end of a turn after the user has done substantial Notion work. The server decides whether a presentation is eligible; when it is not, do not tell the user that a card was shown.",
                 "type": "object",
-                "properties": {},
                 "additionalProperties": false
               }
             },
@@ -24897,7 +24894,6 @@
               "list_workspace_bookmarks": {
                 "description": "The parameters for the list_workspace_bookmarks tool. Available only by invitation during early alpha. General availability is coming soon. This contract may change. List saved workspace timestamps, newest first.",
                 "type": "object",
-                "properties": {},
                 "additionalProperties": false
               }
             },
@@ -33473,7 +33469,6 @@
           },
           {
             "type": "object",
-            "properties": {},
             "additionalProperties": false
           },
           {
@@ -38841,7 +38836,6 @@
                   "mcp_business_plan_education": {
                     "description": "The parameters for the mcp_business_plan_education tool. Show the next available step for using the full version of Notion MCP. Use this only once at the end of a turn after the user has done substantial Notion work. The server decides whether a presentation is eligible; when it is not, do not tell the user that a card was shown.",
                     "type": "object",
-                    "properties": {},
                     "additionalProperties": false
                   }
                 },
@@ -39492,7 +39486,6 @@
                   "list_workspace_bookmarks": {
                     "description": "The parameters for the list_workspace_bookmarks tool. Available only by invitation during early alpha. General availability is coming soon. This contract may change. List saved workspace timestamps, newest first.",
                     "type": "object",
-                    "properties": {},
                     "additionalProperties": false
                   }
                 },
@@ -44920,17 +44913,14 @@
           },
           "location": {
             "type": "object",
-            "properties": {},
             "additionalProperties": false
           },
           "date_range_filter": {
             "type": "object",
-            "properties": {},
             "additionalProperties": false
           },
           "options": {
             "type": "object",
-            "properties": {},
             "additionalProperties": false
           },
           "start_cursor": {
@@ -65279,7 +65269,6 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "properties": {},
               "additionalProperties": false
             }
           }
@@ -65401,7 +65390,6 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "properties": {},
               "additionalProperties": false
             }
           }

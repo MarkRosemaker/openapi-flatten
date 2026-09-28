@@ -2578,7 +2578,6 @@
       },
       "emptyObject": {
         "type": "object",
-        "properties": {},
         "additionalProperties": false
       },
       "idRequest": {
@@ -2757,8 +2756,7 @@
           "name": {
             "type": "string"
           }
-        },
-        "required": []
+        }
       },
       "UpdateLegalHoldOk": {
         "type": "object",
@@ -5810,7 +5808,6 @@
             }
           }
         },
-        "required": [],
         "additionalProperties": false
       },
       "UpdateAgentPermissionsSet": {
@@ -7183,12 +7180,10 @@
         ]
       },
       "RevokePersonalAccessTokenOk": {
-        "type": "object",
-        "properties": {}
+        "type": "object"
       },
       "DeleteAgentOk": {
-        "type": "object",
-        "properties": {}
+        "type": "object"
       },
       "NotionVersion": {
         "type": "string",
