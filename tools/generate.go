@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"errors"
+	"fmt"
 	"io/fs"
 	"log"
 	"os"
@@ -21,7 +22,7 @@ func main() {
 
 func run(ctx context.Context) error {
 	if err := copyPreviousStep(); err != nil {
-		return err
+		return fmt.Errorf("copying previous step: %w", err)
 	}
 
 	entries, err := os.ReadDir("testdata")
@@ -30,13 +31,13 @@ func run(ctx context.Context) error {
 	}
 
 	for _, entry := range entries {
-		if !entry.IsDir() {
+		if !entry.IsDir() || entry.Name() == ".DS_Store" {
 			continue
 		}
 
 		doc, err := openapi.LoadFromFile(filepath.Join("testdata", entry.Name(), "openapi.json"))
 		if err != nil {
-			return err
+			return fmt.Errorf("loading openapi file: %w", err)
 		}
 
 		if err := flatten.Document(doc); err != nil {
@@ -68,7 +69,7 @@ func copyPreviousStep() error {
 			filepath.Join(srcDir, e.Name(), "golden.json"),
 			filepath.Join("testdata", e.Name(), "openapi.json"),
 		); err != nil {
-			return err
+			return fmt.Errorf("copying from %s: %w", srcDir, err)
 		}
 	}
 
