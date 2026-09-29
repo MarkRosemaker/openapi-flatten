@@ -37,7 +37,7 @@
         "operationId": "getImported-by",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/GetImportedByOkResponse"
+            "$ref": "#/components/responses/GetImportedByOk"
           }
         }
       }
@@ -62,7 +62,7 @@
         "operationId": "getModule",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/GetModuleOkResponse"
+            "$ref": "#/components/responses/GetModuleOk"
           }
         }
       }
@@ -102,7 +102,7 @@
         "operationId": "getPackage",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/GetPackageOkResponse"
+            "$ref": "#/components/responses/GetPackageOk"
           }
         }
       }
@@ -130,7 +130,7 @@
         "operationId": "getPackages",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/GetPackagesOkResponse"
+            "$ref": "#/components/responses/GetPackagesOk"
           }
         }
       }
@@ -158,7 +158,7 @@
         "operationId": "getSearch",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/GetSearchOkResponse"
+            "$ref": "#/components/responses/GetSearchOk"
           }
         }
       }
@@ -195,7 +195,7 @@
         "operationId": "getSymbols",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/GetSymbolsOkResponse"
+            "$ref": "#/components/responses/GetSymbolsOk"
           }
         }
       }
@@ -220,7 +220,7 @@
         "operationId": "getVersions",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/GetVersionsOkResponse"
+            "$ref": "#/components/responses/GetVersionsOk"
           }
         }
       }
@@ -251,7 +251,7 @@
         "operationId": "getVulns",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/GetVulnsOkResponse"
+            "$ref": "#/components/responses/GetVulnsOk"
           }
         }
       }
@@ -661,7 +661,7 @@
       }
     },
     "responses": {
-      "GetImportedByOkResponse": {
+      "GetImportedByOk": {
         "description": "Successful response",
         "content": {
           "application/json": {
@@ -671,7 +671,7 @@
           }
         }
       },
-      "GetModuleOkResponse": {
+      "GetModuleOk": {
         "description": "Successful response",
         "content": {
           "application/json": {
@@ -681,7 +681,7 @@
           }
         }
       },
-      "GetPackageOkResponse": {
+      "GetPackageOk": {
         "description": "Successful response",
         "content": {
           "application/json": {
@@ -691,7 +691,7 @@
           }
         }
       },
-      "GetPackagesOkResponse": {
+      "GetPackagesOk": {
         "description": "Successful response",
         "content": {
           "application/json": {
@@ -701,7 +701,7 @@
           }
         }
       },
-      "GetSearchOkResponse": {
+      "GetSearchOk": {
         "description": "Successful response",
         "content": {
           "application/json": {
@@ -711,7 +711,7 @@
           }
         }
       },
-      "GetSymbolsOkResponse": {
+      "GetSymbolsOk": {
         "description": "Successful response",
         "content": {
           "application/json": {
@@ -721,7 +721,7 @@
           }
         }
       },
-      "GetVersionsOkResponse": {
+      "GetVersionsOk": {
         "description": "Successful response",
         "content": {
           "application/json": {
@@ -731,7 +731,7 @@
           }
         }
       },
-      "GetVulnsOkResponse": {
+      "GetVulnsOk": {
         "description": "Successful response",
         "content": {
           "application/json": {

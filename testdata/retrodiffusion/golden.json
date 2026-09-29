@@ -23,7 +23,7 @@
         "operationId": "ListV1StylesSelector",
         "responses": {
           "200": {
-            "$ref": "#/components/responses/ListV1StylesSelectorOkResponse"
+            "$ref": "#/components/responses/ListV1StylesSelectorOk"
           }
         }
       }
@@ -41,7 +41,7 @@
         },
         "responses": {
           "200": {
-            "$ref": "#/components/responses/PostV1InferencesOkResponse"
+            "$ref": "#/components/responses/PostV1InferencesOk"
           }
         }
       }
@@ -283,7 +283,7 @@
       }
     },
     "responses": {
-      "ListV1StylesSelectorOkResponse": {
+      "ListV1StylesSelectorOk": {
         "description": "OK",
         "content": {
           "application/json": {
@@ -293,7 +293,7 @@
           }
         }
       },
-      "PostV1InferencesOkResponse": {
+      "PostV1InferencesOk": {
         "description": "OK",
         "content": {
           "application/json": {
