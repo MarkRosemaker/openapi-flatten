@@ -27,7 +27,7 @@
         "summary": "Export a legal hold",
         "operationId": "export-legal-hold",
         "requestBody": {
-          "$ref": "#/components/requestBodies/export-legal-holdRequestBody"
+          "$ref": "#/components/requestBodies/ExportLegalHold"
         },
         "responses": {
           "200": {
@@ -113,7 +113,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/update-legal-holdRequestBody"
+          "$ref": "#/components/requestBodies/UpdateLegalHold"
         },
         "responses": {
           "200": {
@@ -202,7 +202,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/add-legal-hold-usersRequestBody"
+          "$ref": "#/components/requestBodies/AddLegalHoldUsers"
         },
         "responses": {
           "200": {
@@ -286,7 +286,7 @@
         "summary": "Create a legal hold",
         "operationId": "create-legal-hold",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create-legal-holdRequestBody"
+          "$ref": "#/components/requestBodies/CreateLegalHold"
         },
         "responses": {
           "200": {
@@ -467,7 +467,7 @@
         "summary": "Enqueue a workspace export",
         "operationId": "enqueue-space-export",
         "requestBody": {
-          "$ref": "#/components/requestBodies/enqueue-space-exportRequestBody"
+          "$ref": "#/components/requestBodies/EnqueueSpaceExport"
         },
         "responses": {
           "200": {
@@ -605,7 +605,7 @@
         "summary": "Revoke a managed user's sessions",
         "operationId": "revoke-user-session",
         "requestBody": {
-          "$ref": "#/components/requestBodies/revoke-user-sessionRequestBody"
+          "$ref": "#/components/requestBodies/RevokeUserSession"
         },
         "responses": {
           "200": {
@@ -700,7 +700,7 @@
         "summary": "Deny or restore enterprise-managed MCP client access",
         "operationId": "update-mcp-client-connection-enterprise-managed-access",
         "requestBody": {
-          "$ref": "#/components/requestBodies/update-mcp-client-connection-enterprise-managed-accessRequestBody"
+          "$ref": "#/components/requestBodies/UpdateMcpClientConnectionEnterpriseManagedAccess"
         },
         "responses": {
           "200": {
@@ -743,7 +743,7 @@
         "summary": "Revoke an MCP client connection",
         "operationId": "revoke-mcp-client-connection",
         "requestBody": {
-          "$ref": "#/components/requestBodies/revoke-mcp-client-connectionRequestBody"
+          "$ref": "#/components/requestBodies/RevokeMcpClientConnection"
         },
         "responses": {
           "200": {
@@ -891,7 +891,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/update-permission-groupRequestBody"
+          "$ref": "#/components/requestBodies/UpdatePermissionGroup"
         },
         "responses": {
           "200": {
@@ -995,7 +995,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/create-permission-groupRequestBody"
+          "$ref": "#/components/requestBodies/CreatePermissionGroup"
         },
         "responses": {
           "200": {
@@ -1160,7 +1160,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/add-permission-group-memberRequestBody"
+          "$ref": "#/components/requestBodies/AddPermissionGroupMember"
         },
         "responses": {
           "200": {
@@ -1270,7 +1270,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/update-permission-group-memberRequestBody"
+          "$ref": "#/components/requestBodies/UpdatePermissionGroupMember"
         },
         "responses": {
           "200": {
@@ -1426,7 +1426,7 @@
         "summary": "Update who can create agents in a space",
         "operationId": "update-agent-creation-policy",
         "requestBody": {
-          "$ref": "#/components/requestBodies/update-agent-creation-policyRequestBody"
+          "$ref": "#/components/requestBodies/UpdateAgentCreationPolicy"
         },
         "responses": {
           "200": {
@@ -1472,7 +1472,7 @@
         "summary": "Update the default agent credit limit for a workspace",
         "operationId": "update-workspace-credit-limit",
         "requestBody": {
-          "$ref": "#/components/requestBodies/update-workspace-credit-limitRequestBody"
+          "$ref": "#/components/requestBodies/UpdateWorkspaceCreditLimit"
         },
         "responses": {
           "200": {
@@ -1521,7 +1521,7 @@
         "summary": "Disable or re-enable an agent in a space",
         "operationId": "update-agent-status",
         "requestBody": {
-          "$ref": "#/components/requestBodies/update-agent-statusRequestBody"
+          "$ref": "#/components/requestBodies/UpdateAgentStatus"
         },
         "responses": {
           "200": {
@@ -1802,7 +1802,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/update-agent-permissionsRequestBody"
+          "$ref": "#/components/requestBodies/UpdateAgentPermissions"
         },
         "responses": {
           "200": {
@@ -1909,7 +1909,7 @@
         "summary": "Update credit limit for an agent in a space",
         "operationId": "update-agent-credit-limit",
         "requestBody": {
-          "$ref": "#/components/requestBodies/update-agent-credit-limitRequestBody"
+          "$ref": "#/components/requestBodies/UpdateAgentCreditLimit"
         },
         "responses": {
           "200": {
@@ -2007,7 +2007,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/create-credit-limit-policyRequestBody"
+          "$ref": "#/components/requestBodies/CreateCreditLimitPolicy"
         },
         "responses": {
           "200": {
@@ -2111,7 +2111,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/update-credit-limit-policyRequestBody"
+          "$ref": "#/components/requestBodies/UpdateCreditLimitPolicy"
         },
         "responses": {
           "200": {
@@ -13595,7 +13595,7 @@
       }
     },
     "requestBodies": {
-      "export-legal-holdRequestBody": {
+      "ExportLegalHold": {
         "required": true,
         "content": {
           "application/json": {
@@ -13605,7 +13605,7 @@
           }
         }
       },
-      "update-legal-holdRequestBody": {
+      "UpdateLegalHold": {
         "required": true,
         "content": {
           "application/json": {
@@ -13615,7 +13615,7 @@
           }
         }
       },
-      "add-legal-hold-usersRequestBody": {
+      "AddLegalHoldUsers": {
         "required": true,
         "content": {
           "application/json": {
@@ -13625,7 +13625,7 @@
           }
         }
       },
-      "create-legal-holdRequestBody": {
+      "CreateLegalHold": {
         "required": true,
         "content": {
           "application/json": {
@@ -13635,7 +13635,7 @@
           }
         }
       },
-      "enqueue-space-exportRequestBody": {
+      "EnqueueSpaceExport": {
         "required": true,
         "content": {
           "application/json": {
@@ -13645,7 +13645,7 @@
           }
         }
       },
-      "revoke-user-sessionRequestBody": {
+      "RevokeUserSession": {
         "required": true,
         "content": {
           "application/json": {
@@ -13655,7 +13655,7 @@
           }
         }
       },
-      "update-mcp-client-connection-enterprise-managed-accessRequestBody": {
+      "UpdateMcpClientConnectionEnterpriseManagedAccess": {
         "required": true,
         "content": {
           "application/json": {
@@ -13665,7 +13665,7 @@
           }
         }
       },
-      "revoke-mcp-client-connectionRequestBody": {
+      "RevokeMcpClientConnection": {
         "required": true,
         "content": {
           "application/json": {
@@ -13675,7 +13675,7 @@
           }
         }
       },
-      "update-permission-groupRequestBody": {
+      "UpdatePermissionGroup": {
         "required": true,
         "content": {
           "application/json": {
@@ -13685,7 +13685,7 @@
           }
         }
       },
-      "create-permission-groupRequestBody": {
+      "CreatePermissionGroup": {
         "required": true,
         "content": {
           "application/json": {
@@ -13695,7 +13695,7 @@
           }
         }
       },
-      "add-permission-group-memberRequestBody": {
+      "AddPermissionGroupMember": {
         "required": true,
         "content": {
           "application/json": {
@@ -13705,7 +13705,7 @@
           }
         }
       },
-      "update-permission-group-memberRequestBody": {
+      "UpdatePermissionGroupMember": {
         "required": true,
         "content": {
           "application/json": {
@@ -13715,7 +13715,7 @@
           }
         }
       },
-      "update-agent-creation-policyRequestBody": {
+      "UpdateAgentCreationPolicy": {
         "required": true,
         "content": {
           "application/json": {
@@ -13725,7 +13725,7 @@
           }
         }
       },
-      "update-workspace-credit-limitRequestBody": {
+      "UpdateWorkspaceCreditLimit": {
         "required": true,
         "content": {
           "application/json": {
@@ -13735,7 +13735,7 @@
           }
         }
       },
-      "update-agent-statusRequestBody": {
+      "UpdateAgentStatus": {
         "required": true,
         "content": {
           "application/json": {
@@ -13748,7 +13748,7 @@
           }
         }
       },
-      "update-agent-permissionsRequestBody": {
+      "UpdateAgentPermissions": {
         "required": true,
         "content": {
           "application/json": {
@@ -13758,7 +13758,7 @@
           }
         }
       },
-      "update-agent-credit-limitRequestBody": {
+      "UpdateAgentCreditLimit": {
         "required": true,
         "content": {
           "application/json": {
@@ -13768,7 +13768,7 @@
           }
         }
       },
-      "create-credit-limit-policyRequestBody": {
+      "CreateCreditLimitPolicy": {
         "required": true,
         "content": {
           "application/json": {
@@ -13778,7 +13778,7 @@
           }
         }
       },
-      "update-credit-limit-policyRequestBody": {
+      "UpdateCreditLimitPolicy": {
         "required": true,
         "content": {
           "application/json": {

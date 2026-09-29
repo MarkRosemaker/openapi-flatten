@@ -225,7 +225,7 @@
         "summary": "Create a page",
         "operationId": "post-page",
         "requestBody": {
-          "$ref": "#/components/requestBodies/post-pageRequestBody"
+          "$ref": "#/components/requestBodies/PostPage"
         },
         "responses": {
           "200": {
@@ -367,7 +367,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/patch-pageRequestBody"
+          "$ref": "#/components/requestBodies/PatchPage"
         },
         "responses": {
           "200": {
@@ -436,7 +436,7 @@
         "summary": "Move a page",
         "operationId": "move-page",
         "requestBody": {
-          "$ref": "#/components/requestBodies/move-pageRequestBody"
+          "$ref": "#/components/requestBodies/MovePage"
         },
         "responses": {
           "200": {
@@ -646,7 +646,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/update-page-markdownRequestBody"
+          "$ref": "#/components/requestBodies/UpdatePageMarkdown"
         },
         "responses": {
           "200": {
@@ -906,7 +906,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/update-a-blockRequestBody"
+          "$ref": "#/components/requestBodies/UpdateABlock"
         },
         "responses": {
           "200": {
@@ -1044,7 +1044,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/patch-block-childrenRequestBody"
+          "$ref": "#/components/requestBodies/PatchBlockChildren"
         },
         "responses": {
           "200": {
@@ -1176,7 +1176,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/update-a-data-sourceRequestBody"
+          "$ref": "#/components/requestBodies/UpdateADataSource"
         },
         "responses": {
           "200": {
@@ -1248,7 +1248,7 @@
         "summary": "Query a data source",
         "operationId": "post-database-query",
         "requestBody": {
-          "$ref": "#/components/requestBodies/post-database-queryRequestBody"
+          "$ref": "#/components/requestBodies/PostDatabaseQuery"
         },
         "responses": {
           "200": {
@@ -1314,7 +1314,7 @@
         "summary": "Create a data source",
         "operationId": "create-a-database",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create-a-databaseRequestBody"
+          "$ref": "#/components/requestBodies/CreateADatabase"
         },
         "responses": {
           "200": {
@@ -1521,7 +1521,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/update-databaseRequestBody"
+          "$ref": "#/components/requestBodies/UpdateDatabase"
         },
         "responses": {
           "200": {
@@ -1587,7 +1587,7 @@
         "summary": "Create a database",
         "operationId": "create-database",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create-databaseRequestBody"
+          "$ref": "#/components/requestBodies/CreateDatabase"
         },
         "responses": {
           "200": {
@@ -1653,7 +1653,7 @@
         "summary": "Search by title",
         "operationId": "post-search",
         "requestBody": {
-          "$ref": "#/components/requestBodies/post-searchRequestBody"
+          "$ref": "#/components/requestBodies/PostSearch"
         },
         "responses": {
           "200": {
@@ -1787,7 +1787,7 @@
         "summary": "Create a comment",
         "operationId": "create-a-comment",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create-a-commentRequestBody"
+          "$ref": "#/components/requestBodies/CreateAComment"
         },
         "responses": {
           "200": {
@@ -1978,7 +1978,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/update-a-commentRequestBody"
+          "$ref": "#/components/requestBodies/UpdateAComment"
         },
         "responses": {
           "200": {
@@ -2108,7 +2108,7 @@
         "summary": "Create a file upload",
         "operationId": "create-file",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create-fileRequestBody"
+          "$ref": "#/components/requestBodies/CreateFile"
         },
         "responses": {
           "200": {
@@ -2178,7 +2178,7 @@
         "summary": "Upload a file",
         "operationId": "upload-file",
         "requestBody": {
-          "$ref": "#/components/requestBodies/upload-fileRequestBody"
+          "$ref": "#/components/requestBodies/UploadFile"
         },
         "responses": {
           "200": {
@@ -2515,7 +2515,7 @@
         "summary": "Create a view",
         "operationId": "create-view",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create-viewRequestBody"
+          "$ref": "#/components/requestBodies/CreateView"
         },
         "responses": {
           "200": {
@@ -2699,7 +2699,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/update-a-viewRequestBody"
+          "$ref": "#/components/requestBodies/UpdateAView"
         },
         "responses": {
           "200": {
@@ -2765,7 +2765,7 @@
         "summary": "Create a view query",
         "operationId": "create-view-query",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create-view-queryRequestBody"
+          "$ref": "#/components/requestBodies/CreateViewQuery"
         },
         "responses": {
           "200": {
@@ -2963,7 +2963,7 @@
         "summary": "Create a meeting note",
         "operationId": "create-meeting-note",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create-meeting-noteRequestBody"
+          "$ref": "#/components/requestBodies/CreateMeetingNote"
         },
         "responses": {
           "200": {
@@ -3026,7 +3026,7 @@
         "summary": "Query meeting notes",
         "operationId": "query-meeting-notes",
         "requestBody": {
-          "$ref": "#/components/requestBodies/query-meeting-notesRequestBody"
+          "$ref": "#/components/requestBodies/QueryMeetingNotes"
         },
         "responses": {
           "200": {
@@ -3089,7 +3089,7 @@
         "summary": "Query agents",
         "operationId": "query-agents",
         "requestBody": {
-          "$ref": "#/components/requestBodies/query-agentsRequestBody"
+          "$ref": "#/components/requestBodies/QueryAgents"
         },
         "responses": {
           "200": {
@@ -3354,7 +3354,7 @@
         "summary": "Update agent status",
         "operationId": "update-agent-status",
         "requestBody": {
-          "$ref": "#/components/requestBodies/update-agent-statusRequestBody"
+          "$ref": "#/components/requestBodies/UpdateAgentStatus"
         },
         "responses": {
           "200": {
@@ -3420,7 +3420,7 @@
         "summary": "Update agent credit limit",
         "operationId": "update-agent-credit-limit",
         "requestBody": {
-          "$ref": "#/components/requestBodies/update-agent-credit-limitRequestBody"
+          "$ref": "#/components/requestBodies/UpdateAgentCreditLimit"
         },
         "responses": {
           "200": {
@@ -3483,7 +3483,7 @@
         "summary": "Apply many agent operations",
         "operationId": "agent-batch",
         "requestBody": {
-          "$ref": "#/components/requestBodies/agent-batchRequestBody"
+          "$ref": "#/components/requestBodies/AgentBatch"
         },
         "responses": {
           "200": {
@@ -3749,7 +3749,7 @@
         "summary": "Update a session",
         "operationId": "update-session",
         "requestBody": {
-          "$ref": "#/components/requestBodies/update-sessionRequestBody"
+          "$ref": "#/components/requestBodies/UpdateSession"
         },
         "responses": {
           "200": {
@@ -3877,7 +3877,7 @@
         "summary": "Query sessions",
         "operationId": "query-sessions",
         "requestBody": {
-          "$ref": "#/components/requestBodies/query-sessionsRequestBody"
+          "$ref": "#/components/requestBodies/QuerySessions"
         },
         "responses": {
           "200": {
@@ -3944,7 +3944,7 @@
         "summary": "Query session events",
         "operationId": "query-session-events",
         "requestBody": {
-          "$ref": "#/components/requestBodies/query-session-eventsRequestBody"
+          "$ref": "#/components/requestBodies/QuerySessionEvents"
         },
         "responses": {
           "200": {
@@ -4011,7 +4011,7 @@
         "summary": "Cancel a session",
         "operationId": "cancel-session",
         "requestBody": {
-          "$ref": "#/components/requestBodies/cancel-sessionRequestBody"
+          "$ref": "#/components/requestBodies/CancelSession"
         },
         "responses": {
           "200": {
@@ -4075,7 +4075,7 @@
         "summary": "Exchange an authorization code for an access and refresh token",
         "operationId": "create-a-token",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create-a-tokenRequestBody"
+          "$ref": "#/components/requestBodies/CreateAToken"
         },
         "responses": {
           "200": {
@@ -4125,7 +4125,7 @@
         "summary": "Revoke a token",
         "operationId": "revoke-token",
         "requestBody": {
-          "$ref": "#/components/requestBodies/revoke-tokenRequestBody"
+          "$ref": "#/components/requestBodies/RevokeToken"
         },
         "responses": {
           "200": {
@@ -4175,7 +4175,7 @@
         "summary": "Introspect a token",
         "operationId": "introspect-token",
         "requestBody": {
-          "$ref": "#/components/requestBodies/introspect-tokenRequestBody"
+          "$ref": "#/components/requestBodies/IntrospectToken"
         },
         "responses": {
           "200": {
@@ -61873,7 +61873,7 @@
       }
     },
     "requestBodies": {
-      "post-pageRequestBody": {
+      "PostPage": {
         "required": true,
         "content": {
           "application/json": {
@@ -61883,7 +61883,7 @@
           }
         }
       },
-      "patch-pageRequestBody": {
+      "PatchPage": {
         "required": true,
         "content": {
           "application/json": {
@@ -61893,7 +61893,7 @@
           }
         }
       },
-      "move-pageRequestBody": {
+      "MovePage": {
         "required": true,
         "content": {
           "application/json": {
@@ -61903,7 +61903,7 @@
           }
         }
       },
-      "update-page-markdownRequestBody": {
+      "UpdatePageMarkdown": {
         "required": true,
         "content": {
           "application/json": {
@@ -61913,7 +61913,7 @@
           }
         }
       },
-      "update-a-blockRequestBody": {
+      "UpdateABlock": {
         "required": true,
         "content": {
           "application/json": {
@@ -61923,7 +61923,7 @@
           }
         }
       },
-      "patch-block-childrenRequestBody": {
+      "PatchBlockChildren": {
         "required": true,
         "content": {
           "application/json": {
@@ -61933,7 +61933,7 @@
           }
         }
       },
-      "update-a-data-sourceRequestBody": {
+      "UpdateADataSource": {
         "required": true,
         "content": {
           "application/json": {
@@ -61943,7 +61943,7 @@
           }
         }
       },
-      "post-database-queryRequestBody": {
+      "PostDatabaseQuery": {
         "required": true,
         "content": {
           "application/json": {
@@ -61953,7 +61953,7 @@
           }
         }
       },
-      "create-a-databaseRequestBody": {
+      "CreateADatabase": {
         "required": true,
         "content": {
           "application/json": {
@@ -61963,7 +61963,7 @@
           }
         }
       },
-      "update-databaseRequestBody": {
+      "UpdateDatabase": {
         "required": true,
         "content": {
           "application/json": {
@@ -61973,7 +61973,7 @@
           }
         }
       },
-      "create-databaseRequestBody": {
+      "CreateDatabase": {
         "required": true,
         "content": {
           "application/json": {
@@ -61983,7 +61983,7 @@
           }
         }
       },
-      "post-searchRequestBody": {
+      "PostSearch": {
         "required": true,
         "content": {
           "application/json": {
@@ -61993,7 +61993,7 @@
           }
         }
       },
-      "create-a-commentRequestBody": {
+      "CreateAComment": {
         "required": true,
         "content": {
           "application/json": {
@@ -62003,7 +62003,7 @@
           }
         }
       },
-      "update-a-commentRequestBody": {
+      "UpdateAComment": {
         "required": true,
         "content": {
           "application/json": {
@@ -62013,7 +62013,7 @@
           }
         }
       },
-      "create-fileRequestBody": {
+      "CreateFile": {
         "required": true,
         "content": {
           "application/json": {
@@ -62023,7 +62023,7 @@
           }
         }
       },
-      "upload-fileRequestBody": {
+      "UploadFile": {
         "required": true,
         "content": {
           "multipart/form-data": {
@@ -62033,7 +62033,7 @@
           }
         }
       },
-      "create-viewRequestBody": {
+      "CreateView": {
         "required": true,
         "content": {
           "application/json": {
@@ -62043,7 +62043,7 @@
           }
         }
       },
-      "update-a-viewRequestBody": {
+      "UpdateAView": {
         "required": true,
         "content": {
           "application/json": {
@@ -62053,7 +62053,7 @@
           }
         }
       },
-      "create-view-queryRequestBody": {
+      "CreateViewQuery": {
         "required": true,
         "content": {
           "application/json": {
@@ -62063,7 +62063,7 @@
           }
         }
       },
-      "create-meeting-noteRequestBody": {
+      "CreateMeetingNote": {
         "required": true,
         "content": {
           "application/json": {
@@ -62073,7 +62073,7 @@
           }
         }
       },
-      "query-meeting-notesRequestBody": {
+      "QueryMeetingNotes": {
         "required": true,
         "content": {
           "application/json": {
@@ -62083,7 +62083,7 @@
           }
         }
       },
-      "query-agentsRequestBody": {
+      "QueryAgents": {
         "required": true,
         "content": {
           "application/json": {
@@ -62093,7 +62093,7 @@
           }
         }
       },
-      "update-agent-statusRequestBody": {
+      "UpdateAgentStatus": {
         "required": true,
         "content": {
           "application/json": {
@@ -62103,7 +62103,7 @@
           }
         }
       },
-      "update-agent-credit-limitRequestBody": {
+      "UpdateAgentCreditLimit": {
         "required": true,
         "content": {
           "application/json": {
@@ -62113,7 +62113,7 @@
           }
         }
       },
-      "agent-batchRequestBody": {
+      "AgentBatch": {
         "required": true,
         "content": {
           "application/json": {
@@ -62123,7 +62123,7 @@
           }
         }
       },
-      "update-sessionRequestBody": {
+      "UpdateSession": {
         "required": true,
         "content": {
           "application/json": {
@@ -62133,7 +62133,7 @@
           }
         }
       },
-      "query-sessionsRequestBody": {
+      "QuerySessions": {
         "required": true,
         "content": {
           "application/json": {
@@ -62143,7 +62143,7 @@
           }
         }
       },
-      "query-session-eventsRequestBody": {
+      "QuerySessionEvents": {
         "required": true,
         "content": {
           "application/json": {
@@ -62153,7 +62153,7 @@
           }
         }
       },
-      "cancel-sessionRequestBody": {
+      "CancelSession": {
         "required": true,
         "content": {
           "application/json": {
@@ -62163,7 +62163,7 @@
           }
         }
       },
-      "create-a-tokenRequestBody": {
+      "CreateAToken": {
         "required": true,
         "content": {
           "application/json": {
@@ -62173,7 +62173,7 @@
           }
         }
       },
-      "revoke-tokenRequestBody": {
+      "RevokeToken": {
         "required": true,
         "content": {
           "application/json": {
@@ -62183,7 +62183,7 @@
           }
         }
       },
-      "introspect-tokenRequestBody": {
+      "IntrospectToken": {
         "required": true,
         "content": {
           "application/json": {

@@ -89,7 +89,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/add-group-memberRequestBody"
+          "$ref": "#/components/requestBodies/AddGroupMember"
         },
         "responses": {
           "200": {
@@ -146,7 +146,7 @@
         "summary": "Tools for Decagon's CX chatbot",
         "operationId": "external-decagon",
         "requestBody": {
-          "$ref": "#/components/requestBodies/external-decagonRequestBody"
+          "$ref": "#/components/requestBodies/ExternalDecagon"
         },
         "responses": {
           "200": {
@@ -190,7 +190,7 @@
         "summary": "Check if a user is eligible for a refund",
         "operationId": "external-refund-eligibility",
         "requestBody": {
-          "$ref": "#/components/requestBodies/external-refund-eligibilityRequestBody"
+          "$ref": "#/components/requestBodies/ExternalRefundEligibility"
         },
         "responses": {
           "200": {
@@ -231,7 +231,7 @@
         "summary": "Fetch a user's C360 lifecycle signals for Decagon chat init",
         "operationId": "external-user-c360-profile",
         "requestBody": {
-          "$ref": "#/components/requestBodies/external-user-c360-profileRequestBody"
+          "$ref": "#/components/requestBodies/ExternalUserC360Profile"
         },
         "responses": {
           "200": {
@@ -278,7 +278,7 @@
         "summary": "Chat with agent",
         "operationId": "chat-with-agent",
         "requestBody": {
-          "$ref": "#/components/requestBodies/chat-with-agentRequestBody"
+          "$ref": "#/components/requestBodies/ChatWithAgent"
         },
         "responses": {
           "200": {
@@ -343,7 +343,7 @@
         "summary": "Chat with agent (streaming)",
         "operationId": "chat-with-agent-stream",
         "requestBody": {
-          "$ref": "#/components/requestBodies/chat-with-agent-streamRequestBody"
+          "$ref": "#/components/requestBodies/ChatWithAgentStream"
         },
         "responses": {
           "200": {
@@ -372,7 +372,7 @@
         "summary": "Continue a thread",
         "operationId": "continue-thread",
         "requestBody": {
-          "$ref": "#/components/requestBodies/continue-threadRequestBody"
+          "$ref": "#/components/requestBodies/ContinueThread"
         },
         "responses": {
           "200": {
@@ -433,7 +433,7 @@
         "summary": "Create external agent stub vault",
         "operationId": "create-external-agent-stub-vault",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create-external-agent-stub-vaultRequestBody"
+          "$ref": "#/components/requestBodies/CreateExternalAgentStubVault"
         },
         "responses": {
           "200": {
@@ -491,7 +491,7 @@
         "summary": "Create a group",
         "operationId": "create-group",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create-groupRequestBody"
+          "$ref": "#/components/requestBodies/CreateGroup"
         },
         "responses": {
           "200": {
@@ -548,7 +548,7 @@
         "summary": "Create a rollout",
         "operationId": "create-rollout",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create-rolloutRequestBody"
+          "$ref": "#/components/requestBodies/CreateRollout"
         },
         "responses": {
           "200": {
@@ -663,7 +663,7 @@
         "summary": "Create teamspace",
         "operationId": "create-teamspace",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create-teamspaceRequestBody"
+          "$ref": "#/components/requestBodies/CreateTeamspace"
         },
         "responses": {
           "200": {
@@ -784,7 +784,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/update-external-agent-stub-vaultRequestBody"
+          "$ref": "#/components/requestBodies/UpdateExternalAgentStubVault"
         },
         "responses": {
           "200": {
@@ -899,7 +899,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/delete-groupRequestBody"
+          "$ref": "#/components/requestBodies/DeleteGroup"
         },
         "responses": {
           "200": {
@@ -954,7 +954,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/update-groupRequestBody"
+          "$ref": "#/components/requestBodies/UpdateGroup"
         },
         "responses": {
           "200": {
@@ -1069,7 +1069,7 @@
         "summary": "Generate transcript",
         "operationId": "generate-transcript",
         "requestBody": {
-          "$ref": "#/components/requestBodies/generate-transcriptRequestBody"
+          "$ref": "#/components/requestBodies/GenerateTranscript"
         },
         "responses": {
           "200": {
@@ -1294,7 +1294,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/update-teamspaceRequestBody"
+          "$ref": "#/components/requestBodies/UpdateTeamspace"
         },
         "responses": {
           "200": {
@@ -1351,7 +1351,7 @@
         "summary": "Export a page",
         "operationId": "initiate-page-export",
         "requestBody": {
-          "$ref": "#/components/requestBodies/initiate-page-exportRequestBody"
+          "$ref": "#/components/requestBodies/InitiatePageExport"
         },
         "responses": {
           "200": {
@@ -1729,7 +1729,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/update-team-membershipRequestBody"
+          "$ref": "#/components/requestBodies/UpdateTeamMembership"
         },
         "responses": {
           "200": {
@@ -1849,7 +1849,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/update-teamspace-permissionsRequestBody"
+          "$ref": "#/components/requestBodies/UpdateTeamspacePermissions"
         },
         "responses": {
           "200": {
@@ -1977,7 +1977,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/send-thread-messageRequestBody"
+          "$ref": "#/components/requestBodies/SendThreadMessage"
         },
         "responses": {
           "200": {
@@ -2178,7 +2178,7 @@
         "summary": "Resolve an EMA ID-JAG identity to an MCP access token",
         "operationId": "ema-resolve-identity",
         "requestBody": {
-          "$ref": "#/components/requestBodies/ema-resolve-identityRequestBody"
+          "$ref": "#/components/requestBodies/EmaResolveIdentity"
         },
         "responses": {
           "200": {
@@ -2219,7 +2219,7 @@
         "summary": "Resolve an EMA trusted issuer",
         "operationId": "ema-resolve-trusted-issuer",
         "requestBody": {
-          "$ref": "#/components/requestBodies/ema-resolve-trusted-issuerRequestBody"
+          "$ref": "#/components/requestBodies/EmaResolveTrustedIssuer"
         },
         "responses": {
           "200": {
@@ -2263,7 +2263,7 @@
         "summary": "Query thread messages",
         "operationId": "query-thread-messages",
         "requestBody": {
-          "$ref": "#/components/requestBodies/query-thread-messagesRequestBody"
+          "$ref": "#/components/requestBodies/QueryThreadMessages"
         },
         "responses": {
           "200": {
@@ -2324,7 +2324,7 @@
         "summary": "Query threads",
         "operationId": "query-threads",
         "requestBody": {
-          "$ref": "#/components/requestBodies/query-threadsRequestBody"
+          "$ref": "#/components/requestBodies/QueryThreads"
         },
         "responses": {
           "200": {
@@ -2445,7 +2445,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/update-group-memberRequestBody"
+          "$ref": "#/components/requestBodies/UpdateGroupMember"
         },
         "responses": {
           "200": {
@@ -2505,7 +2505,7 @@
         "summary": "Remove guests from a page",
         "operationId": "remove-page-guest",
         "requestBody": {
-          "$ref": "#/components/requestBodies/remove-page-guestRequestBody"
+          "$ref": "#/components/requestBodies/RemovePageGuest"
         },
         "responses": {
           "200": {
@@ -2562,7 +2562,7 @@
         "summary": "Run an internal tool",
         "operationId": "run-internal-tool",
         "requestBody": {
-          "$ref": "#/components/requestBodies/run-internal-toolRequestBody"
+          "$ref": "#/components/requestBodies/RunInternalTool"
         },
         "responses": {
           "200": {
@@ -2619,7 +2619,7 @@
         "summary": "Run a minimal rollout",
         "operationId": "run-minimal-rollout",
         "requestBody": {
-          "$ref": "#/components/requestBodies/run-minimal-rolloutRequestBody"
+          "$ref": "#/components/requestBodies/RunMinimalRollout"
         },
         "responses": {
           "200": {
@@ -2676,7 +2676,7 @@
         "summary": "Run a rollout",
         "operationId": "run-rollout",
         "requestBody": {
-          "$ref": "#/components/requestBodies/run-rolloutRequestBody"
+          "$ref": "#/components/requestBodies/RunRollout"
         },
         "responses": {
           "200": {
@@ -2733,7 +2733,7 @@
         "summary": "Run an AI tool",
         "operationId": "run-tool",
         "requestBody": {
-          "$ref": "#/components/requestBodies/run-toolRequestBody"
+          "$ref": "#/components/requestBodies/RunTool"
         },
         "responses": {
           "200": {
@@ -2850,7 +2850,7 @@
         "summary": "Run a tool by id",
         "operationId": "run-tool-by-id",
         "requestBody": {
-          "$ref": "#/components/requestBodies/run-tool-by-idRequestBody"
+          "$ref": "#/components/requestBodies/RunToolByID"
         },
         "responses": {
           "200": {
@@ -2910,7 +2910,7 @@
         "summary": "Run an AI tool in eval mode",
         "operationId": "run-tool-eval",
         "requestBody": {
-          "$ref": "#/components/requestBodies/run-tool-evalRequestBody"
+          "$ref": "#/components/requestBodies/RunToolEval"
         },
         "responses": {
           "200": {
@@ -2967,7 +2967,7 @@
         "summary": "Run a unified rollout",
         "operationId": "run-unified-rollout",
         "requestBody": {
-          "$ref": "#/components/requestBodies/run-unified-rolloutRequestBody"
+          "$ref": "#/components/requestBodies/RunUnifiedRollout"
         },
         "responses": {
           "200": {
@@ -3030,7 +3030,7 @@
         "summary": "Send external agent stub session message",
         "operationId": "send-external-agent-stub-session-message",
         "requestBody": {
-          "$ref": "#/components/requestBodies/send-external-agent-stub-session-messageRequestBody"
+          "$ref": "#/components/requestBodies/SendExternalAgentStubSessionMessage"
         },
         "responses": {
           "200": {
@@ -3094,7 +3094,7 @@
         "summary": "Send external agent stub session message (streaming)",
         "operationId": "send-external-agent-stub-session-message-stream",
         "requestBody": {
-          "$ref": "#/components/requestBodies/send-external-agent-stub-session-message-streamRequestBody"
+          "$ref": "#/components/requestBodies/SendExternalAgentStubSessionMessageStream"
         },
         "responses": {
           "200": {
@@ -3122,7 +3122,7 @@
         "summary": "Start external agent stub session",
         "operationId": "start-external-agent-stub-session",
         "requestBody": {
-          "$ref": "#/components/requestBodies/start-external-agent-stub-sessionRequestBody"
+          "$ref": "#/components/requestBodies/StartExternalAgentStubSession"
         },
         "responses": {
           "200": {
@@ -3180,7 +3180,7 @@
         "summary": "Transfer workspace user content",
         "operationId": "transfer-user-content",
         "requestBody": {
-          "$ref": "#/components/requestBodies/transfer-user-contentRequestBody"
+          "$ref": "#/components/requestBodies/TransferUserContent"
         },
         "responses": {
           "200": {
@@ -3240,7 +3240,7 @@
         "summary": "Unshare a page from web",
         "operationId": "unshare-page-from-web",
         "requestBody": {
-          "$ref": "#/components/requestBodies/unshare-page-from-webRequestBody"
+          "$ref": "#/components/requestBodies/UnsharePageFromWeb"
         },
         "responses": {
           "200": {
@@ -3300,7 +3300,7 @@
         "summary": "Update agent",
         "operationId": "update-agent",
         "requestBody": {
-          "$ref": "#/components/requestBodies/update-agentRequestBody"
+          "$ref": "#/components/requestBodies/UpdateAgent"
         },
         "responses": {
           "200": {
@@ -3360,7 +3360,7 @@
         "summary": "Update page permissions",
         "operationId": "private-update-page-permissions",
         "requestBody": {
-          "$ref": "#/components/requestBodies/private-update-page-permissionsRequestBody"
+          "$ref": "#/components/requestBodies/PrivateUpdatePagePermissions"
         },
         "responses": {
           "200": {
@@ -3417,7 +3417,7 @@
         "summary": "Search a workspace",
         "operationId": "search-workspace",
         "requestBody": {
-          "$ref": "#/components/requestBodies/search-workspaceRequestBody"
+          "$ref": "#/components/requestBodies/SearchWorkspace"
         },
         "responses": {
           "200": {
@@ -67674,7 +67674,7 @@
       }
     },
     "requestBodies": {
-      "add-group-memberRequestBody": {
+      "AddGroupMember": {
         "required": true,
         "content": {
           "application/json": {
@@ -67684,7 +67684,7 @@
           }
         }
       },
-      "external-decagonRequestBody": {
+      "ExternalDecagon": {
         "required": true,
         "content": {
           "application/json": {
@@ -67694,7 +67694,7 @@
           }
         }
       },
-      "external-refund-eligibilityRequestBody": {
+      "ExternalRefundEligibility": {
         "required": true,
         "content": {
           "application/json": {
@@ -67704,7 +67704,7 @@
           }
         }
       },
-      "external-user-c360-profileRequestBody": {
+      "ExternalUserC360Profile": {
         "required": true,
         "content": {
           "application/json": {
@@ -67714,7 +67714,7 @@
           }
         }
       },
-      "chat-with-agentRequestBody": {
+      "ChatWithAgent": {
         "required": true,
         "content": {
           "application/json": {
@@ -67724,7 +67724,7 @@
           }
         }
       },
-      "chat-with-agent-streamRequestBody": {
+      "ChatWithAgentStream": {
         "required": true,
         "content": {
           "application/json": {
@@ -67734,7 +67734,7 @@
           }
         }
       },
-      "continue-threadRequestBody": {
+      "ContinueThread": {
         "required": true,
         "content": {
           "application/json": {
@@ -67744,7 +67744,7 @@
           }
         }
       },
-      "create-external-agent-stub-vaultRequestBody": {
+      "CreateExternalAgentStubVault": {
         "required": true,
         "content": {
           "application/json": {
@@ -67754,7 +67754,7 @@
           }
         }
       },
-      "create-groupRequestBody": {
+      "CreateGroup": {
         "required": true,
         "content": {
           "application/json": {
@@ -67764,7 +67764,7 @@
           }
         }
       },
-      "create-rolloutRequestBody": {
+      "CreateRollout": {
         "required": true,
         "content": {
           "application/json": {
@@ -67774,7 +67774,7 @@
           }
         }
       },
-      "create-teamspaceRequestBody": {
+      "CreateTeamspace": {
         "required": true,
         "content": {
           "application/json": {
@@ -67784,7 +67784,7 @@
           }
         }
       },
-      "update-external-agent-stub-vaultRequestBody": {
+      "UpdateExternalAgentStubVault": {
         "required": true,
         "content": {
           "application/json": {
@@ -67794,7 +67794,7 @@
           }
         }
       },
-      "delete-groupRequestBody": {
+      "DeleteGroup": {
         "required": true,
         "content": {
           "application/json": {
@@ -67804,7 +67804,7 @@
           }
         }
       },
-      "update-groupRequestBody": {
+      "UpdateGroup": {
         "required": true,
         "content": {
           "application/json": {
@@ -67814,7 +67814,7 @@
           }
         }
       },
-      "generate-transcriptRequestBody": {
+      "GenerateTranscript": {
         "required": true,
         "content": {
           "application/json": {
@@ -67824,7 +67824,7 @@
           }
         }
       },
-      "update-teamspaceRequestBody": {
+      "UpdateTeamspace": {
         "required": true,
         "content": {
           "application/json": {
@@ -67834,7 +67834,7 @@
           }
         }
       },
-      "initiate-page-exportRequestBody": {
+      "InitiatePageExport": {
         "required": true,
         "content": {
           "application/json": {
@@ -67844,7 +67844,7 @@
           }
         }
       },
-      "update-team-membershipRequestBody": {
+      "UpdateTeamMembership": {
         "required": true,
         "content": {
           "application/json": {
@@ -67854,7 +67854,7 @@
           }
         }
       },
-      "update-teamspace-permissionsRequestBody": {
+      "UpdateTeamspacePermissions": {
         "required": true,
         "content": {
           "application/json": {
@@ -67864,7 +67864,7 @@
           }
         }
       },
-      "send-thread-messageRequestBody": {
+      "SendThreadMessage": {
         "required": true,
         "content": {
           "application/json": {
@@ -67874,7 +67874,7 @@
           }
         }
       },
-      "ema-resolve-identityRequestBody": {
+      "EmaResolveIdentity": {
         "required": true,
         "content": {
           "application/json": {
@@ -67884,7 +67884,7 @@
           }
         }
       },
-      "ema-resolve-trusted-issuerRequestBody": {
+      "EmaResolveTrustedIssuer": {
         "required": true,
         "content": {
           "application/json": {
@@ -67894,7 +67894,7 @@
           }
         }
       },
-      "query-thread-messagesRequestBody": {
+      "QueryThreadMessages": {
         "required": true,
         "content": {
           "application/json": {
@@ -67904,7 +67904,7 @@
           }
         }
       },
-      "query-threadsRequestBody": {
+      "QueryThreads": {
         "required": true,
         "content": {
           "application/json": {
@@ -67914,7 +67914,7 @@
           }
         }
       },
-      "update-group-memberRequestBody": {
+      "UpdateGroupMember": {
         "required": true,
         "content": {
           "application/json": {
@@ -67924,7 +67924,7 @@
           }
         }
       },
-      "remove-page-guestRequestBody": {
+      "RemovePageGuest": {
         "required": true,
         "content": {
           "application/json": {
@@ -67935,7 +67935,7 @@
           }
         }
       },
-      "run-internal-toolRequestBody": {
+      "RunInternalTool": {
         "required": true,
         "content": {
           "application/json": {
@@ -67945,7 +67945,7 @@
           }
         }
       },
-      "run-minimal-rolloutRequestBody": {
+      "RunMinimalRollout": {
         "required": true,
         "content": {
           "application/json": {
@@ -67955,7 +67955,7 @@
           }
         }
       },
-      "run-rolloutRequestBody": {
+      "RunRollout": {
         "required": true,
         "content": {
           "application/json": {
@@ -67965,7 +67965,7 @@
           }
         }
       },
-      "run-toolRequestBody": {
+      "RunTool": {
         "required": true,
         "content": {
           "application/json": {
@@ -67975,7 +67975,7 @@
           }
         }
       },
-      "run-tool-by-idRequestBody": {
+      "RunToolByID": {
         "required": true,
         "content": {
           "application/json": {
@@ -67985,7 +67985,7 @@
           }
         }
       },
-      "run-tool-evalRequestBody": {
+      "RunToolEval": {
         "required": true,
         "content": {
           "application/json": {
@@ -67995,7 +67995,7 @@
           }
         }
       },
-      "run-unified-rolloutRequestBody": {
+      "RunUnifiedRollout": {
         "required": true,
         "content": {
           "application/json": {
@@ -68005,7 +68005,7 @@
           }
         }
       },
-      "send-external-agent-stub-session-messageRequestBody": {
+      "SendExternalAgentStubSessionMessage": {
         "required": true,
         "content": {
           "application/json": {
@@ -68015,7 +68015,7 @@
           }
         }
       },
-      "send-external-agent-stub-session-message-streamRequestBody": {
+      "SendExternalAgentStubSessionMessageStream": {
         "required": true,
         "content": {
           "application/json": {
@@ -68025,7 +68025,7 @@
           }
         }
       },
-      "start-external-agent-stub-sessionRequestBody": {
+      "StartExternalAgentStubSession": {
         "required": true,
         "content": {
           "application/json": {
@@ -68035,7 +68035,7 @@
           }
         }
       },
-      "transfer-user-contentRequestBody": {
+      "TransferUserContent": {
         "required": true,
         "content": {
           "application/json": {
@@ -68045,7 +68045,7 @@
           }
         }
       },
-      "unshare-page-from-webRequestBody": {
+      "UnsharePageFromWeb": {
         "required": true,
         "content": {
           "application/json": {
@@ -68056,7 +68056,7 @@
           }
         }
       },
-      "update-agentRequestBody": {
+      "UpdateAgent": {
         "required": true,
         "content": {
           "application/json": {
@@ -68066,7 +68066,7 @@
           }
         }
       },
-      "private-update-page-permissionsRequestBody": {
+      "PrivateUpdatePagePermissions": {
         "required": true,
         "content": {
           "application/json": {
@@ -68076,7 +68076,7 @@
           }
         }
       },
-      "search-workspaceRequestBody": {
+      "SearchWorkspace": {
         "required": true,
         "content": {
           "application/json": {

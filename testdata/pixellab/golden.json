@@ -20,7 +20,7 @@
         "description": "Generate pixel art images from text description.\n\nThis endpoint creates multiple pixel art images based on a text description,\nwith optional reference images for style and subject guidance.\nReturns immediately with a background job ID. Poll `GET /v2/background-jobs/{job_id}`\nto check status and retrieve results.\n\n**Key Features:**\n- Text-to-image pixel art generation\n- Optional reference images for subject guidance (up to 4)\n- Optional style image for consistent pixel art style\n- Automatic background removal\n- Non-blocking: returns job ID immediately\n\n**Output Counts by Size (by max dimension):**\n- Up to 42px: 64 images (8x8 grid)\n- 43-85px: 16 images (4x4 grid)\n- 86-170px: 4 images (2x2 grid)\n- Above 170px: 1 image\n\n**Supported Sizes:**\n- Minimum 16x16. Maximum depends on aspect ratio (e.g. 512x512 for square, 688x384 for 16:9).\n\n**Usage Pattern:**\n1. POST to this endpoint (returns `background_job_id`)\n2. Poll `GET /v2/background-jobs/{background_job_id}` every 5-10 seconds\n3. When `status` is `completed`, images are in `last_response`\n\nUsing the Python client:\n```python\nimport pixellab\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\nresponse = client.generate_image_v2(\n    description=\"cute wizard character\",\n    image_size=dict(width=64, height=64)\n)\n\n# Access generated images\nfor i, image in enumerate(response.images):\n    image.pil_image().save(f\"image_{i}.png\")\n```",
         "operationId": "generate_image_v2_generate_image_v2_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/generate_image_v2_generate_image_v2_postRequestBody"
+          "$ref": "#/components/requestBodies/GenerateImageV2GenerateImageV2Post"
         },
         "responses": {
           "202": {
@@ -55,7 +55,7 @@
         "description": "Generates a pixel art image using the Pixen model.\n\nSupported image size:\n- Minimum side 16 and maximum area 512x512\n- Width and height must be divisible by 4\n- Must be square when either side is below 32\n\nSupported features:\n- Transparent background\n- Outline and detail style controls\n- View and direction\n\nUsing the Python client:\n```python\nimport pixellab\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\nresponse = client.generate_image_pixen(\n    description=\"cute wizard\",\n    image_size=dict(width=64, height=64),\n    no_background=True,\n)\nresponse.image.pil_image()\n```",
         "operationId": "generate_image_pixen_create_image_pixen_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/generate_image_pixen_create_image_pixen_postRequestBody"
+          "$ref": "#/components/requestBodies/GenerateImagePixenCreateImagePixenPost"
         },
         "responses": {
           "200": {
@@ -93,7 +93,7 @@
         "description": "Generate new pixel art images that match the style of reference images.\n\nThis endpoint creates new pixel art based on a text description while matching\nthe visual style (colors, shading, detail level) of provided style reference images.\nReturns immediately with a background job ID. Poll `GET /v2/background-jobs/{job_id}`\nto check status and retrieve results.\n\n**Key Features:**\n- Style-consistent generation from reference images\n- Multiple style references supported (1-4 images)\n- Optional style description for fine-tuning\n- Automatic background removal\n- Non-blocking: returns job ID immediately\n\n**Output Size:**\n- Deduced from the style images: the largest dimension across all style\n  images becomes the (square) output size, minimum 16, maximum 512 pixels\n- Non-square style images are centered on a square canvas\n\n**Output Counts by Size:**\n- 16-42 pixels: Returns 64 images (8x8 grid)\n- 43-85 pixels: Returns 16 images (4x4 grid)\n- 86-170 pixels: Returns 4 images (2x2 grid)\n- 171-512 pixels: Returns 1 image\n\n**Usage Pattern:**\n1. POST to this endpoint (returns `background_job_id`)\n2. Poll `GET /v2/background-jobs/{background_job_id}` every 5-10 seconds\n3. When `status` is `completed`, images are in `last_response`\n\n**Example:**\n```python\nresponse = client.generate_with_style_v2(\n    style_images=[{\"image\": style_img, \"width\": 64, \"height\": 64}],\n    description=\"a wizard casting a spell\",\n    style_description=\"16-bit RPG style with bright colors\",\n)\n# Output size is deduced from the style images (64x64 here)\n```",
         "operationId": "generate_with_style_v2_generate_with_style_v2_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/generate_with_style_v2_generate_with_style_v2_postRequestBody"
+          "$ref": "#/components/requestBodies/GenerateWithStyleV2GenerateWithStyleV2Post"
         },
         "responses": {
           "202": {
@@ -128,7 +128,7 @@
         "description": "Creates a pixel art image based on the provided parameters. Called \"Create image (new)\" in the plugin.\n\nSupported image size: \n- Minimum area 32x32 and maximum area 400x400  \n\nSupported features:\n- Init image\n- Forced palette\n- Transparent background\n\nUsing the Python client:\n```python\nimport pixellab\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\nresponse = client.generate_image_pixflux(\n    description=\"cute dragon\",\n    image_size=dict(width=128, height=128),\n)\nresponse.image.pil_image()\n```",
         "operationId": "generate_image_pixflux_create_image_pixflux_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/generate_image_pixflux_create_image_pixflux_postRequestBody"
+          "$ref": "#/components/requestBodies/GenerateImagePixfluxCreateImagePixfluxPost"
         },
         "responses": {
           "200": {
@@ -166,7 +166,7 @@
         "description": "Creates a pixel art image based on the provided parameters, as a background job.\n\nSame parameters and output as `POST /create-image-pixflux`, but returns immediately\nwith a background job ID instead of holding the connection open during generation.\n\nSupported image size:\n- Minimum area 32x32 and maximum area 400x400\n\nSupported features:\n- Init image\n- Forced palette\n- Transparent background\n\n**Usage Pattern:**\n1. POST to this endpoint (returns `background_job_id`)\n2. Poll `GET /v2/background-jobs/{background_job_id}` every 5-10 seconds\n3. When `status` is `completed`, the image is in `last_response.image.base64`",
         "operationId": "create_image_pixflux_background_create_image_pixflux_background_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create_image_pixflux_background_create_image_pixflux_background_postRequestBody"
+          "$ref": "#/components/requestBodies/CreateImagePixfluxBackgroundCreateImagePixfluxBackgroundPost"
         },
         "responses": {
           "202": {
@@ -201,7 +201,7 @@
         "description": "Generates a pixel art image based on the provided parameters. Called \"Create S-M image\" in the plugin.\n\nSupported image size: \n- Maximum area 200x200  \n\nSupported features:\n- Style image\n- Inpainting\n- Init image\n- Forced palette\n- Transparent background\n\nUsing the Python client:\n```python\nimport pixellab\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\nresponse = client.generate_image_bitforge(\n    description=\"cute dragon\",\n    image_size=dict(width=128, height=128),\n)\nresponse.image.pil_image()\n```",
         "operationId": "generate_image_bitforge_create_image_bitforge_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/generate_image_bitforge_create_image_bitforge_postRequestBody"
+          "$ref": "#/components/requestBodies/GenerateImageBitforgeCreateImageBitforgePost"
         },
         "responses": {
           "200": {
@@ -239,7 +239,7 @@
         "description": "Convert regular images to pixel art style.\n\nSupported image sizes:\n- Input: Minimum 16x16, maximum 2048x2048\n- Output: Minimum 16x16, maximum 512x512\n\n**Best practices:**\n- Recommended output sizes is 1/4 of the input size\n- Keep the same aspect ratio as the input image\n\n**Staying close to the source:** by default the model reinterprets the image as\npixel art. To reproduce it faithfully instead, set `fixer=true` (faithful mode)\nand raise `init_image_strength` (0-999), which starts the diffusion from the\nsource image rather than from noise.\n\nUsing the Python client:\n```python\nimport pixellab\nfrom PIL import Image\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\nsource_img = Image.open(\"photo.png\")\n\nresult = client.image_to_pixelart(\n    image=source_img,\n    image_size=dict(width=256, height=256),\n    output_size=dict(width=64, height=64),\n)\nresult.image.pil_image().save(\"pixelart.png\")\n```",
         "operationId": "image_to_pixelart_image_to_pixelart_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/image_to_pixelart_image_to_pixelart_postRequestBody"
+          "$ref": "#/components/requestBodies/ImageToPixelartImageToPixelartPost"
         },
         "responses": {
           "200": {
@@ -277,7 +277,7 @@
         "description": "Convert an arbitrary image into high-quality pixel art.\n\nUnlike `image-to-pixelart`, the output size is decided automatically — the\nnative pixel scale is detected and the result is downscaled and cleaned up for\nyou, so you don't pass an output size. Provide an optional `description` to nudge\nthe style (palette, dithering, mood).\n\nReturns immediately with a background job ID. Poll\n`GET /v2/background-jobs/{job_id}` to check status and retrieve the result.\n\n**Input:** any PNG/JPEG. Images larger than 2048px on the longest side are scaled\ndown before conversion.\n\n**Usage Pattern:**\n1. POST to this endpoint (returns `background_job_id`)\n2. Poll `GET /v2/background-jobs/{background_job_id}` every 5-10 seconds\n3. When `status` is `completed`, the pixel art image is in `last_response`\n\nUsing the Python client:\n```python\nimport pixellab\nfrom PIL import Image\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\nsource_img = Image.open(\"photo.png\")\n\nresponse = client.image_to_pixelart_pro(\n    image=source_img,\n    description=\"retro vibes with light dithering\",\n)\n```",
         "operationId": "image_to_pixelart_pro_image_to_pixelart_pro_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/image_to_pixelart_pro_image_to_pixelart_pro_postRequestBody"
+          "$ref": "#/components/requestBodies/ImageToPixelartProImageToPixelartProPost"
         },
         "responses": {
           "202": {
@@ -312,7 +312,7 @@
         "description": "Create a character with 8 directional rotations using the v3 model.\n\n**Two modes:**\n\n1. **Reference image** — provide `reference_image` (south-facing sprite) and the v3 model\n   rotates it into 8 directional views. Cost: `ceil(w*h*8 / 65536)` generations.\n\n2. **From scratch** — omit `reference_image` and the Pixen model generates a south-facing\n   sprite from `description`, then v3 rotates it. Cost: 1 (pixen) + `ceil(s*s*8 / 65536)`\n   where s = max(width, height). Supports `outline` and `detail` style params.\n\nThe result is persisted as a character — same system as\n`/v2/create-character-with-8-directions` — so it can be animated, downloaded, and listed\nalongside template-created characters.\n\n**Reference image must be south-facing for best results.** The frontend Character Creator\nenforces this and the v3 model is trained around a south-facing input.\n\n**Sizes:**\n- `reference_image`: max 256x256 pixels.\n- From-scratch `image_size`: 32-256 pixels (default 64x64). This size is sent to\n  the sprite generator; a non-square result is padded to a `max(width, height)` square\n  before rotation, and the character is stored at that square size. Animations get\n  their own larger canvas when the motion needs room.\n- Reference mode uses the uploaded frame dimensions for generation; `image_size` is\n  advisory.\n\nUsing the Python client:\n```python\nimport pixellab\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\n# Reference image mode\nresponse = client.create_character_v3(\n    description=\"cyberpunk samurai\",\n    reference_image=dict(base64=south_facing_image_b64),\n)\n\n# From-scratch mode\nresponse = client.create_character_v3(\n    description=\"cute wizard with blue robes\",\n    image_size=dict(width=48, height=48),\n)\n```",
         "operationId": "create_character_v3_create_character_v3_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create_character_v3_create_character_v3_postRequestBody"
+          "$ref": "#/components/requestBodies/CreateCharacterV3CreateCharacterV3Post"
         },
         "responses": {
           "200": {
@@ -347,7 +347,7 @@
         "description": "Create a character with 8 directional rotations using Pro mode.\n\nPro mode uses a reference-based generator for higher quality and finer style control than\ntemplate-based standard mode. The result is persisted as a\ncharacter — same system as `/v2/create-character-with-8-directions` — so it can be\nanimated, downloaded, and listed alongside template-created characters.\n\n**Three methods** (controlled by the `method` field):\n- `create_with_style` (default): text + optional style reference image.\n- `create_from_concept`: text + concept image (e.g. a sketch/mood board) + optional style reference.\n- `rotate_character`: rotate an existing character image into 8 directions.\n\n**Style character** (`style_character_id`): pass the id of one of your existing\n8-direction characters to use it as the style reference — its 8 directional sprites\nguide the new character's style in every direction. Combine with `create_with_style`\n(text-driven) or `create_from_concept` (concept image in that character's style).\n\n**Sizes:**\n- `image_size`: 32-168 pixels (requested output frame). The persisted rotations share\n  a square canvas whose side is at least `max(width, height)` and may grow up to 256\n  pixels to fit generated content.\n  Must be at least the style character's sprite content size when `style_character_id` is set.\n- `reference_image`: max 168x168.\n- `concept_image`: max 1024x1024.\n\n**Cost:** dynamic — typically 20-40 generations depending on output size.\n\nUsing the Python client:\n```python\nimport pixellab\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\n# Style-guided creation\nresponse = client.create_character_pro(\n    description=\"cyberpunk samurai with red coat\",\n    image_size=dict(width=96, height=96),\n    method=\"create_with_style\",\n)\n\n# Rotate an existing character\nresponse = client.create_character_pro(\n    description=\"cyberpunk samurai\",\n    image_size=dict(width=96, height=96),\n    method=\"rotate_character\",\n    reference_image=dict(base64=existing_character_b64),\n)\n```",
         "operationId": "create_character_pro_create_character_pro_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create_character_pro_create_character_pro_postRequestBody"
+          "$ref": "#/components/requestBodies/CreateCharacterProCreateCharacterProPost"
         },
         "responses": {
           "200": {
@@ -382,7 +382,7 @@
         "description": "Animate an existing character (background processing).\n\nThree modes:\n- **template**: Provide template_animation_id for skeleton-based animation (1 gen/direction).\n- **v3** (default when no template): Custom animation from action text. Supports frame_count (4-16). One job per direction.\n- **pro**: Custom animation that generates directions sequentially, using completed sides as reference (20-40 gen/direction).",
         "operationId": "create_character_animation_characters_animations_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create_character_animation_characters_animations_postRequestBody"
+          "$ref": "#/components/requestBodies/CreateCharacterAnimationCharactersAnimationsPost"
         },
         "responses": {
           "200": {
@@ -408,7 +408,7 @@
         "description": "Animate an existing character with multiple frames showing movement or action.\n\nThis endpoint creates animation sequences for characters that were previously created using\nthe create-character-with-4-directions or create-character-with-8-directions endpoints.\n\n**Key Features:**\n- Animate existing characters by character_id\n- Support for multiple directions (or all character directions)\n- Flexible frame count (2-12 frames)\n- Template-based animations for consistent motion\n- Asynchronous processing for multiple directions\n- Automatic storage and organization\n\n**Character Requirements:**\n- Character must exist and belong to the authenticated user\n- Character must have been created with 4 or 8 directions\n- Animation will use the same template and settings as the character\n\n**Direction Handling:**\n- Multiple directions per request (specify via directions field)\n- If directions field is None/empty, animates all available directions\n- Each direction creates a separate background job\n- Returns list of job IDs (one per direction)\n\n**AI Freedom Parameter:**\n- ai_freedom controls how closely the AI follows the template (0=strict, 1000=creative)\n- Lower values produce more consistent animations\n- Higher values allow more creative variations\n\n**Style Settings:**\n- Uses the same style settings (outline, shading, detail) as the original character by default\n- Can override individual style settings in the request\n\n**Frame Count:**\n- Determined by the animation template (not configurable in request)\n- Typically 4-6 frames for most animations\n\n**Image Size:**\n- Uses the same image size as the original character\n- All frames have consistent dimensions\n- Stored in organized folder structure\n\n**Pricing:**\n- Template mode: 1 generation per direction\n- Custom mode: 20-40 generations per direction (depending on character size)\n\n**V3 Mode (default when no template):**\nCustom animation. Provide `action_description` and optionally `frame_count` (4-16, default 8).\n- One job per direction, directions independent\n- Directions default to south only if not specified\n- Best for: single-direction animations, frame count control\n\n**Pro Mode:**\nCustom animation with sequential direction generation. Set `mode=\"pro\"` with `action_description`.\n- Generates directions one-by-one, using completed sides as reference\n- 20-40 generations per direction depending on character size\n- Directions default to south only if not specified",
         "operationId": "create_character_animation_animate_character_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create_character_animation_animate_character_postRequestBody"
+          "$ref": "#/components/requestBodies/CreateCharacterAnimationAnimateCharacterPost"
         },
         "responses": {
           "200": {
@@ -449,7 +449,7 @@
         "description": "Queues a generation job that applies a text edit to an existing character's rotations and saves the result as a new character grouped with the source via group_id. The same edit is applied consistently across all 4 or 8 directions.",
         "operationId": "create_character_state_create_character_state_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create_character_state_create_character_state_postRequestBody"
+          "$ref": "#/components/requestBodies/CreateCharacterStateCreateCharacterStatePost"
         },
         "responses": {
           "200": {
@@ -490,7 +490,7 @@
         "description": "Generate a character or object facing 4 cardinal directions (south, west, east, north).\n\nThis endpoint creates 4 separate rotation images plus a combined spritesheet in a 4x1 layout.\nPerfect for game development where you need character sprites facing all directions.\n\n**Key Features:**\n- Fixed 4-rotation layout (south, west, east, north)\n- Individual rotation images + combined spritesheet\n- Style customization (outline, shading, detail)\n- Color palette support\n- Character proportions customization\n- Optional reference images per direction (upload some or all)\n- Optimized for game sprites and character assets\n\n**Character Proportions:**\n- Use preset proportions: chibi, cartoon, stylized, realistic_male, realistic_female, heroic\n- Or customize individual body proportions: head size, arm/leg length, shoulder/hip width\n- All characters use the advanced mannequin template with bone scaling\n\n**Reference Images (optional `directions` field):**\n- Provide existing sprites for some or all of south/east/north/west.\n- Missing directions are AI-generated; provided ones are used as-is (frozen).\n- Each image's dimensions must match `image_size` exactly (else 422).\n- 'south' is required when any reference is provided (bipedal). Quadruped templates\n  (bear/cat/dog/horse/lion) additionally require 'east'. Oblique view requires all\n  4 cardinals.\n- When provided, `proportions` / bone scaling is ignored — the reference images\n  drive the pose.\n\nUsing the Python client:\n```python\nimport pixellab\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\n# Example: With preset proportions\nresponse = client.generate_4_rotations(\n    description=\"futuristic robot warrior\",\n    image_size=dict(width=96, height=96),\n    view=\"low_top_down\",\n    proportions=dict(\n        type=\"preset\",\n        name=\"heroic\"\n    )\n)\n\n# Access individual images by direction\nsouth_facing = response.images[\"south\"]\nwest_facing = response.images[\"west\"]\neast_facing = response.images[\"east\"]\nnorth_facing = response.images[\"north\"]\n\n# Example: Provide existing sprites for some directions; generate the rest\nimport base64\ndef to_b64(path):\n    return base64.b64encode(open(path, \"rb\").read()).decode()\n\nresponse = client.generate_4_rotations(\n    description=\"brave knight\",\n    image_size=dict(width=32, height=32),\n    directions={\n        \"south\": {\"base64\": to_b64(\"knight_south.png\")},\n    },\n)\n```",
         "operationId": "create_character_with_4_directions_create_character_with_4_directions_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create_character_with_4_directions_create_character_with_4_directions_postRequestBody"
+          "$ref": "#/components/requestBodies/CreateCharacterWith4DirectionsCreateCharacterWith4DirectionsPost"
         },
         "responses": {
           "200": {
@@ -525,7 +525,7 @@
         "description": "Generate a character or object facing 8 directions (all cardinal and diagonal directions).\n\nThis endpoint creates 8 rotation images in a dictionary format for easy access by direction name.\nPerfect for detailed movement systems in games where smooth directional changes are important.\n\n**Two Generation Modes:**\n- **standard** (default): Template-based skeleton generation. Costs 1 generation. Uses all style parameters.\n- **pro**: AI reference-based generation for higher quality. Costs 20-40 generations depending on size. Ignores outline, shading, detail, proportions, and text_guidance_scale.\n\n**The 8 Directions:**\n- south (facing down)\n- south-east (diagonal down-right)\n- east (facing right)\n- north-east (diagonal up-right)\n- north (facing up)\n- north-west (diagonal up-left)\n- west (facing left)\n- south-west (diagonal down-left)\n\n**Key Features:**\n- Fixed 8-rotation layout in clockwise order starting from south\n- Returns dictionary of images by direction name\n- Style customization (outline, shading, detail) - standard mode only\n- Color palette support\n- Character proportions customization - standard mode only\n- Optional reference images per direction (standard mode only)\n- Optimized for games requiring smooth directional movement\n\n**Reference Images (optional `directions` field, standard mode only):**\n- Provide existing sprites for some or all of the 8 directions.\n- Missing directions are AI-generated; provided ones are used as-is (frozen).\n- Each image's dimensions must match `image_size` exactly (else 422).\n- 'south' is required when any reference is provided (bipedal). Quadruped templates\n  (bear/cat/dog/horse/lion) additionally require 'east'.\n- When provided, `proportions` / bone scaling is ignored — the reference images\n  drive the pose.\n\nUsing the Python client:\n```python\nimport pixellab\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\n# Standard mode (default)\nresponse = client.create_character_with_8_directions(\n    description=\"futuristic robot warrior\",\n    image_size=dict(width=96, height=96),\n    view=\"low top-down\",\n    proportions=dict(type=\"preset\", name=\"heroic\")\n)\n\n# Pro mode (higher quality, costs more)\nresponse = client.create_character_with_8_directions(\n    description=\"futuristic robot warrior\",\n    image_size=dict(width=48, height=48),\n    view=\"low top-down\",\n    mode=\"pro\"\n)\n\n# Provide existing sprites for some directions; generate the rest (standard only)\nimport base64\ndef to_b64(path):\n    return base64.b64encode(open(path, \"rb\").read()).decode()\n\nresponse = client.create_character_with_8_directions(\n    description=\"brave knight\",\n    image_size=dict(width=32, height=32),\n    directions={\n        \"south\": {\"base64\": to_b64(\"knight_south.png\")},\n        \"east\":  {\"base64\": to_b64(\"knight_east.png\")},\n    },\n)\n\n# Access individual images by direction\nsouth_facing = response.images[\"south\"]\neast_facing = response.images[\"east\"]\n```",
         "operationId": "create_character_with_8_directions_create_character_with_8_directions_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create_character_with_8_directions_create_character_with_8_directions_postRequestBody"
+          "$ref": "#/components/requestBodies/CreateCharacterWith8DirectionsCreateCharacterWith8DirectionsPost"
         },
         "responses": {
           "200": {
@@ -729,7 +729,7 @@
         "description": "Update the tags for a specific character.\n\nThis endpoint replaces all tags for a character with the provided list.\nTags are used for filtering and organizing your characters.\n\n**Features:**\n- Replace all tags at once (set operation)\n- Automatic normalization (trim whitespace)\n- Case-insensitive duplicate detection\n- Maximum 20 tags per character\n- Maximum 50 characters per tag\n\n**Tag Validation:**\n- Empty strings are ignored\n- Duplicate tags (case-insensitive) are removed\n- Leading/trailing whitespace is trimmed\n- Tags longer than 50 characters are rejected\n\n**Common Use Cases:**\n- Organize characters by game genre: [\"rpg\", \"fantasy\"]\n- Mark character types: [\"npc\", \"enemy\", \"boss\"]\n- Track creation status: [\"finished\", \"needs-animation\"]\n- Group by visual style: [\"cute\", \"pixel-art\", \"8-bit\"]\n\n**Authentication:**\nRequires a valid API token. You can only update tags for characters you created.",
         "operationId": "update_character_tags_characters__character_id__tags_patch",
         "requestBody": {
-          "$ref": "#/components/requestBodies/update_character_tags_characters__character_id__tags_patchRequestBody"
+          "$ref": "#/components/requestBodies/UpdateCharacterTagsCharactersCharacterIDTagsPatch"
         },
         "responses": {
           "200": {
@@ -770,7 +770,7 @@
         "description": "Queues a 1-direction object generation job. Returns immediately with a `background_job_id` and `object_id`. Poll [GET /v2/objects/{object_id}](#api-1/tag/object-management/GET/objects/{object_id}) for status.\n\nObject generation uses the Pro Tools and costs **20–40 generations** per call on a subscription (depending on the resulting image size).\n\nProduces one or more single-direction object(s). When `size` results in more than one candidate (see the `size` parameter), the object enters `review` status and you must pick which candidates to keep via [POST /v2/objects/{object_id}/select-frames](#api-1/tag/objects/POST/objects/{object_id}/select-frames) (or discard via [POST /v2/objects/{object_id}/dismiss-review](#api-1/tag/objects/POST/objects/{object_id}/dismiss-review)). A single candidate is kept automatically.\n\nFor an 8-direction object, use [POST /v2/create-8-direction-object](#api-1/tag/objects/POST/create-8-direction-object). To create a state/variant of an existing object, use [POST /v2/objects/{object_id}/states](#api-1/tag/objects/POST/objects/{object_id}/states). To create an object placed in a specific map, use [POST /v2/map-objects](#api-1/tag/map-objects/POST/map-objects).",
         "operationId": "create_1_direction_object_create_1_direction_object_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create_1_direction_object_create_1_direction_object_postRequestBody"
+          "$ref": "#/components/requestBodies/Create1DirectionObjectCreate1DirectionObjectPost"
         },
         "responses": {
           "200": {
@@ -805,7 +805,7 @@
         "description": "Queues an 8-direction object generation job. Returns immediately with a `background_job_id` and `object_id`. Poll [GET /v2/objects/{object_id}](#api-1/tag/object-management/GET/objects/{object_id}) for status.\n\nObject generation uses the Pro Tools and costs **20–40 generations** per call on a subscription (depending on the resulting image size).\n\nProduces an object rendered from 8 angles in one shot.\n\nFor a static single-direction object, use [POST /v2/create-1-direction-object](#api-1/tag/objects/POST/create-1-direction-object). To create a state/variant of an existing object, use [POST /v2/objects/{object_id}/states](#api-1/tag/objects/POST/objects/{object_id}/states). To create an object placed in a specific map, use [POST /v2/map-objects](#api-1/tag/map-objects/POST/map-objects).",
         "operationId": "create_8_direction_object_create_8_direction_object_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create_8_direction_object_create_8_direction_object_postRequestBody"
+          "$ref": "#/components/requestBodies/Create8DirectionObjectCreate8DirectionObjectPost"
         },
         "responses": {
           "200": {
@@ -845,7 +845,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/animate_object_objects__object_id__animations_postRequestBody"
+          "$ref": "#/components/requestBodies/AnimateObjectObjectsObjectIDAnimationsPost"
         },
         "responses": {
           "200": {
@@ -941,7 +941,7 @@
         "description": "Queues a generation job that applies a text edit to an existing object's image(s) and saves the result as a new object grouped with the source via group_id.",
         "operationId": "create_object_state_objects__object_id__states_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create_object_state_objects__object_id__states_postRequestBody"
+          "$ref": "#/components/requestBodies/CreateObjectStateObjectsObjectIDStatesPost"
         },
         "responses": {
           "200": {
@@ -986,7 +986,7 @@
         "summary": "Promote selected frames of a review object to completed objects",
         "operationId": "select_object_frames_objects__object_id__select_frames_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/select_object_frames_objects__object_id__select_frames_postRequestBody"
+          "$ref": "#/components/requestBodies/SelectObjectFramesObjectsObjectIDSelectFramesPost"
         },
         "responses": {
           "200": {
@@ -1168,7 +1168,7 @@
         "description": "Update the tags for a specific object.\n\nThis endpoint replaces all tags for an object with the provided list.\nTags are used for filtering and organizing your objects.\n\n**Features:**\n- Replace all tags at once (set operation)\n- Automatic normalization (trim whitespace)\n- Case-insensitive duplicate detection\n- Maximum 20 tags per object\n- Maximum 50 characters per tag\n\n**Authentication:**\nRequires a valid API token. You can only update tags for objects you created.",
         "operationId": "update_object_tags_objects__object_id__tags_patch",
         "requestBody": {
-          "$ref": "#/components/requestBodies/update_object_tags_objects__object_id__tags_patchRequestBody"
+          "$ref": "#/components/requestBodies/UpdateObjectTagsObjectsObjectIDTagsPatch"
         },
         "responses": {
           "200": {
@@ -1295,7 +1295,7 @@
         "description": "Generate an animation from a reference frame and a text action description.\n\nReturns immediately with a background job ID. Poll `GET /v2/background-jobs/{job_id}`\nto retrieve results when generation completes.\n\n**How it works:**\n1. Submit the first frame and action description; receive a `background_job_id` immediately.\n2. Poll `GET /v2/background-jobs/{background_job_id}` every 2-5 seconds.\n3. When `status` is `completed`, the generated frames are available at `last_response.images`.\n\n**Size Limits:**\n- Maximum image dimension: 256x256 pixels\n- Total pixel budget: width × height × frame_count ≤ 524,288\n\n**Frame Count Guidelines:**\n- 4 frames: Simple loops (idle, breathing)\n- 8 frames: Standard animations (walk, run)\n- 16 frames: Complex animations (attack combos)\n\nTypical generation time: 30-180 seconds.\n\nUsing the Python client:\n```python\nimport pixellab, time\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\njob = client.animate_with_text_v3(\n    first_frame=first_frame_image,\n    action=\"walking forward\",\n    frame_count=8,\n)\n\nwhile True:\n    result = client.get_background_job(job.background_job_id)\n    if result.status == \"completed\":\n        images = [img.pil_image() for img in result.last_response[\"images\"]]\n        break\n    if result.status == \"failed\":\n        raise RuntimeError(result.last_response[\"detail\"])\n    time.sleep(2)\n```",
         "operationId": "animate_with_text_v3_animate_with_text_v3_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/animate_with_text_v3_animate_with_text_v3_postRequestBody"
+          "$ref": "#/components/requestBodies/AnimateWithTextV3AnimateWithTextV3Post"
         },
         "responses": {
           "200": {
@@ -1330,7 +1330,7 @@
         "description": "Beta: requires a tier 1 subscription or higher. Generate an animation from a frame and a text description of the motion. Powered by MiniMax H3.\n\nReturns immediately with a background job ID. Poll `GET /v2/background-jobs/{job_id}`\nto retrieve results when generation completes.\n\n**How it works:**\n1. Submit the first frame and motion description; receive a `background_job_id` immediately.\n2. Poll `GET /v2/background-jobs/{background_job_id}` every 2-5 seconds.\n3. When `status` is `completed`, `last_response.images` holds `frame_count + 1` frames:\n   index 0 is your input frame unchanged, then the generated frames.\n\n**Size Limits:**\n- Maximum image dimension: 256x256 pixels\n- Frame count: multiples of 4, from 4 to 40 at any size up to 256x256\n\n**Prompt enhancement:** set `enhance_prompt: true` to have a short description\n(\"shooting a bow\") expanded into a detailed PixMiniMax motion prompt first; add\n`direction` to hold the sprite's facing and aim attacks that way. The expanded\ntext comes back in `enhanced_prompt` (+0.05 generations).\n\n**Cost:** priced by generation time, 6 generations for the longest clip (40 frames). Examples: 64x64 at 4 / 8 / 16 / 40 frames = 1 / 1 / 2 / 6 generations; 80x80 at 8 frames = 1; 32x32 at 4 frames = 1. Use `GET /animate-minimax-h3/cost` semantics: the price depends on size and frame count, and sizes just above 64 or 128 pixels are cheaper than sizes just below them because the model works on an upscaled canvas.\n\nTypical generation time: 1-5 minutes.",
         "operationId": "animate_pixminimax_animate_pixminimax_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/animate_pixminimax_animate_pixminimax_postRequestBody"
+          "$ref": "#/components/requestBodies/AnimatePixminimaxAnimatePixminimaxPost"
         },
         "responses": {
           "200": {
@@ -1365,7 +1365,7 @@
         "description": "Generate intermediate animation frames between two keyframe images.\n\nThis endpoint creates smooth transitions between a start and end image,\ngenerating intermediate frames that animate the transformation.\nReturns immediately with a background job ID. Poll `GET /v2/background-jobs/{job_id}`\nto check status and retrieve results.\n\n**Key Features:**\n- Generates intermediate frames between two keyframes\n- Text-guided interpolation with action descriptions\n- Maintains visual consistency across frames\n- Optional background removal\n- Non-blocking: returns job ID immediately\n\n**Example Actions:**\n- \"morphing\"\n- \"transforming into a werewolf\"\n- \"powering up with energy\"\n- \"dissolving into particles\"\n- \"walking forward\"\n\n**Output:**\n- Returns multiple interpolated frames (typically 4-8 frames)\n\n**Supported Sizes:**\n- Frame sizes from 16x16 to 128x128 pixels\n\n**Usage Pattern:**\n1. POST to this endpoint (returns `background_job_id`)\n2. Poll `GET /v2/background-jobs/{background_job_id}` every 5-10 seconds\n3. When `status` is `completed`, interpolated frames are in `last_response`\n\nUsing the Python client:\n```python\nimport pixellab\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\nresponse = client.interpolation_v2(\n    start_image=start_keyframe,\n    end_image=end_keyframe,\n    action=\"transforming\",\n    image_size=dict(width=64, height=64)\n)\n\n# Save interpolated frames\nfor i, image in enumerate(response.images):\n    image.pil_image().save(f\"frame_{i}.png\")\n```",
         "operationId": "interpolation_v2_interpolation_v2_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/interpolation_v2_interpolation_v2_postRequestBody"
+          "$ref": "#/components/requestBodies/InterpolationV2InterpolationV2Post"
         },
         "responses": {
           "202": {
@@ -1400,7 +1400,7 @@
         "description": "Edit multiple animation frames with a text description.\n\nThis endpoint applies a consistent edit across all animation frames,\nmaintaining temporal coherence while transforming the animation.\nReturns immediately with a background job ID. Poll `GET /v2/background-jobs/{job_id}`\nto check status and retrieve results.\n\n**Key Features:**\n- Apply text-based edits to animation sequences\n- Maintains frame-to-frame consistency\n- Supports 2-16 frames per request (max depends on frame size, see below)\n- Optional background removal\n- Non-blocking: returns job ID immediately\n\n**Example Edits:**\n- \"add a red cape\"\n- \"make it glow blue\"\n- \"add armor plating\"\n- \"change to ice theme\"\n\n**Supported Sizes:**\n- Frame sizes from 16x16 to 256x256 pixels (model supports up to 256x256)\n\n**Frame limits by output size (image_size):**\n- 16-64px: Up to 16 frames (4x4 grid)\n- 65-80px: Up to 9 frames (3x3 grid)\n- 81-256px: Up to 4 frames (2x2 grid)\n\nAll frames are packed into a single grid image for editing, so larger frames\nfill the fixed generation canvas faster and fewer fit per request.\n\n**Usage Pattern:**\n1. POST to this endpoint (returns `background_job_id`)\n2. Poll `GET /v2/background-jobs/{background_job_id}` every 5-10 seconds\n3. When `status` is `completed`, edited frames are in `last_response`\n\nUsing the Python client:\n```python\nimport pixellab\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\n# Load your animation frames\nframes = [...]  # List of FrameImage objects\n\nresponse = client.edit_animation_v2(\n    description=\"add a glowing sword\",\n    frames=frames,\n    image_size=dict(width=64, height=64)\n)\n\n# Save edited frames\nfor i, image in enumerate(response.images):\n    image.pil_image().save(f\"frame_{i}.png\")\n```",
         "operationId": "edit_animation_v2_edit_animation_v2_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/edit_animation_v2_edit_animation_v2_postRequestBody"
+          "$ref": "#/components/requestBodies/EditAnimationV2EditAnimationV2Post"
         },
         "responses": {
           "202": {
@@ -1435,7 +1435,7 @@
         "description": "Transfer an outfit/appearance from a reference image to animation frames.\n\nThis endpoint takes a reference image containing a desired outfit or appearance\nand applies it consistently across multiple animation frames.\nReturns immediately with a background job ID. Poll `GET /v2/background-jobs/{job_id}`\nto check status and retrieve results.\n\n**Key Features:**\n- Transfer outfit/appearance from reference to animation\n- Maintains animation motion while changing appearance\n- Supports 2-16 frames per request (max depends on frame size, see below)\n- Optional background removal\n- Non-blocking: returns job ID immediately\n\n**Use Cases:**\n- Apply armor/clothing to walking animation\n- Change character skin/color across animation\n- Transfer weapon or equipment to action sequence\n- Consistent reskin of sprite animations\n\n**Supported Sizes:**\n- Frame sizes from 32x32 to 256x256 pixels\n\n**Frame limits by output size (image_size):**\n- 32-64px: Up to 15 frames (4x4 grid)\n- 65-80px: Up to 8 frames (3x3 grid)\n- 81-256px: Up to 3 frames (2x2 grid)\n\nThe reference image and all frames are packed into a single grid; the reference\nuses one slot, so each tier holds one fewer frame than a plain edit. Larger\nframes fill the fixed generation canvas faster, so fewer fit per request.\n\n**Usage Pattern:**\n1. POST to this endpoint (returns `background_job_id`)\n2. Poll `GET /v2/background-jobs/{background_job_id}` every 5-10 seconds\n3. When `status` is `completed`, frames are in `last_response`\n\nUsing the Python client:\n```python\nimport pixellab\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\nresponse = client.transfer_outfit_v2(\n    reference_image=outfit_reference,  # Image with desired outfit\n    frames=animation_frames,           # Animation to apply outfit to\n    image_size=dict(width=64, height=64)\n)\n\n# Save frames with transferred outfit\nfor i, image in enumerate(response.images):\n    image.pil_image().save(f\"frame_{i}.png\")\n```",
         "operationId": "transfer_outfit_v2_transfer_outfit_v2_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/transfer_outfit_v2_transfer_outfit_v2_postRequestBody"
+          "$ref": "#/components/requestBodies/TransferOutfitV2TransferOutfitV2Post"
         },
         "responses": {
           "202": {
@@ -1470,7 +1470,7 @@
         "description": "Generate pixel art animation from text.\n\nThis endpoint creates animations from a reference image and action description.\nReturns immediately with a background job ID. Poll `GET /v2/background-jobs/{job_id}`\nto check status and retrieve results.\n\n**Key Features:**\n- Text-guided animation generation\n- Automatic background removal\n- Non-blocking: returns job ID immediately\n\n**Frame Counts by Size:**\n- 32x32 pixels: Returns 16 animation frames\n- 64x64 pixels: Returns 16 animation frames\n- 128x128 pixels: Returns 4 animation frames\n- 170x170 pixels: Returns 4 animation frames\n- 256x256 pixels: Returns 4 animation frames\n\n**Supported Actions:**\n- Simple actions: walk, run, jump, attack\n- Complex actions: cast spell, dance, celebrate\n- Any action description in natural language\n\n**Camera Views:**\n- `none`: No camera hint (default)\n- `low top-down`: Classic 3/4 RPG view (~20 degrees from horizontal)\n- `high top-down`: Steeper overhead angle (~35 degrees)\n- `side`: Side scroller, eye level view\n\n**Directions:**\n- `none`: No direction hint (default)\n- `south`: Front visible, `north`: Back visible\n- `east`: Facing right, `west`: Facing left\n- Also: `south-east`, `south-west`, `north-east`, `north-west`\n\n**Image Size Limits:**\n- Supported sizes: 32x32 to 256x256 pixels for both reference and output images\n- Recommended: 64x64 for best quality/performance balance\n\n**Usage Pattern:**\n1. POST to this endpoint (returns `background_job_id`)\n2. Poll `GET /v2/background-jobs/{background_job_id}` every 5-10 seconds\n3. When `status` is `completed`, animation frames are in `last_response`\n\nUsing the Python client:\n```python\nimport pixellab\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\nresponse = client.animate_with_text_v2(\n    reference_image=reference_image,\n    reference_image_size=dict(width=64, height=64),\n    action=\"walk\",\n    image_size=dict(width=64, height=64),\n    view=\"low top-down\",\n    direction=\"south\",\n)\n\n# Access individual frames\nfor i, frame in enumerate(response.images):\n    frame.pil_image().save(f\"frame_{i}.png\")\n```",
         "operationId": "animate_with_text_v2_animate_with_text_v2_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/animate_with_text_v2_animate_with_text_v2_postRequestBody"
+          "$ref": "#/components/requestBodies/AnimateWithTextV2AnimateWithTextV2Post"
         },
         "responses": {
           "202": {
@@ -1505,7 +1505,7 @@
         "description": "Creates a pixel art animation based on text description and parameters.\n\nSupported image sizes: \n- 64x64\n\nSupported features:\n- Text-guided animation generation\n- Inpainting\n- Init image\n- Forced palette\n- Multiple frames\n\nUsing the Python client:\n```python\nimport pixellab\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\nresponse = client.animate_with_text(\n    description=\"human mage\",\n    action=\"walk\",\n    view=\"side\",\n    direction=\"south\",\n    image_size=dict(width=64, height=64),\n    reference_image=reference_image,\n    n_frames=4\n)\nimages = [image.pil_image() for image in response.images]\n```",
         "operationId": "animate_with_text_animate_with_text_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/animate_with_text_animate_with_text_postRequestBody"
+          "$ref": "#/components/requestBodies/AnimateWithTextAnimateWithTextPost"
         },
         "responses": {
           "200": {
@@ -1543,7 +1543,7 @@
         "description": "Estimates the skeleton of a character, returning a list of keypoints to use with the skeleton animation tool.\n\nSupported image sizes: \n- 16x16\n- 32x32\n- 64x64\n- 128x128\n- 256x256\n\nUsing the Python client:\n```python\nimport pixellab\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\nresponse = client.estimate_skeleton(\n    image=image_of_the_character_on_a_transparent_background,\n)\nresponse.keypoints\n```",
         "operationId": "estimate_skeleton_estimate_skeleton_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/estimate_skeleton_estimate_skeleton_postRequestBody"
+          "$ref": "#/components/requestBodies/EstimateSkeletonEstimateSkeletonPost"
         },
         "responses": {
           "200": {
@@ -1581,7 +1581,7 @@
         "description": "Beta: requires a tier 1 subscription or higher. Animate a sprite by posing it: one skeleton per frame, drawn from a single reference image.\n\nReturns immediately with a background job ID. Poll `GET /v2/background-jobs/{job_id}`\nto retrieve results when generation completes.\n\n**How it works:**\n1. Send the sprite, the skeleton of the pose it is already in (`first_frame_keypoints`), and one skeleton per frame you want (`keypoints`).\n2. Poll `GET /v2/background-jobs/{background_job_id}` every 5-10 seconds.\n3. When `status` is `completed`, `last_response.images` holds exactly `len(keypoints)` frames, each the size of `first_frame`. The reference frame is not returned.\n\n**Skeletons:** 18 humanoid joints, `x`/`y` as fractions 0-1 of the image. `depth` is\noptional -- leave it out and it is taken from the standing pose of `template_id` for\nyour direction, which is what an editor without 3D data should do. `GET /v2/estimate-skeleton`\nwill derive a skeleton from an image if you do not have one.\n\n**Limits:** 3-15 frames, canvas up to 256x256.\n\n**Cost:** by generation time, which depends on frame count and not on canvas size:\n3 frames = 2 generations,\n8 frames = 3,\n15 frames = 4. A longer clip\nis nearly free, so prefer one long clip to several short ones.\n\nTypical generation time: 3-5 minutes.",
         "operationId": "animate_with_skeleton_v3_animate_with_skeleton_v3_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/animate_with_skeleton_v3_animate_with_skeleton_v3_postRequestBody"
+          "$ref": "#/components/requestBodies/AnimateWithSkeletonV3AnimateWithSkeletonV3Post"
         },
         "responses": {
           "200": {
@@ -1619,7 +1619,7 @@
         "description": "Creates a pixel art animation based on the provided parameters. Called \"Animate with skeleton\" in the plugin.\n\nSupported image sizes: \n- 16x16\n- 32x32\n- 64x64\n- 128x128\n- 256x256  \n\nSupported features:\n- Inpainting\n- Init image\n- Forced palette\n\nUsing the Python client:\n```python\nimport pixellab\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\nresponse = client.animate_with_skeleton(\n    view=\"side\",\n    direction=\"south\",\n    image_size=dict(width=64, height=64),\n    reference_image=reference_image,\n    inpainting_images=existing_animation_frames,\n    mask_images=mask_images,\n    skeleton_keypoints=skeleton_keypoints,\n)\nimages = [image.pil_image() for image in response.images]\n```",
         "operationId": "animate_with_skeleton_animate_with_skeleton_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/animate_with_skeleton_animate_with_skeleton_postRequestBody"
+          "$ref": "#/components/requestBodies/AnimateWithSkeletonAnimateWithSkeletonPost"
         },
         "responses": {
           "200": {
@@ -1657,7 +1657,7 @@
         "description": "Generate 8 directional rotations from a reference frame.\n\nReturns immediately with a background job ID. Poll `GET /v2/background-jobs/{job_id}`\nto retrieve results when generation completes.\n\n**How it works:**\n1. Submit the reference frame; receive a `background_job_id` immediately.\n2. Poll `GET /v2/background-jobs/{background_job_id}` every 2-5 seconds.\n3. When `status` is `completed`, the 8 rotation frames are available at `last_response.images`.\n\n**Size Limits:**\n- Maximum image dimension: 256x256 pixels\n\nTypical generation time: 30-180 seconds.\n\nUsing the Python client:\n```python\nimport pixellab, time\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\njob = client.generate_8_rotations_v3(\n    first_frame=reference_image,\n)\n\nwhile True:\n    result = client.get_background_job(job.background_job_id)\n    if result.status == \"completed\":\n        images = [img.pil_image() for img in result.last_response[\"images\"]]\n        break\n    if result.status == \"failed\":\n        raise RuntimeError(result.last_response[\"detail\"])\n    time.sleep(2)\n```",
         "operationId": "generate_8_rotations_v3_generate_8_rotations_v3_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/generate_8_rotations_v3_generate_8_rotations_v3_postRequestBody"
+          "$ref": "#/components/requestBodies/Generate8RotationsV3Generate8RotationsV3Post"
         },
         "responses": {
           "200": {
@@ -1692,7 +1692,7 @@
         "description": "Generate 8 rotational views of a character or object.\n\nThis endpoint creates 8 directional views from a reference image, useful for\ngame sprites that need to face multiple directions.\nReturns immediately with a background job ID. Poll `GET /v2/background-jobs/{job_id}`\nto check status and retrieve results.\n\n**Methods:**\n- **rotate_character**: Rotate existing sprite to 8 directions (`reference_image`)\n- **create_with_style**: Create new character from description (requires `description`)\n- **create_from_concept**: Create rotations from concept art (requires `concept_image`)\n\n**Output:**\nReturns 8 images in order: South, South-West, West, North-West, North,\nNorth-East, East, South-East\n\n**View Angles:**\n- `low top-down`: ~20 degree angle (most common for RPGs)\n- `high top-down`: ~35 degree angle\n- `side`: Side-scroller eye level\n\n**Supported Sizes:**\n- image_size: 32x32 to 168x168 (matches reference_to_8_rotations). reference_image max 168x168, concept_image max 1024x1024.\n\n**Usage Pattern:**\n1. POST to this endpoint (returns `background_job_id`)\n2. Poll `GET /v2/background-jobs/{background_job_id}` every 5-10 seconds\n3. When `status` is `completed`, rotations are in `last_response`\n\n**rotate_character Example:**\n```python\nresponse = client.generate_8_rotations_v2(\n    method=\"rotate_character\",\n    reference_image={\"image\": char_img, \"width\": 64, \"height\": 64},\n    image_size={\"width\": 64, \"height\": 64},\n    view=\"low top-down\"\n)\n```\n\n**create_with_style Example:**\n```python\nresponse = client.generate_8_rotations_v2(\n    method=\"create_with_style\",\n    description=\"a knight in armor\",\n    image_size={\"width\": 64, \"height\": 64}\n)\n```",
         "operationId": "generate_8_rotations_v2_generate_8_rotations_v2_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/generate_8_rotations_v2_generate_8_rotations_v2_postRequestBody"
+          "$ref": "#/components/requestBodies/Generate8RotationsV2Generate8RotationsV2Post"
         },
         "responses": {
           "202": {
@@ -1727,7 +1727,7 @@
         "description": "Rotates a pixel art image based on the provided parameters. Called \"Rotate\" in the plugin.\n\nSupported image sizes: \n- 16x16\n- 32x32\n- 64x64\n- 128x128    \n\nSupported features:\n- Init image\n- Forced palette\n\nUsing the Python client:\n```python\nimport pixellab\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\nresponse = client.rotate(\n    from_view=\"side\",\n    to_view=\"side\",\n    from_direction=\"south\",\n    to_direction=\"east\",\n    image_size=dict(width=16, height=16),\n    from_image=image_of_subject_facing_south,\n)\nresponse.image.pil_image()\n```",
         "operationId": "generate_rotation_rotate_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/generate_rotation_rotate_postRequestBody"
+          "$ref": "#/components/requestBodies/GenerateRotationRotatePost"
         },
         "responses": {
           "200": {
@@ -1765,7 +1765,7 @@
         "description": "Edit pixel art images using text or reference image.\n\nThis endpoint supports two editing methods:\n1. **edit_with_text**: Apply edits based on a text description\n2. **edit_with_reference**: Match the style of a reference image\n\nReturns immediately with a background job ID. Poll `GET /v2/background-jobs/{job_id}`\nto check status and retrieve results.\n\n**Output sizes (image_size):**\n- **Range:** 32x32 to 512x512 pixels. Each returned image has the dimensions you set in `image_size`.\n- Input images (`edit_images`, `reference_image`) must be at most 512x512 each.\n\n**Key Features:**\n- Edit multiple images consistently\n- Text-guided or reference-guided editing\n- Preserves original structure and poses\n- Optional background removal\n- Non-blocking: returns job ID immediately\n\n**Frame limits by output size (image_size):**\n- 32-64px: Up to 16 frames (4x4 grid), 15 with reference\n- 65-80px: Up to 9 frames (3x3 grid), 8 with reference\n- 81-128px: Up to 4 frames (2x2 grid), 3 with reference\n- 129-512px: 1 frame (both methods)\n\n**Usage Pattern:**\n1. POST to this endpoint (returns `background_job_id`)\n2. Poll `GET /v2/background-jobs/{background_job_id}` every 5-10 seconds\n3. When `status` is `completed`, edited images are in `last_response`\n\n**edit_with_text Example:**\n```python\nresponse = client.edit_images_v2(\n    method=\"edit_with_text\",\n    edit_images=[{\"image\": img, \"width\": 64, \"height\": 64}],\n    image_size={\"width\": 64, \"height\": 64},\n    description=\"add a wizard hat\"\n)\n```\n\n**edit_with_reference Example:**\n```python\nresponse = client.edit_images_v2(\n    method=\"edit_with_reference\",\n    edit_images=[{\"image\": img, \"width\": 64, \"height\": 64}],\n    image_size={\"width\": 64, \"height\": 64},\n    reference_image={\"image\": ref_img, \"width\": 64, \"height\": 64}\n)\n```",
         "operationId": "edit_images_v2_edit_images_v2_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/edit_images_v2_edit_images_v2_postRequestBody"
+          "$ref": "#/components/requestBodies/EditImagesV2EditImagesV2Post"
         },
         "responses": {
           "202": {
@@ -1800,7 +1800,7 @@
         "description": "Edit an existing pixel art image with a text instruction, on the Pixen model.\n\nReturns YOUR image edited — pose, composition and pixel style are preserved and\nonly what you asked for changes. Returns immediately with a background job ID;\npoll `GET /v2/background-jobs/{job_id}` to check status and retrieve the result.\n\n### Sizes\nThe two canvases are bounded differently, both enforced here so an oversized\nrequest costs nothing instead of failing on a worker.\n- **Source image**: max **256px per side** (a hard model limit) and area at\n  least 16x16. Crop an oversized source — do not rescale pixel art, it destroys\n  the pixel grid.\n- **Target canvas**: area **16x16 to 256x256** (65,536px). This is an area, so a\n  wide-but-short canvas like 128x512 is fine. Defaults to the source image's\n  size. The model re-renders at the target size rather than rescaling, so the\n  source and the result may legitimately differ in size.\n- **Both canvases**: every side a **multiple of 4**. A 63x222 sprite is rejected\n  with the aligned size to use (64x224) — pad it with transparent pixels, never\n  rescale pixel art.\n\n### Cost\n1 generation.\n\n### Usage Pattern\n1. POST to this endpoint (returns `background_job_id`)\n2. Poll `GET /v2/background-jobs/{background_job_id}` every 5-10 seconds\n3. When `status` is `completed`, the edited image is in `last_response`",
         "operationId": "edit_image_pixen_edit_image_pixen_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/edit_image_pixen_edit_image_pixen_postRequestBody"
+          "$ref": "#/components/requestBodies/EditImagePixenEditImagePixenPost"
         },
         "responses": {
           "202": {
@@ -1838,7 +1838,7 @@
         "description": "Edit an existing pixel art image based on a text description.\n\nReturns immediately with a background job ID. Poll `GET /v2/background-jobs/{job_id}`\nto check status and retrieve results.\n\n### Supported Image Sizes\n- **Reference image**: 16x16 to 400x400 pixels (minimum 16x16 area)\n- **Target canvas**: 16x16 to 400x400 pixels (minimum 16x16 area)\n- **Free tier limit**: Maximum 200x200 pixels for target canvas\n\n### Output\nReturns a single edited image matching the target canvas dimensions.\n\n### Usage Pattern\n1. POST to this endpoint (returns `background_job_id`)\n2. Poll `GET /v2/background-jobs/{background_job_id}` every 5-10 seconds\n3. When `status` is `completed`, edited image is in `last_response`",
         "operationId": "edit_image_edit_image_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/edit_image_edit_image_postRequestBody"
+          "$ref": "#/components/requestBodies/EditImageEditImagePost"
         },
         "responses": {
           "202": {
@@ -1873,7 +1873,7 @@
         "description": "Inpaint/edit pixel art images using AI.\n\nThis endpoint uses AI-powered inpainting for high-quality\nresults. It allows you to edit specific areas of an image based on a\ntext description.\nReturns immediately with a background job ID. Poll `GET /v2/background-jobs/{job_id}`\nto check status and retrieve results.\n\n**Key Features:**\n- AI-powered inpainting with text descriptions\n- Optional context image for style guidance\n- Bounding box support for precise editing\n- Background removal option\n- Mask-based editing (white = generate, black = preserve)\n- Non-blocking: returns job ID immediately\n\n**Image Sizes:**\n- Inpainting image: 32x32 to 512x512 pixels\n- Context image: up to 1024x1024 pixels (optional)\n\n**Mask Format:**\n- White pixels = areas to generate/replace\n- Black pixels = areas to preserve\n\n**Usage Pattern:**\n1. POST to this endpoint (returns `background_job_id`)\n2. Poll `GET /v2/background-jobs/{background_job_id}` every 5-10 seconds\n3. When `status` is `completed`, inpainted image is in `last_response`\n\nUsing the Python client:\n```python\nimport pixellab\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\nresponse = client.inpaint_v3(\n    description=\"add a glowing sword\",\n    inpainting_image=character_image,\n    mask_image=sword_area_mask,\n)\n\nresponse.images[0].pil_image().save(\"edited.png\")\n```",
         "operationId": "inpaint_v3_inpaint_v3_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/inpaint_v3_inpaint_v3_postRequestBody"
+          "$ref": "#/components/requestBodies/InpaintV3InpaintV3Post"
         },
         "responses": {
           "202": {
@@ -1908,7 +1908,7 @@
         "description": "Creates a pixel art image based on the provided parameters. Called \"Inpaint\" in the plugin.\n\nSupported image size: \n- Maximum area 200x200\n\nSupported features:\n- Inpainting\n- Init image\n- Forced palette\n- Transparent background\n\nUsing the Python client:\n```python\nimport pixellab\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\nresponse = client.inpaint(\n    description=\"boy with wings\",\n    image_size=dict(width=16, height=16),\n    inpainting_image=image_of_boy_without_wings,\n    mask_image=mask_image,\n)\nresponse.image.pil_image()\n```",
         "operationId": "generate_inpainting_inpaint_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/generate_inpainting_inpaint_postRequestBody"
+          "$ref": "#/components/requestBodies/GenerateInpaintingInpaintPost"
         },
         "responses": {
           "200": {
@@ -1978,7 +1978,7 @@
         "description": "Creates a Wang tileset (16 tiles for standard, 25 for transition_size=1.0) in the background and returns immediately with job ID",
         "operationId": "generate_tileset_tilesets_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/generate_tileset_tilesets_postRequestBody"
+          "$ref": "#/components/requestBodies/GenerateTilesetTilesetsPost"
         },
         "responses": {
           "202": {
@@ -2016,7 +2016,7 @@
         "description": "Creates a complete tileset for game development with seamlessly connecting tiles.\n\nA tileset is a collection of individual tiles (16 for standard, 25 for transition_size=1.0) that can be combined\nto create larger maps and environments. This endpoint generates tiles representing two terrain levels - \"lower\"\nand \"upper\" - that connect seamlessly when placed adjacent to each other.\n\n**Understanding Lower and Upper Terrain:**\n- **Lower terrain**: The base level terrain (e.g., water, grass, lava)\n- **Upper terrain**: The elevated terrain level (e.g., beach, dirt path, rock)\n- **Transition size**: Controls the visual height difference between levels. Larger transitions (0.25-0.5)\n  create a more pronounced elevation effect, making it appear as if the upper terrain is on a higher plane\n\n**Using the tiles (Wang corner autotiling):**\nDefine your terrain on a vertex grid — one terrain value (\"lower\"/\"upper\") per vertex, so a\nmap of W×H cells has (W+1)×(H+1) vertices. Each map cell reads its 4 corner vertices\n(NW, NE, SW, SE) and you place the tile whose `pattern_4x4` (or `corners`) matches those\nvalues. Adjacent cells share vertices, so tiles connect seamlessly by construction.\n\n**transition_size=1.0 (cliff tilesets):**\n- Returns 25 tiles instead of 16, and corners take a third value: \"transition\"\n- A cliff wall occupies the map cell BELOW the terrain boundary, so a cliff spans two rows\n- The 25 tiles cover only 21 distinct corner combinations — 4 wall-continuation tiles share\n  their corners with a twin. Select tiles by `pattern_4x4`, not by `corners` alone, or those\n  twins collapse into one another\n\nFeatures:\n- Returns individual tiles with unique IDs (16 for standard, 25 for transition_size=1.0)\n- Corner-based terrain classification (NW, NE, SW, SE)\n- A 4x4 terrain pattern per tile, for matching tiles against a painted map\n- Lower and upper terrain levels for elevation variety\n- Tile sizes: 16x16 or 32x32 (standard); 16/32/64 with mode='pro' (experimental)\n- Seamless tile connections for map creation\n- Vertical transitions support with transition_size=1.0\n- Style control via outline, shading, and detail parameters\n- Reference images for style guidance\n- Color palette control\n\nResponse format:\n- Each tile includes: UUID, name, description, base64 image, corner data, 4x4 pattern\n- Corner data specifies \"lower\", \"upper\", or \"transition\" terrain for each corner (NW, NE, SW, SE)\n- `pattern_4x4` encodes terrain as 0=lower, 1=upper, 2=transition, 255=wildcard. `row_1`/`row_2`\n  hold the four corners; `row_0`/`row_3` hold the terrain above/below (only meaningful for\n  transition tiles). This is the field to match on when placing tiles\n- `connections` is deprecated and not populated for new top-down tilesets — use `pattern_4x4` (or `corners`) instead\n- Metadata includes terrain prompts and creation timestamp\n\nCommon use cases:\n- **Beach environments**: water/sand with wet sand transitions\n- **Forest paths**: grass/dirt with muddy transitions\n- **Dungeon floors**: stone floor/walls with cracked stone transitions\n- **Snow landscapes**: snow/rock with icy transitions\n- **Desert oases**: sand/water with muddy bank transitions\n- **Lava caves**: rock/lava with molten rock transitions\n\nUsing the Python client:\n```python\nimport pixellab\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\n# Generate a beach/ocean tileset\nresponse = client.generate_tileset(\n    lower_description=\"deep blue ocean water with gentle waves\",\n    upper_description=\"golden sandy beach\",\n    transition_description=\"wet sand with foam\",\n    tile_size=dict(width=16, height=16),\n    transition_size=0.5,\n    view=\"high top-down\"\n)\n\n# Access individual tiles\nfor tile in response.tileset.tiles:\n    print(f\"Tile {tile.name}: {tile.description}\")\n    print(f\"  Corners: NW={tile.corners.NW}, NE={tile.corners.NE}, SW={tile.corners.SW}, SE={tile.corners.SE}\")\n    print(f\"  Pattern: {tile.pattern_4x4.row_1} / {tile.pattern_4x4.row_2}\")\n\n    # Save individual tile images\n    import base64\n    with open(f\"tile_{tile.id[:8]}.png\", \"wb\") as f:\n        f.write(base64.b64decode(tile.image.base64))\n```",
         "operationId": "generate_tileset_create_tileset_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/generate_tileset_create_tileset_postRequestBody"
+          "$ref": "#/components/requestBodies/GenerateTilesetCreateTilesetPost"
         },
         "responses": {
           "202": {
@@ -2161,7 +2161,7 @@
         "description": "Creates a sidescroller platform tileset in the background and returns immediately with job ID. Retrieve results with GET /tilesets/{tileset_id}.",
         "operationId": "generate_tileset_sidescroller_tilesets_sidescroller_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/generate_tileset_sidescroller_tilesets_sidescroller_postRequestBody"
+          "$ref": "#/components/requestBodies/GenerateTilesetSidescrollerTilesetsSidescrollerPost"
         },
         "responses": {
           "202": {
@@ -2199,7 +2199,7 @@
         "description": "Creates a complete sidescroller tileset for 2D platformer game development.\n\nA sidescroller tileset is a collection of individual tiles designed for side-view platformer games.\nThe tiles represent floating platforms with transparent backgrounds, allowing them to be placed\nover any game background.\n\n**Key differences from top-down tilesets:**\n- **View**: Always \"side\" perspective (fixed, cannot be changed)\n- **Background**: Always transparent (no background terrain)\n- **Use case**: 2D platformer games, side-scrolling adventures\n- **No slopes**: Only flat horizontal platform surfaces\n\n**Understanding the layers:**\n- **Lower terrain**: The main platform/ground material (e.g., stone, grass, metal)\n- **Transition**: Optional decorative layer on top of the platform (e.g., moss, snow, rust)\n- **Background**: Automatically transparent (not configurable)\n\nFeatures:\n- Returns individual tiles with unique IDs\n- Transparent background for easy overlay on game scenes\n- Tile sizes: 16x16 or 32x32 pixels\n- Seamless tile connections for platform creation\n- Optional transition layer for surface details\n- Style control via outline, shading, and detail parameters\n- Reference images for style guidance\n- Color palette control\n\n**Retrieving results:**\nAfter submission, use `GET /tilesets/{tileset_id}` to retrieve the completed tileset.\nThe same endpoint is used for both top-down and sidescroller tilesets.\n\nCommon use cases:\n- **Stone platforms**: stone bricks with moss transitions\n- **Grass ground**: green grass with flower decorations\n- **Metal grating**: industrial platforms with rust details\n- **Ice platforms**: frozen surfaces with snow cover\n- **Wood platforms**: wooden planks with vine overgrowth\n- **Candy platforms**: colorful candy blocks with frosting\n\nUsing the Python client:\n```python\nimport pixellab\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\n# Generate a stone platform tileset\nresponse = client.generate_tileset_sidescroller(\n    lower_description=\"stone brick platform with carved details\",\n    transition_description=\"moss and small green plants\",\n    tile_size=dict(width=16, height=16),\n    transition_size=0.25,\n)\n\n# Retrieve completed tileset using the tileset_id\ntileset = client.get_tileset(response.tileset_id)\n```",
         "operationId": "generate_tileset_sidescroller_create_tileset_sidescroller_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/generate_tileset_sidescroller_create_tileset_sidescroller_postRequestBody"
+          "$ref": "#/components/requestBodies/GenerateTilesetSidescrollerCreateTilesetSidescrollerPost"
         },
         "responses": {
           "202": {
@@ -2309,7 +2309,7 @@
         "description": "Creates pixel art tiles based on the provided parameters.\n\nGenerates multiple tile variations by drawing tile shape outlines and having\nAI fill them with pixel art — or, with `tile_feature`, a connectable set:\n\n- **`tile_feature: \"roads\"`** — an 18-configuration path/road autotile set\n  (square_topdown, isometric)\n- **`tile_feature: \"tileset\"`** — a terrain-transition Wang set: 16 corner\n  tiles for square_topdown/isometric/oblique, a 32-tile coastline for\n  hex/hex_pointy; describe it as a transition (\"grass to water\")\n- **`tile_feature: \"building\"`** — a construction kit: floor, connectable\n  wall segments, doorways, pillar and staircase (square_topdown, isometric,\n  oblique; see the `building_*` parameters)\n- omit `tile_feature` for independent tile variations\n\nSupported tile types:\n- **hex**: Flat-top hexagonal tiles\n- **hex_pointy**: Pointy-top hexagonal tiles\n- **isometric**: Diamond/rhombus tiles\n- **oblique**: Square top with sheared depth — connectable sets only\n  (`tile_feature` tileset or building; see `oblique_lean`)\n- **octagon**: 8-sided polygon tiles\n- **square_topdown**: Square tiles at angle\n\nSupported tile sizes: 16-128px (32px recommended). Connectable sets have\ntighter per-shape ranges — most top out at 96px, and square top-down roads\nare exactly 32px.\n\nGeneration time: ~15-30 seconds (async processing)\n\n**Prompting tip:** For best control over each tile variation, number each tile in the description:\n`\"1). grass tile 2). dirt tile 3). stone tile 4). water tile\"` — the number of tiles is auto-computed based on tile size.\n\nUsing the Python client:\n```python\nimport pixellab\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\n# independent tile variations\nresponse = client.create_tiles_pro(\n    description=\"1). grass tile 2). dirt tile 3). stone tile 4). water tile 5). sand tile 6). lava tile\",\n    tile_type=\"isometric\",\n    tile_size=32,\n)\n\n# connectable sets\nresponse = client.create_tiles_pro(\n    description=\"grass to water\",\n    tile_type=\"isometric\",\n    tile_size=32,\n    tile_feature=\"tileset\",\n)\nresponse = client.create_tiles_pro(\n    description=\"stone walls with wooden floor\",\n    tile_type=\"isometric\",\n    tile_size=32,\n    tile_feature=\"building\",\n    building_wall_description=\"rough stone brick walls\",\n    building_floor_description=\"wooden plank floor\",\n)\n```",
         "operationId": "create_tiles_pro_create_tiles_pro_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create_tiles_pro_create_tiles_pro_postRequestBody"
+          "$ref": "#/components/requestBodies/CreateTilesProCreateTilesProPost"
         },
         "responses": {
           "202": {
@@ -2453,7 +2453,7 @@
         "description": "Creates a isometric tile based on the provided parameters.\n\nSupported image size: \n- Minimum area 16x16 and maximum area 64x64\n- Sizes above 24x24 often produce better quality results\n\nSupported features:\n- Init image  \n- Forced palette\n\nUsing the Python client:\n```python\nimport pixellab\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\nresponse = client.generate_isometric_tile(\n    description=\"grass on top of dirt\",\n    image_size=dict(width=32, height=32),\n)\nresponse.image.pil_image()\n```",
         "operationId": "generate_isometric_tile_create_isometric_tile_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/generate_isometric_tile_create_isometric_tile_postRequestBody"
+          "$ref": "#/components/requestBodies/GenerateIsometricTileCreateIsometricTilePost"
         },
         "responses": {
           "202": {
@@ -2600,7 +2600,7 @@
         "description": "Creates a pixel art object with transparent background for game maps.\n\nReturns immediately with job ID. Processing takes ~15-30 seconds.\n\nUsing the Python client:\n```python\nimport pixellab\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\nresponse = client.create_map_object(\n    description=\"wooden treasure chest\",\n    image_size={\"width\": 128, \"height\": 128}\n)\n```",
         "operationId": "create_map_object_map_objects_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create_map_object_map_objects_postRequestBody"
+          "$ref": "#/components/requestBodies/CreateMapObjectMapObjectsPost"
         },
         "responses": {
           "200": {
@@ -2675,7 +2675,7 @@
         "description": "Generate a shape-based pixel-art UI panel from a text description.\n\nReturns immediately with a `background_job_id` and `ui_asset_id`. Poll\n`GET /v2/ui-assets/{ui_asset_id}` until `status` is `completed`, then read\n`image_url`.\n\nProvide `pieces` to control the panel shape (editor view coords: longer side 512,\nshorter side aspect-scaled); omit it for a default full-canvas rounded-rect panel.",
         "operationId": "create_ui_asset_create_ui_asset_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create_ui_asset_create_ui_asset_postRequestBody"
+          "$ref": "#/components/requestBodies/CreateUIAssetCreateUIAssetPost"
         },
         "responses": {
           "202": {
@@ -2710,7 +2710,7 @@
         "description": "Generate pixel art UI elements from text description.\n\nThis endpoint creates pixel art UI elements such as buttons, health bars,\ninventory slots, dialogue boxes, and other game interface components.\nReturns immediately with a background job ID. Poll `GET /v2/background-jobs/{job_id}`\nto check status and retrieve results.\n\n**Key Features:**\n- Text-to-image UI generation\n- Optional concept image for design guidance\n- Optional color palette specification\n- Automatic background removal\n- Optimized for game UI assets\n- Non-blocking: returns job ID immediately\n\n**Supported Sizes:**\n- Minimum 16x16. Maximum depends on aspect ratio (e.g. 512x512 for square, 688x384 for 16:9).\n\n**Example Descriptions:**\n- \"medieval stone button with gold trim\"\n- \"sci-fi health bar with neon glow\"\n- \"wooden inventory slot with metal corners\"\n- \"pixel art dialogue box with decorative border\"\n\n**Usage Pattern:**\n1. POST to this endpoint (returns `background_job_id`)\n2. Poll `GET /v2/background-jobs/{background_job_id}` every 5-10 seconds\n3. When `status` is `completed`, images are in `last_response`\n\nUsing the Python client:\n```python\nimport pixellab\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\nresponse = client.generate_ui_v2(\n    description=\"medieval stone button\",\n    image_size=dict(width=256, height=256),\n    color_palette=\"brown and gold\"\n)\n\nresponse.images[0].pil_image().save(\"button.png\")\n```",
         "operationId": "generate_ui_v2_generate_ui_v2_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/generate_ui_v2_generate_ui_v2_postRequestBody"
+          "$ref": "#/components/requestBodies/GenerateUIV2GenerateUIV2Post"
         },
         "responses": {
           "202": {
@@ -2845,7 +2845,7 @@
         "description": "Convert between a bust portrait and a full-body character sprite.\n\nPick the conversion with `direction`:\n- `portrait_to_character`: a bust portrait in → a full-body character sprite out.\n- `character_to_portrait`: a full-body character in → a bust portrait out.\n\nThe output preserves the subject's identity/outfit while matching an internal\nsize-specific pixel-art style. Returns immediately with a background job ID. Poll\n`GET /v2/background-jobs/{job_id}` to check status and retrieve the result image.\n\n**Supported Sizes:** 16, 32, 48, 64, 128, 160 px (128/160 render at 2K).\n\n**Usage Pattern:**\n1. POST to this endpoint (returns `background_job_id`)\n2. Poll `GET /v2/background-jobs/{background_job_id}` every 5-10 seconds\n3. When `status` is `completed`, the sprite is in `last_response.images[0]`\n\nUsing the Python client:\n```python\nimport pixellab\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\nresponse = client.portrait_character_pro(\n    direction=\"portrait_to_character\",\n    image=portrait_image,\n    view=\"low top-down\",\n    result_size=64,\n)\nresponse.images[0].pil_image().save(\"character.png\")\n```",
         "operationId": "portrait_character_pro_portrait_character_pro_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/portrait_character_pro_portrait_character_pro_postRequestBody"
+          "$ref": "#/components/requestBodies/PortraitCharacterProPortraitCharacterProPost"
         },
         "responses": {
           "202": {
@@ -2927,7 +2927,7 @@
         "description": "Attach a bust portrait to a character. Free — no generation runs.\n\nA portrait is the starting frame for talking animations: `POST /v2/vocal-animation`\ngenerates the mouth positions from it. Overwrites any existing portrait.\n\nTo generate a portrait from a full-body sprite first, use\n`POST /v2/portrait-character-pro` with `direction=\"character_to_portrait\"`.",
         "operationId": "set_portrait_characters__character_id__portrait_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/set_portrait_characters__character_id__portrait_postRequestBody"
+          "$ref": "#/components/requestBodies/SetPortraitCharactersCharacterIDPortraitPost"
         },
         "responses": {
           "200": {
@@ -2959,7 +2959,7 @@
         "description": "Generate the set of mouth positions (\"visemes\") that lets a\nportrait be lip-synced to any line of text.\n\nThis is the only step that costs generations, and you pay it once per expression.\nTurning the result into talking animations with `POST /v2/talking-gif` is free and\nunlimited.\n\nProvide **either**:\n- `character_id` — generates from that character's stored portrait and saves the\n  set onto it, so `/v2/talking-gif` only needs the character id afterwards.\n- `portrait` — generates from the image you supply and stores nothing; the mouth\n  positions come back inline from the GET below for you to keep.\n\nCall once per expression (`mood`). `viseme_count` must match across expressions on\none character.\n\n**Requires a paid plan.**\n\n**Usage pattern:**\n1. POST here (returns `background_job_id`)\n2. Poll `GET /v2/vocal-animation/{background_job_id}` every 10-15 seconds\n3. When `status` is `completed`, either the set is on your character, or the\n   frames are in `visemes`",
         "operationId": "create_vocal_animation_vocal_animation_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create_vocal_animation_vocal_animation_postRequestBody"
+          "$ref": "#/components/requestBodies/CreateVocalAnimationVocalAnimationPost"
         },
         "responses": {
           "202": {
@@ -3040,7 +3040,7 @@
         "description": "Turn a line of text into an animated GIF of the character speaking it.\n\n**Free** — this spends no generations. It only re-orders mouth positions that\n`POST /v2/vocal-animation` already produced, so the cost lands once per expression\nand every line of dialogue after that is free. Returns immediately; there is no job\nto poll.\n\nProvide **either** `character_id` (plus an optional `mood`) to use the positions\nstored on a character, **or** `visemes` to pass them in directly.\n\nMouth shapes come from the letters of `text`, so any latin-alphabet language works.",
         "operationId": "create_talking_gif_talking_gif_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create_talking_gif_talking_gif_postRequestBody"
+          "$ref": "#/components/requestBodies/CreateTalkingGifTalkingGifPost"
         },
         "responses": {
           "200": {
@@ -3075,7 +3075,7 @@
         "description": "Return the frame-by-frame plan for speaking a line — which mouth\nposition to show, for how long, and how far through the text it lands.\n\n**Free**, and nothing is rendered: use this instead of `/v2/talking-gif` when you\nare animating in a game engine and want to drive the mouth yourself rather than\nplay a GIF.\n\nWith `character_id` the response also carries `grid_url`, `row` and `viseme_order`,\nwhich is everything needed to blit the right cell: column comes from each frame,\nrow from the chosen expression.\n\nTimings are exact here — unlike a GIF, an engine can hold a frame for any duration.",
         "operationId": "get_lip_sync_lip_sync_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/get_lip_sync_lip_sync_postRequestBody"
+          "$ref": "#/components/requestBodies/GetLipSyncLipSyncPost"
         },
         "responses": {
           "200": {
@@ -3110,7 +3110,7 @@
         "description": "Generate a styled pixel-art font from a text description.\n\nProduces an 80-glyph atlas plus a ready-to-use TrueType (`.ttf`) font with A-Z,\na-z, digits 0-9, and common game-UI punctuation. Returns immediately with a\nbackground job ID. Poll `GET /v2/background-jobs/{job_id}`; when `status` is\n`completed`, `last_response` contains `images[0]` (the glyph atlas PNG) and\n`ttf_base64` (the font file as base64).\n\n**Price:** 25 subscription generations or at least $0.125 in credits. `glyph_px`\n8/16/32/64 is the native bitmap size per glyph.\n\n**Usage Pattern:**\n1. POST to this endpoint (returns `background_job_id`)\n2. Poll `GET /v2/background-jobs/{background_job_id}` every 5-10 seconds\n3. On `completed`: decode `ttf_base64` to a `.ttf`; `images[0]` is the atlas\n\nUsing the Python client:\n```python\nimport pixellab\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\nresponse = client.generate_font_pro(\n    description=\"warm orange arcade font\",\n    weight=\"Bold\",\n    glyph_px=16,\n)\n```",
         "operationId": "generate_font_pro_generate_font_pro_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/generate_font_pro_generate_font_pro_postRequestBody"
+          "$ref": "#/components/requestBodies/GenerateFontProGenerateFontProPost"
         },
         "responses": {
           "202": {
@@ -3184,7 +3184,7 @@
         "description": "Recover native-resolution pixel art from an upscaled image.\n\nPixel art posted online is almost always scaled up — a 32x32 sprite saved at\n512x512. Feeding that to a generation endpoint as a reference wastes detail and\nconfuses the models, because every art pixel is a 16x16 block. This endpoint\ndetects the underlying pixel grid and downsamples back onto it, so you get the\n32x32 sprite the artist actually drew.\n\nUse it before sending user-supplied artwork to `create-image-bitforge`,\n`image-to-pixelart` or any endpoint taking a style/reference image.\n\nConstraints:\n- Minimum 256x256 — grid detection needs enough pixels to find the lattice\n- Maximum area 2048x2048\n- **The result is opaque.** Grid detection works in RGB, so any transparency in\n  the input is composited onto WHITE first. Run `/remove-background` on the\n  result if you need the sprite cut out again.\n\nThe grid does not have to be uniform: images with slightly uneven pixel sizes\n(from a lossy resize) are handled.\n\n```bash\ncurl -X POST https://api.pixellab.ai/v2/unzoom \\\n    -H \"Authorization: Bearer YOUR_API_TOKEN\" \\\n    -H \"Content-Type: application/json\" \\\n    -d '{\"image\": {\"base64\": \"iVBORw0KGgoAAAANS...\"}}'\n```",
         "operationId": "unzoom_endpoint_unzoom_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/unzoom_endpoint_unzoom_postRequestBody"
+          "$ref": "#/components/requestBodies/UnzoomEndpointUnzoomPost"
         },
         "responses": {
           "200": {
@@ -3219,7 +3219,7 @@
         "description": "Clean up and refine existing pixel art without changing its size.\n\nSharpens edges, removes stray and anti-aliased pixels, and tightens the palette\nwhile keeping the sprite on its existing pixel grid. Useful on art that has been\nthrough a lossy pipeline, hand-drawn art that needs tidying, or output from\nanother tool that is nearly-but-not-quite on-grid.\n\nThis does NOT resize. If your image is an upscaled sprite (each art pixel is a\nblock of screen pixels), run `/unzoom` first to get back to the native grid, then\ncorrect.\n\n- Maximum area 1024x1024\n- Transparency is preserved — the alpha channel is carried around the model and\n  re-applied to the result\n- `strength` 0.0-1.0: start at 0.1 and raise it only if the art needs real repair\n\n```bash\ncurl -X POST https://api.pixellab.ai/v2/correct-pixelart \\\n    -H \"Authorization: Bearer YOUR_API_TOKEN\" \\\n    -H \"Content-Type: application/json\" \\\n    -d '{\"images\": [{\"base64\": \"iVBORw0KGgoAAAANS...\"}], \"strength\": 0.1}'\n```",
         "operationId": "correct_pixelart_endpoint_correct_pixelart_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/correct_pixelart_endpoint_correct_pixelart_postRequestBody"
+          "$ref": "#/components/requestBodies/CorrectPixelartEndpointCorrectPixelartPost"
         },
         "responses": {
           "200": {
@@ -3254,7 +3254,7 @@
         "description": "Quantize images onto a smaller, shared palette.\n\nPixel art reads as pixel art partly because of its restricted palette. AI output\nand converted artwork often carry hundreds of near-identical colors; this snaps\nthem onto a tight palette, optionally with ordered dithering.\n\nPassing several frames in one call is the point of the endpoint: they are\nquantized together, so an animation or a character's eight directions come back\nsharing ONE palette instead of drifting apart frame by frame.\n\nThree ways to choose the palette:\n- omit `num_colors` and `palette_image` — the palette size is auto-detected\n- `num_colors` — quantize to exactly this many colors\n- `palette_image` — reuse the colors of an existing image (your game's palette)\n\nTotal size limit across all frames is 512x512 worth of pixels (e.g. sixteen\n64x64 frames, or four 128x128).\n\n```bash\ncurl -X POST https://api.pixellab.ai/v2/reduce-colors \\\n    -H \"Authorization: Bearer YOUR_API_TOKEN\" \\\n    -H \"Content-Type: application/json\" \\\n    -d '{\"images\": [{\"base64\": \"...\"}, {\"base64\": \"...\"}], \"num_colors\": 16}'\n```",
         "operationId": "reduce_colors_endpoint_reduce_colors_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/reduce_colors_endpoint_reduce_colors_postRequestBody"
+          "$ref": "#/components/requestBodies/ReduceColorsEndpointReduceColorsPost"
         },
         "responses": {
           "200": {
@@ -3289,7 +3289,7 @@
         "description": "Remove the background from a pixel art image, producing a transparent PNG.\n\nSupported image size:\n- Maximum area 400x400\n\n**Background Removal Tasks:**\n- `remove_simple_background` (default) — Faster, works well for simple/solid backgrounds\n- `remove_complex_background` — Slower, better for complex edges and detailed backgrounds\n\n**Optional text hint:** Provide a description of the foreground object to improve accuracy.\n\nUsing the Python client:\n```python\nimport pixellab\nfrom PIL import Image\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\nsource_img = Image.open(\"character.png\")\n\nresult = client.remove_background(\n    image=source_img,\n    image_size=dict(width=64, height=64),\n)\nresult.image.pil_image().save(\"character_no_bg.png\")\n```",
         "operationId": "remove_background_endpoint_remove_background_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/remove_background_endpoint_remove_background_postRequestBody"
+          "$ref": "#/components/requestBodies/RemoveBackgroundEndpointRemoveBackgroundPost"
         },
         "responses": {
           "200": {
@@ -3324,7 +3324,7 @@
         "description": "Intelligently resize pixel art images while maintaining pixel art aesthetics.\n\nSupported image sizes:\n- Minimum area 16x16 and maximum area 200x200 (both source and target)\n\nSupported features:\n- Init image\n- Forced palette\n- Transparent background\n\n**Best practices:**\n- For best results, resize iteratively in small steps\n- Recommended: At most 50% decrease or 2x increase per resize\n- Example: 32x32 → 64x64 (2x) is good, 32x32 → 128x128 (4x) should be done in two steps\n\nUsing the Python client:\n```python\nimport pixellab\nfrom PIL import Image\n\nclient = pixellab.Client(secret=\"YOUR_API_TOKEN\")\n\nsource_img = Image.open(\"character_32x32.png\")\n\nresult = client.resize(\n    description=\"cute wizard with blue robe\",\n    reference_image=source_img,\n    reference_image_size=dict(width=32, height=32),\n    target_size=dict(width=64, height=64),\n)\nresult.image.pil_image().save(\"character_64x64.png\")\n```",
         "operationId": "resize_image_resize_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/resize_image_resize_postRequestBody"
+          "$ref": "#/components/requestBodies/ResizeImageResizePost"
         },
         "responses": {
           "200": {
@@ -3362,7 +3362,7 @@
         "description": "Enhance a Pixen image description.\n\nReturns a more detailed, model-friendly prompt that produces better results when passed\nto `/v2/create-image-pixen`. The enhanced description scales detail to `image_size`\n(small images get short focused prompts, large images get rich detail) and respects\n`outline`, `detail`, `view`, `direction`, and `no_background`.",
         "operationId": "enhance_pixen_prompt_enhance_pixen_prompt_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/enhance_pixen_prompt_enhance_pixen_prompt_postRequestBody"
+          "$ref": "#/components/requestBodies/EnhancePixenPromptEnhancePixenPromptPost"
         },
         "responses": {
           "200": {
@@ -3394,7 +3394,7 @@
         "description": "Enhance a v3 character description.\n\nReturns a more detailed, model-friendly prompt for `/v2/create-character-v3`. The\nenhanced description never mentions facing direction (v3 rotates south-facing into\n8 directions automatically) and never describes a background (v3 always renders\ntransparent).",
         "operationId": "enhance_character_v3_prompt_enhance_character_v3_prompt_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/enhance_character_v3_prompt_enhance_character_v3_prompt_postRequestBody"
+          "$ref": "#/components/requestBodies/EnhanceCharacterV3PromptEnhanceCharacterV3PromptPost"
         },
         "responses": {
           "200": {
@@ -3426,7 +3426,7 @@
         "description": "Enhance an animation action description.\n\nReturns a richer motion description suitable for use as the `action` field of\n`/v2/animate-with-text-v3`, or — with `engine: \"pixminimax\"` — as the\n`description` of `/v2/animate-pixminimax`. For PixMiniMax, add `direction` (the\nsprite's facing) so the prompt holds it and aims attacks that way on screen;\n`/v2/animate-pixminimax` can also do this step for you with `enhance_prompt: true`.\nTwo modes:\n\n- **Single-frame mode** (default): provide only `first_frame`. The enhanced prompt\n  describes how the visible subject animates from that pose.\n- **Interpolation mode**: also provide `last_frame`. The enhanced prompt describes\n  the motion that smoothly transitions between the two poses.\n\nThe enhanced description is grounded in the visible image content (pose, props,\norientation, clothing) and does not introduce camera moves, cuts, or new objects\nunless explicitly requested.",
         "operationId": "enhance_animation_v3_prompt_enhance_animation_v3_prompt_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/enhance_animation_v3_prompt_enhance_animation_v3_prompt_postRequestBody"
+          "$ref": "#/components/requestBodies/EnhanceAnimationV3PromptEnhanceAnimationV3PromptPost"
         },
         "responses": {
           "200": {
@@ -3458,7 +3458,7 @@
         "description": "Describe an image, or ask anything about it.\n\nSend one `image` and get `text` back. Two modes:\n\n- **Describe** (default): omit `prompt`. Returns a 1–3 sentence\n  image-generation prompt covering subject, pose, notable details, style,\n  lighting, camera angle and background — ready to paste into a `description`\n  field of a create endpoint.\n- **Ask**: set `prompt` to your own instruction or question. It replaces the\n  default instruction, so include everything you want the answer to follow\n  (length, format, what to focus on).\n\nThe default instruction is:\n\n> You are an expert prompt engineer for image generation. Describe the image in 1–3 sentences as an image-generation prompt. Include: subject, pose, notable details, style, lighting, camera angle, background. Avoid speculation about sensitive attributes. Keep it concise.\n\n**Cost:** a small fraction of a generation — typically around 0.09 for a\nsprite or screenshot, more for a long answer. The exact amount is\nreturned in `usage`.\n\nSmall pixel art is enlarged (whole-number nearest-neighbour) before it is read.\nWhen the image has transparency, the model is told so, in both modes — a sprite\nis described as having a transparent background, not a white one.",
         "operationId": "image_to_text_endpoint_image_to_text_post",
         "requestBody": {
-          "$ref": "#/components/requestBodies/image_to_text_endpoint_image_to_text_postRequestBody"
+          "$ref": "#/components/requestBodies/ImageToTextEndpointImageToTextPost"
         },
         "responses": {
           "200": {
@@ -3530,7 +3530,7 @@
         "description": "Create one native pixel-art image with an optional left-box style image.\n\nPoll GET /v2/background-jobs/{background_job_id}; completed last_response\ncontains encoded PNGs, image_url, source_image_id and actual billing usage.\nDownload through /mcp/images/{background_job_id}/download. Save the durable\nsource_image_id for later Pro Flash character/object rotations. Five image\ngeneration units provisionally; query /v2/pro-flash/cost for current pricing.",
         "operationId": "create_image_pro_flash",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create_image_pro_flashRequestBody"
+          "$ref": "#/components/requestBodies/CreateImageProFlash"
         },
         "responses": {
           "202": {
@@ -3556,7 +3556,7 @@
         "description": "Edit one image at a supported native size using an instruction or reference.\n\nQuery /v2/pro-flash/capabilities for exact native shapes. The source canvas\nnever grows or resizes. Reference art must fit the source canvas. Poll\n/v2/background-jobs/{background_job_id}, then use its image_url or download.",
         "operationId": "edit_image_pro_flash",
         "requestBody": {
-          "$ref": "#/components/requestBodies/edit_image_pro_flashRequestBody"
+          "$ref": "#/components/requestBodies/EditImageProFlash"
         },
         "responses": {
           "202": {
@@ -3582,7 +3582,7 @@
         "description": "Replace only white mask pixels, preserving unmasked RGBA exactly.\n\nSource and mask must have identical supported native dimensions. Mask RGB\nmust be pure black/white; alpha does not change mask meaning. Empty masks\nare rejected. Changes-only outputs are transparent outside the mask;\nModify current layer returns the full composite. Optional native context\nrequires its source bounding_box. Poll the returned background job.",
         "operationId": "inpaint_image_pro_flash",
         "requestBody": {
-          "$ref": "#/components/requestBodies/inpaint_image_pro_flashRequestBody"
+          "$ref": "#/components/requestBodies/InpaintImageProFlash"
         },
         "responses": {
           "202": {
@@ -3608,7 +3608,7 @@
         "description": "Generate a south-facing image from description, then create eight V3 views.\n\nFirst-direction generation is included in this one call. Supply image_size\nand optional style_image to guide creation. Alternatively pass source_image_id\nor first_frame to reuse a chosen south-facing image and pay only for rotations.\nPixels are preserved with transparent padding to the square V3 canvas.\nPoll the job for itemized billing_stages and combined usage, then read\n/v2/characters/{character_id} or download /mcp/characters/{character_id}/download.",
         "operationId": "create_character_pro_flash",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create_character_pro_flashRequestBody"
+          "$ref": "#/components/requestBodies/CreateCharacterProFlash"
         },
         "responses": {
           "202": {
@@ -3634,7 +3634,7 @@
         "description": "Generate a south-facing object from description and optionally add V3 views.\n\nFirst-direction generation is included in this one call. Set image_size and\noptional style_image; n_directions=1 generates one image, n_directions=8 also\ngenerates rotations. Alternatively pass source_image_id or first_frame to\nreuse a chosen image: one-direction finalization is then free and eight views\ncharge only rotations. Objects have no skeleton. The job reports billing_stages.\nPoll the job, then read /v2/objects/{object_id}; download through\n/mcp/objects/{object_id}/download (one-direction PNG or eight-direction ZIP).",
         "operationId": "create_object_pro_flash",
         "requestBody": {
-          "$ref": "#/components/requestBodies/create_object_pro_flashRequestBody"
+          "$ref": "#/components/requestBodies/CreateObjectProFlash"
         },
         "responses": {
           "202": {
@@ -25281,7 +25281,7 @@
       }
     },
     "requestBodies": {
-      "generate_image_v2_generate_image_v2_postRequestBody": {
+      "GenerateImageV2GenerateImageV2Post": {
         "required": true,
         "content": {
           "application/json": {
@@ -25291,7 +25291,7 @@
           }
         }
       },
-      "generate_image_pixen_create_image_pixen_postRequestBody": {
+      "GenerateImagePixenCreateImagePixenPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25301,7 +25301,7 @@
           }
         }
       },
-      "generate_with_style_v2_generate_with_style_v2_postRequestBody": {
+      "GenerateWithStyleV2GenerateWithStyleV2Post": {
         "required": true,
         "content": {
           "application/json": {
@@ -25311,7 +25311,7 @@
           }
         }
       },
-      "generate_image_pixflux_create_image_pixflux_postRequestBody": {
+      "GenerateImagePixfluxCreateImagePixfluxPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25321,7 +25321,7 @@
           }
         }
       },
-      "create_image_pixflux_background_create_image_pixflux_background_postRequestBody": {
+      "CreateImagePixfluxBackgroundCreateImagePixfluxBackgroundPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25331,7 +25331,7 @@
           }
         }
       },
-      "generate_image_bitforge_create_image_bitforge_postRequestBody": {
+      "GenerateImageBitforgeCreateImageBitforgePost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25341,7 +25341,7 @@
           }
         }
       },
-      "image_to_pixelart_image_to_pixelart_postRequestBody": {
+      "ImageToPixelartImageToPixelartPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25351,7 +25351,7 @@
           }
         }
       },
-      "image_to_pixelart_pro_image_to_pixelart_pro_postRequestBody": {
+      "ImageToPixelartProImageToPixelartProPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25361,7 +25361,7 @@
           }
         }
       },
-      "create_character_v3_create_character_v3_postRequestBody": {
+      "CreateCharacterV3CreateCharacterV3Post": {
         "required": true,
         "content": {
           "application/json": {
@@ -25371,7 +25371,7 @@
           }
         }
       },
-      "create_character_pro_create_character_pro_postRequestBody": {
+      "CreateCharacterProCreateCharacterProPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25381,7 +25381,7 @@
           }
         }
       },
-      "create_character_animation_characters_animations_postRequestBody": {
+      "CreateCharacterAnimationCharactersAnimationsPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25391,7 +25391,7 @@
           }
         }
       },
-      "create_character_animation_animate_character_postRequestBody": {
+      "CreateCharacterAnimationAnimateCharacterPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25401,7 +25401,7 @@
           }
         }
       },
-      "create_character_state_create_character_state_postRequestBody": {
+      "CreateCharacterStateCreateCharacterStatePost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25411,7 +25411,7 @@
           }
         }
       },
-      "create_character_with_4_directions_create_character_with_4_directions_postRequestBody": {
+      "CreateCharacterWith4DirectionsCreateCharacterWith4DirectionsPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25421,7 +25421,7 @@
           }
         }
       },
-      "create_character_with_8_directions_create_character_with_8_directions_postRequestBody": {
+      "CreateCharacterWith8DirectionsCreateCharacterWith8DirectionsPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25431,7 +25431,7 @@
           }
         }
       },
-      "update_character_tags_characters__character_id__tags_patchRequestBody": {
+      "UpdateCharacterTagsCharactersCharacterIDTagsPatch": {
         "required": true,
         "content": {
           "application/json": {
@@ -25441,7 +25441,7 @@
           }
         }
       },
-      "create_1_direction_object_create_1_direction_object_postRequestBody": {
+      "Create1DirectionObjectCreate1DirectionObjectPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25451,7 +25451,7 @@
           }
         }
       },
-      "create_8_direction_object_create_8_direction_object_postRequestBody": {
+      "Create8DirectionObjectCreate8DirectionObjectPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25461,7 +25461,7 @@
           }
         }
       },
-      "animate_object_objects__object_id__animations_postRequestBody": {
+      "AnimateObjectObjectsObjectIDAnimationsPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25471,7 +25471,7 @@
           }
         }
       },
-      "create_object_state_objects__object_id__states_postRequestBody": {
+      "CreateObjectStateObjectsObjectIDStatesPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25481,7 +25481,7 @@
           }
         }
       },
-      "select_object_frames_objects__object_id__select_frames_postRequestBody": {
+      "SelectObjectFramesObjectsObjectIDSelectFramesPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25491,7 +25491,7 @@
           }
         }
       },
-      "update_object_tags_objects__object_id__tags_patchRequestBody": {
+      "UpdateObjectTagsObjectsObjectIDTagsPatch": {
         "required": true,
         "content": {
           "application/json": {
@@ -25501,7 +25501,7 @@
           }
         }
       },
-      "animate_with_text_v3_animate_with_text_v3_postRequestBody": {
+      "AnimateWithTextV3AnimateWithTextV3Post": {
         "required": true,
         "content": {
           "application/json": {
@@ -25511,7 +25511,7 @@
           }
         }
       },
-      "animate_pixminimax_animate_pixminimax_postRequestBody": {
+      "AnimatePixminimaxAnimatePixminimaxPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25521,7 +25521,7 @@
           }
         }
       },
-      "interpolation_v2_interpolation_v2_postRequestBody": {
+      "InterpolationV2InterpolationV2Post": {
         "required": true,
         "content": {
           "application/json": {
@@ -25531,7 +25531,7 @@
           }
         }
       },
-      "edit_animation_v2_edit_animation_v2_postRequestBody": {
+      "EditAnimationV2EditAnimationV2Post": {
         "required": true,
         "content": {
           "application/json": {
@@ -25541,7 +25541,7 @@
           }
         }
       },
-      "transfer_outfit_v2_transfer_outfit_v2_postRequestBody": {
+      "TransferOutfitV2TransferOutfitV2Post": {
         "required": true,
         "content": {
           "application/json": {
@@ -25551,7 +25551,7 @@
           }
         }
       },
-      "animate_with_text_v2_animate_with_text_v2_postRequestBody": {
+      "AnimateWithTextV2AnimateWithTextV2Post": {
         "required": true,
         "content": {
           "application/json": {
@@ -25561,7 +25561,7 @@
           }
         }
       },
-      "animate_with_text_animate_with_text_postRequestBody": {
+      "AnimateWithTextAnimateWithTextPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25571,7 +25571,7 @@
           }
         }
       },
-      "estimate_skeleton_estimate_skeleton_postRequestBody": {
+      "EstimateSkeletonEstimateSkeletonPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25581,7 +25581,7 @@
           }
         }
       },
-      "animate_with_skeleton_v3_animate_with_skeleton_v3_postRequestBody": {
+      "AnimateWithSkeletonV3AnimateWithSkeletonV3Post": {
         "required": true,
         "content": {
           "application/json": {
@@ -25591,7 +25591,7 @@
           }
         }
       },
-      "animate_with_skeleton_animate_with_skeleton_postRequestBody": {
+      "AnimateWithSkeletonAnimateWithSkeletonPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25601,7 +25601,7 @@
           }
         }
       },
-      "generate_8_rotations_v3_generate_8_rotations_v3_postRequestBody": {
+      "Generate8RotationsV3Generate8RotationsV3Post": {
         "required": true,
         "content": {
           "application/json": {
@@ -25611,7 +25611,7 @@
           }
         }
       },
-      "generate_8_rotations_v2_generate_8_rotations_v2_postRequestBody": {
+      "Generate8RotationsV2Generate8RotationsV2Post": {
         "required": true,
         "content": {
           "application/json": {
@@ -25621,7 +25621,7 @@
           }
         }
       },
-      "generate_rotation_rotate_postRequestBody": {
+      "GenerateRotationRotatePost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25631,7 +25631,7 @@
           }
         }
       },
-      "edit_images_v2_edit_images_v2_postRequestBody": {
+      "EditImagesV2EditImagesV2Post": {
         "required": true,
         "content": {
           "application/json": {
@@ -25641,7 +25641,7 @@
           }
         }
       },
-      "edit_image_pixen_edit_image_pixen_postRequestBody": {
+      "EditImagePixenEditImagePixenPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25651,7 +25651,7 @@
           }
         }
       },
-      "edit_image_edit_image_postRequestBody": {
+      "EditImageEditImagePost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25661,7 +25661,7 @@
           }
         }
       },
-      "inpaint_v3_inpaint_v3_postRequestBody": {
+      "InpaintV3InpaintV3Post": {
         "required": true,
         "content": {
           "application/json": {
@@ -25671,7 +25671,7 @@
           }
         }
       },
-      "generate_inpainting_inpaint_postRequestBody": {
+      "GenerateInpaintingInpaintPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25681,7 +25681,7 @@
           }
         }
       },
-      "generate_tileset_tilesets_postRequestBody": {
+      "GenerateTilesetTilesetsPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25691,7 +25691,7 @@
           }
         }
       },
-      "generate_tileset_create_tileset_postRequestBody": {
+      "GenerateTilesetCreateTilesetPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25733,7 +25733,7 @@
           }
         }
       },
-      "generate_tileset_sidescroller_tilesets_sidescroller_postRequestBody": {
+      "GenerateTilesetSidescrollerTilesetsSidescrollerPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25743,7 +25743,7 @@
           }
         }
       },
-      "generate_tileset_sidescroller_create_tileset_sidescroller_postRequestBody": {
+      "GenerateTilesetSidescrollerCreateTilesetSidescrollerPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25795,7 +25795,7 @@
           }
         }
       },
-      "create_tiles_pro_create_tiles_pro_postRequestBody": {
+      "CreateTilesProCreateTilesProPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25805,7 +25805,7 @@
           }
         }
       },
-      "generate_isometric_tile_create_isometric_tile_postRequestBody": {
+      "GenerateIsometricTileCreateIsometricTilePost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25815,7 +25815,7 @@
           }
         }
       },
-      "create_map_object_map_objects_postRequestBody": {
+      "CreateMapObjectMapObjectsPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25825,7 +25825,7 @@
           }
         }
       },
-      "create_ui_asset_create_ui_asset_postRequestBody": {
+      "CreateUIAssetCreateUIAssetPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25835,7 +25835,7 @@
           }
         }
       },
-      "generate_ui_v2_generate_ui_v2_postRequestBody": {
+      "GenerateUIV2GenerateUIV2Post": {
         "required": true,
         "content": {
           "application/json": {
@@ -25845,7 +25845,7 @@
           }
         }
       },
-      "portrait_character_pro_portrait_character_pro_postRequestBody": {
+      "PortraitCharacterProPortraitCharacterProPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25855,7 +25855,7 @@
           }
         }
       },
-      "set_portrait_characters__character_id__portrait_postRequestBody": {
+      "SetPortraitCharactersCharacterIDPortraitPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25865,7 +25865,7 @@
           }
         }
       },
-      "create_vocal_animation_vocal_animation_postRequestBody": {
+      "CreateVocalAnimationVocalAnimationPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25875,7 +25875,7 @@
           }
         }
       },
-      "create_talking_gif_talking_gif_postRequestBody": {
+      "CreateTalkingGifTalkingGifPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25885,7 +25885,7 @@
           }
         }
       },
-      "get_lip_sync_lip_sync_postRequestBody": {
+      "GetLipSyncLipSyncPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25895,7 +25895,7 @@
           }
         }
       },
-      "generate_font_pro_generate_font_pro_postRequestBody": {
+      "GenerateFontProGenerateFontProPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25905,7 +25905,7 @@
           }
         }
       },
-      "unzoom_endpoint_unzoom_postRequestBody": {
+      "UnzoomEndpointUnzoomPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25915,7 +25915,7 @@
           }
         }
       },
-      "correct_pixelart_endpoint_correct_pixelart_postRequestBody": {
+      "CorrectPixelartEndpointCorrectPixelartPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25925,7 +25925,7 @@
           }
         }
       },
-      "reduce_colors_endpoint_reduce_colors_postRequestBody": {
+      "ReduceColorsEndpointReduceColorsPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25935,7 +25935,7 @@
           }
         }
       },
-      "remove_background_endpoint_remove_background_postRequestBody": {
+      "RemoveBackgroundEndpointRemoveBackgroundPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25945,7 +25945,7 @@
           }
         }
       },
-      "resize_image_resize_postRequestBody": {
+      "ResizeImageResizePost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25955,7 +25955,7 @@
           }
         }
       },
-      "enhance_pixen_prompt_enhance_pixen_prompt_postRequestBody": {
+      "EnhancePixenPromptEnhancePixenPromptPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25965,7 +25965,7 @@
           }
         }
       },
-      "enhance_character_v3_prompt_enhance_character_v3_prompt_postRequestBody": {
+      "EnhanceCharacterV3PromptEnhanceCharacterV3PromptPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25975,7 +25975,7 @@
           }
         }
       },
-      "enhance_animation_v3_prompt_enhance_animation_v3_prompt_postRequestBody": {
+      "EnhanceAnimationV3PromptEnhanceAnimationV3PromptPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25985,7 +25985,7 @@
           }
         }
       },
-      "image_to_text_endpoint_image_to_text_postRequestBody": {
+      "ImageToTextEndpointImageToTextPost": {
         "required": true,
         "content": {
           "application/json": {
@@ -25995,7 +25995,7 @@
           }
         }
       },
-      "create_image_pro_flashRequestBody": {
+      "CreateImageProFlash": {
         "required": true,
         "content": {
           "application/json": {
@@ -26005,7 +26005,7 @@
           }
         }
       },
-      "edit_image_pro_flashRequestBody": {
+      "EditImageProFlash": {
         "required": true,
         "content": {
           "application/json": {
@@ -26015,7 +26015,7 @@
           }
         }
       },
-      "inpaint_image_pro_flashRequestBody": {
+      "InpaintImageProFlash": {
         "required": true,
         "content": {
           "application/json": {
@@ -26025,7 +26025,7 @@
           }
         }
       },
-      "create_character_pro_flashRequestBody": {
+      "CreateCharacterProFlash": {
         "required": true,
         "content": {
           "application/json": {
@@ -26035,7 +26035,7 @@
           }
         }
       },
-      "create_object_pro_flashRequestBody": {
+      "CreateObjectProFlash": {
         "required": true,
         "content": {
           "application/json": {
