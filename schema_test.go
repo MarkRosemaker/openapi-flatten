@@ -158,3 +158,35 @@ func TestFlatten_UnionBranches(t *testing.T) {
 		}
 	}
 }
+
+func TestFlatten_PropertyNamesAndNot(t *testing.T) {
+	// the schema for an object's keys and the schema it must not match are flattened like any other
+	doc := minimalDoc(t, `{
+		"type": "object",
+		"properties": {"id": {"type": "integer"}},
+		"propertyNames": {"type": "string", "enum": ["id", "north"]},
+		"not": {"type": "object", "properties": {"deleted": {"type": "boolean"}}}
+	}`)
+
+	if err := flatten.Document(doc); err != nil {
+		t.Fatal(err)
+	}
+
+	var names []string
+	for name := range doc.Components.Schemas.ByIndex() {
+		names = append(names, name)
+	}
+
+	if got, want := strings.Join(names, " "), "Ok OkKey OkNot"; got != want {
+		t.Fatalf("got components %s, want %s", got, want)
+	}
+
+	ok := doc.Components.Schemas["Ok"]
+	if r := ok.PropertyNames.Ref; r == nil || r.Identifier != "#/components/schemas/OkKey" {
+		t.Errorf("propertyNames: got %+v, want a reference to OkKey", ok.PropertyNames)
+	}
+
+	if r := ok.Not.Ref; r == nil || r.Identifier != "#/components/schemas/OkNot" {
+		t.Errorf("not: got %+v, want a reference to OkNot", ok.Not)
+	}
+}

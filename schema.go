@@ -127,6 +127,18 @@ func schema(d *openapi.Document, s *openapi.Schema, name string) error {
 		}
 	}
 
+	if s.PropertyNames != nil {
+		if err := inlineSchema(d, s.PropertyNames, name+"Key", moveIfNecessary); err != nil {
+			return &errpath.ErrField{Field: "propertyNames", Err: err}
+		}
+	}
+
+	if s.Not != nil {
+		if err := inlineSchema(d, s.Not, name+"Not", moveIfNecessary); err != nil {
+			return &errpath.ErrField{Field: "not", Err: err}
+		}
+	}
+
 	return nil
 }
 
