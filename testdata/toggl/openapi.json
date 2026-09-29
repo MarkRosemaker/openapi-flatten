@@ -2183,16 +2183,17 @@
             "example": "2024-11-26T17:13:54.850204Z"
           },
           "openid_email": {
-            "type": "object",
-            "example": null
+            "type": "null"
           },
           "openid_enabled": {
             "type": "boolean",
             "example": true
           },
           "country_id": {
-            "type": "integer",
-            "example": null
+            "type": [
+              "integer",
+              "null"
+            ]
           },
           "has_password": {
             "type": "boolean",
