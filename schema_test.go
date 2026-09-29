@@ -121,3 +121,72 @@ func TestFlatten_ArrayOfAnyOf(t *testing.T) {
 		t.Fatalf("unexpected error for array-of-anyOf schema: %v", err)
 	}
 }
+
+func TestFlatten_UnionBranches(t *testing.T) {
+	// a branch with a shape of its own gets a name: its title if it has one, else parent, keyword and position
+	doc := minimalDoc(t, `{
+		"oneOf": [
+			{"title": "A person", "type": "object", "properties": {"name": {"type": "string"}}},
+			{"type": "object", "properties": {"id": {"type": "integer"}}},
+			{"type": "string"},
+			{"type": "null"}
+		]
+	}`)
+
+	if err := flatten.Document(doc); err != nil {
+		t.Fatal(err)
+	}
+
+	var names []string
+	for name := range doc.Components.Schemas.ByIndex() {
+		names = append(names, name)
+	}
+
+	if got, want := strings.Join(names, " "), "Ok APerson OkOneOf1"; got != want {
+		t.Fatalf("got components %s, want %s", got, want)
+	}
+
+	union := doc.Components.Schemas["Ok"]
+	for i, want := range []string{"#/components/schemas/APerson", "#/components/schemas/OkOneOf1", "", ""} {
+		got := ""
+		if r := union.OneOf[i].Ref; r != nil {
+			got = r.Identifier
+		}
+
+		if got != want {
+			t.Errorf("oneOf[%d]: got ref %q, want %q", i, got, want)
+		}
+	}
+}
+
+func TestFlatten_PropertyNamesAndNot(t *testing.T) {
+	// the schema for an object's keys and the schema it must not match are flattened like any other
+	doc := minimalDoc(t, `{
+		"type": "object",
+		"properties": {"id": {"type": "integer"}},
+		"propertyNames": {"type": "string", "enum": ["id", "north"]},
+		"not": {"type": "object", "properties": {"deleted": {"type": "boolean"}}}
+	}`)
+
+	if err := flatten.Document(doc); err != nil {
+		t.Fatal(err)
+	}
+
+	var names []string
+	for name := range doc.Components.Schemas.ByIndex() {
+		names = append(names, name)
+	}
+
+	if got, want := strings.Join(names, " "), "Ok OkKey OkNot"; got != want {
+		t.Fatalf("got components %s, want %s", got, want)
+	}
+
+	ok := doc.Components.Schemas["Ok"]
+	if r := ok.PropertyNames.Ref; r == nil || r.Identifier != "#/components/schemas/OkKey" {
+		t.Errorf("propertyNames: got %+v, want a reference to OkKey", ok.PropertyNames)
+	}
+
+	if r := ok.Not.Ref; r == nil || r.Identifier != "#/components/schemas/OkNot" {
+		t.Errorf("not: got %+v, want a reference to OkNot", ok.Not)
+	}
+}
