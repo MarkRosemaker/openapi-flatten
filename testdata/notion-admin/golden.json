@@ -2586,39 +2586,45 @@
       "ExportLegalHold": {
         "anyOf": [
           {
-            "type": "object",
-            "properties": {
-              "legal_hold_export_id": {
-                "type": "string",
-                "format": "uuid"
-              },
-              "requesting_user_id": {
-                "type": "string",
-                "format": "uuid"
-              }
-            },
-            "required": [
-              "legal_hold_export_id",
-              "requesting_user_id"
-            ]
+            "$ref": "#/components/schemas/ExportLegalHoldAnyOf0"
           },
           {
-            "type": "object",
-            "properties": {
-              "requesting_user_id": {
-                "type": "string",
-                "format": "uuid"
-              },
-              "space_id": {
-                "type": "string",
-                "format": "uuid"
-              }
-            },
-            "required": [
-              "requesting_user_id",
-              "space_id"
-            ]
+            "$ref": "#/components/schemas/ExportLegalHoldAnyOf1"
           }
+        ]
+      },
+      "ExportLegalHoldAnyOf0": {
+        "type": "object",
+        "properties": {
+          "legal_hold_export_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "requesting_user_id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "legal_hold_export_id",
+          "requesting_user_id"
+        ]
+      },
+      "ExportLegalHoldAnyOf1": {
+        "type": "object",
+        "properties": {
+          "requesting_user_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "space_id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "requesting_user_id",
+          "space_id"
         ]
       },
       "ExportLegalHoldOk": {
@@ -3744,44 +3750,50 @@
         "description": "The managed user whose active sessions should be revoked.",
         "oneOf": [
           {
-            "type": "object",
-            "properties": {
-              "type": {
-                "description": "Always `email`",
-                "type": "string",
-                "const": "email"
-              },
-              "email": {
-                "description": "The managed user's primary email address.",
-                "type": "string"
-              }
-            },
-            "required": [
-              "type",
-              "email"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/RevokeUserSessionUserOneOf0"
           },
           {
-            "type": "object",
-            "properties": {
-              "type": {
-                "description": "Always `id`",
-                "type": "string",
-                "const": "id"
-              },
-              "id": {
-                "description": "The managed user's Notion user UUID.",
-                "type": "string"
-              }
-            },
-            "required": [
-              "type",
-              "id"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/RevokeUserSessionUserOneOf1"
           }
         ]
+      },
+      "RevokeUserSessionUserOneOf0": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Always `email`",
+            "type": "string",
+            "const": "email"
+          },
+          "email": {
+            "description": "The managed user's primary email address.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "email"
+        ],
+        "additionalProperties": false
+      },
+      "RevokeUserSessionUserOneOf1": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Always `id`",
+            "type": "string",
+            "const": "id"
+          },
+          "id": {
+            "description": "The managed user's Notion user UUID.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "id"
+        ],
+        "additionalProperties": false
       },
       "RevokeUserSessionOk": {
         "type": "object",
@@ -4331,45 +4343,10 @@
           {
             "oneOf": [
               {
-                "title": "Person",
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "description": "Indicates this user is a person.",
-                    "type": "string",
-                    "const": "person"
-                  },
-                  "membership_type": {
-                    "$ref": "#/components/schemas/ListUsersOkResultsItemAllOf1OneOf0MembershipType"
-                  },
-                  "person": {
-                    "$ref": "#/components/schemas/ListUsersOkResultsItemAllOf1OneOf0Person"
-                  }
-                },
-                "required": [
-                  "type",
-                  "membership_type",
-                  "person"
-                ]
+                "$ref": "#/components/schemas/Person"
               },
               {
-                "title": "Bot",
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "description": "Indicates this user is a bot.",
-                    "type": "string",
-                    "const": "bot"
-                  },
-                  "bot": {
-                    "description": "Details about the bot, when the `type` of the user is `bot`.",
-                    "$ref": "#/components/schemas/emptyObject"
-                  }
-                },
-                "required": [
-                  "type",
-                  "bot"
-                ]
+                "$ref": "#/components/schemas/Bot"
               }
             ]
           }
@@ -4397,7 +4374,29 @@
           }
         ]
       },
-      "ListUsersOkResultsItemAllOf1OneOf0MembershipType": {
+      "Person": {
+        "title": "Person",
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Indicates this user is a person.",
+            "type": "string",
+            "const": "person"
+          },
+          "membership_type": {
+            "$ref": "#/components/schemas/PersonMembershipType"
+          },
+          "person": {
+            "$ref": "#/components/schemas/PersonPerson"
+          }
+        },
+        "required": [
+          "type",
+          "membership_type",
+          "person"
+        ]
+      },
+      "PersonMembershipType": {
         "description": "The person's effective workspace membership type.",
         "type": "string",
         "enum": [
@@ -4409,7 +4408,7 @@
           "owner"
         ]
       },
-      "ListUsersOkResultsItemAllOf1OneOf0Person": {
+      "PersonPerson": {
         "description": "Details about the person, when the `type` of the user is `person`.",
         "type": "object",
         "properties": {
@@ -4419,6 +4418,25 @@
           }
         },
         "additionalProperties": false
+      },
+      "Bot": {
+        "title": "Bot",
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Indicates this user is a bot.",
+            "type": "string",
+            "const": "bot"
+          },
+          "bot": {
+            "description": "Details about the bot, when the `type` of the user is `bot`.",
+            "$ref": "#/components/schemas/emptyObject"
+          }
+        },
+        "required": [
+          "type",
+          "bot"
+        ]
       },
       "ListUsersOkNextCursor": {
         "description": "Opaque continuation cursor for the next page.",
@@ -4759,10 +4777,7 @@
         "description": "Token statuses to include. Use bracket encoding for multiple values.",
         "oneOf": [
           {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/StatusOneOf0Item"
-            }
+            "$ref": "#/components/schemas/StatusOneOf0"
           },
           {
             "description": "Always `active`",
@@ -4780,6 +4795,12 @@
             "const": "revoked"
           }
         ]
+      },
+      "StatusOneOf0": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/StatusOneOf0Item"
+        }
       },
       "StatusOneOf0Item": {
         "description": "One of: `active`, `expired`, `revoked`",
@@ -5030,18 +5051,21 @@
         "description": "The policy now in effect, or null when no explicit policy has ever been set for the workspace (which behaves as the \"all_workspace_members\" default).",
         "oneOf": [
           {
-            "description": "One of: `all_workspace_members`, `custom`, `disabled`, `workspace_owners_only`",
-            "type": "string",
-            "enum": [
-              "all_workspace_members",
-              "custom",
-              "disabled",
-              "workspace_owners_only"
-            ]
+            "$ref": "#/components/schemas/UpdateAgentCreationPolicyOkCurrentPolicyOneOf0"
           },
           {
             "type": "null"
           }
+        ]
+      },
+      "UpdateAgentCreationPolicyOkCurrentPolicyOneOf0": {
+        "description": "One of: `all_workspace_members`, `custom`, `disabled`, `workspace_owners_only`",
+        "type": "string",
+        "enum": [
+          "all_workspace_members",
+          "custom",
+          "disabled",
+          "workspace_owners_only"
         ]
       },
       "UpdateWorkspaceCreditLimit": {
@@ -5483,58 +5507,67 @@
         "description": "A recipient of a permission grant. \"workspace\" maps to a space-wide permission granting all workspace members the given role; guests are never covered by it.",
         "oneOf": [
           {
-            "type": "object",
-            "properties": {
-              "group_id": {
-                "type": "string",
-                "format": "uuid"
-              },
-              "type": {
-                "description": "Always `group`",
-                "type": "string",
-                "const": "group"
-              }
-            },
-            "required": [
-              "group_id",
-              "type"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/GetWorkflowsMetadataForSpaceOkResultsItemPermissionsItemPrincipalOneOf0"
           },
           {
-            "type": "object",
-            "properties": {
-              "type": {
-                "description": "Always `user`",
-                "type": "string",
-                "const": "user"
-              },
-              "user_id": {
-                "type": "string",
-                "format": "uuid"
-              }
-            },
-            "required": [
-              "type",
-              "user_id"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/GetWorkflowsMetadataForSpaceOkResultsItemPermissionsItemPrincipalOneOf1"
           },
           {
-            "type": "object",
-            "properties": {
-              "type": {
-                "description": "Always `workspace`",
-                "type": "string",
-                "const": "workspace"
-              }
-            },
-            "required": [
-              "type"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/GetWorkflowsMetadataForSpaceOkResultsItemPermissionsItemPrincipalOneOf2"
           }
         ]
+      },
+      "GetWorkflowsMetadataForSpaceOkResultsItemPermissionsItemPrincipalOneOf0": {
+        "type": "object",
+        "properties": {
+          "group_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "type": {
+            "description": "Always `group`",
+            "type": "string",
+            "const": "group"
+          }
+        },
+        "required": [
+          "group_id",
+          "type"
+        ],
+        "additionalProperties": false
+      },
+      "GetWorkflowsMetadataForSpaceOkResultsItemPermissionsItemPrincipalOneOf1": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Always `user`",
+            "type": "string",
+            "const": "user"
+          },
+          "user_id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "type",
+          "user_id"
+        ],
+        "additionalProperties": false
+      },
+      "GetWorkflowsMetadataForSpaceOkResultsItemPermissionsItemPrincipalOneOf2": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Always `workspace`",
+            "type": "string",
+            "const": "workspace"
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "additionalProperties": false
       },
       "GetWorkflowsMetadataForSpaceOkResultsItemPermissionsItemResolvedRole": {
         "description": "The effective role for this principal: the most permissive of the stored role and every other grant that reaches the principal — the workspace-wide grant and, for users, any granted group they belong to. Roles rank \"view_and_interact\" < \"edit\" < \"full_access\", so a user whose stored role is \"edit\" resolves to \"full_access\" when the workspace-wide grant allows \"full_access\". Grants that do not reach the principal are excluded: the workspace-wide grant reaches only full workspace members, and group grants reach only workspace members (never page guests or non-members, even if a stale group-member row still exists for them).",
@@ -5723,58 +5756,67 @@
         "description": "A recipient of a permission grant. \"workspace\" maps to a space-wide permission granting all workspace members the given role; guests are never covered by it.",
         "oneOf": [
           {
-            "type": "object",
-            "properties": {
-              "group_id": {
-                "type": "string",
-                "format": "uuid"
-              },
-              "type": {
-                "description": "Always `group`",
-                "type": "string",
-                "const": "group"
-              }
-            },
-            "required": [
-              "group_id",
-              "type"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/GetAgentPermissionsOkPermissionsItemPrincipalOneOf0"
           },
           {
-            "type": "object",
-            "properties": {
-              "type": {
-                "description": "Always `user`",
-                "type": "string",
-                "const": "user"
-              },
-              "user_id": {
-                "type": "string",
-                "format": "uuid"
-              }
-            },
-            "required": [
-              "type",
-              "user_id"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/GetAgentPermissionsOkPermissionsItemPrincipalOneOf1"
           },
           {
-            "type": "object",
-            "properties": {
-              "type": {
-                "description": "Always `workspace`",
-                "type": "string",
-                "const": "workspace"
-              }
-            },
-            "required": [
-              "type"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/GetAgentPermissionsOkPermissionsItemPrincipalOneOf2"
           }
         ]
+      },
+      "GetAgentPermissionsOkPermissionsItemPrincipalOneOf0": {
+        "type": "object",
+        "properties": {
+          "group_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "type": {
+            "description": "Always `group`",
+            "type": "string",
+            "const": "group"
+          }
+        },
+        "required": [
+          "group_id",
+          "type"
+        ],
+        "additionalProperties": false
+      },
+      "GetAgentPermissionsOkPermissionsItemPrincipalOneOf1": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Always `user`",
+            "type": "string",
+            "const": "user"
+          },
+          "user_id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "type",
+          "user_id"
+        ],
+        "additionalProperties": false
+      },
+      "GetAgentPermissionsOkPermissionsItemPrincipalOneOf2": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Always `workspace`",
+            "type": "string",
+            "const": "workspace"
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "additionalProperties": false
       },
       "GetAgentPermissionsOkPermissionsItemResolvedRole": {
         "description": "The effective role for this principal: the most permissive of the stored role and every other grant that reaches the principal — the workspace-wide grant and, for users, any granted group they belong to. Roles rank \"view_and_interact\" < \"edit\" < \"full_access\", so a user whose stored role is \"edit\" resolves to \"full_access\" when the workspace-wide grant allows \"full_access\". Grants that do not reach the principal are excluded: the workspace-wide grant reaches only full workspace members, and group grants reach only workspace members (never page guests or non-members, even if a stale group-member row still exists for them).",
@@ -5838,58 +5880,67 @@
         "description": "A recipient of a permission grant. \"workspace\" maps to a space-wide permission granting all workspace members the given role; guests are never covered by it.",
         "oneOf": [
           {
-            "type": "object",
-            "properties": {
-              "group_id": {
-                "type": "string",
-                "format": "uuid"
-              },
-              "type": {
-                "description": "Always `group`",
-                "type": "string",
-                "const": "group"
-              }
-            },
-            "required": [
-              "group_id",
-              "type"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/UpdateAgentPermissionsSetItemPrincipalOneOf0"
           },
           {
-            "type": "object",
-            "properties": {
-              "type": {
-                "description": "Always `user`",
-                "type": "string",
-                "const": "user"
-              },
-              "user_id": {
-                "type": "string",
-                "format": "uuid"
-              }
-            },
-            "required": [
-              "type",
-              "user_id"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/UpdateAgentPermissionsSetItemPrincipalOneOf1"
           },
           {
-            "type": "object",
-            "properties": {
-              "type": {
-                "description": "Always `workspace`",
-                "type": "string",
-                "const": "workspace"
-              }
-            },
-            "required": [
-              "type"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/UpdateAgentPermissionsSetItemPrincipalOneOf2"
           }
         ]
+      },
+      "UpdateAgentPermissionsSetItemPrincipalOneOf0": {
+        "type": "object",
+        "properties": {
+          "group_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "type": {
+            "description": "Always `group`",
+            "type": "string",
+            "const": "group"
+          }
+        },
+        "required": [
+          "group_id",
+          "type"
+        ],
+        "additionalProperties": false
+      },
+      "UpdateAgentPermissionsSetItemPrincipalOneOf1": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Always `user`",
+            "type": "string",
+            "const": "user"
+          },
+          "user_id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "type",
+          "user_id"
+        ],
+        "additionalProperties": false
+      },
+      "UpdateAgentPermissionsSetItemPrincipalOneOf2": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Always `workspace`",
+            "type": "string",
+            "const": "workspace"
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "additionalProperties": false
       },
       "UpdateAgentPermissionsSetItemRole": {
         "description": "One of: `edit`, `full_access`, `view_and_interact`",
@@ -5904,58 +5955,67 @@
         "description": "A recipient of a permission grant. \"workspace\" maps to a space-wide permission granting all workspace members the given role; guests are never covered by it.",
         "oneOf": [
           {
-            "type": "object",
-            "properties": {
-              "group_id": {
-                "type": "string",
-                "format": "uuid"
-              },
-              "type": {
-                "description": "Always `group`",
-                "type": "string",
-                "const": "group"
-              }
-            },
-            "required": [
-              "group_id",
-              "type"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/UpdateAgentPermissionsRemoveItemOneOf0"
           },
           {
-            "type": "object",
-            "properties": {
-              "type": {
-                "description": "Always `user`",
-                "type": "string",
-                "const": "user"
-              },
-              "user_id": {
-                "type": "string",
-                "format": "uuid"
-              }
-            },
-            "required": [
-              "type",
-              "user_id"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/UpdateAgentPermissionsRemoveItemOneOf1"
           },
           {
-            "type": "object",
-            "properties": {
-              "type": {
-                "description": "Always `workspace`",
-                "type": "string",
-                "const": "workspace"
-              }
-            },
-            "required": [
-              "type"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/UpdateAgentPermissionsRemoveItemOneOf2"
           }
         ]
+      },
+      "UpdateAgentPermissionsRemoveItemOneOf0": {
+        "type": "object",
+        "properties": {
+          "group_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "type": {
+            "description": "Always `group`",
+            "type": "string",
+            "const": "group"
+          }
+        },
+        "required": [
+          "group_id",
+          "type"
+        ],
+        "additionalProperties": false
+      },
+      "UpdateAgentPermissionsRemoveItemOneOf1": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Always `user`",
+            "type": "string",
+            "const": "user"
+          },
+          "user_id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "type",
+          "user_id"
+        ],
+        "additionalProperties": false
+      },
+      "UpdateAgentPermissionsRemoveItemOneOf2": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Always `workspace`",
+            "type": "string",
+            "const": "workspace"
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "additionalProperties": false
       },
       "UpdateAgentPermissionsOk": {
         "type": "object",
@@ -6001,58 +6061,67 @@
         "description": "A recipient of a permission grant. \"workspace\" maps to a space-wide permission granting all workspace members the given role; guests are never covered by it.",
         "oneOf": [
           {
-            "type": "object",
-            "properties": {
-              "group_id": {
-                "type": "string",
-                "format": "uuid"
-              },
-              "type": {
-                "description": "Always `group`",
-                "type": "string",
-                "const": "group"
-              }
-            },
-            "required": [
-              "group_id",
-              "type"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/UpdateAgentPermissionsOkPermissionsItemPrincipalOneOf0"
           },
           {
-            "type": "object",
-            "properties": {
-              "type": {
-                "description": "Always `user`",
-                "type": "string",
-                "const": "user"
-              },
-              "user_id": {
-                "type": "string",
-                "format": "uuid"
-              }
-            },
-            "required": [
-              "type",
-              "user_id"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/UpdateAgentPermissionsOkPermissionsItemPrincipalOneOf1"
           },
           {
-            "type": "object",
-            "properties": {
-              "type": {
-                "description": "Always `workspace`",
-                "type": "string",
-                "const": "workspace"
-              }
-            },
-            "required": [
-              "type"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/UpdateAgentPermissionsOkPermissionsItemPrincipalOneOf2"
           }
         ]
+      },
+      "UpdateAgentPermissionsOkPermissionsItemPrincipalOneOf0": {
+        "type": "object",
+        "properties": {
+          "group_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "type": {
+            "description": "Always `group`",
+            "type": "string",
+            "const": "group"
+          }
+        },
+        "required": [
+          "group_id",
+          "type"
+        ],
+        "additionalProperties": false
+      },
+      "UpdateAgentPermissionsOkPermissionsItemPrincipalOneOf1": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Always `user`",
+            "type": "string",
+            "const": "user"
+          },
+          "user_id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "type",
+          "user_id"
+        ],
+        "additionalProperties": false
+      },
+      "UpdateAgentPermissionsOkPermissionsItemPrincipalOneOf2": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Always `workspace`",
+            "type": "string",
+            "const": "workspace"
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "additionalProperties": false
       },
       "UpdateAgentPermissionsOkPermissionsItemResolvedRole": {
         "description": "The effective role for this principal: the most permissive of the stored role and every other grant that reaches the principal — the workspace-wide grant and, for users, any granted group they belong to. Roles rank \"view_and_interact\" < \"edit\" < \"full_access\", so a user whose stored role is \"edit\" resolves to \"full_access\" when the workspace-wide grant allows \"full_access\". Grants that do not reach the principal are excluded: the workspace-wide grant reaches only full workspace members, and group grants reach only workspace members (never page guests or non-members, even if a stale group-member row still exists for them).",
@@ -6435,40 +6504,46 @@
         "description": "All workspace members or one workspace member affected by the policy.",
         "oneOf": [
           {
-            "type": "object",
-            "properties": {
-              "type": {
-                "description": "Always `all_space_members`",
-                "type": "string",
-                "const": "all_space_members"
-              }
-            },
-            "required": [
-              "type"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/ListCreditLimitPoliciesOkResultsItemSelectorOneOf0"
           },
           {
-            "type": "object",
-            "properties": {
-              "type": {
-                "description": "Always `user`",
-                "type": "string",
-                "const": "user"
-              },
-              "user_id": {
-                "description": "The ID returned by the workspace users API.",
-                "type": "string",
-                "format": "uuid"
-              }
-            },
-            "required": [
-              "type",
-              "user_id"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/ListCreditLimitPoliciesOkResultsItemSelectorOneOf1"
           }
         ]
+      },
+      "ListCreditLimitPoliciesOkResultsItemSelectorOneOf0": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Always `all_space_members`",
+            "type": "string",
+            "const": "all_space_members"
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "additionalProperties": false
+      },
+      "ListCreditLimitPoliciesOkResultsItemSelectorOneOf1": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Always `user`",
+            "type": "string",
+            "const": "user"
+          },
+          "user_id": {
+            "description": "The ID returned by the workspace users API.",
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "type",
+          "user_id"
+        ],
+        "additionalProperties": false
       },
       "ListCreditLimitPoliciesOkNextCursor": {
         "description": "Cursor for the next page, or null on the last page.",
@@ -6508,40 +6583,46 @@
         "description": "All workspace members or one workspace member affected by the policy.",
         "oneOf": [
           {
-            "type": "object",
-            "properties": {
-              "type": {
-                "description": "Always `all_space_members`",
-                "type": "string",
-                "const": "all_space_members"
-              }
-            },
-            "required": [
-              "type"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/CreateCreditLimitPolicySelectorOneOf0"
           },
           {
-            "type": "object",
-            "properties": {
-              "type": {
-                "description": "Always `user`",
-                "type": "string",
-                "const": "user"
-              },
-              "user_id": {
-                "description": "The ID returned by the workspace users API.",
-                "type": "string",
-                "format": "uuid"
-              }
-            },
-            "required": [
-              "type",
-              "user_id"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/CreateCreditLimitPolicySelectorOneOf1"
           }
         ]
+      },
+      "CreateCreditLimitPolicySelectorOneOf0": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Always `all_space_members`",
+            "type": "string",
+            "const": "all_space_members"
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "additionalProperties": false
+      },
+      "CreateCreditLimitPolicySelectorOneOf1": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Always `user`",
+            "type": "string",
+            "const": "user"
+          },
+          "user_id": {
+            "description": "The ID returned by the workspace users API.",
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "type",
+          "user_id"
+        ],
+        "additionalProperties": false
       },
       "CreateCreditLimitPolicyOk": {
         "type": "object",
@@ -6623,40 +6704,46 @@
         "description": "All workspace members or one workspace member affected by the policy.",
         "oneOf": [
           {
-            "type": "object",
-            "properties": {
-              "type": {
-                "description": "Always `all_space_members`",
-                "type": "string",
-                "const": "all_space_members"
-              }
-            },
-            "required": [
-              "type"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/CreateCreditLimitPolicyOkSelectorOneOf0"
           },
           {
-            "type": "object",
-            "properties": {
-              "type": {
-                "description": "Always `user`",
-                "type": "string",
-                "const": "user"
-              },
-              "user_id": {
-                "description": "The ID returned by the workspace users API.",
-                "type": "string",
-                "format": "uuid"
-              }
-            },
-            "required": [
-              "type",
-              "user_id"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/CreateCreditLimitPolicyOkSelectorOneOf1"
           }
         ]
+      },
+      "CreateCreditLimitPolicyOkSelectorOneOf0": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Always `all_space_members`",
+            "type": "string",
+            "const": "all_space_members"
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "additionalProperties": false
+      },
+      "CreateCreditLimitPolicyOkSelectorOneOf1": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Always `user`",
+            "type": "string",
+            "const": "user"
+          },
+          "user_id": {
+            "description": "The ID returned by the workspace users API.",
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "type",
+          "user_id"
+        ],
+        "additionalProperties": false
       },
       "ExpireCreditLimitPolicyOk": {
         "type": "object",
@@ -6738,40 +6825,46 @@
         "description": "All workspace members or one workspace member affected by the policy.",
         "oneOf": [
           {
-            "type": "object",
-            "properties": {
-              "type": {
-                "description": "Always `all_space_members`",
-                "type": "string",
-                "const": "all_space_members"
-              }
-            },
-            "required": [
-              "type"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/ExpireCreditLimitPolicyOkSelectorOneOf0"
           },
           {
-            "type": "object",
-            "properties": {
-              "type": {
-                "description": "Always `user`",
-                "type": "string",
-                "const": "user"
-              },
-              "user_id": {
-                "description": "The ID returned by the workspace users API.",
-                "type": "string",
-                "format": "uuid"
-              }
-            },
-            "required": [
-              "type",
-              "user_id"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/ExpireCreditLimitPolicyOkSelectorOneOf1"
           }
         ]
+      },
+      "ExpireCreditLimitPolicyOkSelectorOneOf0": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Always `all_space_members`",
+            "type": "string",
+            "const": "all_space_members"
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "additionalProperties": false
+      },
+      "ExpireCreditLimitPolicyOkSelectorOneOf1": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Always `user`",
+            "type": "string",
+            "const": "user"
+          },
+          "user_id": {
+            "description": "The ID returned by the workspace users API.",
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "type",
+          "user_id"
+        ],
+        "additionalProperties": false
       },
       "UpdateCreditLimitPolicy": {
         "type": "object",
@@ -6871,40 +6964,46 @@
         "description": "All workspace members or one workspace member affected by the policy.",
         "oneOf": [
           {
-            "type": "object",
-            "properties": {
-              "type": {
-                "description": "Always `all_space_members`",
-                "type": "string",
-                "const": "all_space_members"
-              }
-            },
-            "required": [
-              "type"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/UpdateCreditLimitPolicyOkSelectorOneOf0"
           },
           {
-            "type": "object",
-            "properties": {
-              "type": {
-                "description": "Always `user`",
-                "type": "string",
-                "const": "user"
-              },
-              "user_id": {
-                "description": "The ID returned by the workspace users API.",
-                "type": "string",
-                "format": "uuid"
-              }
-            },
-            "required": [
-              "type",
-              "user_id"
-            ],
-            "additionalProperties": false
+            "$ref": "#/components/schemas/UpdateCreditLimitPolicyOkSelectorOneOf1"
           }
         ]
+      },
+      "UpdateCreditLimitPolicyOkSelectorOneOf0": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Always `all_space_members`",
+            "type": "string",
+            "const": "all_space_members"
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "additionalProperties": false
+      },
+      "UpdateCreditLimitPolicyOkSelectorOneOf1": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Always `user`",
+            "type": "string",
+            "const": "user"
+          },
+          "user_id": {
+            "description": "The ID returned by the workspace users API.",
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "type",
+          "user_id"
+        ],
+        "additionalProperties": false
       },
       "AdminAPIError400Type": {
         "type": "string",
