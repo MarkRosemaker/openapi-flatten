@@ -190,3 +190,112 @@ func TestFlatten_PropertyNamesAndNot(t *testing.T) {
 		t.Errorf("not: got %+v, want a reference to OkNot", ok.Not)
 	}
 }
+
+func TestFlatten_DistributesAllOfOverUnion(t *testing.T) {
+	// "X, and A or B" becomes "X and A, or X and B", so each alternative gets a name
+	doc := minimalDoc(t, `{
+		"allOf": [
+			{"type": "object", "properties": {"id": {"type": "string"}}},
+			{"oneOf": [
+				{"title": "A cat", "type": "object", "properties": {"meow": {"type": "boolean"}}},
+				{"type": "object", "properties": {"bark": {"type": "boolean"}}}
+			]}
+		]
+	}`)
+
+	for range 3 {
+		if err := flatten.Document(doc); err != nil {
+			t.Fatal(err)
+		}
+	}
+
+	var names []string
+	for name := range doc.Components.Schemas.ByIndex() {
+		names = append(names, name)
+	}
+
+	if got, want := strings.Join(names, " "), "Ok ACat OkOneOf1"; got != want {
+		t.Fatalf("got components %s, want %s", got, want)
+	}
+
+	ok := doc.Components.Schemas["Ok"]
+	if len(ok.AllOf) != 0 || len(ok.OneOf) != 2 {
+		t.Fatalf("got allOf %d and oneOf %d, want a oneOf of 2 and no allOf", len(ok.AllOf), len(ok.OneOf))
+	}
+
+	cat := doc.Components.Schemas["ACat"]
+	if len(cat.AllOf) != 2 || cat.AllOf[0].Properties["id"] == nil || cat.AllOf[1].Properties["meow"] == nil {
+		t.Errorf("ACat: got %+v, want the shared object and the cat's", cat.AllOf)
+	}
+
+	if err := doc.Validate(); err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestFlatten_LeavesAmbiguousAllOfAlone(t *testing.T) {
+	for name, schema := range map[string]string{
+		"two unions": `{"allOf": [
+			{"oneOf": [{"type": "string"}, {"type": "integer"}]},
+			{"anyOf": [{"type": "string"}, {"type": "integer"}]}
+		]}`,
+		"a union that says more": `{"allOf": [
+			{"type": "object", "properties": {"id": {"type": "string"}}},
+			{"type": "object", "required": ["id"], "oneOf": [{"type": "object"}, {"type": "object"}]}
+		]}`,
+		"properties of its own": `{"type": "object", "properties": {"id": {"type": "string"}}, "allOf": [
+			{"oneOf": [{"type": "object"}, {"type": "object"}]}
+		]}`,
+	} {
+		t.Run(name, func(t *testing.T) {
+			doc := minimalDoc(t, schema)
+			if err := flatten.Document(doc); err != nil {
+				t.Fatal(err)
+			}
+
+			if ok := doc.Components.Schemas["Ok"]; len(ok.AllOf) == 0 || len(ok.OneOf) > 0 {
+				t.Errorf("got allOf %d and oneOf %d, want the allOf left as it was", len(ok.AllOf), len(ok.OneOf))
+			}
+		})
+	}
+}
+
+func TestFlatten_DistributesAllOfOverReferencedUnion(t *testing.T) {
+	doc, err := openapi.LoadFromReader(strings.NewReader(`{
+		"openapi": "3.1.0",
+		"info": {"title": "test", "version": "0.0.1"},
+		"components": {"schemas": {
+			"Pet": {"allOf": [{"$ref": "#/components/schemas/Named"}, {"$ref": "#/components/schemas/Animal"}]},
+			"Named": {"type": "object", "properties": {"name": {"type": "string"}}},
+			"Animal": {"oneOf": [{"$ref": "#/components/schemas/Cat"}, {"$ref": "#/components/schemas/Dog"}]},
+			"Cat": {"type": "object", "properties": {"meow": {"type": "boolean"}}},
+			"Dog": {"type": "object", "properties": {"bark": {"type": "boolean"}}}
+		}}
+	}`))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if err := flatten.Document(doc); err != nil {
+		t.Fatal(err)
+	}
+
+	schemas := doc.Components.Schemas
+	if pet := schemas["Pet"]; len(pet.AllOf) != 0 || len(pet.OneOf) != 2 {
+		t.Fatalf("Pet: got allOf %d and oneOf %d, want a oneOf of 2 and no allOf", len(pet.AllOf), len(pet.OneOf))
+	}
+
+	branch := schemas["PetOneOf1"]
+	if branch == nil || len(branch.AllOf) != 2 || branch.AllOf[1].Ref.Identifier != "#/components/schemas/Dog" {
+		t.Errorf("PetOneOf1: got %+v, want Named and Dog", branch)
+	}
+
+	// the union stays as it is for whatever else refers to it
+	if len(schemas["Animal"].OneOf) != 2 {
+		t.Errorf("Animal: got %+v, want its oneOf unchanged", schemas["Animal"])
+	}
+
+	if err := doc.Validate(); err != nil {
+		t.Fatal(err)
+	}
+}

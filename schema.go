@@ -1,7 +1,9 @@
 package flatten
 
 import (
+	"encoding/json/v2"
 	"fmt"
+	"slices"
 
 	"github.com/MarkRosemaker/errpath"
 	"github.com/MarkRosemaker/openapi"
@@ -92,6 +94,8 @@ func schema(d *openapi.Document, s *openapi.Schema, name string) error {
 		return fmt.Errorf("unimplemented schema type %q", s.Type)
 	}
 
+	distributeUnion(s)
+
 	if err := inlineSchemaList(d, s.AllOf, name+"AllOf", neverMove); err != nil {
 		return &errpath.ErrField{Field: "allOf", Err: err}
 	}
@@ -176,4 +180,85 @@ func inlineSchemaList(d *openapi.Document, ss openapi.SchemaList, prefix string,
 	}
 
 	return nil
+}
+
+// distributeUnion rewrites allOf: [X, {oneOf: [A, B]}] as oneOf: [{allOf: [X, A]}, {allOf: [X, B]}], and the same for anyOf.
+//
+// Both say "X, and A or B", but only the second gives each alternative a shape of its own to name. It applies only where
+// that is all s says: a single union among its allOf entries, inline or a component that is only a union, carrying
+// nothing but the union, and no union or properties of s's own.
+func distributeUnion(s *openapi.Schema) {
+	if len(s.OneOf) > 0 || len(s.AnyOf) > 0 || !onlyDocumentation(s, func(c *openapi.Schema) {
+		c.AllOf, c.Type = nil, ""
+	}) || s.Type != "" && s.Type != openapi.TypeObject {
+		return
+	}
+
+	at := -1
+
+	var union *openapi.Schema
+
+	for i, e := range s.AllOf {
+		u := e
+		if e.Ref != nil {
+			// a component that is only a union counts as one, and stays as it is for whatever else refers to it
+			if !onlyDocumentation(e, func(c *openapi.Schema) { c.Ref = nil }) {
+				continue
+			}
+
+			u = e.Ref.Value
+		}
+
+		if len(u.OneOf) == 0 && len(u.AnyOf) == 0 {
+			continue
+		}
+
+		if at >= 0 || len(u.OneOf) > 0 && len(u.AnyOf) > 0 ||
+			!onlyDocumentation(u, func(c *openapi.Schema) { c.OneOf, c.AnyOf, c.Discriminator = nil, nil, nil }) {
+			return // more than one union, or one that says more than its alternatives
+		}
+
+		at, union = i, u
+	}
+
+	if at < 0 {
+		return
+	}
+
+	alternatives := union.OneOf
+	if len(alternatives) == 0 {
+		alternatives = union.AnyOf
+	}
+
+	branches := make(openapi.SchemaList, len(alternatives))
+	for i, alt := range alternatives {
+		allOf := slices.Clone(s.AllOf)
+		allOf[at] = alt
+		branches[i] = &openapi.Schema{AllOf: allOf}
+
+		// the title names the branch now, the combination the alternative stands for, unless others share the alternative
+		if union == s.AllOf[at] {
+			branches[i].Title, alt.Title = alt.Title, ""
+		}
+	}
+
+	if len(union.OneOf) > 0 {
+		s.OneOf = branches
+	} else {
+		s.AnyOf = branches
+	}
+
+	s.AllOf, s.Discriminator = nil, union.Discriminator
+}
+
+// onlyDocumentation reports whether s says nothing but documentation once clear has removed what the caller accounts for.
+func onlyDocumentation(s *openapi.Schema, clear func(*openapi.Schema)) bool {
+	c := *s
+	clear(&c)
+	c.Title, c.Description, c.Deprecated = "", "", false
+	c.Default, c.Example, c.Examples, c.Extensions = nil, nil, nil, nil
+
+	b, err := json.Marshal(&c)
+
+	return err == nil && string(b) == "{}"
 }

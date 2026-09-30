@@ -8509,76 +8509,69 @@
         "additionalProperties": false
       },
       "databasePropertyConfigResponse": {
-        "allOf": [
+        "oneOf": [
           {
-            "$ref": "#/components/schemas/databasePropertyConfigResponseCommon"
+            "$ref": "#/components/schemas/databasePropertyConfigResponseOneOf0"
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/numberDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/formulaDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/selectDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/multiSelectDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/statusDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/relationDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/rollupDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/uniqueIdDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/titleDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/richTextDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/urlDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/peopleDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/filesDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/emailDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/phoneNumberDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/dateDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/checkboxDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/createdByDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/createdTimeDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/lastEditedByDatabasePropertyConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/lastEditedTimeDatabasePropertyConfigResponse"
-              }
-            ]
+            "$ref": "#/components/schemas/databasePropertyConfigResponseOneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseOneOf2"
+          },
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseOneOf3"
+          },
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseOneOf4"
+          },
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseOneOf5"
+          },
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseOneOf6"
+          },
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseOneOf7"
+          },
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseOneOf8"
+          },
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseOneOf9"
+          },
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseOneOf10"
+          },
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseOneOf11"
+          },
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseOneOf12"
+          },
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseOneOf13"
+          },
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseOneOf14"
+          },
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseOneOf15"
+          },
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseOneOf16"
+          },
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseOneOf17"
+          },
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseOneOf18"
+          },
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseOneOf19"
+          },
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseOneOf20"
           }
         ]
       },
@@ -8605,19 +8598,12 @@
         "additionalProperties": false
       },
       "databasePropertyRelationConfigResponse": {
-        "allOf": [
+        "oneOf": [
           {
-            "$ref": "#/components/schemas/databasePropertyRelationConfigResponseCommon"
+            "$ref": "#/components/schemas/databasePropertyRelationConfigResponseOneOf0"
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/singlePropertyDatabasePropertyRelationConfigResponse"
-              },
-              {
-                "$ref": "#/components/schemas/dualPropertyDatabasePropertyRelationConfigResponse"
-              }
-            ]
+            "$ref": "#/components/schemas/databasePropertyRelationConfigResponseOneOf1"
           }
         ]
       },
@@ -11528,19 +11514,12 @@
         ]
       },
       "internalOrExternalFileWithNameResponse": {
-        "allOf": [
+        "oneOf": [
           {
-            "$ref": "#/components/schemas/internalOrExternalFileWithNameResponseCommon"
+            "$ref": "#/components/schemas/internalOrExternalFileWithNameResponseOneOf0"
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/fileInternalOrExternalFileWithNameResponse"
-              },
-              {
-                "$ref": "#/components/schemas/externalInternalOrExternalFileWithNameResponse"
-              }
-            ]
+            "$ref": "#/components/schemas/internalOrExternalFileWithNameResponseOneOf1"
           }
         ]
       },
@@ -13164,19 +13143,12 @@
         ]
       },
       "pagePropertyValueWithIdResponse": {
-        "allOf": [
+        "oneOf": [
           {
-            "$ref": "#/components/schemas/idObjectResponse"
+            "$ref": "#/components/schemas/pagePropertyValueWithIdResponseOneOf0"
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/simpleOrArrayPropertyValueResponse"
-              },
-              {
-                "$ref": "#/components/schemas/partialRollupPropertyResponse"
-              }
-            ]
+            "$ref": "#/components/schemas/pagePropertyValueWithIdResponseOneOf1"
           }
         ]
       },
@@ -13690,25 +13662,18 @@
         "additionalProperties": false
       },
       "partialRollupValueResponse": {
-        "allOf": [
+        "oneOf": [
           {
-            "$ref": "#/components/schemas/partialRollupValueResponseCommon"
+            "$ref": "#/components/schemas/partialRollupValueResponseOneOf0"
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/numberPartialRollupValueResponse"
-              },
-              {
-                "$ref": "#/components/schemas/datePartialRollupValueResponse"
-              },
-              {
-                "$ref": "#/components/schemas/arrayPartialRollupValueResponse"
-              },
-              {
-                "$ref": "#/components/schemas/unsupportedPartialRollupValueResponse"
-              }
-            ]
+            "$ref": "#/components/schemas/partialRollupValueResponseOneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/partialRollupValueResponseOneOf2"
+          },
+          {
+            "$ref": "#/components/schemas/partialRollupValueResponseOneOf3"
           }
         ]
       },
@@ -14208,91 +14173,84 @@
         "additionalProperties": false
       },
       "propertyConfigurationRequest": {
-        "allOf": [
+        "oneOf": [
           {
-            "$ref": "#/components/schemas/propertyConfigurationRequestCommon"
+            "$ref": "#/components/schemas/propertyConfigurationRequestOneOf0"
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/numberPropertyConfigurationRequest"
-              },
-              {
-                "$ref": "#/components/schemas/formulaPropertyConfigurationRequest"
-              },
-              {
-                "$ref": "#/components/schemas/selectPropertyConfigurationRequest"
-              },
-              {
-                "$ref": "#/components/schemas/multiSelectPropertyConfigurationRequest"
-              },
-              {
-                "$ref": "#/components/schemas/statusPropertyConfigurationRequest"
-              },
-              {
-                "$ref": "#/components/schemas/relationPropertyConfigurationRequest"
-              },
-              {
-                "$ref": "#/components/schemas/rollupPropertyConfigurationRequest"
-              },
-              {
-                "$ref": "#/components/schemas/uniqueIdPropertyConfigurationRequest"
-              },
-              {
-                "$ref": "#/components/schemas/titlePropertyConfigurationRequest"
-              },
-              {
-                "$ref": "#/components/schemas/richTextPropertyConfigurationRequest"
-              },
-              {
-                "$ref": "#/components/schemas/urlPropertyConfigurationRequest"
-              },
-              {
-                "$ref": "#/components/schemas/peoplePropertyConfigurationRequest"
-              },
-              {
-                "$ref": "#/components/schemas/filesPropertyConfigurationRequest"
-              },
-              {
-                "$ref": "#/components/schemas/emailPropertyConfigurationRequest"
-              },
-              {
-                "$ref": "#/components/schemas/phoneNumberPropertyConfigurationRequest"
-              },
-              {
-                "$ref": "#/components/schemas/datePropertyConfigurationRequest"
-              },
-              {
-                "$ref": "#/components/schemas/checkboxPropertyConfigurationRequest"
-              },
-              {
-                "$ref": "#/components/schemas/createdByPropertyConfigurationRequest"
-              },
-              {
-                "$ref": "#/components/schemas/createdTimePropertyConfigurationRequest"
-              },
-              {
-                "$ref": "#/components/schemas/lastEditedByPropertyConfigurationRequest"
-              },
-              {
-                "$ref": "#/components/schemas/lastEditedTimePropertyConfigurationRequest"
-              },
-              {
-                "$ref": "#/components/schemas/buttonPropertyConfigurationRequest"
-              },
-              {
-                "$ref": "#/components/schemas/locationPropertyConfigurationRequest"
-              },
-              {
-                "$ref": "#/components/schemas/verificationPropertyConfigurationRequest"
-              },
-              {
-                "$ref": "#/components/schemas/lastVisitedTimePropertyConfigurationRequest"
-              },
-              {
-                "$ref": "#/components/schemas/placePropertyConfigurationRequest"
-              }
-            ]
+            "$ref": "#/components/schemas/propertyConfigurationRequestOneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestOneOf2"
+          },
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestOneOf3"
+          },
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestOneOf4"
+          },
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestOneOf5"
+          },
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestOneOf6"
+          },
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestOneOf7"
+          },
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestOneOf8"
+          },
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestOneOf9"
+          },
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestOneOf10"
+          },
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestOneOf11"
+          },
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestOneOf12"
+          },
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestOneOf13"
+          },
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestOneOf14"
+          },
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestOneOf15"
+          },
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestOneOf16"
+          },
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestOneOf17"
+          },
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestOneOf18"
+          },
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestOneOf19"
+          },
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestOneOf20"
+          },
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestOneOf21"
+          },
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestOneOf22"
+          },
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestOneOf23"
+          },
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestOneOf24"
+          },
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestOneOf25"
           }
         ]
       },
@@ -14882,22 +14840,15 @@
         ]
       },
       "richTextItemRequest": {
-        "allOf": [
+        "oneOf": [
           {
-            "$ref": "#/components/schemas/richTextItemRequestCommon"
+            "$ref": "#/components/schemas/richTextItemRequestOneOf0"
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/textRichTextItemRequest"
-              },
-              {
-                "$ref": "#/components/schemas/mentionRichTextItemRequest"
-              },
-              {
-                "$ref": "#/components/schemas/equationRichTextItemRequest"
-              }
-            ]
+            "$ref": "#/components/schemas/richTextItemRequestOneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/richTextItemRequestOneOf2"
           }
         ]
       },
@@ -14911,22 +14862,15 @@
         }
       },
       "richTextItemResponse": {
-        "allOf": [
+        "oneOf": [
           {
-            "$ref": "#/components/schemas/richTextItemResponseCommon"
+            "$ref": "#/components/schemas/richTextItemResponseOneOf0"
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/textRichTextItemResponse"
-              },
-              {
-                "$ref": "#/components/schemas/mentionRichTextItemResponse"
-              },
-              {
-                "$ref": "#/components/schemas/equationRichTextItemResponse"
-              }
-            ]
+            "$ref": "#/components/schemas/richTextItemResponseOneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/richTextItemResponseOneOf2"
           }
         ]
       },
@@ -15542,19 +15486,12 @@
         }
       },
       "statusOptionUpdateRequest": {
-        "allOf": [
+        "oneOf": [
           {
-            "$ref": "#/components/schemas/statusOptionUpdateRequestCommon"
+            "$ref": "#/components/schemas/statusOptionUpdateRequestOneOf0"
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/statusOptionUpdateRequestAllOf1OneOf0"
-              },
-              {
-                "$ref": "#/components/schemas/statusOptionUpdateRequestAllOf1OneOf1"
-              }
-            ]
+            "$ref": "#/components/schemas/statusOptionUpdateRequestOneOf1"
           }
         ]
       },
@@ -17455,19 +17392,12 @@
         "additionalProperties": false
       },
       "userObjectResponse": {
-        "allOf": [
+        "oneOf": [
           {
-            "$ref": "#/components/schemas/userObjectResponseCommon"
+            "$ref": "#/components/schemas/userObjectResponseOneOf0"
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/personUserObjectResponse"
-              },
-              {
-                "$ref": "#/components/schemas/botUserObjectResponse"
-              }
-            ]
+            "$ref": "#/components/schemas/userObjectResponseOneOf1"
           }
         ]
       },
@@ -20236,6 +20166,23 @@
         ]
       },
       "UpdatePageMarkdown": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/InsertContent"
+          },
+          {
+            "$ref": "#/components/schemas/ReplaceContentRange"
+          },
+          {
+            "$ref": "#/components/schemas/UpdateContent"
+          },
+          {
+            "$ref": "#/components/schemas/ReplaceContent"
+          }
+        ]
+      },
+      "InsertContent": {
+        "title": "Insert Content",
         "allOf": [
           {
             "type": "object",
@@ -20247,43 +20194,26 @@
             }
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/InsertContent"
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `insert_content`",
+                "type": "string",
+                "const": "insert_content"
               },
-              {
-                "$ref": "#/components/schemas/ReplaceContentRange"
-              },
-              {
-                "$ref": "#/components/schemas/UpdateContent"
-              },
-              {
-                "$ref": "#/components/schemas/ReplaceContent"
+              "insert_content": {
+                "$ref": "#/components/schemas/InsertContentAllOf1InsertContent"
               }
-            ]
+            },
+            "required": [
+              "type",
+              "insert_content"
+            ],
+            "deprecated": true
           }
         ]
       },
-      "InsertContent": {
-        "title": "Insert Content",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `insert_content`",
-            "type": "string",
-            "const": "insert_content"
-          },
-          "insert_content": {
-            "$ref": "#/components/schemas/InsertContentInsertContent"
-          }
-        },
-        "required": [
-          "type",
-          "insert_content"
-        ],
-        "deprecated": true
-      },
-      "InsertContentInsertContent": {
+      "InsertContentAllOf1InsertContent": {
         "description": "Insert new content into the page.",
         "type": "object",
         "properties": {
@@ -20299,25 +20229,25 @@
             "type": "string"
           },
           "position": {
-            "$ref": "#/components/schemas/InsertContentInsertContentPosition"
+            "$ref": "#/components/schemas/InsertContentAllOf1InsertContentPosition"
           }
         },
         "required": [
           "content"
         ]
       },
-      "InsertContentInsertContentPosition": {
+      "InsertContentAllOf1InsertContentPosition": {
         "description": "Explicit position for inserted content. Use {\"type\":\"start\"} to prepend or {\"type\":\"end\"} to append. Cannot be combined with after.",
         "oneOf": [
           {
-            "$ref": "#/components/schemas/InsertContentInsertContentPositionOneOf0"
+            "$ref": "#/components/schemas/InsertContentAllOf1InsertContentPositionOneOf0"
           },
           {
-            "$ref": "#/components/schemas/InsertContentInsertContentPositionOneOf1"
+            "$ref": "#/components/schemas/InsertContentAllOf1InsertContentPositionOneOf1"
           }
         ]
       },
-      "InsertContentInsertContentPositionOneOf0": {
+      "InsertContentAllOf1InsertContentPositionOneOf0": {
         "type": "object",
         "properties": {
           "type": {
@@ -20330,7 +20260,7 @@
           "type"
         ]
       },
-      "InsertContentInsertContentPositionOneOf1": {
+      "InsertContentAllOf1InsertContentPositionOneOf1": {
         "type": "object",
         "properties": {
           "type": {
@@ -20345,24 +20275,37 @@
       },
       "ReplaceContentRange": {
         "title": "Replace Content Range",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `replace_content_range`",
-            "type": "string",
-            "const": "replace_content_range"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "allow_async": {
+                "description": "Set to true to opt into receiving an async_task result when this update operation is accepted for background execution. If omitted or false, the endpoint keeps the existing synchronous response shape.",
+                "type": "boolean"
+              }
+            }
           },
-          "replace_content_range": {
-            "$ref": "#/components/schemas/ReplaceContentRangeReplaceContentRange"
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `replace_content_range`",
+                "type": "string",
+                "const": "replace_content_range"
+              },
+              "replace_content_range": {
+                "$ref": "#/components/schemas/ReplaceContentRangeAllOf1ReplaceContentRange"
+              }
+            },
+            "required": [
+              "type",
+              "replace_content_range"
+            ],
+            "deprecated": true
           }
-        },
-        "required": [
-          "type",
-          "replace_content_range"
-        ],
-        "deprecated": true
+        ]
       },
-      "ReplaceContentRangeReplaceContentRange": {
+      "ReplaceContentRangeAllOf1ReplaceContentRange": {
         "description": "Replace a range of content in the page.",
         "type": "object",
         "properties": {
@@ -20389,28 +20332,41 @@
       },
       "UpdateContent": {
         "title": "Update Content",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `update_content`",
-            "type": "string",
-            "const": "update_content"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "allow_async": {
+                "description": "Set to true to opt into receiving an async_task result when this update operation is accepted for background execution. If omitted or false, the endpoint keeps the existing synchronous response shape.",
+                "type": "boolean"
+              }
+            }
           },
-          "update_content": {
-            "$ref": "#/components/schemas/UpdateContentUpdateContent"
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `update_content`",
+                "type": "string",
+                "const": "update_content"
+              },
+              "update_content": {
+                "$ref": "#/components/schemas/UpdateContentAllOf1UpdateContent"
+              }
+            },
+            "required": [
+              "type",
+              "update_content"
+            ]
           }
-        },
-        "required": [
-          "type",
-          "update_content"
         ]
       },
-      "UpdateContentUpdateContent": {
+      "UpdateContentAllOf1UpdateContent": {
         "description": "Update specific content using search-and-replace operations.",
         "type": "object",
         "properties": {
           "content_updates": {
-            "$ref": "#/components/schemas/UpdateContentUpdateContentContentUpdates"
+            "$ref": "#/components/schemas/UpdateContentAllOf1UpdateContentContentUpdates"
           },
           "allow_deleting_content": {
             "description": "Set to true to allow the operation to delete child pages or databases. Defaults to false.",
@@ -20421,15 +20377,15 @@
           "content_updates"
         ]
       },
-      "UpdateContentUpdateContentContentUpdates": {
+      "UpdateContentAllOf1UpdateContentContentUpdates": {
         "description": "An array of search-and-replace operations, each with old_str (content to find) and new_str (replacement content).",
         "type": "array",
         "maxItems": 100,
         "items": {
-          "$ref": "#/components/schemas/UpdateContentUpdateContentContentUpdatesItem"
+          "$ref": "#/components/schemas/UpdateContentAllOf1UpdateContentContentUpdatesItem"
         }
       },
-      "UpdateContentUpdateContentContentUpdatesItem": {
+      "UpdateContentAllOf1UpdateContentContentUpdatesItem": {
         "type": "object",
         "properties": {
           "old_str": {
@@ -20453,23 +20409,36 @@
       },
       "ReplaceContent": {
         "title": "Replace Content",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `replace_content`",
-            "type": "string",
-            "const": "replace_content"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "allow_async": {
+                "description": "Set to true to opt into receiving an async_task result when this update operation is accepted for background execution. If omitted or false, the endpoint keeps the existing synchronous response shape.",
+                "type": "boolean"
+              }
+            }
           },
-          "replace_content": {
-            "$ref": "#/components/schemas/ReplaceContentReplaceContent"
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `replace_content`",
+                "type": "string",
+                "const": "replace_content"
+              },
+              "replace_content": {
+                "$ref": "#/components/schemas/ReplaceContentAllOf1ReplaceContent"
+              }
+            },
+            "required": [
+              "type",
+              "replace_content"
+            ]
           }
-        },
-        "required": [
-          "type",
-          "replace_content"
         ]
       },
-      "ReplaceContentReplaceContent": {
+      "ReplaceContentAllOf1ReplaceContent": {
         "description": "Replace the entire page content with new markdown.",
         "type": "object",
         "properties": {
@@ -23111,6 +23080,77 @@
         ]
       },
       "UpdateADataSourcePropertiesValueOneOf0": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/Number3"
+          },
+          {
+            "$ref": "#/components/schemas/Formula"
+          },
+          {
+            "$ref": "#/components/schemas/Select3"
+          },
+          {
+            "$ref": "#/components/schemas/MultiSelect3"
+          },
+          {
+            "$ref": "#/components/schemas/Status3"
+          },
+          {
+            "$ref": "#/components/schemas/Relation3"
+          },
+          {
+            "$ref": "#/components/schemas/Rollup"
+          },
+          {
+            "$ref": "#/components/schemas/UniqueID"
+          },
+          {
+            "$ref": "#/components/schemas/Title3"
+          },
+          {
+            "$ref": "#/components/schemas/RichText3"
+          },
+          {
+            "$ref": "#/components/schemas/URL3"
+          },
+          {
+            "$ref": "#/components/schemas/People3"
+          },
+          {
+            "$ref": "#/components/schemas/Files3"
+          },
+          {
+            "$ref": "#/components/schemas/Email3"
+          },
+          {
+            "$ref": "#/components/schemas/PhoneNumber3"
+          },
+          {
+            "$ref": "#/components/schemas/Date3"
+          },
+          {
+            "$ref": "#/components/schemas/Checkbox3"
+          },
+          {
+            "$ref": "#/components/schemas/CreatedBy"
+          },
+          {
+            "$ref": "#/components/schemas/CreatedTime"
+          },
+          {
+            "$ref": "#/components/schemas/LastEditedBy"
+          },
+          {
+            "$ref": "#/components/schemas/LastEditedTime"
+          },
+          {
+            "$ref": "#/components/schemas/Place3"
+          }
+        ]
+      },
+      "Number3": {
+        "title": "Number",
         "allOf": [
           {
             "type": "object",
@@ -23120,83 +23160,29 @@
                 "type": "string"
               },
               "description": {
-                "$ref": "#/components/schemas/UpdateADataSourcePropertiesValueOneOf0AllOf0Description"
+                "$ref": "#/components/schemas/NumberAllOf0Description"
               }
             }
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/Number3"
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `number`",
+                "type": "string",
+                "const": "number"
               },
-              {
-                "$ref": "#/components/schemas/Formula"
-              },
-              {
-                "$ref": "#/components/schemas/Select3"
-              },
-              {
-                "$ref": "#/components/schemas/MultiSelect3"
-              },
-              {
-                "$ref": "#/components/schemas/Status3"
-              },
-              {
-                "$ref": "#/components/schemas/Relation3"
-              },
-              {
-                "$ref": "#/components/schemas/Rollup"
-              },
-              {
-                "$ref": "#/components/schemas/UniqueID"
-              },
-              {
-                "$ref": "#/components/schemas/Title3"
-              },
-              {
-                "$ref": "#/components/schemas/RichText3"
-              },
-              {
-                "$ref": "#/components/schemas/URL3"
-              },
-              {
-                "$ref": "#/components/schemas/People3"
-              },
-              {
-                "$ref": "#/components/schemas/Files3"
-              },
-              {
-                "$ref": "#/components/schemas/Email3"
-              },
-              {
-                "$ref": "#/components/schemas/PhoneNumber3"
-              },
-              {
-                "$ref": "#/components/schemas/Date3"
-              },
-              {
-                "$ref": "#/components/schemas/Checkbox3"
-              },
-              {
-                "$ref": "#/components/schemas/CreatedBy"
-              },
-              {
-                "$ref": "#/components/schemas/CreatedTime"
-              },
-              {
-                "$ref": "#/components/schemas/LastEditedBy"
-              },
-              {
-                "$ref": "#/components/schemas/LastEditedTime"
-              },
-              {
-                "$ref": "#/components/schemas/Place3"
+              "number": {
+                "$ref": "#/components/schemas/NumberAllOf1Number"
               }
+            },
+            "required": [
+              "number"
             ]
           }
         ]
       },
-      "UpdateADataSourcePropertiesValueOneOf0AllOf0Description": {
+      "NumberAllOf0Description": {
         "description": "The description of the property.",
         "oneOf": [
           {
@@ -23207,24 +23193,7 @@
           }
         ]
       },
-      "Number3": {
-        "title": "Number",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `number`",
-            "type": "string",
-            "const": "number"
-          },
-          "number": {
-            "$ref": "#/components/schemas/NumberNumber"
-          }
-        },
-        "required": [
-          "number"
-        ]
-      },
-      "NumberNumber": {
+      "NumberAllOf1Number": {
         "type": "object",
         "properties": {
           "format": {
@@ -23234,22 +23203,38 @@
       },
       "Formula": {
         "title": "Formula",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `formula`",
-            "type": "string",
-            "const": "formula"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "The name of the property.",
+                "type": "string"
+              },
+              "description": {
+                "$ref": "#/components/schemas/NumberAllOf0Description"
+              }
+            }
           },
-          "formula": {
-            "$ref": "#/components/schemas/FormulaFormula"
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `formula`",
+                "type": "string",
+                "const": "formula"
+              },
+              "formula": {
+                "$ref": "#/components/schemas/FormulaAllOf1Formula"
+              }
+            },
+            "required": [
+              "formula"
+            ]
           }
-        },
-        "required": [
-          "formula"
         ]
       },
-      "FormulaFormula": {
+      "FormulaAllOf1Formula": {
         "type": "object",
         "properties": {
           "expression": {
@@ -23259,34 +23244,60 @@
       },
       "Select3": {
         "title": "Select",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `select`",
-            "type": "string",
-            "const": "select"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "The name of the property.",
+                "type": "string"
+              },
+              "description": {
+                "$ref": "#/components/schemas/NumberAllOf0Description"
+              }
+            }
           },
-          "select": {
-            "$ref": "#/components/schemas/SelectSelect3"
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `select`",
+                "type": "string",
+                "const": "select"
+              },
+              "select": {
+                "$ref": "#/components/schemas/SelectAllOf1Select"
+              }
+            },
+            "required": [
+              "select"
+            ]
           }
-        },
-        "required": [
-          "select"
         ]
       },
-      "SelectSelect3": {
+      "SelectAllOf1Select": {
         "type": "object",
         "properties": {
           "options": {
             "type": "array",
             "maxItems": 100,
             "items": {
-              "$ref": "#/components/schemas/SelectSelectOptionsItem"
+              "$ref": "#/components/schemas/SelectAllOf1SelectOptionsItem"
             }
           }
         }
       },
-      "SelectSelectOptionsItem": {
+      "SelectAllOf1SelectOptionsItem": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/SelectAllOf1SelectOptionsItemOneOf0"
+          },
+          {
+            "$ref": "#/components/schemas/SelectAllOf1SelectOptionsItemOneOf1"
+          }
+        ]
+      },
+      "SelectAllOf1SelectOptionsItemOneOf0": {
         "allOf": [
           {
             "type": "object",
@@ -23295,23 +23306,27 @@
                 "$ref": "#/components/schemas/selectColor"
               },
               "description": {
-                "$ref": "#/components/schemas/SelectSelectOptionsItemAllOf0Description"
+                "$ref": "#/components/schemas/SelectAllOf1SelectOptionsItemOneOf0AllOf0Description"
               }
             }
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/SelectSelectOptionsItemAllOf1OneOf0"
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
               },
-              {
-                "$ref": "#/components/schemas/SelectSelectOptionsItemAllOf1OneOf1"
+              "id": {
+                "type": "string"
               }
+            },
+            "required": [
+              "name"
             ]
           }
         ]
       },
-      "SelectSelectOptionsItemAllOf0Description": {
+      "SelectAllOf1SelectOptionsItemOneOf0AllOf0Description": {
         "oneOf": [
           {
             "type": "string"
@@ -23321,64 +23336,91 @@
           }
         ]
       },
-      "SelectSelectOptionsItemAllOf1OneOf0": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
+      "SelectAllOf1SelectOptionsItemOneOf1": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "color": {
+                "$ref": "#/components/schemas/selectColor"
+              },
+              "description": {
+                "$ref": "#/components/schemas/SelectAllOf1SelectOptionsItemOneOf0AllOf0Description"
+              }
+            }
           },
-          "id": {
-            "type": "string"
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ]
           }
-        },
-        "required": [
-          "name"
-        ]
-      },
-      "SelectSelectOptionsItemAllOf1OneOf1": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id"
         ]
       },
       "MultiSelect3": {
         "title": "Multi Select",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `multi_select`",
-            "type": "string",
-            "const": "multi_select"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "The name of the property.",
+                "type": "string"
+              },
+              "description": {
+                "$ref": "#/components/schemas/NumberAllOf0Description"
+              }
+            }
           },
-          "multi_select": {
-            "$ref": "#/components/schemas/MultiSelectMultiSelect"
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `multi_select`",
+                "type": "string",
+                "const": "multi_select"
+              },
+              "multi_select": {
+                "$ref": "#/components/schemas/MultiSelectAllOf1MultiSelect"
+              }
+            },
+            "required": [
+              "multi_select"
+            ]
           }
-        },
-        "required": [
-          "multi_select"
         ]
       },
-      "MultiSelectMultiSelect": {
+      "MultiSelectAllOf1MultiSelect": {
         "type": "object",
         "properties": {
           "options": {
             "type": "array",
             "maxItems": 100,
             "items": {
-              "$ref": "#/components/schemas/MultiSelectMultiSelectOptionsItem"
+              "$ref": "#/components/schemas/MultiSelectAllOf1MultiSelectOptionsItem"
             }
           }
         }
       },
-      "MultiSelectMultiSelectOptionsItem": {
+      "MultiSelectAllOf1MultiSelectOptionsItem": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/MultiSelectAllOf1MultiSelectOptionsItemOneOf0"
+          },
+          {
+            "$ref": "#/components/schemas/MultiSelectAllOf1MultiSelectOptionsItemOneOf1"
+          }
+        ]
+      },
+      "MultiSelectAllOf1MultiSelectOptionsItemOneOf0": {
         "allOf": [
           {
             "type": "object",
@@ -23387,23 +23429,27 @@
                 "$ref": "#/components/schemas/selectColor"
               },
               "description": {
-                "$ref": "#/components/schemas/MultiSelectMultiSelectOptionsItemAllOf0Description"
+                "$ref": "#/components/schemas/MultiSelectAllOf1MultiSelectOptionsItemOneOf0AllOf0Description"
               }
             }
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/MultiSelectMultiSelectOptionsItemAllOf1OneOf0"
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
               },
-              {
-                "$ref": "#/components/schemas/MultiSelectMultiSelectOptionsItemAllOf1OneOf1"
+              "id": {
+                "type": "string"
               }
+            },
+            "required": [
+              "name"
             ]
           }
         ]
       },
-      "MultiSelectMultiSelectOptionsItemAllOf0Description": {
+      "MultiSelectAllOf1MultiSelectOptionsItemOneOf0AllOf0Description": {
         "oneOf": [
           {
             "type": "string"
@@ -23413,69 +23459,113 @@
           }
         ]
       },
-      "MultiSelectMultiSelectOptionsItemAllOf1OneOf0": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
+      "MultiSelectAllOf1MultiSelectOptionsItemOneOf1": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "color": {
+                "$ref": "#/components/schemas/selectColor"
+              },
+              "description": {
+                "$ref": "#/components/schemas/MultiSelectAllOf1MultiSelectOptionsItemOneOf0AllOf0Description"
+              }
+            }
           },
-          "id": {
-            "type": "string"
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ]
           }
-        },
-        "required": [
-          "name"
-        ]
-      },
-      "MultiSelectMultiSelectOptionsItemAllOf1OneOf1": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id"
         ]
       },
       "Status3": {
         "title": "Status",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `status`",
-            "type": "string",
-            "const": "status"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "The name of the property.",
+                "type": "string"
+              },
+              "description": {
+                "$ref": "#/components/schemas/NumberAllOf0Description"
+              }
+            }
           },
-          "status": {
-            "$ref": "#/components/schemas/statusPropertyConfigUpdateRequest"
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `status`",
+                "type": "string",
+                "const": "status"
+              },
+              "status": {
+                "$ref": "#/components/schemas/statusPropertyConfigUpdateRequest"
+              }
+            },
+            "required": [
+              "status"
+            ]
           }
-        },
-        "required": [
-          "status"
         ]
       },
       "Relation3": {
         "title": "Relation",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `relation`",
-            "type": "string",
-            "const": "relation"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "The name of the property.",
+                "type": "string"
+              },
+              "description": {
+                "$ref": "#/components/schemas/NumberAllOf0Description"
+              }
+            }
           },
-          "relation": {
-            "$ref": "#/components/schemas/RelationRelation"
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `relation`",
+                "type": "string",
+                "const": "relation"
+              },
+              "relation": {
+                "$ref": "#/components/schemas/RelationAllOf1Relation"
+              }
+            },
+            "required": [
+              "relation"
+            ]
           }
-        },
-        "required": [
-          "relation"
         ]
       },
-      "RelationRelation": {
+      "RelationAllOf1Relation": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/SingleProperty"
+          },
+          {
+            "$ref": "#/components/schemas/DualProperty"
+          }
+        ]
+      },
+      "SingleProperty": {
+        "title": "Single Property",
         "allOf": [
           {
             "type": "object",
@@ -23489,52 +23579,56 @@
             ]
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/SingleProperty"
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `single_property`",
+                "type": "string",
+                "const": "single_property"
               },
-              {
-                "$ref": "#/components/schemas/DualProperty"
+              "single_property": {
+                "$ref": "#/components/schemas/emptyObject"
               }
+            },
+            "required": [
+              "single_property"
             ]
           }
         ]
       },
-      "SingleProperty": {
-        "title": "Single Property",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `single_property`",
-            "type": "string",
-            "const": "single_property"
-          },
-          "single_property": {
-            "$ref": "#/components/schemas/emptyObject"
-          }
-        },
-        "required": [
-          "single_property"
-        ]
-      },
       "DualProperty": {
         "title": "Dual Property",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `dual_property`",
-            "type": "string",
-            "const": "dual_property"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "data_source_id": {
+                "$ref": "#/components/schemas/idRequest"
+              }
+            },
+            "required": [
+              "data_source_id"
+            ]
           },
-          "dual_property": {
-            "$ref": "#/components/schemas/DualPropertyDualProperty"
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `dual_property`",
+                "type": "string",
+                "const": "dual_property"
+              },
+              "dual_property": {
+                "$ref": "#/components/schemas/DualPropertyAllOf1DualProperty"
+              }
+            },
+            "required": [
+              "dual_property"
+            ]
           }
-        },
-        "required": [
-          "dual_property"
         ]
       },
-      "DualPropertyDualProperty": {
+      "DualPropertyAllOf1DualProperty": {
         "type": "object",
         "properties": {
           "synced_property_id": {
@@ -23547,22 +23641,54 @@
       },
       "Rollup": {
         "title": "Rollup",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `rollup`",
-            "type": "string",
-            "const": "rollup"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "The name of the property.",
+                "type": "string"
+              },
+              "description": {
+                "$ref": "#/components/schemas/NumberAllOf0Description"
+              }
+            }
           },
-          "rollup": {
-            "$ref": "#/components/schemas/RollupRollup"
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `rollup`",
+                "type": "string",
+                "const": "rollup"
+              },
+              "rollup": {
+                "$ref": "#/components/schemas/RollupAllOf1Rollup"
+              }
+            },
+            "required": [
+              "rollup"
+            ]
           }
-        },
-        "required": [
-          "rollup"
         ]
       },
-      "RollupRollup": {
+      "RollupAllOf1Rollup": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/RollupAllOf1RollupOneOf0"
+          },
+          {
+            "$ref": "#/components/schemas/RollupAllOf1RollupOneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/RollupAllOf1RollupOneOf2"
+          },
+          {
+            "$ref": "#/components/schemas/RollupAllOf1RollupOneOf3"
+          }
+        ]
+      },
+      "RollupAllOf1RollupOneOf0": {
         "allOf": [
           {
             "type": "object",
@@ -23577,109 +23703,157 @@
             ]
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/RollupRollupAllOf1OneOf0"
+            "type": "object",
+            "properties": {
+              "relation_property_name": {
+                "type": "string"
               },
-              {
-                "$ref": "#/components/schemas/RollupRollupAllOf1OneOf1"
-              },
-              {
-                "$ref": "#/components/schemas/RollupRollupAllOf1OneOf2"
-              },
-              {
-                "$ref": "#/components/schemas/RollupRollupAllOf1OneOf3"
+              "rollup_property_name": {
+                "type": "string"
               }
+            },
+            "required": [
+              "relation_property_name",
+              "rollup_property_name"
             ]
           }
         ]
       },
-      "RollupRollupAllOf1OneOf0": {
-        "type": "object",
-        "properties": {
-          "relation_property_name": {
-            "type": "string"
+      "RollupAllOf1RollupOneOf1": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "function": {
+                "description": "The function to use for the rollup, e.g. count, count_values, percent_not_empty, max.",
+                "$ref": "#/components/schemas/rollupFunction"
+              }
+            },
+            "required": [
+              "function"
+            ]
           },
-          "rollup_property_name": {
-            "type": "string"
+          {
+            "type": "object",
+            "properties": {
+              "relation_property_id": {
+                "type": "string"
+              },
+              "rollup_property_name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "relation_property_id",
+              "rollup_property_name"
+            ]
           }
-        },
-        "required": [
-          "relation_property_name",
-          "rollup_property_name"
         ]
       },
-      "RollupRollupAllOf1OneOf1": {
-        "type": "object",
-        "properties": {
-          "relation_property_id": {
-            "type": "string"
+      "RollupAllOf1RollupOneOf2": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "function": {
+                "description": "The function to use for the rollup, e.g. count, count_values, percent_not_empty, max.",
+                "$ref": "#/components/schemas/rollupFunction"
+              }
+            },
+            "required": [
+              "function"
+            ]
           },
-          "rollup_property_name": {
-            "type": "string"
+          {
+            "type": "object",
+            "properties": {
+              "relation_property_name": {
+                "type": "string"
+              },
+              "rollup_property_id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "relation_property_name",
+              "rollup_property_id"
+            ]
           }
-        },
-        "required": [
-          "relation_property_id",
-          "rollup_property_name"
         ]
       },
-      "RollupRollupAllOf1OneOf2": {
-        "type": "object",
-        "properties": {
-          "relation_property_name": {
-            "type": "string"
+      "RollupAllOf1RollupOneOf3": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "function": {
+                "description": "The function to use for the rollup, e.g. count, count_values, percent_not_empty, max.",
+                "$ref": "#/components/schemas/rollupFunction"
+              }
+            },
+            "required": [
+              "function"
+            ]
           },
-          "rollup_property_id": {
-            "type": "string"
+          {
+            "type": "object",
+            "properties": {
+              "relation_property_id": {
+                "type": "string"
+              },
+              "rollup_property_id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "relation_property_id",
+              "rollup_property_id"
+            ]
           }
-        },
-        "required": [
-          "relation_property_name",
-          "rollup_property_id"
-        ]
-      },
-      "RollupRollupAllOf1OneOf3": {
-        "type": "object",
-        "properties": {
-          "relation_property_id": {
-            "type": "string"
-          },
-          "rollup_property_id": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "relation_property_id",
-          "rollup_property_id"
         ]
       },
       "UniqueID": {
         "title": "Unique Id",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `unique_id`",
-            "type": "string",
-            "const": "unique_id"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "The name of the property.",
+                "type": "string"
+              },
+              "description": {
+                "$ref": "#/components/schemas/NumberAllOf0Description"
+              }
+            }
           },
-          "unique_id": {
-            "$ref": "#/components/schemas/UniqueIDUniqueID"
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `unique_id`",
+                "type": "string",
+                "const": "unique_id"
+              },
+              "unique_id": {
+                "$ref": "#/components/schemas/UniqueIDAllOf1UniqueID"
+              }
+            },
+            "required": [
+              "unique_id"
+            ]
           }
-        },
-        "required": [
-          "unique_id"
         ]
       },
-      "UniqueIDUniqueID": {
+      "UniqueIDAllOf1UniqueID": {
         "type": "object",
         "properties": {
           "prefix": {
-            "$ref": "#/components/schemas/UniqueIDUniqueIDPrefix"
+            "$ref": "#/components/schemas/UniqueIDAllOf1UniqueIDPrefix"
           }
         }
       },
-      "UniqueIDUniqueIDPrefix": {
+      "UniqueIDAllOf1UniqueIDPrefix": {
         "oneOf": [
           {
             "type": "string"
@@ -23691,240 +23865,464 @@
       },
       "Title3": {
         "title": "Title",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `title`",
-            "type": "string",
-            "const": "title"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "The name of the property.",
+                "type": "string"
+              },
+              "description": {
+                "$ref": "#/components/schemas/NumberAllOf0Description"
+              }
+            }
           },
-          "title": {
-            "$ref": "#/components/schemas/emptyObject"
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `title`",
+                "type": "string",
+                "const": "title"
+              },
+              "title": {
+                "$ref": "#/components/schemas/emptyObject"
+              }
+            },
+            "required": [
+              "title"
+            ]
           }
-        },
-        "required": [
-          "title"
         ]
       },
       "RichText3": {
         "title": "Rich Text",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `rich_text`",
-            "type": "string",
-            "const": "rich_text"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "The name of the property.",
+                "type": "string"
+              },
+              "description": {
+                "$ref": "#/components/schemas/NumberAllOf0Description"
+              }
+            }
           },
-          "rich_text": {
-            "$ref": "#/components/schemas/emptyObject"
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `rich_text`",
+                "type": "string",
+                "const": "rich_text"
+              },
+              "rich_text": {
+                "$ref": "#/components/schemas/emptyObject"
+              }
+            },
+            "required": [
+              "rich_text"
+            ]
           }
-        },
-        "required": [
-          "rich_text"
         ]
       },
       "URL3": {
         "title": "Url",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `url`",
-            "type": "string",
-            "const": "url"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "The name of the property.",
+                "type": "string"
+              },
+              "description": {
+                "$ref": "#/components/schemas/NumberAllOf0Description"
+              }
+            }
           },
-          "url": {
-            "$ref": "#/components/schemas/emptyObject"
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `url`",
+                "type": "string",
+                "const": "url"
+              },
+              "url": {
+                "$ref": "#/components/schemas/emptyObject"
+              }
+            },
+            "required": [
+              "url"
+            ]
           }
-        },
-        "required": [
-          "url"
         ]
       },
       "People3": {
         "title": "People",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `people`",
-            "type": "string",
-            "const": "people"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "The name of the property.",
+                "type": "string"
+              },
+              "description": {
+                "$ref": "#/components/schemas/NumberAllOf0Description"
+              }
+            }
           },
-          "people": {
-            "$ref": "#/components/schemas/emptyObject"
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `people`",
+                "type": "string",
+                "const": "people"
+              },
+              "people": {
+                "$ref": "#/components/schemas/emptyObject"
+              }
+            },
+            "required": [
+              "people"
+            ]
           }
-        },
-        "required": [
-          "people"
         ]
       },
       "Files3": {
         "title": "Files",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `files`",
-            "type": "string",
-            "const": "files"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "The name of the property.",
+                "type": "string"
+              },
+              "description": {
+                "$ref": "#/components/schemas/NumberAllOf0Description"
+              }
+            }
           },
-          "files": {
-            "$ref": "#/components/schemas/emptyObject"
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `files`",
+                "type": "string",
+                "const": "files"
+              },
+              "files": {
+                "$ref": "#/components/schemas/emptyObject"
+              }
+            },
+            "required": [
+              "files"
+            ]
           }
-        },
-        "required": [
-          "files"
         ]
       },
       "Email3": {
         "title": "Email",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `email`",
-            "type": "string",
-            "const": "email"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "The name of the property.",
+                "type": "string"
+              },
+              "description": {
+                "$ref": "#/components/schemas/NumberAllOf0Description"
+              }
+            }
           },
-          "email": {
-            "$ref": "#/components/schemas/emptyObject"
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `email`",
+                "type": "string",
+                "const": "email"
+              },
+              "email": {
+                "$ref": "#/components/schemas/emptyObject"
+              }
+            },
+            "required": [
+              "email"
+            ]
           }
-        },
-        "required": [
-          "email"
         ]
       },
       "PhoneNumber3": {
         "title": "Phone Number",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `phone_number`",
-            "type": "string",
-            "const": "phone_number"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "The name of the property.",
+                "type": "string"
+              },
+              "description": {
+                "$ref": "#/components/schemas/NumberAllOf0Description"
+              }
+            }
           },
-          "phone_number": {
-            "$ref": "#/components/schemas/emptyObject"
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `phone_number`",
+                "type": "string",
+                "const": "phone_number"
+              },
+              "phone_number": {
+                "$ref": "#/components/schemas/emptyObject"
+              }
+            },
+            "required": [
+              "phone_number"
+            ]
           }
-        },
-        "required": [
-          "phone_number"
         ]
       },
       "Date3": {
         "title": "Date",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `date`",
-            "type": "string",
-            "const": "date"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "The name of the property.",
+                "type": "string"
+              },
+              "description": {
+                "$ref": "#/components/schemas/NumberAllOf0Description"
+              }
+            }
           },
-          "date": {
-            "$ref": "#/components/schemas/emptyObject"
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `date`",
+                "type": "string",
+                "const": "date"
+              },
+              "date": {
+                "$ref": "#/components/schemas/emptyObject"
+              }
+            },
+            "required": [
+              "date"
+            ]
           }
-        },
-        "required": [
-          "date"
         ]
       },
       "Checkbox3": {
         "title": "Checkbox",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `checkbox`",
-            "type": "string",
-            "const": "checkbox"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "The name of the property.",
+                "type": "string"
+              },
+              "description": {
+                "$ref": "#/components/schemas/NumberAllOf0Description"
+              }
+            }
           },
-          "checkbox": {
-            "$ref": "#/components/schemas/emptyObject"
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `checkbox`",
+                "type": "string",
+                "const": "checkbox"
+              },
+              "checkbox": {
+                "$ref": "#/components/schemas/emptyObject"
+              }
+            },
+            "required": [
+              "checkbox"
+            ]
           }
-        },
-        "required": [
-          "checkbox"
         ]
       },
       "CreatedBy": {
         "title": "Created By",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `created_by`",
-            "type": "string",
-            "const": "created_by"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "The name of the property.",
+                "type": "string"
+              },
+              "description": {
+                "$ref": "#/components/schemas/NumberAllOf0Description"
+              }
+            }
           },
-          "created_by": {
-            "$ref": "#/components/schemas/emptyObject"
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `created_by`",
+                "type": "string",
+                "const": "created_by"
+              },
+              "created_by": {
+                "$ref": "#/components/schemas/emptyObject"
+              }
+            },
+            "required": [
+              "created_by"
+            ]
           }
-        },
-        "required": [
-          "created_by"
         ]
       },
       "CreatedTime": {
         "title": "Created Time",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `created_time`",
-            "type": "string",
-            "const": "created_time"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "The name of the property.",
+                "type": "string"
+              },
+              "description": {
+                "$ref": "#/components/schemas/NumberAllOf0Description"
+              }
+            }
           },
-          "created_time": {
-            "$ref": "#/components/schemas/emptyObject"
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `created_time`",
+                "type": "string",
+                "const": "created_time"
+              },
+              "created_time": {
+                "$ref": "#/components/schemas/emptyObject"
+              }
+            },
+            "required": [
+              "created_time"
+            ]
           }
-        },
-        "required": [
-          "created_time"
         ]
       },
       "LastEditedBy": {
         "title": "Last Edited By",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `last_edited_by`",
-            "type": "string",
-            "const": "last_edited_by"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "The name of the property.",
+                "type": "string"
+              },
+              "description": {
+                "$ref": "#/components/schemas/NumberAllOf0Description"
+              }
+            }
           },
-          "last_edited_by": {
-            "$ref": "#/components/schemas/emptyObject"
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `last_edited_by`",
+                "type": "string",
+                "const": "last_edited_by"
+              },
+              "last_edited_by": {
+                "$ref": "#/components/schemas/emptyObject"
+              }
+            },
+            "required": [
+              "last_edited_by"
+            ]
           }
-        },
-        "required": [
-          "last_edited_by"
         ]
       },
       "LastEditedTime": {
         "title": "Last Edited Time",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `last_edited_time`",
-            "type": "string",
-            "const": "last_edited_time"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "The name of the property.",
+                "type": "string"
+              },
+              "description": {
+                "$ref": "#/components/schemas/NumberAllOf0Description"
+              }
+            }
           },
-          "last_edited_time": {
-            "$ref": "#/components/schemas/emptyObject"
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `last_edited_time`",
+                "type": "string",
+                "const": "last_edited_time"
+              },
+              "last_edited_time": {
+                "$ref": "#/components/schemas/emptyObject"
+              }
+            },
+            "required": [
+              "last_edited_time"
+            ]
           }
-        },
-        "required": [
-          "last_edited_time"
         ]
       },
       "Place3": {
         "title": "Place",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `place`",
-            "type": "string",
-            "const": "place"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "The name of the property.",
+                "type": "string"
+              },
+              "description": {
+                "$ref": "#/components/schemas/NumberAllOf0Description"
+              }
+            }
           },
-          "place": {
-            "$ref": "#/components/schemas/emptyObject"
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `place`",
+                "type": "string",
+                "const": "place"
+              },
+              "place": {
+                "$ref": "#/components/schemas/emptyObject"
+              }
+            },
+            "required": [
+              "place"
+            ]
           }
-        },
-        "required": [
-          "place"
         ]
       },
       "UpdateADataSourcePropertiesValueOneOf1": {
@@ -24362,12 +24760,23 @@
       },
       "UpdateDatabaseParent": {
         "description": "The parent page or workspace to move the database to. If not provided, the database will not be moved.",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/PageID3"
+          },
+          {
+            "$ref": "#/components/schemas/Workspace2"
+          }
+        ]
+      },
+      "PageID3": {
+        "title": "Page Id",
         "allOf": [
           {
             "type": "object",
             "properties": {
               "type": {
-                "$ref": "#/components/schemas/UpdateDatabaseParentAllOf0Type"
+                "$ref": "#/components/schemas/PageIDAllOf0Type"
               }
             },
             "required": [
@@ -24375,18 +24784,25 @@
             ]
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/PageID3"
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `page_id`",
+                "type": "string",
+                "const": "page_id"
               },
-              {
-                "$ref": "#/components/schemas/Workspace2"
+              "page_id": {
+                "$ref": "#/components/schemas/idRequest"
               }
+            },
+            "required": [
+              "type",
+              "page_id"
             ]
           }
         ]
       },
-      "UpdateDatabaseParentAllOf0Type": {
+      "PageIDAllOf0Type": {
         "description": "The type of parent.",
         "type": "string",
         "enum": [
@@ -24394,42 +24810,39 @@
           "workspace"
         ]
       },
-      "PageID3": {
-        "title": "Page Id",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `page_id`",
-            "type": "string",
-            "const": "page_id"
-          },
-          "page_id": {
-            "$ref": "#/components/schemas/idRequest"
-          }
-        },
-        "required": [
-          "type",
-          "page_id"
-        ]
-      },
       "Workspace2": {
         "title": "Workspace",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `workspace`",
-            "type": "string",
-            "const": "workspace"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "$ref": "#/components/schemas/PageIDAllOf0Type"
+              }
+            },
+            "required": [
+              "type"
+            ]
           },
-          "workspace": {
-            "description": "Always `true`",
-            "type": "boolean",
-            "const": true
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `workspace`",
+                "type": "string",
+                "const": "workspace"
+              },
+              "workspace": {
+                "description": "Always `true`",
+                "type": "boolean",
+                "const": true
+              }
+            },
+            "required": [
+              "type",
+              "workspace"
+            ]
           }
-        },
-        "required": [
-          "type",
-          "workspace"
         ]
       },
       "UpdateDatabaseOk": {
@@ -24490,12 +24903,23 @@
       },
       "CreateDatabaseParent": {
         "description": "The parent page or workspace where the database will be created.",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/PageID4"
+          },
+          {
+            "$ref": "#/components/schemas/Workspace3"
+          }
+        ]
+      },
+      "PageID4": {
+        "title": "Page Id",
         "allOf": [
           {
             "type": "object",
             "properties": {
               "type": {
-                "$ref": "#/components/schemas/CreateDatabaseParentAllOf0Type"
+                "$ref": "#/components/schemas/PageIDAllOf0Type2"
               }
             },
             "required": [
@@ -24503,18 +24927,25 @@
             ]
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/PageID4"
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `page_id`",
+                "type": "string",
+                "const": "page_id"
               },
-              {
-                "$ref": "#/components/schemas/Workspace3"
+              "page_id": {
+                "$ref": "#/components/schemas/idRequest"
               }
+            },
+            "required": [
+              "type",
+              "page_id"
             ]
           }
         ]
       },
-      "CreateDatabaseParentAllOf0Type": {
+      "PageIDAllOf0Type2": {
         "description": "The type of parent.",
         "type": "string",
         "enum": [
@@ -24522,42 +24953,39 @@
           "workspace"
         ]
       },
-      "PageID4": {
-        "title": "Page Id",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `page_id`",
-            "type": "string",
-            "const": "page_id"
-          },
-          "page_id": {
-            "$ref": "#/components/schemas/idRequest"
-          }
-        },
-        "required": [
-          "type",
-          "page_id"
-        ]
-      },
       "Workspace3": {
         "title": "Workspace",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `workspace`",
-            "type": "string",
-            "const": "workspace"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "$ref": "#/components/schemas/PageIDAllOf0Type2"
+              }
+            },
+            "required": [
+              "type"
+            ]
           },
-          "workspace": {
-            "description": "Always `true`",
-            "type": "boolean",
-            "const": true
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `workspace`",
+                "type": "string",
+                "const": "workspace"
+              },
+              "workspace": {
+                "description": "Always `true`",
+                "type": "boolean",
+                "const": true
+              }
+            },
+            "required": [
+              "type",
+              "workspace"
+            ]
           }
-        },
-        "required": [
-          "type",
-          "workspace"
         ]
       },
       "CreateDatabaseDatabaseType": {
@@ -24865,45 +25293,65 @@
         ]
       },
       "CreateAComment": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/CreateACommentOneOf0"
+          },
+          {
+            "$ref": "#/components/schemas/CreateACommentOneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/CreateACommentOneOf2"
+          },
+          {
+            "$ref": "#/components/schemas/CreateACommentOneOf3"
+          }
+        ]
+      },
+      "CreateACommentOneOf0": {
         "allOf": [
           {
             "type": "object",
             "properties": {
               "attachments": {
-                "$ref": "#/components/schemas/CreateACommentAllOf0Attachments"
+                "$ref": "#/components/schemas/CreateACommentOneOf0AllOf0Attachments"
               },
               "display_name": {
-                "$ref": "#/components/schemas/CreateACommentAllOf0DisplayName"
+                "$ref": "#/components/schemas/CreateACommentOneOf0AllOf0DisplayName"
               }
             }
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/CreateACommentAllOf1OneOf0"
+            "type": "object",
+            "properties": {
+              "parent": {
+                "$ref": "#/components/schemas/CreateACommentOneOf0AllOf1Parent"
               },
-              {
-                "$ref": "#/components/schemas/CreateACommentAllOf1OneOf1"
-              },
-              {
-                "$ref": "#/components/schemas/CreateACommentAllOf1OneOf2"
-              },
-              {
-                "$ref": "#/components/schemas/CreateACommentAllOf1OneOf3"
+              "rich_text": {
+                "description": "An array of rich text objects that represent the content of the comment.",
+                "type": "array",
+                "maxItems": 100,
+                "items": {
+                  "$ref": "#/components/schemas/richTextItemRequest"
+                }
               }
+            },
+            "required": [
+              "parent",
+              "rich_text"
             ]
           }
         ]
       },
-      "CreateACommentAllOf0Attachments": {
+      "CreateACommentOneOf0AllOf0Attachments": {
         "description": "An array of files to attach to the comment. Maximum of 3 allowed.",
         "type": "array",
         "maxItems": 3,
         "items": {
-          "$ref": "#/components/schemas/CreateACommentAllOf0AttachmentsItem"
+          "$ref": "#/components/schemas/CreateACommentOneOf0AllOf0AttachmentsItem"
         }
       },
-      "CreateACommentAllOf0AttachmentsItem": {
+      "CreateACommentOneOf0AllOf0AttachmentsItem": {
         "type": "object",
         "properties": {
           "file_upload_id": {
@@ -24920,7 +25368,7 @@
           "file_upload_id"
         ]
       },
-      "CreateACommentAllOf0DisplayName": {
+      "CreateACommentOneOf0AllOf0DisplayName": {
         "description": "Display name for the comment.",
         "oneOf": [
           {
@@ -24993,38 +25441,18 @@
           "name"
         ]
       },
-      "CreateACommentAllOf1OneOf0": {
-        "type": "object",
-        "properties": {
-          "parent": {
-            "$ref": "#/components/schemas/CreateACommentAllOf1OneOf0Parent"
-          },
-          "rich_text": {
-            "description": "An array of rich text objects that represent the content of the comment.",
-            "type": "array",
-            "maxItems": 100,
-            "items": {
-              "$ref": "#/components/schemas/richTextItemRequest"
-            }
-          }
-        },
-        "required": [
-          "parent",
-          "rich_text"
-        ]
-      },
-      "CreateACommentAllOf1OneOf0Parent": {
+      "CreateACommentOneOf0AllOf1Parent": {
         "description": "The parent of the comment. This can be a page or a block.",
         "oneOf": [
           {
-            "$ref": "#/components/schemas/CreateACommentAllOf1OneOf0ParentOneOf0"
+            "$ref": "#/components/schemas/CreateACommentOneOf0AllOf1ParentOneOf0"
           },
           {
-            "$ref": "#/components/schemas/CreateACommentAllOf1OneOf0ParentOneOf1"
+            "$ref": "#/components/schemas/CreateACommentOneOf0AllOf1ParentOneOf1"
           }
         ]
       },
-      "CreateACommentAllOf1OneOf0ParentOneOf0": {
+      "CreateACommentOneOf0AllOf1ParentOneOf0": {
         "type": "object",
         "properties": {
           "page_id": {
@@ -25041,7 +25469,7 @@
           "page_id"
         ]
       },
-      "CreateACommentAllOf1OneOf0ParentOneOf1": {
+      "CreateACommentOneOf0AllOf1ParentOneOf1": {
         "type": "object",
         "properties": {
           "block_id": {
@@ -25058,34 +25486,49 @@
           "block_id"
         ]
       },
-      "CreateACommentAllOf1OneOf1": {
-        "type": "object",
-        "properties": {
-          "parent": {
-            "$ref": "#/components/schemas/CreateACommentAllOf1OneOf1Parent"
+      "CreateACommentOneOf1": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "attachments": {
+                "$ref": "#/components/schemas/CreateACommentOneOf0AllOf0Attachments"
+              },
+              "display_name": {
+                "$ref": "#/components/schemas/CreateACommentOneOf0AllOf0DisplayName"
+              }
+            }
           },
-          "markdown": {
-            "description": "The content of the comment as a Markdown string. Comment Markdown supports inline formatting only (bold, italic, strikethrough, code, links), inline equations ($expression$), and mentions. Block-level Markdown such as fenced code blocks, headings, lists, tables, and blockquotes does not render as structured blocks in comments.",
-            "type": "string"
+          {
+            "type": "object",
+            "properties": {
+              "parent": {
+                "$ref": "#/components/schemas/CreateACommentOneOf1AllOf1Parent"
+              },
+              "markdown": {
+                "description": "The content of the comment as a Markdown string. Comment Markdown supports inline formatting only (bold, italic, strikethrough, code, links), inline equations ($expression$), and mentions. Block-level Markdown such as fenced code blocks, headings, lists, tables, and blockquotes does not render as structured blocks in comments.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "parent",
+              "markdown"
+            ]
           }
-        },
-        "required": [
-          "parent",
-          "markdown"
         ]
       },
-      "CreateACommentAllOf1OneOf1Parent": {
+      "CreateACommentOneOf1AllOf1Parent": {
         "description": "The parent of the comment. This can be a page or a block.",
         "oneOf": [
           {
-            "$ref": "#/components/schemas/CreateACommentAllOf1OneOf1ParentOneOf0"
+            "$ref": "#/components/schemas/CreateACommentOneOf1AllOf1ParentOneOf0"
           },
           {
-            "$ref": "#/components/schemas/CreateACommentAllOf1OneOf1ParentOneOf1"
+            "$ref": "#/components/schemas/CreateACommentOneOf1AllOf1ParentOneOf1"
           }
         ]
       },
-      "CreateACommentAllOf1OneOf1ParentOneOf0": {
+      "CreateACommentOneOf1AllOf1ParentOneOf0": {
         "type": "object",
         "properties": {
           "page_id": {
@@ -25102,7 +25545,7 @@
           "page_id"
         ]
       },
-      "CreateACommentAllOf1OneOf1ParentOneOf1": {
+      "CreateACommentOneOf1AllOf1ParentOneOf1": {
         "type": "object",
         "properties": {
           "block_id": {
@@ -25119,42 +25562,72 @@
           "block_id"
         ]
       },
-      "CreateACommentAllOf1OneOf2": {
-        "type": "object",
-        "properties": {
-          "discussion_id": {
-            "description": "The ID of the discussion to comment on.",
-            "$ref": "#/components/schemas/idRequest"
-          },
-          "rich_text": {
-            "description": "An array of rich text objects that represent the content of the comment.",
-            "type": "array",
-            "maxItems": 100,
-            "items": {
-              "$ref": "#/components/schemas/richTextItemRequest"
+      "CreateACommentOneOf2": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "attachments": {
+                "$ref": "#/components/schemas/CreateACommentOneOf0AllOf0Attachments"
+              },
+              "display_name": {
+                "$ref": "#/components/schemas/CreateACommentOneOf0AllOf0DisplayName"
+              }
             }
+          },
+          {
+            "type": "object",
+            "properties": {
+              "discussion_id": {
+                "description": "The ID of the discussion to comment on.",
+                "$ref": "#/components/schemas/idRequest"
+              },
+              "rich_text": {
+                "description": "An array of rich text objects that represent the content of the comment.",
+                "type": "array",
+                "maxItems": 100,
+                "items": {
+                  "$ref": "#/components/schemas/richTextItemRequest"
+                }
+              }
+            },
+            "required": [
+              "discussion_id",
+              "rich_text"
+            ]
           }
-        },
-        "required": [
-          "discussion_id",
-          "rich_text"
         ]
       },
-      "CreateACommentAllOf1OneOf3": {
-        "type": "object",
-        "properties": {
-          "discussion_id": {
-            "description": "The ID of the discussion to comment on.",
-            "$ref": "#/components/schemas/idRequest"
+      "CreateACommentOneOf3": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "attachments": {
+                "$ref": "#/components/schemas/CreateACommentOneOf0AllOf0Attachments"
+              },
+              "display_name": {
+                "$ref": "#/components/schemas/CreateACommentOneOf0AllOf0DisplayName"
+              }
+            }
           },
-          "markdown": {
-            "description": "The content of the comment as a Markdown string. Comment Markdown supports inline formatting only (bold, italic, strikethrough, code, links), inline equations ($expression$), and mentions. Block-level Markdown such as fenced code blocks, headings, lists, tables, and blockquotes does not render as structured blocks in comments.",
-            "type": "string"
+          {
+            "type": "object",
+            "properties": {
+              "discussion_id": {
+                "description": "The ID of the discussion to comment on.",
+                "$ref": "#/components/schemas/idRequest"
+              },
+              "markdown": {
+                "description": "The content of the comment as a Markdown string. Comment Markdown supports inline formatting only (bold, italic, strikethrough, code, links), inline equations ($expression$), and mentions. Block-level Markdown such as fenced code blocks, headings, lists, tables, and blockquotes does not render as structured blocks in comments.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "discussion_id",
+              "markdown"
+            ]
           }
-        },
-        "required": [
-          "discussion_id",
-          "markdown"
         ]
       },
       "CreateACommentOk": {
@@ -25545,6 +26018,16 @@
         ]
       },
       "CreateMeetingNote": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/CreateMeetingNoteOneOf0"
+          },
+          {
+            "$ref": "#/components/schemas/CreateMeetingNoteOneOf1"
+          }
+        ]
+      },
+      "CreateMeetingNoteOneOf0": {
         "allOf": [
           {
             "type": "object",
@@ -25555,26 +26038,31 @@
                 "maxLength": 2000
               },
               "language": {
-                "$ref": "#/components/schemas/CreateMeetingNoteAllOf0Language"
+                "$ref": "#/components/schemas/CreateMeetingNoteOneOf0AllOf0Language"
               },
               "options": {
-                "$ref": "#/components/schemas/CreateMeetingNoteAllOf0Options"
+                "$ref": "#/components/schemas/CreateMeetingNoteOneOf0AllOf0Options"
               }
             }
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/CreateMeetingNoteAllOf1OneOf0"
+            "type": "object",
+            "properties": {
+              "source": {
+                "$ref": "#/components/schemas/CreateMeetingNoteOneOf0AllOf1Source"
               },
-              {
-                "$ref": "#/components/schemas/CreateMeetingNoteAllOf1OneOf1"
+              "parent": {
+                "$ref": "#/components/schemas/CreateMeetingNoteOneOf0AllOf1Parent"
               }
+            },
+            "required": [
+              "source",
+              "parent"
             ]
           }
         ]
       },
-      "CreateMeetingNoteAllOf0Language": {
+      "CreateMeetingNoteOneOf0AllOf0Language": {
         "description": "Language hint for transcription. Defaults to automatic detection.",
         "type": "string",
         "enum": [
@@ -25603,7 +26091,7 @@
           "pl"
         ]
       },
-      "CreateMeetingNoteAllOf0Options": {
+      "CreateMeetingNoteOneOf0AllOf0Options": {
         "description": "Optional processing settings.",
         "type": "object",
         "properties": {
@@ -25614,22 +26102,7 @@
         },
         "additionalProperties": false
       },
-      "CreateMeetingNoteAllOf1OneOf0": {
-        "type": "object",
-        "properties": {
-          "source": {
-            "$ref": "#/components/schemas/CreateMeetingNoteAllOf1OneOf0Source"
-          },
-          "parent": {
-            "$ref": "#/components/schemas/CreateMeetingNoteAllOf1OneOf0Parent"
-          }
-        },
-        "required": [
-          "source",
-          "parent"
-        ]
-      },
-      "CreateMeetingNoteAllOf1OneOf0Source": {
+      "CreateMeetingNoteOneOf0AllOf1Source": {
         "description": "Audio or video source for the meeting note.",
         "type": "object",
         "properties": {
@@ -25649,7 +26122,7 @@
         ],
         "additionalProperties": false
       },
-      "CreateMeetingNoteAllOf1OneOf0Parent": {
+      "CreateMeetingNoteOneOf0AllOf1Parent": {
         "description": "Parent page for the new meeting note.",
         "type": "object",
         "properties": {
@@ -25669,22 +26142,42 @@
         ],
         "additionalProperties": false
       },
-      "CreateMeetingNoteAllOf1OneOf1": {
-        "type": "object",
-        "properties": {
-          "source": {
-            "$ref": "#/components/schemas/CreateMeetingNoteAllOf1OneOf1Source"
+      "CreateMeetingNoteOneOf1": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "title": {
+                "description": "Title for the meeting note.",
+                "type": "string",
+                "maxLength": 2000
+              },
+              "language": {
+                "$ref": "#/components/schemas/CreateMeetingNoteOneOf0AllOf0Language"
+              },
+              "options": {
+                "$ref": "#/components/schemas/CreateMeetingNoteOneOf0AllOf0Options"
+              }
+            }
           },
-          "parent": {
-            "description": "Not accepted for block sources.",
-            "not": {}
+          {
+            "type": "object",
+            "properties": {
+              "source": {
+                "$ref": "#/components/schemas/CreateMeetingNoteOneOf1AllOf1Source"
+              },
+              "parent": {
+                "description": "Not accepted for block sources.",
+                "not": {}
+              }
+            },
+            "required": [
+              "source"
+            ]
           }
-        },
-        "required": [
-          "source"
         ]
       },
-      "CreateMeetingNoteAllOf1OneOf1Source": {
+      "CreateMeetingNoteOneOf1AllOf1Source": {
         "description": "Audio or video source for the meeting note.",
         "type": "object",
         "properties": {
@@ -47084,6 +47577,216 @@
           }
         ]
       },
+      "databasePropertyConfigResponseOneOf0": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/numberDatabasePropertyConfigResponse"
+          }
+        ]
+      },
+      "databasePropertyConfigResponseOneOf1": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/formulaDatabasePropertyConfigResponse"
+          }
+        ]
+      },
+      "databasePropertyConfigResponseOneOf2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/selectDatabasePropertyConfigResponse"
+          }
+        ]
+      },
+      "databasePropertyConfigResponseOneOf3": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/multiSelectDatabasePropertyConfigResponse"
+          }
+        ]
+      },
+      "databasePropertyConfigResponseOneOf4": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/statusDatabasePropertyConfigResponse"
+          }
+        ]
+      },
+      "databasePropertyConfigResponseOneOf5": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/relationDatabasePropertyConfigResponse"
+          }
+        ]
+      },
+      "databasePropertyConfigResponseOneOf6": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/rollupDatabasePropertyConfigResponse"
+          }
+        ]
+      },
+      "databasePropertyConfigResponseOneOf7": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/uniqueIdDatabasePropertyConfigResponse"
+          }
+        ]
+      },
+      "databasePropertyConfigResponseOneOf8": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/titleDatabasePropertyConfigResponse"
+          }
+        ]
+      },
+      "databasePropertyConfigResponseOneOf9": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/richTextDatabasePropertyConfigResponse"
+          }
+        ]
+      },
+      "databasePropertyConfigResponseOneOf10": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/urlDatabasePropertyConfigResponse"
+          }
+        ]
+      },
+      "databasePropertyConfigResponseOneOf11": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/peopleDatabasePropertyConfigResponse"
+          }
+        ]
+      },
+      "databasePropertyConfigResponseOneOf12": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/filesDatabasePropertyConfigResponse"
+          }
+        ]
+      },
+      "databasePropertyConfigResponseOneOf13": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/emailDatabasePropertyConfigResponse"
+          }
+        ]
+      },
+      "databasePropertyConfigResponseOneOf14": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/phoneNumberDatabasePropertyConfigResponse"
+          }
+        ]
+      },
+      "databasePropertyConfigResponseOneOf15": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/dateDatabasePropertyConfigResponse"
+          }
+        ]
+      },
+      "databasePropertyConfigResponseOneOf16": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/checkboxDatabasePropertyConfigResponse"
+          }
+        ]
+      },
+      "databasePropertyConfigResponseOneOf17": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/createdByDatabasePropertyConfigResponse"
+          }
+        ]
+      },
+      "databasePropertyConfigResponseOneOf18": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/createdTimeDatabasePropertyConfigResponse"
+          }
+        ]
+      },
+      "databasePropertyConfigResponseOneOf19": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/lastEditedByDatabasePropertyConfigResponse"
+          }
+        ]
+      },
+      "databasePropertyConfigResponseOneOf20": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/databasePropertyConfigResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/lastEditedTimeDatabasePropertyConfigResponse"
+          }
+        ]
+      },
       "DatabasePropertyConfigResponseCommonDescription": {
         "description": "The description of the property.",
         "oneOf": [
@@ -47092,6 +47795,26 @@
           },
           {
             "type": "null"
+          }
+        ]
+      },
+      "databasePropertyRelationConfigResponseOneOf0": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/databasePropertyRelationConfigResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/singlePropertyDatabasePropertyRelationConfigResponse"
+          }
+        ]
+      },
+      "databasePropertyRelationConfigResponseOneOf1": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/databasePropertyRelationConfigResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/dualPropertyDatabasePropertyRelationConfigResponse"
           }
         ]
       },
@@ -48030,6 +48753,17 @@
         ]
       },
       "FileUploadObjectResponseFileImportResult": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/Success"
+          },
+          {
+            "$ref": "#/components/schemas/Error"
+          }
+        ]
+      },
+      "Success": {
+        "title": "Success",
         "allOf": [
           {
             "type": "object",
@@ -48046,60 +48780,67 @@
             "additionalProperties": false
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/Success"
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Indicates a successful import.",
+                "type": "string",
+                "const": "success"
               },
-              {
-                "$ref": "#/components/schemas/Error"
+              "success": {
+                "description": "Empty object for success type.",
+                "$ref": "#/components/schemas/emptyObject"
               }
+            },
+            "required": [
+              "type",
+              "success"
             ]
           }
         ]
       },
-      "Success": {
-        "title": "Success",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Indicates a successful import.",
-            "type": "string",
-            "const": "success"
-          },
-          "success": {
-            "description": "Empty object for success type.",
-            "$ref": "#/components/schemas/emptyObject"
-          }
-        },
-        "required": [
-          "type",
-          "success"
-        ]
-      },
       "Error": {
         "title": "Error",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Indicates an error occurred during import.",
-            "type": "string",
-            "const": "error"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "imported_time": {
+                "description": "The time the file was imported into Notion. ISO 8601 format.",
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "required": [
+              "imported_time"
+            ],
+            "additionalProperties": false
           },
-          "error": {
-            "$ref": "#/components/schemas/ErrorError"
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Indicates an error occurred during import.",
+                "type": "string",
+                "const": "error"
+              },
+              "error": {
+                "$ref": "#/components/schemas/ErrorAllOf1Error"
+              }
+            },
+            "required": [
+              "type",
+              "error"
+            ]
           }
-        },
-        "required": [
-          "type",
-          "error"
         ]
       },
-      "ErrorError": {
+      "ErrorAllOf1Error": {
         "description": "Details about the error that occurred during file import.",
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/ErrorErrorType"
+            "$ref": "#/components/schemas/ErrorAllOf1ErrorType"
           },
           "code": {
             "description": "A short string code representing the error.",
@@ -48110,10 +48851,10 @@
             "type": "string"
           },
           "parameter": {
-            "$ref": "#/components/schemas/ErrorErrorParameter"
+            "$ref": "#/components/schemas/ErrorAllOf1ErrorParameter"
           },
           "status_code": {
-            "$ref": "#/components/schemas/ErrorErrorStatusCode"
+            "$ref": "#/components/schemas/ErrorAllOf1ErrorStatusCode"
           }
         },
         "required": [
@@ -48125,7 +48866,7 @@
         ],
         "additionalProperties": false
       },
-      "ErrorErrorType": {
+      "ErrorAllOf1ErrorType": {
         "description": "The type of error that occurred during file import.",
         "type": "string",
         "enum": [
@@ -48135,7 +48876,7 @@
           "upload_error"
         ]
       },
-      "ErrorErrorParameter": {
+      "ErrorAllOf1ErrorParameter": {
         "description": "The parameter related to the error, if applicable. Null if not applicable.",
         "oneOf": [
           {
@@ -48146,7 +48887,7 @@
           }
         ]
       },
-      "ErrorErrorStatusCode": {
+      "ErrorAllOf1ErrorStatusCode": {
         "description": "The HTTP status code associated with the error, if available. Null if not applicable.",
         "oneOf": [
           {
@@ -48746,6 +49487,26 @@
           "name"
         ],
         "additionalProperties": false
+      },
+      "internalOrExternalFileWithNameResponseOneOf0": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/internalOrExternalFileWithNameResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/fileInternalOrExternalFileWithNameResponse"
+          }
+        ]
+      },
+      "internalOrExternalFileWithNameResponseOneOf1": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/internalOrExternalFileWithNameResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/externalInternalOrExternalFileWithNameResponse"
+          }
+        ]
       },
       "LastEditedByPropertyItemObjectResponseLastEditedBy": {
         "anyOf": [
@@ -49800,6 +50561,333 @@
         ],
         "additionalProperties": false
       },
+      "pagePropertyValueWithIdResponseOneOf0": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/pagePropertyValueWithIdResponseOneOf0OneOf0"
+          },
+          {
+            "$ref": "#/components/schemas/pagePropertyValueWithIdResponseOneOf0OneOf1"
+          }
+        ]
+      },
+      "pagePropertyValueWithIdResponseOneOf0OneOf0": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/pagePropertyValueWithIdResponseOneOf0OneOf0OneOf0"
+          },
+          {
+            "$ref": "#/components/schemas/pagePropertyValueWithIdResponseOneOf0OneOf0OneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/pagePropertyValueWithIdResponseOneOf0OneOf0OneOf2"
+          },
+          {
+            "$ref": "#/components/schemas/pagePropertyValueWithIdResponseOneOf0OneOf0OneOf3"
+          },
+          {
+            "$ref": "#/components/schemas/pagePropertyValueWithIdResponseOneOf0OneOf0OneOf4"
+          },
+          {
+            "$ref": "#/components/schemas/pagePropertyValueWithIdResponseOneOf0OneOf0OneOf5"
+          },
+          {
+            "$ref": "#/components/schemas/pagePropertyValueWithIdResponseOneOf0OneOf0OneOf6"
+          },
+          {
+            "$ref": "#/components/schemas/pagePropertyValueWithIdResponseOneOf0OneOf0OneOf7"
+          },
+          {
+            "$ref": "#/components/schemas/pagePropertyValueWithIdResponseOneOf0OneOf0OneOf8"
+          },
+          {
+            "$ref": "#/components/schemas/pagePropertyValueWithIdResponseOneOf0OneOf0OneOf9"
+          },
+          {
+            "$ref": "#/components/schemas/pagePropertyValueWithIdResponseOneOf0OneOf0OneOf10"
+          },
+          {
+            "$ref": "#/components/schemas/pagePropertyValueWithIdResponseOneOf0OneOf0OneOf11"
+          },
+          {
+            "$ref": "#/components/schemas/pagePropertyValueWithIdResponseOneOf0OneOf0OneOf12"
+          },
+          {
+            "$ref": "#/components/schemas/pagePropertyValueWithIdResponseOneOf0OneOf0OneOf13"
+          },
+          {
+            "$ref": "#/components/schemas/pagePropertyValueWithIdResponseOneOf0OneOf0OneOf14"
+          },
+          {
+            "$ref": "#/components/schemas/pagePropertyValueWithIdResponseOneOf0OneOf0OneOf15"
+          },
+          {
+            "$ref": "#/components/schemas/pagePropertyValueWithIdResponseOneOf0OneOf0OneOf16"
+          },
+          {
+            "$ref": "#/components/schemas/pagePropertyValueWithIdResponseOneOf0OneOf0OneOf17"
+          },
+          {
+            "$ref": "#/components/schemas/pagePropertyValueWithIdResponseOneOf0OneOf0OneOf18"
+          }
+        ]
+      },
+      "pagePropertyValueWithIdResponseOneOf0OneOf0OneOf0": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/idObjectResponse"
+          },
+          {
+            "$ref": "#/components/schemas/numberSimplePropertyValueResponse"
+          }
+        ]
+      },
+      "pagePropertyValueWithIdResponseOneOf0OneOf0OneOf1": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/idObjectResponse"
+          },
+          {
+            "$ref": "#/components/schemas/urlSimplePropertyValueResponse"
+          }
+        ]
+      },
+      "pagePropertyValueWithIdResponseOneOf0OneOf0OneOf2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/idObjectResponse"
+          },
+          {
+            "$ref": "#/components/schemas/selectSimplePropertyValueResponse"
+          }
+        ]
+      },
+      "pagePropertyValueWithIdResponseOneOf0OneOf0OneOf3": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/idObjectResponse"
+          },
+          {
+            "$ref": "#/components/schemas/multiSelectSimplePropertyValueResponse"
+          }
+        ]
+      },
+      "pagePropertyValueWithIdResponseOneOf0OneOf0OneOf4": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/idObjectResponse"
+          },
+          {
+            "$ref": "#/components/schemas/statusSimplePropertyValueResponse"
+          }
+        ]
+      },
+      "pagePropertyValueWithIdResponseOneOf0OneOf0OneOf5": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/idObjectResponse"
+          },
+          {
+            "$ref": "#/components/schemas/dateSimplePropertyValueResponse"
+          }
+        ]
+      },
+      "pagePropertyValueWithIdResponseOneOf0OneOf0OneOf6": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/idObjectResponse"
+          },
+          {
+            "$ref": "#/components/schemas/emailSimplePropertyValueResponse"
+          }
+        ]
+      },
+      "pagePropertyValueWithIdResponseOneOf0OneOf0OneOf7": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/idObjectResponse"
+          },
+          {
+            "$ref": "#/components/schemas/phoneNumberSimplePropertyValueResponse"
+          }
+        ]
+      },
+      "pagePropertyValueWithIdResponseOneOf0OneOf0OneOf8": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/idObjectResponse"
+          },
+          {
+            "$ref": "#/components/schemas/checkboxSimplePropertyValueResponse"
+          }
+        ]
+      },
+      "pagePropertyValueWithIdResponseOneOf0OneOf0OneOf9": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/idObjectResponse"
+          },
+          {
+            "$ref": "#/components/schemas/filesSimplePropertyValueResponse"
+          }
+        ]
+      },
+      "pagePropertyValueWithIdResponseOneOf0OneOf0OneOf10": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/idObjectResponse"
+          },
+          {
+            "$ref": "#/components/schemas/createdBySimplePropertyValueResponse"
+          }
+        ]
+      },
+      "pagePropertyValueWithIdResponseOneOf0OneOf0OneOf11": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/idObjectResponse"
+          },
+          {
+            "$ref": "#/components/schemas/createdTimeSimplePropertyValueResponse"
+          }
+        ]
+      },
+      "pagePropertyValueWithIdResponseOneOf0OneOf0OneOf12": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/idObjectResponse"
+          },
+          {
+            "$ref": "#/components/schemas/lastEditedBySimplePropertyValueResponse"
+          }
+        ]
+      },
+      "pagePropertyValueWithIdResponseOneOf0OneOf0OneOf13": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/idObjectResponse"
+          },
+          {
+            "$ref": "#/components/schemas/lastEditedTimeSimplePropertyValueResponse"
+          }
+        ]
+      },
+      "pagePropertyValueWithIdResponseOneOf0OneOf0OneOf14": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/idObjectResponse"
+          },
+          {
+            "$ref": "#/components/schemas/formulaSimplePropertyValueResponse"
+          }
+        ]
+      },
+      "pagePropertyValueWithIdResponseOneOf0OneOf0OneOf15": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/idObjectResponse"
+          },
+          {
+            "$ref": "#/components/schemas/buttonSimplePropertyValueResponse"
+          }
+        ]
+      },
+      "pagePropertyValueWithIdResponseOneOf0OneOf0OneOf16": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/idObjectResponse"
+          },
+          {
+            "$ref": "#/components/schemas/uniqueIdSimplePropertyValueResponse"
+          }
+        ]
+      },
+      "pagePropertyValueWithIdResponseOneOf0OneOf0OneOf17": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/idObjectResponse"
+          },
+          {
+            "$ref": "#/components/schemas/verificationSimplePropertyValueResponse"
+          }
+        ]
+      },
+      "pagePropertyValueWithIdResponseOneOf0OneOf0OneOf18": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/idObjectResponse"
+          },
+          {
+            "$ref": "#/components/schemas/placeSimplePropertyValueResponse"
+          }
+        ]
+      },
+      "pagePropertyValueWithIdResponseOneOf0OneOf1": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/pagePropertyValueWithIdResponseOneOf0OneOf1OneOf0"
+          },
+          {
+            "$ref": "#/components/schemas/pagePropertyValueWithIdResponseOneOf0OneOf1OneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/pagePropertyValueWithIdResponseOneOf0OneOf1OneOf2"
+          },
+          {
+            "$ref": "#/components/schemas/pagePropertyValueWithIdResponseOneOf0OneOf1OneOf3"
+          }
+        ]
+      },
+      "pagePropertyValueWithIdResponseOneOf0OneOf1OneOf0": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/idObjectResponse"
+          },
+          {
+            "$ref": "#/components/schemas/titleArrayBasedPropertyValueResponse"
+          }
+        ]
+      },
+      "pagePropertyValueWithIdResponseOneOf0OneOf1OneOf1": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/idObjectResponse"
+          },
+          {
+            "$ref": "#/components/schemas/richTextArrayBasedPropertyValueResponse"
+          }
+        ]
+      },
+      "pagePropertyValueWithIdResponseOneOf0OneOf1OneOf2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/idObjectResponse"
+          },
+          {
+            "$ref": "#/components/schemas/peopleArrayBasedPropertyValueResponse"
+          }
+        ]
+      },
+      "pagePropertyValueWithIdResponseOneOf0OneOf1OneOf3": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/idObjectResponse"
+          },
+          {
+            "$ref": "#/components/schemas/relationArrayBasedPropertyValueResponse"
+          }
+        ]
+      },
+      "pagePropertyValueWithIdResponseOneOf1": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/idObjectResponse"
+          },
+          {
+            "$ref": "#/components/schemas/partialRollupPropertyResponse"
+          }
+        ]
+      },
       "PageTranscriptionBlockTranscriptDeletedWebhookPayloadAllOf1Data": {
         "description": "Additional event-specific data.",
         "type": "object",
@@ -50338,6 +51426,46 @@
           "color"
         ]
       },
+      "partialRollupValueResponseOneOf0": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/partialRollupValueResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/numberPartialRollupValueResponse"
+          }
+        ]
+      },
+      "partialRollupValueResponseOneOf1": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/partialRollupValueResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/datePartialRollupValueResponse"
+          }
+        ]
+      },
+      "partialRollupValueResponseOneOf2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/partialRollupValueResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/arrayPartialRollupValueResponse"
+          }
+        ]
+      },
+      "partialRollupValueResponseOneOf3": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/partialRollupValueResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/unsupportedPartialRollupValueResponse"
+          }
+        ]
+      },
       "PartialSelectPropertyValueResponseColor": {
         "description": "One of: `default`, `gray`, `brown`, `orange`, `yellow`, `green`, `blue`, `purple`, `pink`, `red`",
         "type": "string",
@@ -50538,6 +51666,266 @@
           },
           {
             "type": "null"
+          }
+        ]
+      },
+      "propertyConfigurationRequestOneOf0": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestCommon"
+          },
+          {
+            "$ref": "#/components/schemas/numberPropertyConfigurationRequest"
+          }
+        ]
+      },
+      "propertyConfigurationRequestOneOf1": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestCommon"
+          },
+          {
+            "$ref": "#/components/schemas/formulaPropertyConfigurationRequest"
+          }
+        ]
+      },
+      "propertyConfigurationRequestOneOf2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestCommon"
+          },
+          {
+            "$ref": "#/components/schemas/selectPropertyConfigurationRequest"
+          }
+        ]
+      },
+      "propertyConfigurationRequestOneOf3": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestCommon"
+          },
+          {
+            "$ref": "#/components/schemas/multiSelectPropertyConfigurationRequest"
+          }
+        ]
+      },
+      "propertyConfigurationRequestOneOf4": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestCommon"
+          },
+          {
+            "$ref": "#/components/schemas/statusPropertyConfigurationRequest"
+          }
+        ]
+      },
+      "propertyConfigurationRequestOneOf5": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestCommon"
+          },
+          {
+            "$ref": "#/components/schemas/relationPropertyConfigurationRequest"
+          }
+        ]
+      },
+      "propertyConfigurationRequestOneOf6": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestCommon"
+          },
+          {
+            "$ref": "#/components/schemas/rollupPropertyConfigurationRequest"
+          }
+        ]
+      },
+      "propertyConfigurationRequestOneOf7": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestCommon"
+          },
+          {
+            "$ref": "#/components/schemas/uniqueIdPropertyConfigurationRequest"
+          }
+        ]
+      },
+      "propertyConfigurationRequestOneOf8": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestCommon"
+          },
+          {
+            "$ref": "#/components/schemas/titlePropertyConfigurationRequest"
+          }
+        ]
+      },
+      "propertyConfigurationRequestOneOf9": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestCommon"
+          },
+          {
+            "$ref": "#/components/schemas/richTextPropertyConfigurationRequest"
+          }
+        ]
+      },
+      "propertyConfigurationRequestOneOf10": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestCommon"
+          },
+          {
+            "$ref": "#/components/schemas/urlPropertyConfigurationRequest"
+          }
+        ]
+      },
+      "propertyConfigurationRequestOneOf11": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestCommon"
+          },
+          {
+            "$ref": "#/components/schemas/peoplePropertyConfigurationRequest"
+          }
+        ]
+      },
+      "propertyConfigurationRequestOneOf12": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestCommon"
+          },
+          {
+            "$ref": "#/components/schemas/filesPropertyConfigurationRequest"
+          }
+        ]
+      },
+      "propertyConfigurationRequestOneOf13": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestCommon"
+          },
+          {
+            "$ref": "#/components/schemas/emailPropertyConfigurationRequest"
+          }
+        ]
+      },
+      "propertyConfigurationRequestOneOf14": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestCommon"
+          },
+          {
+            "$ref": "#/components/schemas/phoneNumberPropertyConfigurationRequest"
+          }
+        ]
+      },
+      "propertyConfigurationRequestOneOf15": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestCommon"
+          },
+          {
+            "$ref": "#/components/schemas/datePropertyConfigurationRequest"
+          }
+        ]
+      },
+      "propertyConfigurationRequestOneOf16": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestCommon"
+          },
+          {
+            "$ref": "#/components/schemas/checkboxPropertyConfigurationRequest"
+          }
+        ]
+      },
+      "propertyConfigurationRequestOneOf17": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestCommon"
+          },
+          {
+            "$ref": "#/components/schemas/createdByPropertyConfigurationRequest"
+          }
+        ]
+      },
+      "propertyConfigurationRequestOneOf18": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestCommon"
+          },
+          {
+            "$ref": "#/components/schemas/createdTimePropertyConfigurationRequest"
+          }
+        ]
+      },
+      "propertyConfigurationRequestOneOf19": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestCommon"
+          },
+          {
+            "$ref": "#/components/schemas/lastEditedByPropertyConfigurationRequest"
+          }
+        ]
+      },
+      "propertyConfigurationRequestOneOf20": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestCommon"
+          },
+          {
+            "$ref": "#/components/schemas/lastEditedTimePropertyConfigurationRequest"
+          }
+        ]
+      },
+      "propertyConfigurationRequestOneOf21": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestCommon"
+          },
+          {
+            "$ref": "#/components/schemas/buttonPropertyConfigurationRequest"
+          }
+        ]
+      },
+      "propertyConfigurationRequestOneOf22": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestCommon"
+          },
+          {
+            "$ref": "#/components/schemas/locationPropertyConfigurationRequest"
+          }
+        ]
+      },
+      "propertyConfigurationRequestOneOf23": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestCommon"
+          },
+          {
+            "$ref": "#/components/schemas/verificationPropertyConfigurationRequest"
+          }
+        ]
+      },
+      "propertyConfigurationRequestOneOf24": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestCommon"
+          },
+          {
+            "$ref": "#/components/schemas/lastVisitedTimePropertyConfigurationRequest"
+          }
+        ]
+      },
+      "propertyConfigurationRequestOneOf25": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/propertyConfigurationRequestCommon"
+          },
+          {
+            "$ref": "#/components/schemas/placePropertyConfigurationRequest"
           }
         ]
       },
@@ -51164,7 +52552,7 @@
             "const": "rollup"
           },
           "rollup": {
-            "$ref": "#/components/schemas/RollupRollup2"
+            "$ref": "#/components/schemas/RollupRollup"
           },
           "next_url": {
             "type": [
@@ -51183,7 +52571,7 @@
           "id"
         ]
       },
-      "RollupRollup2": {
+      "RollupRollup": {
         "anyOf": [
           {
             "$ref": "#/components/schemas/Number5"
@@ -51346,6 +52734,17 @@
         ]
       },
       "RelationPropertyConfigurationRequestRelation": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/SingleProperty2"
+          },
+          {
+            "$ref": "#/components/schemas/DualProperty2"
+          }
+        ]
+      },
+      "SingleProperty2": {
+        "title": "Single Property",
         "allOf": [
           {
             "type": "object",
@@ -51359,52 +52758,56 @@
             ]
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/SingleProperty2"
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `single_property`",
+                "type": "string",
+                "const": "single_property"
               },
-              {
-                "$ref": "#/components/schemas/DualProperty2"
+              "single_property": {
+                "$ref": "#/components/schemas/emptyObject"
               }
+            },
+            "required": [
+              "single_property"
             ]
           }
         ]
       },
-      "SingleProperty2": {
-        "title": "Single Property",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `single_property`",
-            "type": "string",
-            "const": "single_property"
-          },
-          "single_property": {
-            "$ref": "#/components/schemas/emptyObject"
-          }
-        },
-        "required": [
-          "single_property"
-        ]
-      },
       "DualProperty2": {
         "title": "Dual Property",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "Always `dual_property`",
-            "type": "string",
-            "const": "dual_property"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "data_source_id": {
+                "$ref": "#/components/schemas/idRequest"
+              }
+            },
+            "required": [
+              "data_source_id"
+            ]
           },
-          "dual_property": {
-            "$ref": "#/components/schemas/DualPropertyDualProperty2"
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "Always `dual_property`",
+                "type": "string",
+                "const": "dual_property"
+              },
+              "dual_property": {
+                "$ref": "#/components/schemas/DualPropertyAllOf1DualProperty2"
+              }
+            },
+            "required": [
+              "dual_property"
+            ]
           }
-        },
-        "required": [
-          "dual_property"
         ]
       },
-      "DualPropertyDualProperty2": {
+      "DualPropertyAllOf1DualProperty2": {
         "type": "object",
         "properties": {
           "synced_property_id": {
@@ -51467,6 +52870,66 @@
           "incomplete"
         ]
       },
+      "richTextItemRequestOneOf0": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/richTextItemRequestCommon"
+          },
+          {
+            "$ref": "#/components/schemas/textRichTextItemRequest"
+          }
+        ]
+      },
+      "richTextItemRequestOneOf1": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/richTextItemRequestCommon"
+          },
+          {
+            "$ref": "#/components/schemas/mentionRichTextItemRequest"
+          }
+        ]
+      },
+      "richTextItemRequestOneOf2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/richTextItemRequestCommon"
+          },
+          {
+            "$ref": "#/components/schemas/equationRichTextItemRequest"
+          }
+        ]
+      },
+      "richTextItemResponseOneOf0": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/richTextItemResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/textRichTextItemResponse"
+          }
+        ]
+      },
+      "richTextItemResponseOneOf1": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/richTextItemResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/mentionRichTextItemResponse"
+          }
+        ]
+      },
+      "richTextItemResponseOneOf2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/richTextItemResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/equationRichTextItemResponse"
+          }
+        ]
+      },
       "RichTextItemResponseCommonHref": {
         "description": "A URL that the rich text object links to or mentions.",
         "oneOf": [
@@ -51508,6 +52971,22 @@
         "additionalProperties": false
       },
       "RollupPropertyConfigurationRequestRollup": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/RollupPropertyConfigurationRequestRollupOneOf0"
+          },
+          {
+            "$ref": "#/components/schemas/RollupPropertyConfigurationRequestRollupOneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/RollupPropertyConfigurationRequestRollupOneOf2"
+          },
+          {
+            "$ref": "#/components/schemas/RollupPropertyConfigurationRequestRollupOneOf3"
+          }
+        ]
+      },
+      "RollupPropertyConfigurationRequestRollupOneOf0": {
         "allOf": [
           {
             "type": "object",
@@ -51522,81 +53001,113 @@
             ]
           },
           {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/RollupPropertyConfigurationRequestRollupAllOf1OneOf0"
+            "type": "object",
+            "properties": {
+              "relation_property_name": {
+                "type": "string"
               },
-              {
-                "$ref": "#/components/schemas/RollupPropertyConfigurationRequestRollupAllOf1OneOf1"
-              },
-              {
-                "$ref": "#/components/schemas/RollupPropertyConfigurationRequestRollupAllOf1OneOf2"
-              },
-              {
-                "$ref": "#/components/schemas/RollupPropertyConfigurationRequestRollupAllOf1OneOf3"
+              "rollup_property_name": {
+                "type": "string"
               }
+            },
+            "required": [
+              "relation_property_name",
+              "rollup_property_name"
             ]
           }
         ]
       },
-      "RollupPropertyConfigurationRequestRollupAllOf1OneOf0": {
-        "type": "object",
-        "properties": {
-          "relation_property_name": {
-            "type": "string"
+      "RollupPropertyConfigurationRequestRollupOneOf1": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "function": {
+                "description": "The function to use for the rollup, e.g. count, count_values, percent_not_empty, max.",
+                "$ref": "#/components/schemas/rollupFunction"
+              }
+            },
+            "required": [
+              "function"
+            ]
           },
-          "rollup_property_name": {
-            "type": "string"
+          {
+            "type": "object",
+            "properties": {
+              "relation_property_id": {
+                "type": "string"
+              },
+              "rollup_property_name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "relation_property_id",
+              "rollup_property_name"
+            ]
           }
-        },
-        "required": [
-          "relation_property_name",
-          "rollup_property_name"
         ]
       },
-      "RollupPropertyConfigurationRequestRollupAllOf1OneOf1": {
-        "type": "object",
-        "properties": {
-          "relation_property_id": {
-            "type": "string"
+      "RollupPropertyConfigurationRequestRollupOneOf2": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "function": {
+                "description": "The function to use for the rollup, e.g. count, count_values, percent_not_empty, max.",
+                "$ref": "#/components/schemas/rollupFunction"
+              }
+            },
+            "required": [
+              "function"
+            ]
           },
-          "rollup_property_name": {
-            "type": "string"
+          {
+            "type": "object",
+            "properties": {
+              "relation_property_name": {
+                "type": "string"
+              },
+              "rollup_property_id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "relation_property_name",
+              "rollup_property_id"
+            ]
           }
-        },
-        "required": [
-          "relation_property_id",
-          "rollup_property_name"
         ]
       },
-      "RollupPropertyConfigurationRequestRollupAllOf1OneOf2": {
-        "type": "object",
-        "properties": {
-          "relation_property_name": {
-            "type": "string"
+      "RollupPropertyConfigurationRequestRollupOneOf3": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "function": {
+                "description": "The function to use for the rollup, e.g. count, count_values, percent_not_empty, max.",
+                "$ref": "#/components/schemas/rollupFunction"
+              }
+            },
+            "required": [
+              "function"
+            ]
           },
-          "rollup_property_id": {
-            "type": "string"
+          {
+            "type": "object",
+            "properties": {
+              "relation_property_id": {
+                "type": "string"
+              },
+              "rollup_property_id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "relation_property_id",
+              "rollup_property_id"
+            ]
           }
-        },
-        "required": [
-          "relation_property_name",
-          "rollup_property_id"
-        ]
-      },
-      "RollupPropertyConfigurationRequestRollupAllOf1OneOf3": {
-        "type": "object",
-        "properties": {
-          "relation_property_id": {
-            "type": "string"
-          },
-          "rollup_property_id": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "relation_property_id",
-          "rollup_property_id"
         ]
       },
       "rollupPropertyFilterAnyOf0": {
@@ -52128,32 +53639,46 @@
           }
         ]
       },
-      "statusOptionUpdateRequestAllOf1OneOf0": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
+      "statusOptionUpdateRequestOneOf0": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/statusOptionUpdateRequestCommon"
           },
-          "id": {
-            "type": "string"
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "name"
+            ]
           }
-        },
-        "required": [
-          "name"
         ]
       },
-      "statusOptionUpdateRequestAllOf1OneOf1": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
+      "statusOptionUpdateRequestOneOf1": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/statusOptionUpdateRequestCommon"
           },
-          "name": {
-            "type": "string"
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ]
           }
-        },
-        "required": [
-          "id"
         ]
       },
       "StatusOptionUpdateRequestCommonDescription": {
@@ -52924,6 +54449,26 @@
           },
           {
             "type": "null"
+          }
+        ]
+      },
+      "userObjectResponseOneOf0": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/userObjectResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/personUserObjectResponse"
+          }
+        ]
+      },
+      "userObjectResponseOneOf1": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/userObjectResponseCommon"
+          },
+          {
+            "$ref": "#/components/schemas/botUserObjectResponse"
           }
         ]
       },

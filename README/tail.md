@@ -10,6 +10,14 @@ Inline schemas are moved to `components/schemas` when they contain meaningful st
 
 The alternatives of a `oneOf` or `anyOf` are moved by the same rules, so each shaped alternative gets a name of its own, and so are the schema of an object's keys (`propertyNames`) and the schema a value must not match (`not`). Schemas inside `allOf` are never moved because they exist solely to compose a larger type.
 
+An `allOf` with a union among its entries, such as `allOf: [X, {oneOf: [A, B]}]`, is
+first rewritten as `oneOf: [{allOf: [X, A]}, {allOf: [X, B]}]`. Both say "X, and A or
+B", but only the second gives each combination a name, so each becomes a type of its
+own. The union may also be a `$ref` to a component that is only a union. The rewrite
+applies only where the `allOf` has a single union that carries nothing but its
+alternatives, and the schema has no union or properties of its own; anything else is
+left as it is.
+
 **Before:**
 
 ```json
