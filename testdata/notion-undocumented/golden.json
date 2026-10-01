@@ -60405,18 +60405,6 @@
           }
         ]
       },
-      "ChatWithAgentOk2": {
-        "description": "Newline-delimited JSON (NDJSON) stream. Each line is a JSON-encoded chat stream chunk.",
-        "type": "string"
-      },
-      "ChatWithAgentStreamOk": {
-        "description": "Newline-delimited JSON (NDJSON) stream. Each line is a JSON-encoded chunk object.",
-        "type": "string"
-      },
-      "SendExternalAgentStubSessionMessageStreamOk2": {
-        "description": "Newline-delimited JSON (NDJSON) stream. Each line is a JSON-encoded chunk object.",
-        "type": "string"
-      },
       "NotionVersion": {
         "type": "string",
         "enum": [
@@ -60825,7 +60813,8 @@
           },
           "application/x-ndjson": {
             "schema": {
-              "$ref": "#/components/schemas/ChatWithAgentOk2"
+              "description": "Newline-delimited JSON (NDJSON) stream. Each line is a JSON-encoded chat stream chunk.",
+              "type": "string"
             }
           }
         }
@@ -60950,7 +60939,8 @@
           },
           "application/x-ndjson": {
             "schema": {
-              "$ref": "#/components/schemas/ChatWithAgentStreamOk"
+              "description": "Newline-delimited JSON (NDJSON) stream. Each line is a JSON-encoded chunk object.",
+              "type": "string"
             }
           }
         }
@@ -66365,7 +66355,8 @@
           },
           "application/x-ndjson": {
             "schema": {
-              "$ref": "#/components/schemas/SendExternalAgentStubSessionMessageStreamOk2"
+              "description": "Newline-delimited JSON (NDJSON) stream. Each line is a JSON-encoded chunk object.",
+              "type": "string"
             }
           }
         }
