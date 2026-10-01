@@ -190,3 +190,48 @@ func TestFlatten_PropertyNamesAndNot(t *testing.T) {
 		t.Errorf("not: got %+v, want a reference to OkNot", ok.Not)
 	}
 }
+
+func TestFlatten_AllOfEntries(t *testing.T) {
+	// an allOf entry with a shape of its own is named like any other schema
+	doc := minimalDoc(t, `{
+		"allOf": [
+			{"type": "object", "properties": {"id": {"type": "string"}}},
+			{"oneOf": [
+				{"title": "A cat", "type": "object", "properties": {"meow": {"type": "boolean"}}},
+				{"type": "object", "properties": {"bark": {"type": "boolean"}}}
+			]},
+			{"required": ["id"]}
+		]
+	}`)
+
+	for range 3 {
+		if err := flatten.Document(doc); err != nil {
+			t.Fatal(err)
+		}
+	}
+
+	var names []string
+	for name := range doc.Components.Schemas.ByIndex() {
+		names = append(names, name)
+	}
+
+	if got, want := strings.Join(names, " "), "Ok OkAllOf0 OkAllOf1 ACat OkAllOf1OneOf1"; got != want {
+		t.Fatalf("got components %s, want %s", got, want)
+	}
+
+	ok := doc.Components.Schemas["Ok"]
+	for i, want := range []string{"#/components/schemas/OkAllOf0", "#/components/schemas/OkAllOf1", ""} {
+		got := ""
+		if r := ok.AllOf[i].Ref; r != nil {
+			got = r.Identifier
+		}
+
+		if got != want {
+			t.Errorf("allOf[%d]: got ref %q, want %q", i, got, want)
+		}
+	}
+
+	if err := doc.Validate(); err != nil {
+		t.Fatal(err)
+	}
+}
