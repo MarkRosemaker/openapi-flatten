@@ -7284,12 +7284,6 @@
           }
         ]
       },
-      "RevokePersonalAccessTokenOk": {
-        "type": "object"
-      },
-      "DeleteAgentOk": {
-        "type": "object"
-      },
       "NotionVersion": {
         "type": "string",
         "enum": [
@@ -10815,7 +10809,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/RevokePersonalAccessTokenOk"
+              "type": "object"
             }
           }
         }
@@ -11276,7 +11270,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/DeleteAgentOk"
+              "type": "object"
             }
           }
         }

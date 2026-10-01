@@ -22,7 +22,7 @@ func responses(d *openapi.Document, rs openapi.ResponsesByName) error {
 		// NOTE: We are *not* calling responseRef here,
 		// because we are calling this function from Components,
 		// where the response should already be.
-		alwaysMove := isFailureResponse(d, r)
+		alwaysMove := isFailureResponse(d, name)
 
 		if err := response(d, r.Value, name, alwaysMove); err != nil {
 			return &errpath.ErrKey{Key: string(name), Err: err}
@@ -32,16 +32,19 @@ func responses(d *openapi.Document, rs openapi.ResponsesByName) error {
 	return nil
 }
 
-func isFailureResponse(d *openapi.Document, r *openapi.ResponseRef) bool {
+// isFailureResponse reports whether an operation uses the component response named name for a status other than a success.
+func isFailureResponse(d *openapi.Document, name string) bool {
+	ref := newRef("responses", name).Identifier
+
 	for _, p := range d.Paths {
 		for _, o := range p.Operations {
 			for code, rs := range o.Responses {
-				if rs == r && !code.IsSuccess() {
-					return false
+				if !code.IsSuccess() && rs.Ref != nil && rs.Ref.Identifier == ref {
+					return true
 				}
 			}
 		}
 	}
 
-	return true
+	return false
 }
