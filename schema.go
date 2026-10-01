@@ -8,20 +8,13 @@ import (
 	"github.com/ettle/strcase"
 )
 
-type mode int
-
-const (
-	moveIfNecessary mode = iota
-	alwaysMove
-)
-
 // inlineSchema moves s into the components if it deserves a name of its own, leaving a reference in its place, and flattens what it contains.
-func inlineSchema(d *openapi.Document, s *openapi.Schema, name string, mode mode) error {
+func inlineSchema(d *openapi.Document, s *openapi.Schema, name string, alwaysMove bool) error {
 	if s.Ref != nil {
 		return nil // already processed
 	}
 
-	if mode == alwaysMove {
+	if alwaysMove {
 		// process the schema itself
 		return schema(d, moveSchemaToComponents(d, name, s), name)
 	}
@@ -90,7 +83,7 @@ func schema(d *openapi.Document, s *openapi.Schema, name string) error {
 	}
 
 	// each entry with a shape of its own is named like any other schema
-	if err := inlineSchemaList(d, s.AllOf, name+"AllOf", moveIfNecessary); err != nil {
+	if err := inlineSchemaList(d, s.AllOf, name+"AllOf", false); err != nil {
 		return &errpath.ErrField{Field: "allOf", Err: err}
 	}
 
@@ -104,12 +97,12 @@ func schema(d *openapi.Document, s *openapi.Schema, name string) error {
 
 	// each position is a real, reusable shape, the same as an object property
 	// just addressed by index instead of by name.
-	if err := inlineSchemaList(d, s.PrefixItems, name+"Item", moveIfNecessary); err != nil {
+	if err := inlineSchemaList(d, s.PrefixItems, name+"Item", false); err != nil {
 		return &errpath.ErrField{Field: "prefixItems", Err: err}
 	}
 
 	if s.Items != nil {
-		if err := inlineSchema(d, s.Items, name+"Item", moveIfNecessary); err != nil {
+		if err := inlineSchema(d, s.Items, name+"Item", false); err != nil {
 			return &errpath.ErrField{Field: "items", Err: err}
 		}
 	}
@@ -119,19 +112,19 @@ func schema(d *openapi.Document, s *openapi.Schema, name string) error {
 	}
 
 	if ap := s.AdditionalProperties; ap != nil && ap.Schema != nil {
-		if err := inlineSchema(d, ap.Schema, name+"Value", moveIfNecessary); err != nil {
+		if err := inlineSchema(d, ap.Schema, name+"Value", false); err != nil {
 			return &errpath.ErrField{Field: "additionalProperties", Err: err}
 		}
 	}
 
 	if s.PropertyNames != nil {
-		if err := inlineSchema(d, s.PropertyNames, name+"Key", moveIfNecessary); err != nil {
+		if err := inlineSchema(d, s.PropertyNames, name+"Key", false); err != nil {
 			return &errpath.ErrField{Field: "propertyNames", Err: err}
 		}
 	}
 
 	if s.Not != nil {
-		if err := inlineSchema(d, s.Not, name+"Not", moveIfNecessary); err != nil {
+		if err := inlineSchema(d, s.Not, name+"Not", false); err != nil {
 			return &errpath.ErrField{Field: "not", Err: err}
 		}
 	}
@@ -157,7 +150,7 @@ func inlineBranches(d *openapi.Document, ss openapi.SchemaList, prefix string) e
 			name = strcase.ToGoPascal(s.Title)
 		}
 
-		if err := inlineSchema(d, s, name, moveIfNecessary); err != nil {
+		if err := inlineSchema(d, s, name, false); err != nil {
 			return &errpath.ErrIndex{Index: i, Err: err}
 		}
 	}
@@ -165,9 +158,9 @@ func inlineBranches(d *openapi.Document, ss openapi.SchemaList, prefix string) e
 	return nil
 }
 
-func inlineSchemaList(d *openapi.Document, ss openapi.SchemaList, prefix string, mode mode) error {
+func inlineSchemaList(d *openapi.Document, ss openapi.SchemaList, prefix string, alwaysMove bool) error {
 	for i, s := range ss {
-		if err := inlineSchema(d, s, fmt.Sprintf("%s%d", prefix, i), mode); err != nil {
+		if err := inlineSchema(d, s, fmt.Sprintf("%s%d", prefix, i), alwaysMove); err != nil {
 			return &errpath.ErrIndex{Index: i, Err: err}
 		}
 	}
