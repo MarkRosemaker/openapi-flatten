@@ -4312,6 +4312,65 @@
         "additionalProperties": false
       },
       "ListUsersOkResultsItem": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ListUsersOkResultsItemAllOf0"
+          },
+          {
+            "$ref": "#/components/schemas/ListUsersOkResultsItemAllOf1"
+          }
+        ]
+      },
+      "ListUsersOkResultsItemAllOf0": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "description": "The user object type name.",
+            "type": "string",
+            "const": "user"
+          },
+          "id": {
+            "description": "The ID of the user.",
+            "type": "string"
+          },
+          "name": {
+            "$ref": "#/components/schemas/ListUsersOkResultsItemAllOf0Name"
+          },
+          "avatar_url": {
+            "$ref": "#/components/schemas/ListUsersOkResultsItemAllOf0AvatarURL"
+          }
+        },
+        "required": [
+          "object",
+          "id",
+          "name",
+          "avatar_url"
+        ],
+        "additionalProperties": false
+      },
+      "ListUsersOkResultsItemAllOf0Name": {
+        "description": "The name of the user.",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "ListUsersOkResultsItemAllOf0AvatarURL": {
+        "description": "The avatar URL of the user.",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "ListUsersOkResultsItemAllOf1": {
         "oneOf": [
           {
             "$ref": "#/components/schemas/Person"
@@ -4323,80 +4382,27 @@
       },
       "Person": {
         "title": "Person",
-        "allOf": [
-          {
-            "type": "object",
-            "properties": {
-              "object": {
-                "description": "The user object type name.",
-                "type": "string",
-                "const": "user"
-              },
-              "id": {
-                "description": "The ID of the user.",
-                "type": "string"
-              },
-              "name": {
-                "$ref": "#/components/schemas/PersonAllOf0Name"
-              },
-              "avatar_url": {
-                "$ref": "#/components/schemas/PersonAllOf0AvatarURL"
-              }
-            },
-            "required": [
-              "object",
-              "id",
-              "name",
-              "avatar_url"
-            ],
-            "additionalProperties": false
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Indicates this user is a person.",
+            "type": "string",
+            "const": "person"
           },
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "description": "Indicates this user is a person.",
-                "type": "string",
-                "const": "person"
-              },
-              "membership_type": {
-                "$ref": "#/components/schemas/PersonAllOf1MembershipType"
-              },
-              "person": {
-                "$ref": "#/components/schemas/PersonAllOf1Person"
-              }
-            },
-            "required": [
-              "type",
-              "membership_type",
-              "person"
-            ]
+          "membership_type": {
+            "$ref": "#/components/schemas/PersonMembershipType"
+          },
+          "person": {
+            "$ref": "#/components/schemas/PersonPerson"
           }
+        },
+        "required": [
+          "type",
+          "membership_type",
+          "person"
         ]
       },
-      "PersonAllOf0Name": {
-        "description": "The name of the user.",
-        "oneOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
-      "PersonAllOf0AvatarURL": {
-        "description": "The avatar URL of the user.",
-        "oneOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "null"
-          }
-        ]
-      },
-      "PersonAllOf1MembershipType": {
+      "PersonMembershipType": {
         "description": "The person's effective workspace membership type.",
         "type": "string",
         "enum": [
@@ -4408,7 +4414,7 @@
           "owner"
         ]
       },
-      "PersonAllOf1Person": {
+      "PersonPerson": {
         "description": "Details about the person, when the `type` of the user is `person`.",
         "type": "object",
         "properties": {
@@ -4421,52 +4427,21 @@
       },
       "Bot": {
         "title": "Bot",
-        "allOf": [
-          {
-            "type": "object",
-            "properties": {
-              "object": {
-                "description": "The user object type name.",
-                "type": "string",
-                "const": "user"
-              },
-              "id": {
-                "description": "The ID of the user.",
-                "type": "string"
-              },
-              "name": {
-                "$ref": "#/components/schemas/PersonAllOf0Name"
-              },
-              "avatar_url": {
-                "$ref": "#/components/schemas/PersonAllOf0AvatarURL"
-              }
-            },
-            "required": [
-              "object",
-              "id",
-              "name",
-              "avatar_url"
-            ],
-            "additionalProperties": false
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Indicates this user is a bot.",
+            "type": "string",
+            "const": "bot"
           },
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "description": "Indicates this user is a bot.",
-                "type": "string",
-                "const": "bot"
-              },
-              "bot": {
-                "description": "Details about the bot, when the `type` of the user is `bot`.",
-                "$ref": "#/components/schemas/emptyObject"
-              }
-            },
-            "required": [
-              "type",
-              "bot"
-            ]
+          "bot": {
+            "description": "Details about the bot, when the `type` of the user is `bot`.",
+            "$ref": "#/components/schemas/emptyObject"
           }
+        },
+        "required": [
+          "type",
+          "bot"
         ]
       },
       "ListUsersOkNextCursor": {
