@@ -22,7 +22,7 @@ if err != nil {
 }
 
 // Flatten all inline definitions
-if err := flatten.Document(doc); err != nil {
+if err := flatten.Document(doc, flatten.Config{}); err != nil {
     log.Fatal(err)
 }
 
@@ -30,3 +30,11 @@ if err := flatten.Document(doc); err != nil {
 ```
 
 `Document` is the entire public API. It modifies the document in place.
+
+With `Config{MarkOrigin: true}`, each schema `Document` moves into
+`components/schemas` gets an `x-flattened-from` extension: a JSON pointer to the
+`$ref` left in its place, such as `#/components/schemas/Page/properties/cover`.
+A schema without it was a component already, so a later step can tell a name the
+specification gave from one flatten made up. `openapi-compress` reads it, to
+prefer the specification's names when it merges schemas, and removes it. The
+command line tool takes `-mark-origin` for it.

@@ -45,7 +45,7 @@ func minimalDoc(t *testing.T, schemaJSON string) *openapi.Document {
 func TestFlatten_TypeNull(t *testing.T) {
 	doc := minimalDoc(t, `{"type": "null"}`)
 
-	if err := flatten.Document(doc); err != nil {
+	if err := flatten.Document(doc, flatten.Config{}); err != nil {
 		t.Fatalf("unexpected error for TypeNull schema: %v", err)
 	}
 }
@@ -53,7 +53,7 @@ func TestFlatten_TypeNull(t *testing.T) {
 func TestFlatten_ArrayOfBoolean(t *testing.T) {
 	doc := minimalDoc(t, `{"type": "array", "items": {"type": "boolean"}}`)
 
-	if err := flatten.Document(doc); err != nil {
+	if err := flatten.Document(doc, flatten.Config{}); err != nil {
 		t.Fatalf("unexpected error for array-of-boolean schema: %v", err)
 	}
 }
@@ -61,7 +61,7 @@ func TestFlatten_ArrayOfBoolean(t *testing.T) {
 func TestFlatten_ArrayOfNull(t *testing.T) {
 	doc := minimalDoc(t, `{"type": "array", "items": {"type": "null"}}`)
 
-	if err := flatten.Document(doc); err != nil {
+	if err := flatten.Document(doc, flatten.Config{}); err != nil {
 		t.Fatalf("unexpected error for array-of-null schema: %v", err)
 	}
 }
@@ -76,7 +76,7 @@ func TestFlatten_TupleArray(t *testing.T) {
 		]
 	}`)
 
-	if err := flatten.Document(doc); err != nil {
+	if err := flatten.Document(doc, flatten.Config{}); err != nil {
 		t.Fatalf("unexpected error for tuple-shaped array schema: %v", err)
 	}
 
@@ -96,7 +96,7 @@ func TestFlatten_TupleArray_ObjectPosition(t *testing.T) {
 		]
 	}`)
 
-	if err := flatten.Document(doc); err != nil {
+	if err := flatten.Document(doc, flatten.Config{}); err != nil {
 		t.Fatalf("unexpected error for tuple-with-object-position schema: %v", err)
 	}
 
@@ -117,7 +117,7 @@ func TestFlatten_ArrayOfAnyOf(t *testing.T) {
 		}
 	}`)
 
-	if err := flatten.Document(doc); err != nil {
+	if err := flatten.Document(doc, flatten.Config{}); err != nil {
 		t.Fatalf("unexpected error for array-of-anyOf schema: %v", err)
 	}
 }
@@ -133,7 +133,7 @@ func TestFlatten_UnionBranches(t *testing.T) {
 		]
 	}`)
 
-	if err := flatten.Document(doc); err != nil {
+	if err := flatten.Document(doc, flatten.Config{}); err != nil {
 		t.Fatal(err)
 	}
 
@@ -168,7 +168,7 @@ func TestFlatten_PropertyNamesAndNot(t *testing.T) {
 		"not": {"type": "object", "properties": {"deleted": {"type": "boolean"}}}
 	}`)
 
-	if err := flatten.Document(doc); err != nil {
+	if err := flatten.Document(doc, flatten.Config{}); err != nil {
 		t.Fatal(err)
 	}
 
@@ -205,7 +205,7 @@ func TestFlatten_AllOfEntries(t *testing.T) {
 	}`)
 
 	for range 3 {
-		if err := flatten.Document(doc); err != nil {
+		if err := flatten.Document(doc, flatten.Config{}); err != nil {
 			t.Fatal(err)
 		}
 	}
