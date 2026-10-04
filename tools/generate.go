@@ -40,7 +40,7 @@ func run(ctx context.Context) error {
 			return fmt.Errorf("loading openapi file: %w", err)
 		}
 
-		if err := flatten.Document(doc); err != nil {
+		if err := flatten.Document(doc, flatten.Config{MarkOrigin: true}); err != nil {
 			return err
 		}
 

@@ -1,6 +1,7 @@
 - **Promotes inline schemas** to `components/schemas`, leaving simple scalars in place
 - **Promotes responses, request bodies, and parameters** to their respective `components` sections
-- **Generates readable PascalCase names** with automatic collision avoidance
+- **Generates readable PascalCase names** with automatic collision avoidance, and,
+  if asked, marks each with where it came from (`x-flattened-from`)
 - **Hoists shared parameters** common to every operation on a path up to the path item
 - **Normalizes a common path prefix** (such as `/v1`) into the server URLs
 - **Reports errors with the full JSON path** to the offending field

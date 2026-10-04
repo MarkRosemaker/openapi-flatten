@@ -35,7 +35,7 @@ func TestFlatten_TestData(t *testing.T) {
 
 			for it := range 3 {
 				t.Run(fmt.Sprintf("iteration %d", it+1), func(t *testing.T) {
-					if err := flatten.Document(doc); err != nil {
+					if err := flatten.Document(doc, flatten.Config{MarkOrigin: true}); err != nil {
 						t.Fatal(err)
 					}
 

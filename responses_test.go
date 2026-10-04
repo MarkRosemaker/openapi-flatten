@@ -26,7 +26,7 @@ func TestFlatten_ComponentResponseSchemas(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if err := flatten.Document(doc); err != nil {
+	if err := flatten.Document(doc, flatten.Config{}); err != nil {
 		t.Fatal(err)
 	}
 

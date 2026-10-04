@@ -11888,7 +11888,8 @@
                     "object": {
                       "description": "Always `list`",
                       "type": "string",
-                      "const": "list"
+                      "const": "list",
+                      "example": "list"
                     },
                     "next_cursor": {
                       "oneOf": [
@@ -11912,7 +11913,8 @@
                     "type": {
                       "description": "Always `view`",
                       "type": "string",
-                      "const": "view"
+                      "const": "view",
+                      "example": "view"
                     },
                     "view": {
                       "$ref": "#/components/schemas/emptyObject"
@@ -37589,7 +37591,8 @@
           "object": {
             "description": "The object type name.",
             "type": "string",
-            "const": "view"
+            "const": "view",
+            "example": "view"
           },
           "id": {
             "description": "The ID of the view.",
@@ -45130,7 +45133,8 @@
           "object": {
             "description": "The database object type name.",
             "type": "string",
-            "const": "database"
+            "const": "database",
+            "example": "database"
           },
           "id": {
             "description": "The ID of the database.",
@@ -45410,7 +45414,8 @@
           "object": {
             "description": "The page object type name.",
             "type": "string",
-            "const": "page"
+            "const": "page",
+            "example": "page"
           },
           "id": {
             "description": "The ID of the page.",
