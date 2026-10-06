@@ -5,7 +5,7 @@ go 1.27
 require (
 	github.com/MarkRosemaker/errpath v0.0.0-20261004011213-d39d7f96c8f4
 	github.com/MarkRosemaker/fsutil v0.0.0-20261004011212-542873237c74
-	github.com/MarkRosemaker/openapi v0.0.0-20261005183413-2a3bd56f42a1
+	github.com/MarkRosemaker/openapi v0.0.0-20261006170304-55e0a87dfa74
 	github.com/ettle/strcase v0.2.0
 )
 
