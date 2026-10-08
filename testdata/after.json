@@ -1,0 +1,596 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Flatten",
+    "description": "TestDocument_Golden flattens this document, marking where each schema it moves came from, three times over, and must get after.json each time. Every path starts with /v1, which moves into the server URL. What each part is there for is said where it is.",
+    "version": "1"
+  },
+  "servers": [
+    {
+      "url": "https://api.example.com/v1"
+    }
+  ],
+  "paths": {
+    "/pets": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/Trace"
+        }
+      ],
+      "get": {
+        "description": "A reference to the same component parameter on every operation of a path moves up to the path.",
+        "operationId": "listPets",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/limit"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListPetsOk"
+          },
+          "404": {
+            "$ref": "#/components/responses/ListPetsNotFound"
+          }
+        }
+      },
+      "post": {
+        "operationId": "createPet",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CreatePet"
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/Names"
+          },
+          "404": {
+            "$ref": "#/components/responses/Missing"
+          }
+        }
+      }
+    },
+    "/pets/{petId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/petId"
+        }
+      ],
+      "get": {
+        "operationId": "getPet",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/Lookup"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/GetPetOk"
+          }
+        }
+      }
+    },
+    "/owners": {
+      "get": {
+        "operationId": "listOwners",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ListOwnersOk"
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "description": "The prefix itself is the root.",
+        "operationId": "getRoot",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/GetRootOk"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Page": {
+        "type": "object",
+        "properties": {
+          "parent": {
+            "$ref": "#/components/schemas/PageParent"
+          }
+        },
+        "x-go-name": "Page"
+      },
+      "ListPetsOkOwner": {
+        "type": "string"
+      },
+      "Filter": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string"
+          }
+        },
+        "x-flattened-from": "#/components/parameters/filter/content/application~1json/schema"
+      },
+      "ListPetsOk": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "age": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "gone": {
+            "type": "null"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "scores": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "flags": {
+            "type": "array",
+            "items": {
+              "type": "boolean"
+            }
+          },
+          "nothing": {
+            "type": "array",
+            "items": {
+              "type": "null"
+            }
+          },
+          "seenEmpty": {
+            "type": "array",
+            "maxItems": 0
+          },
+          "grid": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            }
+          },
+          "when": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ListPetsOkWhenItem"
+            }
+          },
+          "status": {
+            "$ref": "#/components/schemas/ListPetsOkStatus"
+          },
+          "statuses": {
+            "$ref": "#/components/schemas/ListPetsOkStatuses"
+          },
+          "owner": {
+            "$ref": "#/components/schemas/ListPetsOkOwner2"
+          },
+          "friends": {
+            "$ref": "#/components/schemas/ListPetsOkFriends"
+          },
+          "position": {
+            "$ref": "#/components/schemas/ListPetsOkPosition"
+          },
+          "counts": {
+            "description": "The values of a map, its keys and what it must not be are named like anything else.",
+            "type": "object",
+            "not": {
+              "$ref": "#/components/schemas/ListPetsOkCountsNot"
+            },
+            "additionalProperties": {
+              "$ref": "#/components/schemas/ListPetsOkCountsValue"
+            },
+            "propertyNames": {
+              "$ref": "#/components/schemas/ListPetsOkCountsKey"
+            }
+          },
+          "contact": {
+            "$ref": "#/components/schemas/ListPetsOkContact"
+          },
+          "animal": {
+            "$ref": "#/components/schemas/ListPetsOkAnimal"
+          },
+          "slash/key": {
+            "$ref": "#/components/schemas/ListPetsOkSlashKey"
+          }
+        },
+        "x-flattened-from": "#/components/responses/ListPetsOk/content/application~1json/schema"
+      },
+      "ListPetsOkWhenItem": {
+        "anyOf": [
+          {
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-flattened-from": "#/components/schemas/ListPetsOk/properties/when/items"
+      },
+      "ListPetsOkStatus": {
+        "type": "string",
+        "enum": [
+          "available",
+          "sold"
+        ],
+        "x-flattened-from": "#/components/schemas/ListPetsOk/properties/status"
+      },
+      "ListPetsOkStatuses": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ListPetsOkStatusesItem"
+        },
+        "x-flattened-from": "#/components/schemas/ListPetsOk/properties/statuses"
+      },
+      "ListPetsOkStatusesItem": {
+        "type": "string",
+        "enum": [
+          "available",
+          "sold"
+        ],
+        "x-flattened-from": "#/components/schemas/ListPetsOkStatuses/items"
+      },
+      "ListPetsOkOwner2": {
+        "description": "Its name is taken already, so it is numbered.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "x-flattened-from": "#/components/schemas/ListPetsOk/properties/owner"
+      },
+      "ListPetsOkFriends": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ListPetsOkFriendsItem"
+        },
+        "x-flattened-from": "#/components/schemas/ListPetsOk/properties/friends"
+      },
+      "ListPetsOkFriendsItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "x-flattened-from": "#/components/schemas/ListPetsOkFriends/items"
+      },
+      "ListPetsOkPosition": {
+        "description": "A tuple is named like an object, and so is a position of it that has properties.",
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "#/components/schemas/ListPetsOkPositionItem1"
+          }
+        ],
+        "x-flattened-from": "#/components/schemas/ListPetsOk/properties/position"
+      },
+      "ListPetsOkPositionItem1": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number"
+          }
+        },
+        "x-flattened-from": "#/components/schemas/ListPetsOkPosition/prefixItems/1"
+      },
+      "ListPetsOkCountsValue": {
+        "type": "object",
+        "properties": {
+          "n": {
+            "type": "integer"
+          }
+        },
+        "x-flattened-from": "#/components/schemas/ListPetsOk/properties/counts/additionalProperties"
+      },
+      "ListPetsOkCountsKey": {
+        "type": "string",
+        "enum": [
+          "north",
+          "south"
+        ],
+        "x-flattened-from": "#/components/schemas/ListPetsOk/properties/counts/propertyNames"
+      },
+      "ListPetsOkCountsNot": {
+        "type": "object",
+        "properties": {
+          "deleted": {
+            "type": "boolean"
+          }
+        },
+        "x-flattened-from": "#/components/schemas/ListPetsOk/properties/counts/not"
+      },
+      "ListPetsOkContact": {
+        "description": "An alternative is named by its title, or else by its position; a scalar or null stays.",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/APerson"
+          },
+          {
+            "$ref": "#/components/schemas/ListPetsOkContactOneOf1"
+          },
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-flattened-from": "#/components/schemas/ListPetsOk/properties/contact"
+      },
+      "APerson": {
+        "title": "A person",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
+        "x-flattened-from": "#/components/schemas/ListPetsOkContact/oneOf/0"
+      },
+      "ListPetsOkContactOneOf1": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          }
+        },
+        "x-flattened-from": "#/components/schemas/ListPetsOkContact/oneOf/1"
+      },
+      "ListPetsOkAnimal": {
+        "description": "So is a part of an allOf, and a union inside it; a part without a shape of its own stays.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ListPetsOkAnimalAllOf0"
+          },
+          {
+            "$ref": "#/components/schemas/ListPetsOkAnimalAllOf1"
+          },
+          {
+            "required": [
+              "id"
+            ]
+          }
+        ],
+        "x-flattened-from": "#/components/schemas/ListPetsOk/properties/animal"
+      },
+      "ListPetsOkAnimalAllOf0": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "x-flattened-from": "#/components/schemas/ListPetsOkAnimal/allOf/0"
+      },
+      "ListPetsOkAnimalAllOf1": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ACat"
+          },
+          {
+            "$ref": "#/components/schemas/ListPetsOkAnimalAllOf1OneOf1"
+          }
+        ],
+        "x-flattened-from": "#/components/schemas/ListPetsOkAnimal/allOf/1"
+      },
+      "ACat": {
+        "title": "A cat",
+        "type": "object",
+        "properties": {
+          "meow": {
+            "type": "boolean"
+          }
+        },
+        "x-flattened-from": "#/components/schemas/ListPetsOkAnimalAllOf1/oneOf/0"
+      },
+      "ListPetsOkAnimalAllOf1OneOf1": {
+        "type": "object",
+        "properties": {
+          "bark": {
+            "type": "boolean"
+          }
+        },
+        "x-flattened-from": "#/components/schemas/ListPetsOkAnimalAllOf1/oneOf/1"
+      },
+      "ListPetsOkSlashKey": {
+        "type": "object",
+        "properties": {
+          "a": {
+            "type": "string"
+          }
+        },
+        "x-flattened-from": "#/components/schemas/ListPetsOk/properties/slash~1key"
+      },
+      "ListPetsNotFound": {
+        "type": "string",
+        "x-flattened-from": "#/components/responses/ListPetsNotFound/content/application~1json/schema"
+      },
+      "NewPet": {
+        "title": "New pet",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
+        "x-flattened-from": "#/components/requestBodies/CreatePet/content/application~1json/schema"
+      },
+      "PageParent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "x-flattened-from": "#/components/schemas/Page/properties/parent"
+      },
+      "Missing": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "x-flattened-from": "#/components/responses/Missing/content/application~1json/schema"
+      },
+      "XTrace": {
+        "type": "string",
+        "enum": [
+          "on",
+          "off"
+        ],
+        "x-flattened-from": "#/components/parameters/Trace/schema"
+      },
+      "Lookup": {
+        "type": "object",
+        "properties": {
+          "fields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "x-flattened-from": "#/components/requestBodies/Lookup/content/application~1json/schema"
+      }
+    },
+    "responses": {
+      "Names": {
+        "description": "A component response keeps a simple schema inline unless an operation uses it for a failure.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "Missing": {
+        "description": "not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Missing"
+            }
+          }
+        }
+      },
+      "ListPetsOk": {
+        "description": "Scalars and lists of scalars stay where they are; what has a shape of its own gets a name.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ListPetsOk"
+            }
+          }
+        }
+      },
+      "ListPetsNotFound": {
+        "description": "A failure's schema is named even when it is a scalar.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ListPetsNotFound"
+            }
+          }
+        }
+      },
+      "GetPetOk": {
+        "description": "A schema that was a component already says nothing of where it came from, and keeps its extensions.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Page"
+            }
+          }
+        }
+      },
+      "ListOwnersOk": {
+        "description": "no content"
+      },
+      "GetRootOk": {
+        "description": "no content"
+      }
+    },
+    "parameters": {
+      "Trace": {
+        "name": "X-Trace",
+        "in": "header",
+        "schema": {
+          "$ref": "#/components/schemas/XTrace"
+        }
+      },
+      "limit": {
+        "name": "limit",
+        "in": "query",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "filter": {
+        "name": "filter",
+        "in": "query",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Filter"
+            }
+          }
+        }
+      },
+      "petId": {
+        "name": "petId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "requestBodies": {
+      "Lookup": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Lookup"
+            }
+          }
+        }
+      },
+      "CreatePet": {
+        "description": "A request body is a component, named after its operation; a schema with a title is named after it.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/NewPet"
+            }
+          }
+        }
+      }
+    }
+  }
+}

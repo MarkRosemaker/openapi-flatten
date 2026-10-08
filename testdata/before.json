@@ -1,0 +1,456 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Flatten",
+    "description": "TestDocument_Golden flattens this document, marking where each schema it moves came from, three times over, and must get after.json each time. Every path starts with /v1, which moves into the server URL. What each part is there for is said where it is.",
+    "version": "1"
+  },
+  "servers": [
+    {
+      "url": "https://api.example.com/"
+    }
+  ],
+  "paths": {
+    "/v1/pets": {
+      "get": {
+        "description": "A reference to the same component parameter on every operation of a path moves up to the path.",
+        "operationId": "listPets",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Trace"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Scalars and lists of scalars stay where they are; what has a shape of its own gets a name.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "age": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ]
+                    },
+                    "gone": {
+                      "type": "null"
+                    },
+                    "tags": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "scores": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      }
+                    },
+                    "flags": {
+                      "type": "array",
+                      "items": {
+                        "type": "boolean"
+                      }
+                    },
+                    "nothing": {
+                      "type": "array",
+                      "items": {
+                        "type": "null"
+                      }
+                    },
+                    "seenEmpty": {
+                      "type": "array",
+                      "maxItems": 0
+                    },
+                    "grid": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "when": {
+                      "type": "array",
+                      "items": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "available",
+                        "sold"
+                      ]
+                    },
+                    "statuses": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "available",
+                          "sold"
+                        ]
+                      }
+                    },
+                    "owner": {
+                      "description": "Its name is taken already, so it is numbered.",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "friends": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "position": {
+                      "description": "A tuple is named like an object, and so is a position of it that has properties.",
+                      "type": "array",
+                      "prefixItems": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "x": {
+                              "type": "number"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "counts": {
+                      "description": "The values of a map, its keys and what it must not be are named like anything else.",
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "object",
+                        "properties": {
+                          "n": {
+                            "type": "integer"
+                          }
+                        }
+                      },
+                      "propertyNames": {
+                        "type": "string",
+                        "enum": [
+                          "north",
+                          "south"
+                        ]
+                      },
+                      "not": {
+                        "type": "object",
+                        "properties": {
+                          "deleted": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    },
+                    "contact": {
+                      "description": "An alternative is named by its title, or else by its position; a scalar or null stays.",
+                      "oneOf": [
+                        {
+                          "title": "A person",
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "animal": {
+                      "description": "So is a part of an allOf, and a union inside it; a part without a shape of its own stays.",
+                      "allOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        {
+                          "oneOf": [
+                            {
+                              "title": "A cat",
+                              "type": "object",
+                              "properties": {
+                                "meow": {
+                                  "type": "boolean"
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "bark": {
+                                  "type": "boolean"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "required": [
+                            "id"
+                          ]
+                        }
+                      ]
+                    },
+                    "slash/key": {
+                      "type": "object",
+                      "properties": {
+                        "a": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "A failure's schema is named even when it is a scalar.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createPet",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Trace"
+          }
+        ],
+        "requestBody": {
+          "description": "A request body is a component, named after its operation; a schema with a title is named after it.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "New pet",
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/Names"
+          },
+          "404": {
+            "$ref": "#/components/responses/Missing"
+          }
+        }
+      }
+    },
+    "/v1/pets/{petId}": {
+      "get": {
+        "operationId": "getPet",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/Lookup"
+        },
+        "responses": {
+          "200": {
+            "description": "A schema that was a component already says nothing of where it came from, and keeps its extensions.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "petId",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/v1/owners": {
+      "get": {
+        "operationId": "listOwners",
+        "responses": {
+          "200": {
+            "description": "no content"
+          }
+        }
+      }
+    },
+    "/v1": {
+      "get": {
+        "description": "The prefix itself is the root.",
+        "operationId": "getRoot",
+        "responses": {
+          "200": {
+            "description": "no content"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Page": {
+        "type": "object",
+        "properties": {
+          "parent": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "x-go-name": "Page"
+      },
+      "ListPetsOkOwner": {
+        "type": "string"
+      }
+    },
+    "responses": {
+      "Names": {
+        "description": "A component response keeps a simple schema inline unless an operation uses it for a failure.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "Missing": {
+        "description": "not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "Trace": {
+        "name": "X-Trace",
+        "in": "header",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "on",
+            "off"
+          ]
+        }
+      }
+    },
+    "requestBodies": {
+      "Lookup": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "fields": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

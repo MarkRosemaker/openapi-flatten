@@ -2,84 +2,108 @@ package flatten_test
 
 import (
 	"bytes"
-	"embed"
 	"fmt"
-	"path/filepath"
+	"os"
 	"testing"
 
 	"github.com/MarkRosemaker/openapi"
 	flatten "github.com/MarkRosemaker/openapi-flatten"
 )
 
-//go:embed testdata
-var testdata embed.FS
+// TestDocument_Golden flattens testdata/before.json, marking origins, three times over, and must get
+// testdata/after.json each time: flattening a flat document changes nothing. Both are edited by hand; what each part
+// of before.json is there for is said in it.
+func TestDocument_Golden(t *testing.T) {
+	t.Parallel()
 
-func TestFlatten_TestData(t *testing.T) {
-	entries, err := testdata.ReadDir("testdata")
+	doc, err := openapi.LoadFromFile("testdata/before.json")
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	for _, tc := range entries {
-		t.Run(tc.Name(), func(t *testing.T) {
-			f, err := testdata.Open(filepath.Join("testdata", tc.Name(), "openapi.json"))
-			if err != nil {
-				t.Fatal(err)
-			}
-			defer f.Close() //nolint
+	want, err := os.ReadFile("testdata/after.json")
+	if err != nil {
+		t.Fatal(err)
+	}
 
-			doc, err := openapi.LoadFromReader(f)
-			if err != nil {
-				t.Fatal(err)
-			}
+	for run := range 3 {
+		if err := flatten.Document(doc, flatten.Config{MarkOrigin: true}); err != nil {
+			t.Fatalf("run %d: %v", run+1, err)
+		}
 
-			for it := range 3 {
-				t.Run(fmt.Sprintf("iteration %d", it+1), func(t *testing.T) {
-					if err := flatten.Document(doc, flatten.Config{MarkOrigin: true}); err != nil {
-						t.Fatal(err)
-					}
+		if err := doc.Validate(); err != nil {
+			t.Fatalf("run %d: %v", run+1, err)
+		}
 
-					if err := doc.Validate(); err != nil {
-						t.Fatal(err)
-					}
+		got, err := doc.ToJSON()
+		if err != nil {
+			t.Fatal(err)
+		}
 
-					gotDoc, err := doc.ToJSON()
-					if err != nil {
-						t.Fatal(err)
-					}
+		got = append(got, '\n')
 
-					wantDoc, err := testdata.ReadFile(filepath.Join("testdata", tc.Name(), "golden.json"))
-					if err != nil {
-						t.Fatal(err)
-					}
-
-					compareBytes(t, wantDoc, gotDoc)
-				})
-			}
-		})
+		if line, ok := firstDifference(got, want); !ok {
+			t.Fatalf("run %d: after.json %s", run+1, line)
+		}
 	}
 }
 
-// compareBytes prints a compact diff of two byte slices
-func compareBytes(t *testing.T, expected, actual []byte) {
-	t.Helper()
-
-	if bytes.Equal(expected, actual) {
-		return
+// firstDifference describes the first line in which got and want differ, if any.
+func firstDifference(got, want []byte) (string, bool) {
+	if bytes.Equal(got, want) {
+		return "", true
 	}
 
-	// Find first difference
-	i := 0
-	for i < len(expected) && i < len(actual) && expected[i] == actual[i] {
-		i++
+	gotLines, wantLines := bytes.Split(got, []byte("\n")), bytes.Split(want, []byte("\n"))
+	for i := range min(len(gotLines), len(wantLines)) {
+		if !bytes.Equal(gotLines[i], wantLines[i]) {
+			return fmt.Sprintf("line %d: got %s, want %s", i+1, bytes.TrimSpace(gotLines[i]), bytes.TrimSpace(wantLines[i])), false
+		}
 	}
 
-	t.Errorf("\n┌─ Diff at offset %d\n│ Expected: %q\n│ Actual:   %q\n└─ %s",
-		i, expected[i:min(len(expected), i+20)], actual[i:min(len(actual), i+20)],
-		func() string {
-			if len(expected) != len(actual) {
-				return fmt.Sprintf("length %d vs %d", len(expected), len(actual))
-			}
-			return fmt.Sprintf("0x%02x vs 0x%02x", expected[i], actual[i])
-		}())
+	return fmt.Sprintf("has %d lines, got %d", len(wantLines), len(gotLines)), false
+}
+
+// TestDocument_MarkOriginOff: without MarkOrigin, no schema says where it came from.
+func TestDocument_MarkOriginOff(t *testing.T) {
+	t.Parallel()
+
+	doc, err := openapi.LoadFromFile("testdata/before.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if err := flatten.Document(doc, flatten.Config{}); err != nil {
+		t.Fatal(err)
+	}
+
+	for name, s := range doc.Components.Schemas {
+		if bytes.Contains(s.Extensions, []byte(flatten.ExtensionOrigin)) {
+			t.Errorf("%s is marked without MarkOrigin", name)
+		}
+	}
+}
+
+// TestDocument_OnePathKeepsItsPrefix: a prefix is moved into the servers only when several paths share it, as one path
+// alone says nothing of what is common to the API.
+func TestDocument_OnePathKeepsItsPrefix(t *testing.T) {
+	t.Parallel()
+
+	doc, err := openapi.LoadFromDataJSON([]byte(`{
+  "openapi": "3.1.0",
+  "info": {"title": "t", "version": "1"},
+  "servers": [{"url": "https://api.example.com"}],
+  "paths": {"/v1/pets": {"get": {"responses": {"200": {"description": "ok"}}}}}
+}`))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if err := flatten.Document(doc, flatten.Config{}); err != nil {
+		t.Fatal(err)
+	}
+
+	if _, ok := doc.Paths["/v1/pets"]; !ok || doc.Servers[0].URL != "https://api.example.com" {
+		t.Errorf("got paths %v and server %s, want them as they were", doc.Paths, doc.Servers[0].URL)
+	}
 }
