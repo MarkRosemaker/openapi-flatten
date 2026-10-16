@@ -4,14 +4,14 @@ go 1.27
 
 require (
 	github.com/MarkRosemaker/errpath v0.0.0-20261011100139-0f973ba10436
-	github.com/MarkRosemaker/openapi v0.0.0-20261014160147-b50e9a6647e8
+	github.com/MarkRosemaker/openapi v0.0.0-20261016040148-ee917e6f18e9
 	github.com/ettle/strcase v0.2.0
 )
 
 require (
 	cloud.google.com/go v0.123.0 // indirect
 	github.com/MarkRosemaker/json2yaml v0.0.0-20261011100139-2d7c8ec80f68 // indirect
-	github.com/MarkRosemaker/jsonutil v0.0.0-20261011100139-a4e91ee48afc // indirect
+	github.com/MarkRosemaker/jsonutil v0.0.0-20261015233346-026192cb8989 // indirect
 	github.com/MarkRosemaker/ordmap v0.0.0-20261014160122-d6113d0a91f7 // indirect
 	github.com/MarkRosemaker/yaml v0.0.0-20261011100206-7a238ac9deda // indirect
 	github.com/MarkRosemaker/yaml2json v0.0.0-20261011100139-1181ffd29042 // indirect
