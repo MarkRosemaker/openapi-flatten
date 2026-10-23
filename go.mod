@@ -4,7 +4,7 @@ go 1.27
 
 require (
 	github.com/MarkRosemaker/errpath v0.0.0-20261022123114-077265568e41
-	github.com/MarkRosemaker/openapi v0.0.0-20261023164334-d8717d3ab534
+	github.com/MarkRosemaker/openapi v0.0.0-20261023173220-3fc10e958884
 	github.com/ettle/strcase v0.2.0
 )
 
