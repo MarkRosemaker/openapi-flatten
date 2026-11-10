@@ -3,6 +3,8 @@ package flatten
 import (
 	"fmt"
 	"strings"
+
+	"github.com/ettle/strcase"
 )
 
 // uniqueName is name, made a valid component name, or else that with the lowest number after it that m has no entry
@@ -42,4 +44,17 @@ func componentName(name string) string {
 	}
 
 	return name
+}
+
+// goName is the words of parts as one Go name, for a component flatten names after an operation, a property or a
+// title. Anything but an ASCII letter or digit breaks words, as the braces of a path template in an operation ID do,
+// so get_a-{v} is GetAV rather than a name that runs the parameter into the next word.
+func goName(parts ...string) string {
+	return strcase.ToGoPascal(strings.Map(func(r rune) rune {
+		if 'a' <= r && r <= 'z' || 'A' <= r && r <= 'Z' || '0' <= r && r <= '9' {
+			return r
+		}
+
+		return ' '
+	}, strings.Join(parts, " ")))
 }

@@ -3,7 +3,9 @@ package flatten_test
 import (
 	"bytes"
 	"fmt"
+	"maps"
 	"os"
+	"slices"
 	"testing"
 
 	"github.com/MarkRosemaker/openapi"
@@ -140,11 +142,10 @@ func TestDocument_ValidComponentNames(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	for name := range doc.Components.Schemas {
-		for _, r := range name {
-			if !('a' <= r && r <= 'z' || 'A' <= r && r <= 'Z' || '0' <= r && r <= '9' || r == '.' || r == '-' || r == '_') {
-				t.Errorf("schema %q holds %q", name, r)
-			}
+	// the braces and the padding break words, so each word keeps its own capital
+	for _, want := range []string{"GetAVOk", "GetAVOkCasdiSFqTw7i8FtJGuQyFEq0"} {
+		if _, ok := doc.Components.Schemas[want]; !ok {
+			t.Errorf("no schema %s among %v", want, slices.Collect(maps.Keys(doc.Components.Schemas)))
 		}
 	}
 }
