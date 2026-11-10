@@ -3,7 +3,9 @@ package flatten_test
 import (
 	"bytes"
 	"fmt"
+	"maps"
 	"os"
+	"slices"
 	"testing"
 
 	"github.com/MarkRosemaker/openapi"
@@ -105,5 +107,45 @@ func TestDocument_OnePathKeepsItsPrefix(t *testing.T) {
 
 	if _, ok := doc.Paths["/v1/pets"]; !ok || doc.Servers[0].URL != "https://api.example.com" {
 		t.Errorf("got paths %v and server %s, want them as they were", doc.Paths, doc.Servers[0].URL)
+	}
+}
+
+// TestDocument_ValidComponentNames: a name made from an operation ID or a property key holds only what a component
+// name may, whatever those hold.
+func TestDocument_ValidComponentNames(t *testing.T) {
+	t.Parallel()
+
+	doc, err := openapi.LoadFromDataJSON([]byte(`{
+  "openapi": "3.1.0",
+  "info": {"title": "t", "version": "1"},
+  "paths": {"/a/{v}": {"get": {
+    "operationId": "get_a-{v}",
+    "parameters": [{"name": "v", "in": "path", "required": true, "schema": {"type": "string"}}],
+    "responses": {"200": {"description": "ok", "content": {"application/json": {"schema": {
+      "type": "object",
+      "properties": {
+        "x": {"type": "string"},
+        "CasdiSFqTw7i8FtJGuQyFEq0==": {"type": "object", "properties": {"y": {"type": "string"}}}
+      }
+    }}}}}
+  }}}
+}`))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if err := flatten.Document(doc, flatten.Config{}); err != nil {
+		t.Fatal(err)
+	}
+
+	if err := doc.Validate(); err != nil {
+		t.Fatal(err)
+	}
+
+	// the braces and the padding break words, so each word keeps its own capital
+	for _, want := range []string{"GetAVOk", "GetAVOkCasdiSFqTw7i8FtJGuQyFEq0"} {
+		if _, ok := doc.Components.Schemas[want]; !ok {
+			t.Errorf("no schema %s among %v", want, slices.Collect(maps.Keys(doc.Components.Schemas)))
+		}
 	}
 }
