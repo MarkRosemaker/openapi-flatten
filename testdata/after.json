@@ -182,7 +182,7 @@
             }
           },
           "sitter": {
-            "description": "What may also be null stays, and what it is otherwise is named as it would be on its own.",
+            "description": "What may also be null stays, and what it is otherwise is named as it would be on its own, with what it says of itself.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/ListPetsOkSitter"
@@ -233,6 +233,7 @@
         "x-flattened-from": "#/components/responses/ListPetsOk/content/application~1json/schema"
       },
       "ListPetsOkSitter": {
+        "description": "What may also be null stays, and what it is otherwise is named as it would be on its own, with what it says of itself.",
         "type": "object",
         "properties": {
           "id": {
