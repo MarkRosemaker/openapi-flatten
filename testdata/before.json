@@ -115,7 +115,7 @@
                       }
                     },
                     "sitter": {
-                      "description": "What may also be null stays, and what it is otherwise is named as it would be on its own.",
+                      "description": "What may also be null stays, and what it is otherwise is named as it would be on its own, with what it says of itself.",
                       "anyOf": [
                         {
                           "type": "object",
