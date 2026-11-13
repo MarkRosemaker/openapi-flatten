@@ -170,8 +170,27 @@
           "when": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ListPetsOkWhenItem"
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": "null"
+                }
+              ]
             }
+          },
+          "sitter": {
+            "description": "What may also be null stays, and what it is otherwise is named as it would be on its own.",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ListPetsOkSitter"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "status": {
             "$ref": "#/components/schemas/ListPetsOkStatus"
@@ -213,17 +232,14 @@
         },
         "x-flattened-from": "#/components/responses/ListPetsOk/content/application~1json/schema"
       },
-      "ListPetsOkWhenItem": {
-        "anyOf": [
-          {
-            "type": "string",
-            "format": "date-time"
-          },
-          {
-            "type": "null"
+      "ListPetsOkSitter": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
           }
-        ],
-        "x-flattened-from": "#/components/schemas/ListPetsOk/properties/when/items"
+        },
+        "x-flattened-from": "#/components/schemas/ListPetsOk/properties/sitter/anyOf/0"
       },
       "ListPetsOkStatus": {
         "type": "string",

@@ -114,6 +114,22 @@
                         ]
                       }
                     },
+                    "sitter": {
+                      "description": "What may also be null stays, and what it is otherwise is named as it would be on its own.",
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
                     "status": {
                       "type": "string",
                       "enum": [
