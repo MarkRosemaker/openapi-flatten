@@ -181,6 +181,12 @@
               ]
             }
           },
+          "motion_adjustments": {
+            "$ref": "#/components/schemas/MotionAdjustments"
+          },
+          "last_run_at": {
+            "$ref": "#/components/schemas/ListPetsOkLastRunAt"
+          },
           "sitter": {
             "description": "What may also be null stays, and what it is otherwise is named as it would be on its own, with what it says of itself.",
             "anyOf": [
@@ -231,6 +237,46 @@
           }
         },
         "x-flattened-from": "#/components/responses/ListPetsOk/content/application~1json/schema"
+      },
+      "MotionAdjustments": {
+        "description": "What a property of two words or more holds is named after it alone.",
+        "type": "object",
+        "properties": {
+          "stride": {
+            "type": "number"
+          }
+        },
+        "x-flattened-from": "#/components/schemas/ListPetsOk/properties/motion_adjustments"
+      },
+      "ListPetsOkLastRunAt": {
+        "description": "A union is named after its owner too: what its property says is what the value means.",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ListPetsOkLastRunAtOneOf0"
+          },
+          {
+            "$ref": "#/components/schemas/ListPetsOkLastRunAtOneOf1"
+          }
+        ],
+        "x-flattened-from": "#/components/schemas/ListPetsOk/properties/last_run_at"
+      },
+      "ListPetsOkLastRunAtOneOf0": {
+        "type": "object",
+        "properties": {
+          "at": {
+            "type": "string"
+          }
+        },
+        "x-flattened-from": "#/components/schemas/ListPetsOkLastRunAt/oneOf/0"
+      },
+      "ListPetsOkLastRunAtOneOf1": {
+        "type": "object",
+        "properties": {
+          "never": {
+            "type": "boolean"
+          }
+        },
+        "x-flattened-from": "#/components/schemas/ListPetsOkLastRunAt/oneOf/1"
       },
       "ListPetsOkSitter": {
         "description": "What may also be null stays, and what it is otherwise is named as it would be on its own, with what it says of itself.",
