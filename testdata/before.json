@@ -114,6 +114,36 @@
                         ]
                       }
                     },
+                    "motion_adjustments": {
+                      "description": "What a property of two words or more holds is named after it alone.",
+                      "type": "object",
+                      "properties": {
+                        "stride": {
+                          "type": "number"
+                        }
+                      }
+                    },
+                    "last_run_at": {
+                      "description": "A union is named after its owner too: what its property says is what the value means.",
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "at": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "never": {
+                              "type": "boolean"
+                            }
+                          }
+                        }
+                      ]
+                    },
                     "sitter": {
                       "description": "What may also be null stays, and what it is otherwise is named as it would be on its own, with what it says of itself.",
                       "anyOf": [
