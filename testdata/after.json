@@ -106,6 +106,21 @@
       "ListPetsOkOwner": {
         "type": "string"
       },
+      "Entry": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          }
+        }
+      },
+      "Entries": {
+        "description": "Entries, each a key.",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Entry"
+        }
+      },
       "Filter": {
         "type": "object",
         "properties": {
@@ -234,6 +249,13 @@
           },
           "slash/key": {
             "$ref": "#/components/schemas/ListPetsOkSlashKey"
+          },
+          "pages": {
+            "$ref": "#/components/schemas/Pages"
+          },
+          "entries": {
+            "description": "A list of a component that is listed already refers to that list, and what it says stays where it is.",
+            "$ref": "#/components/schemas/Entries"
           }
         },
         "x-flattened-from": "#/components/responses/ListPetsOk/content/application~1json/schema"
@@ -486,6 +508,14 @@
           }
         },
         "x-flattened-from": "#/components/schemas/ListPetsOk/properties/slash~1key"
+      },
+      "Pages": {
+        "description": "A list of a component moves to the components as its plural, with what it says.",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Page"
+        },
+        "x-flattened-from": "#/components/schemas/ListPetsOk/properties/pages"
       },
       "ListPetsNotFound": {
         "type": "string",

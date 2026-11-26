@@ -315,6 +315,20 @@
                           "type": "string"
                         }
                       }
+                    },
+                    "pages": {
+                      "description": "A list of a component moves to the components as its plural, with what it says.",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Page"
+                      }
+                    },
+                    "entries": {
+                      "description": "A list of a component that is listed already refers to that list, and what it says stays where it is.",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Entry"
+                      }
                     }
                   }
                 }
@@ -436,6 +450,21 @@
       },
       "ListPetsOkOwner": {
         "type": "string"
+      },
+      "Entry": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          }
+        }
+      },
+      "Entries": {
+        "description": "Entries, each a key.",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Entry"
+        }
       }
     },
     "responses": {
