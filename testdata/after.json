@@ -117,8 +117,17 @@
       "Entries": {
         "description": "Entries, each a key.",
         "type": "array",
+        "maxItems": 100,
         "items": {
           "$ref": "#/components/schemas/Entry"
+        }
+      },
+      "PageWithChildren": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
         }
       },
       "Filter": {
@@ -254,8 +263,14 @@
             "$ref": "#/components/schemas/Pages"
           },
           "entries": {
-            "description": "A list of a component that is listed already refers to that list, and what it says stays where it is.",
+            "description": "A list of a component that is listed already, with the same bounds, refers to that list, and what it says stays where it is.",
             "$ref": "#/components/schemas/Entries"
+          },
+          "entryLists": {
+            "$ref": "#/components/schemas/EntriesList"
+          },
+          "family": {
+            "$ref": "#/components/schemas/PageWithChildrenList"
           }
         },
         "x-flattened-from": "#/components/responses/ListPetsOk/content/application~1json/schema"
@@ -516,6 +531,22 @@
           "$ref": "#/components/schemas/Page"
         },
         "x-flattened-from": "#/components/schemas/ListPetsOk/properties/pages"
+      },
+      "EntriesList": {
+        "description": "A list of a list is named the list and List.",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Entries"
+        },
+        "x-flattened-from": "#/components/schemas/ListPetsOk/properties/entryLists"
+      },
+      "PageWithChildrenList": {
+        "description": "So is a list of what adding s does not make plural.",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/PageWithChildren"
+        },
+        "x-flattened-from": "#/components/schemas/ListPetsOk/properties/family"
       },
       "ListPetsNotFound": {
         "type": "string",
