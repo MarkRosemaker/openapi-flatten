@@ -324,10 +324,25 @@
                       }
                     },
                     "entries": {
-                      "description": "A list of a component that is listed already refers to that list, and what it says stays where it is.",
+                      "description": "A list of a component that is listed already, with the same bounds, refers to that list, and what it says stays where it is.",
                       "type": "array",
+                      "maxItems": 100,
                       "items": {
                         "$ref": "#/components/schemas/Entry"
+                      }
+                    },
+                    "entryLists": {
+                      "description": "A list of a list is named the list and List.",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Entries"
+                      }
+                    },
+                    "family": {
+                      "description": "So is a list of what adding s does not make plural.",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/PageWithChildren"
                       }
                     }
                   }
@@ -464,6 +479,15 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/Entry"
+        },
+        "maxItems": 100
+      },
+      "PageWithChildren": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
         }
       }
     },
