@@ -271,6 +271,9 @@
           },
           "family": {
             "$ref": "#/components/schemas/PageWithChildrenList"
+          },
+          "lastEntries": {
+            "$ref": "#/components/schemas/LastEntries"
           }
         },
         "x-flattened-from": "#/components/responses/ListPetsOk/content/application~1json/schema"
@@ -547,6 +550,15 @@
           "$ref": "#/components/schemas/PageWithChildren"
         },
         "x-flattened-from": "#/components/schemas/ListPetsOk/properties/family"
+      },
+      "LastEntries": {
+        "description": "A list of a component whose plural another list, with other bounds, holds is named after its property.",
+        "type": "array",
+        "maxItems": 5,
+        "items": {
+          "$ref": "#/components/schemas/Entry"
+        },
+        "x-flattened-from": "#/components/schemas/ListPetsOk/properties/lastEntries"
       },
       "ListPetsNotFound": {
         "type": "string",

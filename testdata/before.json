@@ -344,6 +344,14 @@
                       "items": {
                         "$ref": "#/components/schemas/PageWithChildren"
                       }
+                    },
+                    "lastEntries": {
+                      "description": "A list of a component whose plural another list, with other bounds, holds is named after its property.",
+                      "type": "array",
+                      "maxItems": 5,
+                      "items": {
+                        "$ref": "#/components/schemas/Entry"
+                      }
                     }
                   }
                 }
